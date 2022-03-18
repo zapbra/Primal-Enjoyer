@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+$light-blue: #d8dde3;
+$dark-blue: #002b67;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Montserrat;
+}
+body {
+  background: $light-blue;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: $dark-blue;
+  font-weight: bold;
+}
+h2 {
+  color: $dark-blue;
+}
+h3 {
+  color: $dark-blue;
+}
