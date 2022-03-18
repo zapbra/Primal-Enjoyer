@@ -24,6 +24,8 @@ const SubHeader = styled.div`
 `;
 const TextContent = styled.div`
   background-color: ${(props) => props.colors.lightGrey};
+  border: 1px solid black;
+  background-color: ${props => props.colors.lightGrey};
 `;
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
