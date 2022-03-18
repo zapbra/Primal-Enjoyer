@@ -80,7 +80,7 @@ const slug = ({ article }) => {
           <p>{article.description} </p>
         </div>
         <div>
-          <img src={article.coverImage.url} />}
+          <img src={article.coverImage.url} />
         </div>
       </SubHeader>
       <TextContent colors={COLORS}></TextContent>
