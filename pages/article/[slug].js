@@ -1,6 +1,6 @@
 import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
-import MarkDown from 'markdown-to-jsx';
+
 import COLORS from "../../Data/colors";
 const Article = styled.div`
   background-color: #fff;
@@ -26,7 +26,7 @@ const SubHeader = styled.div`
 const TextContent = styled.div`
   background-color: ${(props) => props.colors.lightGrey};
   border: 1px solid black;
-  border-radius: .5rem; 
+  border-radius: 0.5rem;
   padding: 10px;
 `;
 export const getServerSideProps = async (pageContext) => {
@@ -72,7 +72,6 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 const slug = ({ article }) => {
-  
   return (
     <Article>
       <Header colors={COLORS}>
@@ -88,10 +87,7 @@ const slug = ({ article }) => {
           <img src={article.coverImage.url} />
         </div>
       </SubHeader>
-      <TextContent colors={COLORS}>
-        <MarkDown>{article.content.markdown}</MarkDown>
-        
-        </TextContent>
+      <TextContent colors={COLORS}></TextContent>
     </Article>
   );
 };
