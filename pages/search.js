@@ -35,7 +35,9 @@ const TagInput = styled.div`
 
 
 const search = () => {
-  const [tags, setTags] = React.useState('');
+  const [tags, setTags] = React.useState([]);
+  const [searchTags, setSearchTags] = React,useState([]);
+  
   function generateColor(){
     return tagColors[Math.floor(Math.random() * tagColors.length-1)];
   }
