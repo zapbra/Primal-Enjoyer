@@ -17,7 +17,7 @@ const TagElem = styled.div`
 `;
 const Tag = (props) => {
   return (
-    <TagElem color = {props.color}>{props.title}</TagElem>
+    <TagElem onClick = {()=>props.removeTag(props.id)}id = {props.id} color = {props.color}>{props.title}</TagElem>
   )
 }
 

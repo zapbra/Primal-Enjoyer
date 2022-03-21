@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import COLORS, {tagColors} from '../Data/colors';
  
 import TAGS from '../Data/tags';
-import TagBox from '../components/search/Tags';
+import TagBox from '../components/search/TagBox';
 const SearchCont = styled.div`
  border-radius:1rem;
  background-color: #fff;
@@ -36,16 +36,34 @@ const TagInput = styled.div`
 
 const search = () => {
   const [tags, setTags] = React.useState([]);
-  const [searchTags, setSearchTags] = React,useState([]);
-  
+  const [searchTags, setSearchTags] = React.useState([]);
+
   function generateColor(){
     return tagColors[Math.floor(Math.random() * tagColors.length-1)];
   }
+  function pushTag(tag){
+    setSearchTags(prevTags=>{
+      prevTags.push(tag);
+      return [...prevTags];
+    });
+  }
+
+  function removeTag(id){
+    setTags(prevTags=>{
+      let index = prevTags.findIndex(tag=>{
+        tag.id === id;
+      });
+      pushTag(prevTags.splice(index,1));
+      console.log(prevTags);
+      return [...prevTags];
+    })
+  }
+  
   
   React.useEffect(()=>{
     setTags(prevTags=>{
-      return TAGS.map(tag=>{
-        let newTag = {title:tag,color:generateColor()};
+      return TAGS.map((tag,index)=>{
+        let newTag = {title:tag,color:generateColor(),id:`tag-${index+1}`};
         return newTag;
       })
     });
@@ -62,7 +80,7 @@ const search = () => {
           </SectionHalf>
           <SectionHalf>
             <h2>Tags - Click to add</h2>
-            <TagBox tags = {tags} colors  = {COLORS}/>
+            <TagBox pushTag = {pushTag} removeTag = {removeTag} tags = {tags} colors  = {COLORS}/>
               
                 
               
