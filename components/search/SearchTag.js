@@ -9,7 +9,6 @@ const TagElem = styled.div`
   padding:2px 5px;
   min-width: 70px;
   margin:5px;
-  cursor:pointer;
   text-align:center;
   background-color: ${props => props.color};
   display:flex;
@@ -19,9 +18,9 @@ const TagElem = styled.div`
 `;
 const SearchTag = (props) => {
   return (
-    <TagElem onClick = {()=>props.removeTag(props.id)}id = {props.id} color = {props.color}>
+    <TagElem id = {props.id} color = {props.color}>
         {props.title}
-        <FontAwesomeIcon icon = {faCircleXmark} clasName = 'icon'></FontAwesomeIcon>
+        <FontAwesomeIcon onClick = {()=>props.removeTag(props.id)} icon = {faCircleXmark} className = 'icon'></FontAwesomeIcon>
         </TagElem>
   )
 }

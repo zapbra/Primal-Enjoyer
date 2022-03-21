@@ -24,7 +24,7 @@ const SearchBar = (props) => {
       tags = {props.tags} 
       colors  = {props.colors}
       />
-              <input type = 'text' />
+              
             </TagInput>
   )
 }

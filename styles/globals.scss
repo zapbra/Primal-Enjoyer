@@ -24,9 +24,14 @@ h3 {
 }
 
 .icon{
+  cursor:pointer;
+  *{
+    transition: color .25s ease;
+  }
   &:hover{
     *{
-      color:blue;
+
+      color:$light-blue;
     }
   }
 }

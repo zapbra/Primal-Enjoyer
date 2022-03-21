@@ -26,12 +26,17 @@ const SectionHalf = styled.div`
 const search = () => {
   const [tags, setTags] = React.useState([]);
   const [searchTags, setSearchTags] = React.useState([]);
-
+  const [text, setText] = React.useState('');
   function generateColor(){
     return tagColors[Math.floor(Math.random() * tagColors.length-1)];
     
   }
 
+  function updateText(e){
+    setText(prevText=>{
+      return e.target.currentValue;
+    })
+  }
 
   function pushSearchTag(tag){
     setTags(prevTags=>{
@@ -85,7 +90,13 @@ const search = () => {
         <TopSection>
           <SectionHalf>
             <h2>Search</h2>
-            <SearchBar removeTag = {removeSearchTag} pushTag = {pushSearchTag} tags = {searchTags} colors = {COLORS} />
+            <SearchBar text = {text} 
+            updateText = {updateText} 
+            removeTag = {removeSearchTag} 
+            pushTag = {pushSearchTag} 
+            tags = {searchTags} 
+            colors = {COLORS} 
+            />
           </SectionHalf>
           <SectionHalf>
             <h2>Tags - Click to add</h2>
