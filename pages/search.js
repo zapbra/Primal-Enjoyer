@@ -29,7 +29,28 @@ const search = () => {
 
   function generateColor(){
     return tagColors[Math.floor(Math.random() * tagColors.length-1)];
+    
   }
+
+
+  function pushSearchTag(tag){
+    setTags(prevTags=>{
+      return [...prevTags, tag];
+    });
+  }
+  function removeSearchTag(id){
+    const item = searchTags.find(tag=>{
+      return tag.id === id;
+    })
+    pushSearchTag(item);
+    setSearchTags(prevTags=>{
+      const tags = prevTags.filter(tag=>{
+        return tag.id !== id;
+      });
+      return [...tags];
+    })
+  }
+
   function pushTag(tag){
     setSearchTags(prevTags=>{
       return [...prevTags, tag];
@@ -64,7 +85,7 @@ const search = () => {
         <TopSection>
           <SectionHalf>
             <h2>Search</h2>
-            <SearchBar colors = {COLORS} />
+            <SearchBar removeTag = {removeSearchTag} pushTag = {pushSearchTag} tags = {searchTags} colors = {COLORS} />
           </SectionHalf>
           <SectionHalf>
             <h2>Tags - Click to add</h2>

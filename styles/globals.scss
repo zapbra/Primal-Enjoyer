@@ -22,3 +22,11 @@ h2 {
 h3 {
   color: $dark-blue;
 }
+
+.icon{
+  &:hover{
+    *{
+      color:blue;
+    }
+  }
+}
