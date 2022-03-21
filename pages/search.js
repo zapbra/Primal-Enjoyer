@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import COLORS from '../Data/colors';
-import Tags from '../Data/tags';
+import TAGS from '../Data/tags';
 const SearchCont = styled.div`
  border-radius:1rem;
  background-color: #fff;
@@ -35,6 +35,7 @@ const TagBox = styled.div`
   background-color: ${props => props.colors.grey};
 `;
 const search = () => {
+  console.log(TAGS)
   return (
     <SearchCont>
         <TopSection>
