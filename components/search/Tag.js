@@ -1,8 +1,19 @@
 import React from 'react'
+import styled from 'styled-components';
 
-const Tag = () => {
+const TagElem = styled.div`
+  float:left;
+  border: 1px solid black;
+  border-radius:1rem;
+  padding:2px 10px;
+  min-width: 70px;
+  margin:5px;
+  cursor:pointer;
+  text-align:center;
+`;
+const Tag = (props) => {
   return (
-    <div>Tag</div>
+    <TagElem>{props.title}</TagElem>
   )
 }
 
