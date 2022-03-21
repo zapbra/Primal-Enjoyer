@@ -34,7 +34,19 @@ const TagInput = styled.div`
 
 
 const search = () => {
-  const [tags, setTags] = React.useState(TAGS);
+  const [tags, setTags] = React.useState('');
+  function generateColor(){
+    return tagColors[Math.floor(Math.random() * tagColors.length-1)];
+  }
+  
+  React.useEffect(()=>{
+    setTags(prevTags=>{
+      return TAGS.map(tag=>{
+        let newTag = {title:tag,color:generateColor()};
+        return newTag;
+      })
+    });
+  },[])
   
   return (
     <SearchCont>
