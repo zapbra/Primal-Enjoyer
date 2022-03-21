@@ -6,4 +6,4 @@ const Tag = () => {
   )
 }
 
-export default Tag
+export default Tag;
