@@ -88,7 +88,7 @@ const search = () => {
     });
   }
 
-  function removeTag(id){
+  function removeTag(id){ //THIS IS THE PROBLEM!
     
     const item = tags.find(tag=>{
       return tag.id === id;
@@ -134,7 +134,7 @@ const search = () => {
           </SectionHalf>
           <SectionHalf>
             <h2>Tags - Click to add</h2>
-            <TagBox pushTag = {pushTag} removeTag = {removeTag} tags = {searchTags} colors  = {COLORS}/>
+            <TagBox pushTag = {pushTag} removeTag = {removeTag} tags = {filterTags} colors  = {COLORS}/>
               
                 
               
