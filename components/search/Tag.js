@@ -10,10 +10,11 @@ const TagElem = styled.div`
   margin:5px;
   cursor:pointer;
   text-align:center;
+  background-color: ${props => props.color};
 `;
 const Tag = (props) => {
   return (
-    <TagElem>{props.title}</TagElem>
+    <TagElem color = {props.color}>{props.title}</TagElem>
   )
 }
 

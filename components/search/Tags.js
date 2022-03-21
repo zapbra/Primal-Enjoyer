@@ -8,18 +8,19 @@ const TagBoxElem = styled.div`
   
  
 `;
-const Tags = styled.div`
+const TagsCont = styled.div`
     background-color:white;
     margin:10px;
-    
+    overflow:auto;
 `
 const TagBox = (props) => {
-   const tags = Object.entries(props.tags).map(([key,value])=>{
-    <Tag title = {value.title} color = {value.color/>
+   const tags = props.tags.map(tag=>{
+    return <Tag title = {tag.title} color = {tag.color}/>
    });
+   
   return (
     <TagBoxElem colors = {props.colors}>
-       
+       <TagsCont>{tags}</TagsCont>
     </TagBoxElem>
 
   )

@@ -11,6 +11,7 @@ const SearchCont = styled.div`
 `;
 const TopSection = styled.div`
 display:flex;
+gap:2rem;
 `
 const SectionHalf = styled.div`
   flex:1;
