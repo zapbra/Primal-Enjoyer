@@ -37,7 +37,7 @@ const search = () => {
     setText(prevText=>{
       return '';
     })
-    console.log(searchTags);
+    
   }
   function generateColor(){
     return tagColors[Math.floor(Math.random() * tagColors.length-1)];
@@ -89,6 +89,7 @@ const search = () => {
   }
 
   function removeTag(id){
+    
     const item = tags.find(tag=>{
       return tag.id === id;
     })
@@ -133,7 +134,7 @@ const search = () => {
           </SectionHalf>
           <SectionHalf>
             <h2>Tags - Click to add</h2>
-            <TagBox pushTag = {pushTag} removeTag = {removeTag} tags = {filterTags} colors  = {COLORS}/>
+            <TagBox pushTag = {pushTag} removeTag = {removeTag} tags = {searchTags} colors  = {COLORS}/>
               
                 
               
