@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import COLORS, {tagColors} from '../Data/colors';
- 
+ import SearchBar from '../components/search/SearchBar';
 import TAGS from '../Data/tags';
 import TagBox from '../components/search/TagBox';
 const SearchCont = styled.div`
@@ -21,17 +21,6 @@ const SectionHalf = styled.div`
 `;
 
 
-const TagInput = styled.div`
-  border: 1px solid black;
-  border-radius: .5rem;
-  padding: 5px;
-  background-color ${props => props.colors.grey};
-  input{
-    border-radius: .25rem;
-    border: 1px solid black;
-    outline: none;
-  }
-`;
 
 
 const search = () => {
@@ -43,19 +32,20 @@ const search = () => {
   }
   function pushTag(tag){
     setSearchTags(prevTags=>{
-      prevTags.push(tag);
-      return [...prevTags];
+      return [...prevTags, tag];
     });
   }
 
   function removeTag(id){
+    const item = tags.find(tag=>{
+      return tag.id === id;
+    })
+    pushTag(item);
     setTags(prevTags=>{
-      let index = prevTags.findIndex(tag=>{
-        tag.id === id;
+      const tags = prevTags.filter(tag=>{
+        return tag.id !== id;
       });
-      pushTag(prevTags.splice(index,1));
-      console.log(prevTags);
-      return [...prevTags];
+      return [...tags];
     })
   }
   
@@ -74,9 +64,7 @@ const search = () => {
         <TopSection>
           <SectionHalf>
             <h2>Search</h2>
-            <TagInput colors = {COLORS}>
-              <input type = 'text' />
-            </TagInput>
+            <SearchBar colors = {COLORS} />
           </SectionHalf>
           <SectionHalf>
             <h2>Tags - Click to add</h2>
