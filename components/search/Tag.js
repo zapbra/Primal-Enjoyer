@@ -11,6 +11,9 @@ const TagElem = styled.div`
   cursor:pointer;
   text-align:center;
   background-color: ${props => props.color};
+  &:hover{
+    opacity: .7;
+  }
 `;
 const Tag = (props) => {
   return (

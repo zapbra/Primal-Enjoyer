@@ -14,10 +14,12 @@ const TagsCont = styled.div`
     overflow:auto;
 `
 const TagBox = (props) => {
-   const tags = props.tags.map(tag=>{
-    return <Tag title = {tag.title} color = {tag.color}/>
-   });
-   
+  const tags = props.tags.map(tag=>{
+    return <Tag title = {tag.title}  color = {tag.color}/>;
+  });
+  
+
+  
   return (
     <TagBoxElem colors = {props.colors}>
        <TagsCont>{tags}</TagsCont>
