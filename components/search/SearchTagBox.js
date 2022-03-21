@@ -33,7 +33,7 @@ const SearchTagBox = (props) => {
   return (
     <TagBoxElem colors = {props.colors}>
        <TagsCont >{tags}
-       <form onSubmit = {props.enterTag}>
+       <form onSubmit = {props.submitSearch}>
         <InputLine 
         type = 'text' 
         value ={props.text}

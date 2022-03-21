@@ -26,6 +26,7 @@ const SearchBar = (props) => {
       colors  = {props.colors}
       text ={props.text}
       updateText = {props.updateText}
+      submitSearch = {props.submitSearch}
       />
               
             </TagInput>

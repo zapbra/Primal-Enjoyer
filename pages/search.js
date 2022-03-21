@@ -28,26 +28,40 @@ const search = () => {
   const [searchTags, setSearchTags] = React.useState([]);
   const [text, setText] = React.useState('');
   const [filterTags, setFilterTags] = React.useState([]);
+
+  function submitSearch(e){
+    e.preventDefault();
+    let id = filterTags[0].id;
+    
+    removeTag(id);
+    setText(prevText=>{
+      return '';
+    })
+    console.log(searchTags);
+  }
   function generateColor(){
     return tagColors[Math.floor(Math.random() * tagColors.length-1)];
     
   }
-  function findClosestTag(text){
+  function findClosestTag(){
     setFilterTags(prevTags=>{
-      let leTags =  tags.filter(tag=>{
-        return tag.includes(text);
+      return  tags.filter(tag=>{
+        return tag.title.includes(text);
       });
-      console.log(leTags);
+      
     });
   }
 
   function updateText(e){
+    let val = e.currentTarget.value;
     setText(prevText=>{
-      return e.target.currentValue;
+      return val;
     })
+    
   }
   React.useEffect(()=>{
-    console.log('word')
+    findClosestTag();
+    
   },[text])
 
   function pushSearchTag(tag){
@@ -95,6 +109,12 @@ const search = () => {
         return newTag;
       })
     });
+    setFilterTags(prevTags=>{
+      return TAGS.map((tag,index)=>{
+        let newTag = {title:tag,color:generateColor(),id:`tag-${index+1}`};
+        return newTag;
+      })
+    })
   },[])
   
   return (
@@ -107,12 +127,13 @@ const search = () => {
             removeTag = {removeSearchTag} 
             pushTag = {pushSearchTag} 
             tags = {searchTags} 
+            submitSearch = {submitSearch}
             colors = {COLORS} 
             />
           </SectionHalf>
           <SectionHalf>
             <h2>Tags - Click to add</h2>
-            <TagBox pushTag = {pushTag} removeTag = {removeTag} tags = {tags} colors  = {COLORS}/>
+            <TagBox pushTag = {pushTag} removeTag = {removeTag} tags = {filterTags} colors  = {COLORS}/>
               
                 
               
