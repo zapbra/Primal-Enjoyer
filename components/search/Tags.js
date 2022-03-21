@@ -14,12 +14,12 @@ const Tags = styled.div`
     
 `
 const TagBox = (props) => {
-    const tagElems = props.tags.map(tag=>{
-        return <Tag title = {tag}> </Tag>
-    });
+   const tags = Object.entries(props.tags).map(([key,value])=>{
+    <Tag title = {value.title} color = {value.color/>
+   });
   return (
     <TagBoxElem colors = {props.colors}>
-        {tagElems}
+       
     </TagBoxElem>
 
   )
