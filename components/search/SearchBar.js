@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import TagBox from './TagBox';
 
 const TagInput = styled.div`
   border: 1px solid black;
@@ -14,9 +15,15 @@ const TagInput = styled.div`
 `;
 
 
-const SearchBar = (colors) => {
+const SearchBar = (props) => {
   return (
     <TagInput colors = {props.colors}>
+      <TagBox 
+      pushTag = {props.pushTag} 
+      removeTag = {props.removeTag} 
+      tags = {tags} 
+      colors  = {props.colors}
+      />
               <input type = 'text' />
             </TagInput>
   )
