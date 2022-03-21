@@ -27,9 +27,18 @@ const search = () => {
   const [tags, setTags] = React.useState([]);
   const [searchTags, setSearchTags] = React.useState([]);
   const [text, setText] = React.useState('');
+  const [filterTags, setFilterTags] = React.useState([]);
   function generateColor(){
     return tagColors[Math.floor(Math.random() * tagColors.length-1)];
     
+  }
+  function findClosestTag(text){
+    setFilterTags(prevTags=>{
+      let leTags =  tags.filter(tag=>{
+        return tag.includes(text);
+      });
+      console.log(leTags);
+    });
   }
 
   function updateText(e){
@@ -37,6 +46,9 @@ const search = () => {
       return e.target.currentValue;
     })
   }
+  React.useEffect(()=>{
+    console.log('word')
+  },[text])
 
   function pushSearchTag(tag){
     setTags(prevTags=>{

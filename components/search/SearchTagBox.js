@@ -22,7 +22,7 @@ const InputLine = styled.input`
    
 `;
 const SearchTagBox = (props) => {
-  
+ 
   const tags = props.tags.map((tag,index)=>{
     return <SearchTag removeTag = {props.removeTag} key = {nanoid()} id = {tag.id} title = {tag.title}  color = {tag.color}/>;
   });
@@ -32,7 +32,16 @@ const SearchTagBox = (props) => {
   
   return (
     <TagBoxElem colors = {props.colors}>
-       <TagsCont >{tags}<InputLine type = 'text' placeholder = 'Search...'/></TagsCont>
+       <TagsCont >{tags}
+       <form onSubmit = {props.enterTag}>
+        <InputLine 
+        type = 'text' 
+        value ={props.text}
+        onChange = {props.updateText}
+        placeholder = 'Search...'
+        />
+        </form>
+       </TagsCont>
        
     </TagBoxElem>
 

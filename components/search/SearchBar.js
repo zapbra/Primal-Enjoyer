@@ -16,6 +16,7 @@ const TagInput = styled.div`
 
 
 const SearchBar = (props) => {
+  
   return (
     <TagInput colors = {props.colors}>
       <SearchTagBox 
@@ -23,6 +24,8 @@ const SearchBar = (props) => {
       removeTag = {props.removeTag} 
       tags = {props.tags} 
       colors  = {props.colors}
+      text ={props.text}
+      updateText = {props.updateText}
       />
               
             </TagInput>
