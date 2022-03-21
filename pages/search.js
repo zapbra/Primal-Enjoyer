@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
-import COLORS from '../Data/colors';
+import COLORS, {tagColors} from '../Data/colors';
+ 
 import TAGS from '../Data/tags';
+import TagBox from '../components/search/Tags';
 const SearchCont = styled.div`
  border-radius:1rem;
  background-color: #fff;
@@ -20,7 +22,7 @@ const SectionHalf = styled.div`
 
 const TagInput = styled.div`
   border: 1px solid black;
-  border-radius: .25rem;
+  border-radius: .5rem;
   padding: 5px;
   background-color ${props => props.colors.grey};
   input{
@@ -30,12 +32,10 @@ const TagInput = styled.div`
   }
 `;
 
-const TagBox = styled.div`
-  border: 1px solid black;
-  background-color: ${props => props.colors.grey};
-`;
+
 const search = () => {
-  console.log(TAGS)
+  const [tags, setTags] = React.useState(TAGS);
+  
   return (
     <SearchCont>
         <TopSection>
@@ -47,11 +47,11 @@ const search = () => {
           </SectionHalf>
           <SectionHalf>
             <h2>Tags - Click to add</h2>
-            <TagBox colors  = {COLORS}>
-              <div className = 'tags'>
-                background-color: #fff;
-              </div>
-            </TagBox>
+            <TagBox tags = {tags} colors  = {COLORS}/>
+              
+                
+              
+            
           </SectionHalf>
           </TopSection>
     </SearchCont>

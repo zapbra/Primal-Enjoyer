@@ -1,9 +1,25 @@
 import React from 'react'
+import styled from 'styled-components';
 
-const Tags = () => {
+const TagBoxElem = styled.div`
+  border: 1px solid black;
+  background-color: ${props => props.colors.grey};
+  border-radius: .5rem;
+`;
+const Tags = styled.div`
+    background-color:white;
+    margin:10px;
+`
+const TagBox = (props) => {
+    const tagElems = props.tags.map(tag=>{
+        return <Tag title = {tag}> </Tag>
+    });
   return (
-    <div>Tags</div>
+    <TagBoxElem colors = {props.colors}>
+        {tagElems}
+    </TagBoxElem>
+
   )
 }
 
-export default Tags
+export default TagBox;
