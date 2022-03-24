@@ -12,6 +12,10 @@ const Container = styled.div`
     text-align: center;
     border-bottom: 2px solid ${(props) => props.colors.darkBlue};
   }
+  ul{
+      margin-left:20px;
+      
+  }
 `;
 
 const ContainWidth = styled.div`
@@ -38,6 +42,11 @@ const Article = styled.article`
       font-weight: 500;
       font-size: 18px;
       margin-bottom: 1rem;
+    }
+    li{
+        p{
+            margin-bottom:0.5rem;
+        }
     }
   }
 `;
@@ -184,7 +193,7 @@ const Introduction = (props) => {
                Athough, the easiest way to consume these is
               through the Mantysalo channel on youtube linked here. 
               <p>
-              <a taget = '_blank' href = 'https://www.youtube.com/channel/UCdHSzt83x7LjGcdNTJu2LSA?app=desktop'>
+              <a target = '_blank' href = 'https://www.youtube.com/channel/UCdHSzt83x7LjGcdNTJu2LSA?app=desktop'>
                   Mantysalo Youtube
               </a>
               </p>
@@ -195,8 +204,37 @@ const Introduction = (props) => {
               
             
           </BulletPoint>
+          <BulletPoint>
+              <p>(4) Find Farms Near You or Good Qualit Butcher</p>
+              <p>Feel free to read this article <b>-insert article-</b> on how to find farms near you or this webpage <b>-insert webpage-</b> with all the online resources to find farms near you</p>
+              <p>Just literally look up organic/grass fed farms near me, organic/grass fed butcher near me. Worst case scenario, you can buy some at the grocery store. Go on messaging boards, contact local people
+                  in your areas, go on websites like Kijiji, try to find the best quality you can. Also, ask your farmer about people they know.
+              </p>
+              <p>Don't feel bad to ask questions and possibly stop purchasing from certain farmers if they don't fit your criteria. Product quality is driven by consumer demand.</p>
+              <p>The only problem with buying from the grocery store is you can't verify the quality. It's often quite old and sprayed with various chemicals. The issue with buying from certain farms 
+                  is they freeze the meat which damages the nutrients and bacteria. Although, it is still better than nothing. </p>
+
+          </BulletPoint>
         </div>
       </Article>
+                <Article colors = {props.colors}>
+                    <div className="title">
+                        <h1>(5) Finally!! You Can Eat Raw Meat Now</h1>
+                    </div>
+                    <div className="content">
+                        <p>I would personally suggest just diving right into your first raw meal. Here is a good steak tartare recipe <b>-recipe link -</b></p>
+                        <p>Some foods which should be easy to get started with include...</p>
+                        <ul>
+                            <li> <p>Milkshakes (raw milk, eggs, fruit, honey) <b>- Recipe Link -</b></p> </li>
+                            <li><p>Fresh red meat (feel free to put this sauce on it) <b>- recipe link -</b></p></li>
+                            <li><p>Raw fish (try this recipe) <b>- Recipe link -</b></p></li>
+                            <li><p>Oysters. Try to buy these by the package. They are often $1.50-$2.00 CAD ea. Compared to $0.65-$1.00 by the package/box</p></li>
+                            <li><p>Raw dairy (raw cheese, butter)</p></li>
+                            <li><p>Raw Ice Cream</p></li>
+                        </ul>
+                    </div>
+                </Article>
+
       </ContainWidth>
     </Container>
   );

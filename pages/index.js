@@ -39,7 +39,7 @@ export const getStaticProps = async () => {
           markdown
         }
         slug
-        catagory
+        
       }
     }
   `;
