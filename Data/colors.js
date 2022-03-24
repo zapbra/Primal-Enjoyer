@@ -1,8 +1,9 @@
 const colors = {
-  lightble: "#D8DDE3",
+  lightBlue: "#D8DDE3",
   darkBlue: "#002B67",
   lightGrey: "#F5F5F5",
-  grey:'#D8DDE3'
+  grey:'#D8DDE3',
+  ultraLightBlue:"#E9F1FD"
 };
 
 export const tagColors = [

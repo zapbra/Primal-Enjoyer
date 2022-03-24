@@ -19,6 +19,9 @@ const NavCont = styled.nav`
       border-right: 1px solid black;
       border-left: 1px solid black;
     }
+    &:nth-of-type(3){
+      border-right:1px solid black;
+    }
     &:hover {
       background-color: #fff;
     }
@@ -30,11 +33,17 @@ const NavRight = styled.div`
 `;
 const Title = styled.h1`
   text-shadow: 3px 3px 5px rgba(1, 1, 1, 0.5);
+  cursor:pointer;
+  &:hover{
+    background-color: #fff;
+  }
 `;
 const Navbar = () => {
   return (
     <NavCont>
+      <Link href ='/' clasName ='link'>
       <Title>Aajonus World</Title>
+      </Link>
       <NavRight>
         <Link href="/course" className="link">
           <h2>Course</h2>
@@ -44,6 +53,9 @@ const Navbar = () => {
         </Link>
         <Link href="/search" className="link">
           <h2>Search</h2>
+        </Link>
+        <Link href = '/resources' className ='link'>
+          <h2>Resources</h2>
         </Link>
       </NavRight>
     </NavCont>
