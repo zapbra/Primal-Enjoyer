@@ -9,9 +9,17 @@ import { GraphQLClient, gql } from "graphql-request";
 import COLORS from '../Data/colors';
 
 const Container = styled.div`
-
+  display:grid;
+  grid-template-areas: 'left left left right';
+  gap: 2rem;
+`;
+const Left = styled.div`
+  grid-area: left;
 `;
 
+const Right = styled.div`
+  grid-area: right;
+`
 export const getStaticProps = async () => {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
@@ -50,7 +58,12 @@ export default function Home({ articles }) {
   
   return (
     <Container>
+      <Left>
       <Introduction colors = {COLORS} />
+      </Left>
+      <Right>
+      <Explore colors = {COLORS} />
+      </Right>>
     </Container>
   );
 }

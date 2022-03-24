@@ -22,21 +22,26 @@ h2 {
 h3 {
   color: $dark-blue;
 }
-
-.icon{
-  cursor:pointer;
-  *{
-    transition: color .25s ease;
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
-  &:hover{
-    *{
+}
 
-      color:$light-blue;
+.icon {
+  cursor: pointer;
+  * {
+    transition: color 0.25s ease;
+  }
+  &:hover {
+    * {
+      color: $light-blue;
     }
   }
 }
 
-.text-lg{
-  font-size:18px;
-  font-weight:500;
+.text-lg {
+  font-size: 18px;
+  font-weight: 500;
 }
