@@ -50,7 +50,7 @@ export const getServerSideProps = async (pageContext) => {
           markdown
         }
         date
-        catagory
+        
         coverImage {
           url
         }
