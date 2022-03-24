@@ -20,8 +20,8 @@ const Explore = (props) => {
       <div className = 'main-title'>
         <h1>EXPLORE</h1>
       </div>
-      <PostSection />
-      <PostSection />
+      <PostSection title = 'Recent Posts'/>
+      <PostSection title = 'Popular Posts'/>
     </ExploreContainer>
   )
 }
