@@ -223,7 +223,7 @@ const Introduction = (props) => {
                     </div>
                     <div className="content">
                         <p>I would personally suggest just diving right into your first raw meal. Here is a good steak tartare recipe <b>-recipe link -</b></p>
-                        <p>Some foods which should be easy to get started with include...</p>
+                        <p className = 'border-bottom'><b>Some foods which should be easy to get started with include...</b></p>
                         <ul>
                             <li> <p>Milkshakes (raw milk, eggs, fruit, honey) <b>- Recipe Link -</b></p> </li>
                             <li><p>Fresh red meat (feel free to put this sauce on it) <b>- recipe link -</b></p></li>
@@ -231,6 +231,29 @@ const Introduction = (props) => {
                             <li><p>Oysters. Try to buy these by the package. They are often $1.50-$2.00 CAD ea. Compared to $0.65-$1.00 by the package/box</p></li>
                             <li><p>Raw dairy (raw cheese, butter)</p></li>
                             <li><p>Raw Ice Cream</p></li>
+                        </ul>
+                        <p className = 'border-bottom'>
+                           <b>Some advanced foods you may not be ready for...</b></p>
+                            <ul>
+                                <li><p>Rotten meat (liver is best)</p></li>
+                                <li><p>Organs (they taste better than muscle meat and you will crave them</p></li>
+                                <li><p>Raw chicken</p></li>
+                                <li><p>Raw pork</p></li>
+                                <li><p>Eggs. You may not be ready for whole eggs, but you can do egg yolks in steak tartare to get adjusted (although whole eggs are recommended!)</p></li>
+                            </ul>
+                            <br/>
+                            <br />
+                        <p>Eating raw meat can take awhile to get used to. Don't feel bad if you aren't quite used to it and end up cheating. Aajonus said, "If you only eat one raw food in your
+                            whole life, you will be that much healthier." So, if you only eat 50% raw, you are still 50% more healthy. Over time you will get used to it if you are consistent and are able to 
+                            find out what works for you.
+                        </p>
+                        <p className = 'border-bottom'><b>So, if you really still aren't up for the whole raw meat thing. Feel free to slowly transition and here are some food ideas...</b></p>
+                        <ul>
+                            <li><p>Rare cooked steak/hamburger</p></li>
+                            <li><p>Sushi/Sashimi/Poke Bowls</p></li>
+                            <li><p>Sourdough bread/potatoes/rice with lots of raw butter (Aajonus doesn't recommend grains anymore, but you may find this useful)</p></li>
+                            <li><p>Cheese/honey</p></li>
+                            <li><p>Anything with butter. Here are some recipes. <b>-insert recipes -</b></p></li>
                         </ul>
                     </div>
                 </Article>

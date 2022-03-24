@@ -10,7 +10,9 @@ $dark-blue: #002b67;
 body {
   background: $light-blue;
 }
-
+p {
+  line-height: 1.5;
+}
 h1 {
   font-size: 2.2rem;
   color: $dark-blue;
@@ -44,4 +46,8 @@ a {
 .text-lg {
   font-size: 18px;
   font-weight: 500;
+}
+
+.border-bottom {
+  border-bottom: 2px solid $dark-blue;
 }
