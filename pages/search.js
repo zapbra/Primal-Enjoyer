@@ -23,7 +23,7 @@ const SectionHalf = styled.div`
 
 
 
-const search = () => {
+const Search = () => {
   const [tags, setTags] = React.useState([]);
   const [searchTags, setSearchTags] = React.useState([]);
   const [text, setText] = React.useState('');
@@ -145,4 +145,4 @@ const search = () => {
   )
 }
 
-export default search
+export default Search
