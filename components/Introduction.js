@@ -16,6 +16,7 @@ const Container = styled.div`
       margin-left:20px;
       
   }
+  
 `;
 
 const ContainWidth = styled.div`
@@ -43,6 +44,11 @@ const Article = styled.article`
       font-size: 18px;
       margin-bottom: 1rem;
     }
+    p.header{
+      font-size:20px;
+      font-weight:600;
+      border-bottom: 1px solid ${props => props.colors.darkBlue}
+    }
     li{
         p{
             margin-bottom:0.5rem;
@@ -58,6 +64,10 @@ const BulletPoint = styled.div`
       font-weight: bold;
       font-size: 20px;
       padding:0;
+      background:#E9F1FD;
+      border:1px solid black;
+      padding:2px;
+      
     }
     
   }
@@ -75,11 +85,15 @@ const Introduction = (props) => {
           <h1>Introduction</h1>
         </div>
         <div className="content">
+          <p className="header">What Is This Site?</p>
           <p>
             This is the unoffical Raw Primal Diet website. Sharing many articles
             with Aajonus's first hand knowledge. Aajonus's information is always
             the best resource, but I will also be sharing my experience with the
-            diet and provide some of my experimentation. Feel free to browse
+            diet and provide some of my experimentation. 
+            </p>
+            <p className="header">Learn More</p>
+            <p>Feel free to browse
             many of the recent articles, read the pure documentation, take the
             free course (unfinished) or search for any health issue/question you
             have in the search page.
@@ -95,7 +109,7 @@ const Introduction = (props) => {
             It is a diet completely consisting of raw meat (beef, chicken,
             pork), raw dairy, eggs and vegetable juices.
           </p>
-
+              <p className="header">Whats The Logic?</p>
           <p>
             The logic behind it is when you cook foods the enzymes, proteins,
             fats, and nutrients are damaged or destroyed. Advanced glycation end
@@ -104,7 +118,7 @@ const Introduction = (props) => {
             or especially grains leads to a buildup of AGES (advanced glycation
             end-products) in the process of using sugar for energy.
           </p>
-
+              <p className="header">Bacteria</p>
           <p>
             Raw uncooked meats, dairy, and eggs are also much higher in
             beneficial bacteria to help your cells function and feed the
@@ -112,7 +126,7 @@ const Introduction = (props) => {
             that it will make you feel much happier because you are feeding your
             body what it needs.
           </p>
-
+              <p className="header">Diet History</p>
           <p>
             Humans originated on raw meat many “hundreds of thouands” of years
             ago and no other animal eats cooked foods except humans. No tribes
@@ -129,7 +143,7 @@ const Introduction = (props) => {
             By eating proteins, and fats in their raw state, you can preserve
             the nutrients
           </p>
-
+              <p className="header">Macronutrients</p>
           <p>
             By eating a diet of 15-20% protein, 75-80%fat, an 5% carbohydrates
             you will reduce the production of advanced glycation end products.
@@ -143,7 +157,9 @@ const Introduction = (props) => {
             help use the fat for fuel, aid in detox and help digest the
             proteins.
           </p>
-
+              <p className="header">
+                Creator
+              </p>
           <p>
             Officially created by Aajonus Vonderplanitz in 1997 after his
             release of the book, “We Want To Live”. He had already been
@@ -208,12 +224,15 @@ const Introduction = (props) => {
           </BulletPoint>
 
           <BulletPoint>
-              <p>(4) Find Farms Near You or Good Qualit Butcher</p>
+              <p>(4) Find Farms Near You or a Good Quality Butcher</p>
               <p>Feel free to read this article <b>-insert article-</b> on how to find farms near you or this webpage <b>-insert webpage-</b> with all the online resources to find farms near you</p>
+              <p className="header">Google</p>
               <p>Just literally look up organic/grass fed farms near me, organic/grass fed butcher near me. Worst case scenario, you can buy some at the grocery store. Go on messaging boards, contact local people
                   in your areas, go on websites like Kijiji, try to find the best quality you can. Also, ask your farmer about people they know.
               </p>
+              <p className="header">Ask Questions</p>
               <p>Don't feel bad to ask questions and possibly stop purchasing from certain farmers if they don't fit your criteria. Product quality is driven by consumer demand.</p>
+              <p className="header">Grocery Store</p>
               <p>The only problem with buying from the grocery store is you can't verify the quality. It's often quite old and sprayed with various chemicals. The issue with buying from certain farms 
                   is they freeze the meat which damages the nutrients and bacteria. Although, it is still better than nothing. </p>
 
