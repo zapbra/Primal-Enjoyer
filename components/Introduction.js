@@ -183,7 +183,7 @@ const Introduction = (props) => {
           <BulletPoint>
             <p>(3) Listen To Atleast One Q&A. (optional)</p>
 
-            <p>
+              <p>
               By This point you are ready to eat raw meat <i>(of course you can just eat it)</i>. </p>
               <p>For extra credit I
               have linked all the direct Aajonus content in my resources section
@@ -192,11 +192,13 @@ const Introduction = (props) => {
               <p>
                Athough, the easiest way to consume these is
               through the Mantysalo channel on youtube linked here. 
+              </p>
               <p>
               <a target = '_blank' href = 'https://www.youtube.com/channel/UCdHSzt83x7LjGcdNTJu2LSA?app=desktop'>
                   Mantysalo Youtube
               </a>
               </p>
+              <p>
               These go
               into specific questions to teach you a greater understanding of
               the specifics.
@@ -204,6 +206,7 @@ const Introduction = (props) => {
               
             
           </BulletPoint>
+
           <BulletPoint>
               <p>(4) Find Farms Near You or Good Qualit Butcher</p>
               <p>Feel free to read this article <b>-insert article-</b> on how to find farms near you or this webpage <b>-insert webpage-</b> with all the online resources to find farms near you</p>
