@@ -194,7 +194,7 @@ const Introduction = (props) => {
               through the Mantysalo channel on youtube linked here. 
               </p>
               <p>
-              <a target = '_blank' href = 'https://www.youtube.com/channel/UCdHSzt83x7LjGcdNTJu2LSA?app=desktop'>
+              <a rel="noreferrer"  target = '_blank' href = 'https://www.youtube.com/channel/UCdHSzt83x7LjGcdNTJu2LSA?app=desktop'>
                   Mantysalo Youtube
               </a>
               </p>
