@@ -63,7 +63,7 @@ export default function Home({ articles }) {
       </Left>
       <Right>
       <Explore colors = {COLORS} />
-      </Right>>
+      </Right>
     </Container>
   );
 }
