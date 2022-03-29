@@ -7,21 +7,37 @@ const IconElem = styled.div`
   background-size: 100% 100%;
   width: 100%;
   position: relative;
+  cursor: pointer;
 
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow: none;
+  }
+  &:active {
+    border: 1px solid black;
+  }
   img {
     width: 100%;
   }
 `;
 
-const IconTitle = styled.p`
-  font-weight: 600;
+const IconTitle = styled.h4`
+  background-color: ${(props) => props.colors.ultraLightBlue};
+  text-align: center;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  border-radius: 0 0 0.5rem 0.5rem;
 `;
 
 const Icon = (props) => {
   return (
-    <IconElem url={props.article.coverImage.url}>
-      <p>hello</p>
-    </IconElem>
+    <Link href={`/article/${props.article.title}`}>
+      <IconElem url={props.article.coverImage.url}>
+        <IconTitle colors={props.colors}>{props.article.briefTitle}</IconTitle>{" "}
+      </IconElem>
+    </Link>
   );
 };
 

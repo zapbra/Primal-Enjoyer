@@ -18,15 +18,15 @@ const IconContainer = styled.div`
 export default function RecentPosts({ articles }) {
   console.log(articles);
   const icons = articles.map((article) => {
-    return <Icon key={nanoid()} article={article} />;
+    return <Icon key={nanoid()} article={article} colors={COLORS} />;
   });
 
   return (
     <Container colors={COLORS}>
       <div className="title">
         <h2>Recent Posts</h2>
-        <IconContainer>{icons}</IconContainer>
       </div>
+      <IconContainer>{icons}</IconContainer>
     </Container>
   );
 }

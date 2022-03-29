@@ -41,20 +41,22 @@ export const getServerSideProps = async (pageContext) => {
 
   const query = gql`
     query ($pageSlug: String!) {
-      article(where: { slug: $pageSlug }) {
-        id
+      selfArticle(where: { title: $pageSlug }) {
         title
-        author
         content {
           raw
-          markdown
         }
-        date
-        
         coverImage {
           url
         }
-        description
+        date
+        sources
+        catagory {
+          title
+          coverImage {
+            url
+          }
+        }
       }
     }
   `;
@@ -62,7 +64,7 @@ export const getServerSideProps = async (pageContext) => {
     pageSlug,
   };
   const data = await graphQLClient.request(query, variables);
-  const article = data.article;
+  const article = data.selfArticle;
 
   return {
     props: {
