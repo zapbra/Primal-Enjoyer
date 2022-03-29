@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+$ultra-light-blue: #e9f1fd;
 $light-blue: #d8dde3;
 $dark-blue: #002b67;
+
 * {
   margin: 0;
   padding: 0;
@@ -50,4 +52,12 @@ a {
 
 .border-bottom {
   border-bottom: 2px solid $dark-blue;
+}
+.title {
+  padding: 5px 20px;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
+  background-color: $ultra-light-blue;
+  margin-bottom: 2rem;
+  display: inline-block;
 }

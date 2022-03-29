@@ -1,16 +1,16 @@
 import Head from "next/head";
-import styled from 'styled-components';
+import styled from "styled-components";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Layout from "../components/Layout";
-import Introduction from '../components/Introduction';
-import Explore from '../components/Explore';
+import Introduction from "../components/Introduction";
+import Explore from "../components/explore/index";
 import { GraphQLClient, gql } from "graphql-request";
-import COLORS from '../Data/colors';
+import COLORS from "../Data/colors";
 
 const Container = styled.div`
-  display:grid;
-  grid-template-areas: 'left left left right';
+  display: grid;
+  grid-template-areas: "left left left right";
   gap: 2rem;
 `;
 const Left = styled.div`
@@ -19,7 +19,7 @@ const Left = styled.div`
 
 const Right = styled.div`
   grid-area: right;
-`
+`;
 export const getStaticProps = async () => {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
@@ -29,23 +29,18 @@ export const getStaticProps = async () => {
   });
   const query = gql`
     query myQuery {
-      articles {
-        id
+      selfArticles(last: 4) {
         title
-        author
-        date
-        content {
-          raw
-          markdown
+        description
+        coverImage {
+          url
         }
-        slug
-        
       }
     }
   `;
 
   const data = await graphQLClient.request(query);
-  const articles = data.articles;
+  const articles = data;
 
   return {
     props: {
@@ -55,16 +50,15 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ articles }) {
-  
+  console.log(articles);
   return (
     <Container>
       <Left>
-      <Introduction colors = {COLORS} />
+        <Introduction colors={COLORS} />
       </Left>
       <Right>
-      <Explore colors = {COLORS} />
+        <Explore articles={articles} colors={COLORS} />
       </Right>
     </Container>
   );
 }
-
