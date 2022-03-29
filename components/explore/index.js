@@ -6,7 +6,8 @@ const ExploreContainer = styled.div`
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
   border-radius: 0.5rem;
   padding: 20px;
-
+  width: 100%;
+  max-width: 244px;
   .main-title {
     width: 90%;
     margin: 0 auto 1rem;

@@ -31,6 +31,7 @@ export const getStaticProps = async () => {
     query myQuery {
       selfArticles(last: 4) {
         title
+        briefTitle
         description
         coverImage {
           url
@@ -40,7 +41,7 @@ export const getStaticProps = async () => {
   `;
 
   const data = await graphQLClient.request(query);
-  const articles = data;
+  const articles = data.selfArticles;
 
   return {
     props: {
@@ -50,7 +51,6 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ articles }) {
-  console.log(articles);
   return (
     <Container>
       <Left>
