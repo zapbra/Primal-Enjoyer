@@ -8,11 +8,34 @@ const Article = styled.div`
   box-shadow: 5px 5px 5px 5px rgba(1, 1, 1, 0.5);
   border-radius: 1rem;
   padding: 10px;
+  max-width: 1100px;
+  margin: 0 auto;
+  img {
+    width: 100%;
+  }
   h1 {
     text-align: center;
   }
+  .description {
+    background-color: #e9f1fd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      text-shadow: 2px 2px 5px rgba(1, 1, 1, 0.5);
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      background-color: #fff;
+      padding: 0 5px;
+    }
+
+    box-shadow: 0 2px 5px 1px rgba(1, 1, 1, 0.5);
+  }
 `;
 const Header = styled.header`
+  h1 {
+    margin-bottom: 2rem;
+  }
   p {
     color: ${(props) => props.colors.darkBlue};
     font-style: italic;
@@ -22,6 +45,12 @@ const Header = styled.header`
 `;
 const SubHeader = styled.div`
   display: flex;
+  gap: 2rem;
+  padding: 20px;
+  justify-content: space-around;
+  & > div {
+    max-width: 350px;
+  }
 `;
 const TextContent = styled.div`
   background-color: ${(props) => props.colors.lightGrey};
@@ -46,6 +75,7 @@ export const getServerSideProps = async (pageContext) => {
         content {
           raw
         }
+        description
         coverImage {
           url
         }
@@ -78,14 +108,14 @@ const slug = ({ article }) => {
     <Article>
       <Header colors={COLORS}>
         <h1>{article.title}</h1>
-        <p>Published {article.date}</p>
-        <p>Written By {article.author}</p>
+        <p>Published {new Date(article.date).toDateString()}</p>
+        <p>Written By Matthew Pierce</p>
       </Header>
       <SubHeader>
-        <div>
-          <p>{article.description} </p>
+        <div className="flex-one description">
+          <p className="lg-bold">{article.description} </p>
         </div>
-        <div>
+        <div className="flex-one">
           <img src={article.coverImage.url} />
         </div>
       </SubHeader>
