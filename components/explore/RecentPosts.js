@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { getRecentArticles } from "../../pages/services";
 import COLORS from "../../Data/colors";
 import Icon from "./Icon";
 import { nanoid } from "nanoid";
