@@ -17,6 +17,7 @@ const InputLine = styled.input`
   font-weight: bold;
 `;
 const SearchTagBox = (props) => {
+  console.log(props.tags);
   const tags = props.tags.map((tag, index) => {
     return (
       <SearchTag

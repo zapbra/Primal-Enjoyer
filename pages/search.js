@@ -39,8 +39,8 @@ const Search = ({ articlesFetch }) => {
   const [articles, setArticles] = useState(articlesFetch);
 
   useEffect(() => {
-    console.log(filterTags);
-  }, [searchTags]);
+    console.log(tags);
+  }, [filterTags]);
 
   function submitSearch(e) {
     e.preventDefault();
@@ -85,13 +85,15 @@ const Search = ({ articlesFetch }) => {
     setFilterTags((prevTags) => {
       return [...prevTags, item];
     });
+    setTags((prevTags) => {
+      return [...prevTags, item];
+    });
     setSearchTags((prevTags) => {
       const tags = prevTags.filter((tag) => {
         return tag.id !== id;
       });
       return [...tags];
     });
-    console.log("x");
   }
 
   function pushSearchTag(tag) {
