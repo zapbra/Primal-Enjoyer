@@ -1,6 +1,6 @@
 import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
-
+import { RichText } from "@graphcms/rich-text-react-renderer";
 import COLORS from "../../Data/colors";
 const Article = styled.div`
   background-color: #fff;
@@ -57,6 +57,39 @@ const TextContent = styled.div`
   border: 1px solid black;
   border-radius: 0.5rem;
   padding: 10px;
+  ul {
+    margin-left: 1.5rem;
+  }
+  li {
+    line-height: 2;
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+  h5 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+  p {
+    margin-bottom: 1rem;
+  }
 `;
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
@@ -119,7 +152,9 @@ const slug = ({ article }) => {
           <img src={article.coverImage.url} />
         </div>
       </SubHeader>
-      <TextContent colors={COLORS}></TextContent>
+      <TextContent colors={COLORS}>
+        <RichText content={article.content.raw.children} />
+      </TextContent>
     </Article>
   );
 };

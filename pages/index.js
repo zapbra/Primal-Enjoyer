@@ -29,7 +29,7 @@ export const getStaticProps = async () => {
   });
   const query = gql`
     query myQuery {
-      selfArticles(last: 4) {
+      selfArticles(last: 8) {
         title
         briefTitle
         description
