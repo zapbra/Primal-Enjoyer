@@ -19,7 +19,7 @@ const SearchBar = (props) => {
     <TagInput colors={props.colors}>
       <SearchTagBox
         pushTag={props.pushTag}
-        removeTag={props.removeTag}
+        removeSearchTag={props.removeSearchTag}
         tags={props.tags}
         colors={props.colors}
         text={props.text}

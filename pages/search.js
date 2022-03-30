@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import COLORS, { tagColors } from "../Data/colors";
 import SearchBar from "../components/search/SearchBar";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
+import SearchResults from "../components/search/SearchResults";
+import { getArticlePreviews } from "./services";
+import { useState } from "react";
 const SearchCont = styled.div`
   border-radius: 1rem;
   background-color: #fff;
+  padding: 20px;
 `;
 const TopSection = styled.div`
   display: flex;
@@ -19,11 +23,24 @@ const SectionHalf = styled.div`
   }
 `;
 
-const Search = () => {
+const BottomSection = styled.div`
+  margin-top: 3rem;
+`;
+
+export const getStaticProps = async () => {
+  return getArticlePreviews();
+};
+
+const Search = ({ articlesFetch }) => {
   const [tags, setTags] = React.useState([]);
   const [searchTags, setSearchTags] = React.useState([]);
   const [text, setText] = React.useState("");
   const [filterTags, setFilterTags] = React.useState([]);
+  const [articles, setArticles] = useState(articlesFetch);
+
+  useEffect(() => {
+    console.log(filterTags);
+  }, [searchTags]);
 
   function submitSearch(e) {
     e.preventDefault();
@@ -34,8 +51,9 @@ const Search = () => {
       return "";
     });
   }
+
   function generateColor() {
-    return tagColors[Math.floor(Math.random() * tagColors.length - 1)];
+    return tagColors[Math.floor(Math.random() * tagColors.length)];
   }
   function findClosestTag() {
     setFilterTags((prevTags) => {
@@ -64,29 +82,36 @@ const Search = () => {
     const item = searchTags.find((tag) => {
       return tag.id === id;
     });
-    pushSearchTag(item);
+    setFilterTags((prevTags) => {
+      return [...prevTags, item];
+    });
     setSearchTags((prevTags) => {
       const tags = prevTags.filter((tag) => {
         return tag.id !== id;
       });
       return [...tags];
     });
+    console.log("x");
   }
 
-  function pushTag(tag) {
+  function pushSearchTag(tag) {
     setSearchTags((prevTags) => {
       return [...prevTags, tag];
     });
   }
 
   function removeTag(id) {
-    //THIS IS THE PROBLEM!
-
     const item = tags.find((tag) => {
       return tag.id === id;
     });
-    pushTag(item);
+    pushSearchTag(item);
     setTags((prevTags) => {
+      const tags = prevTags.filter((tag) => {
+        return tag.id !== id;
+      });
+      return [...tags];
+    });
+    setFilterTags((prevTags) => {
       const tags = prevTags.filter((tag) => {
         return tag.id !== id;
       });
@@ -126,7 +151,7 @@ const Search = () => {
           <SearchBar
             text={text}
             updateText={updateText}
-            removeTag={removeSearchTag}
+            removeSearchTag={removeSearchTag}
             pushTag={pushSearchTag}
             tags={searchTags}
             submitSearch={submitSearch}
@@ -137,13 +162,16 @@ const Search = () => {
           <h2>Tags - </h2>
           <h3>Click to add</h3>
           <TagBox
-            pushTag={pushTag}
+            pushSearchTag={pushSearchTag}
             removeTag={removeTag}
             tags={filterTags}
             colors={COLORS}
           />
         </SectionHalf>
       </TopSection>
+      <BottomSection>
+        <SearchResults articles={articles} />
+      </BottomSection>
     </SearchCont>
   );
 };
