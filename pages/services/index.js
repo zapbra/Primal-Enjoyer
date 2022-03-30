@@ -7,7 +7,7 @@ const graphQLClient = new GraphQLClient(url, {
   },
 });
 
-export const getRecentArticles = async () => {
+export default getRecentArticles = async () => {
   const query = gql`
     query {
       selfArticles(last: 4) {
