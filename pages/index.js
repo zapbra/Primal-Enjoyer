@@ -7,7 +7,7 @@ import Introduction from "../components/Introduction";
 import Explore from "../components/explore/index";
 import { GraphQLClient, gql } from "graphql-request";
 import COLORS from "../Data/colors";
-import { nanoid } from "nanoid";
+
 const Container = styled.div`
   display: grid;
   grid-template-areas: "left left left right";
