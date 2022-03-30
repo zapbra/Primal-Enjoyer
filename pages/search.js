@@ -30,11 +30,7 @@ const BottomSection = styled.div`
 export const getStaticProps = async () => {
   const articlesFetch = getArticlePreviews();
   const superTags = fetchTags();
-  return {
-    props: {
-      articlesFetch: await articlesFetch.json(),
-    },
-  };
+  return articlesFetch;
 };
 
 const Search = ({ articlesFetch }) => {
