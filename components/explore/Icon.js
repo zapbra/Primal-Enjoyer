@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { nanoid } from "nanoid";
 const IconElem = styled.div`
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);

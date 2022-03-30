@@ -4,7 +4,7 @@ import COLORS from "../../Data/colors";
 import Icon from "./Icon";
 import { nanoid } from "nanoid";
 import { useEffect } from "react";
-
+const Superdiv = styled.div``;
 const Container = styled.div``;
 
 const IconContainer = styled.div`

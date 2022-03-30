@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import RecentPosts from "./RecentPosts";
-
+import { nanoid } from "nanoid";
 const ExploreContainer = styled.div`
   background-color: white;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
