@@ -5,7 +5,7 @@ import SearchBar from "../components/search/SearchBar";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
-import { getArticlePreviews } from "./services";
+import { getArticlePreviews, fetchTags } from "./services";
 import { useState } from "react";
 const SearchCont = styled.div`
   border-radius: 1rem;
@@ -28,7 +28,13 @@ const BottomSection = styled.div`
 `;
 
 export const getStaticProps = async () => {
-  return getArticlePreviews();
+  const articlesFetch = getArticlePreviews();
+  const superTags = fetchTags();
+  return {
+    props: {
+      articlesFetch: await articlesFetch.json(),
+    },
+  };
 };
 
 const Search = ({ articlesFetch }) => {
@@ -37,11 +43,24 @@ const Search = ({ articlesFetch }) => {
   const [text, setText] = React.useState("");
   const [filterTags, setFilterTags] = React.useState([]);
   const [articles, setArticles] = useState(articlesFetch);
+  const [filterArticles, setFilterArticles] = React.useState(articlesFetch);
+
+  function updateArticles() {
+    setFilterArticles((prevArticles) => {
+      const articles = prevArticles.filter((article) => {
+        return searchTags.every((tag) => {
+          return article.tags.some((artTag) => {
+            return artTag.text === tag.title;
+          });
+        });
+      });
+      return articles;
+    });
+  }
 
   useEffect(() => {
-    console.log(tags);
-  }, [filterTags]);
-
+    console.log(filterArticles);
+  }, [filterArticles]);
   function submitSearch(e) {
     e.preventDefault();
     let id = filterTags[0].id;
