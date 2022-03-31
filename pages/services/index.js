@@ -24,7 +24,7 @@ const fetchTags = async () => {
   };
 };
 */
-export default getArticlePreviews = async () => {
+const getArticlePreviews = async () => {
   const query = gql`
     query {
       articles {
@@ -50,3 +50,5 @@ export default getArticlePreviews = async () => {
     },
   };
 };
+
+export default getArticlePreviews;
