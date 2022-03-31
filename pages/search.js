@@ -87,12 +87,15 @@ const Search = ({ articlesFetch, superTags }) => {
   }
 
   useEffect(() => {
+    console.log(superTags);
+    console.log(TAGS);
+  }, []);
+
+  useEffect(() => {
     updateArticles();
   }, [filterTags, searchTags]);
 
-  useEffect(() => {
-    console.log(filterArticles);
-  }, [filterArticles]);
+  useEffect(() => {}, [filterArticles]);
   function submitSearch(e) {
     e.preventDefault();
     let id = filterTags[0].id;
@@ -174,9 +177,9 @@ const Search = ({ articlesFetch, superTags }) => {
 
   React.useEffect(() => {
     setTags((prevTags) => {
-      return TAGS.map((tag, index) => {
+      return superTags.map((tag, index) => {
         let newTag = {
-          title: tag,
+          title: tag.text,
           color: generateColor(),
           id: `tag-${index + 1}`,
         };
@@ -184,9 +187,9 @@ const Search = ({ articlesFetch, superTags }) => {
       });
     });
     setFilterTags((prevTags) => {
-      return TAGS.map((tag, index) => {
+      return superTags.map((tag, index) => {
         let newTag = {
-          title: tag,
+          title: tag.text,
           color: generateColor(),
           id: `tag-${index + 1}`,
         };
