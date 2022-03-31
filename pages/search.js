@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
+import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
 import COLORS, { tagColors } from "../Data/colors";
 import SearchBar from "../components/search/SearchBar";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
-import getArticlePreviews from "./services";
+
 import { useState } from "react";
 const SearchCont = styled.div`
   border-radius: 1rem;
@@ -28,12 +29,43 @@ const BottomSection = styled.div`
 `;
 
 export const getStaticProps = async () => {
-  const articlesFetch = getArticlePreviews();
+  const url = process.env.ENDPOINT;
+  const graphQLClient = new GraphQLClient(url, {
+    header: {
+      Authorization: process.env.GRAPH_CMS_TOKEN,
+    },
+  });
+  const query = gql`
+    query {
+      articles {
+        title
+        coverImage {
+          url
+        }
 
-  return articlesFetch;
+        tags {
+          ... on Tag {
+            text
+          }
+        }
+      }
+      tags(first: 100) {
+        text
+      }
+    }
+  `;
+  const data = await graphQLClient.request(query);
+  const articlesFetch = data.articles;
+  const superTags = data.tags;
+  return {
+    props: {
+      articlesFetch,
+      superTags,
+    },
+  };
 };
 
-const Search = ({ articlesFetch }) => {
+const Search = ({ articlesFetch, superTags }) => {
   const [tags, setTags] = React.useState([]);
   const [searchTags, setSearchTags] = React.useState([]);
   const [text, setText] = React.useState("");
