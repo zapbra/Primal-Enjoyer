@@ -5,7 +5,7 @@ import SearchBar from "../components/search/SearchBar";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
-import { getArticlePreviews, fetchTags } from "./services";
+import getArticlePreviews, { fetchTags } from "./services";
 import { useState } from "react";
 const SearchCont = styled.div`
   border-radius: 1rem;
@@ -43,7 +43,7 @@ const Search = ({ articlesFetch }) => {
 
   function updateArticles() {
     setFilterArticles((prevArticles) => {
-      const articles = prevArticles.filter((article) => {
+      const articles = articlesFetch.filter((article) => {
         return searchTags.every((tag) => {
           return article.tags.some((artTag) => {
             return artTag.text === tag.title;
@@ -53,6 +53,10 @@ const Search = ({ articlesFetch }) => {
       return articles;
     });
   }
+
+  useEffect(() => {
+    updateArticles();
+  }, [filterTags, searchTags]);
 
   useEffect(() => {
     console.log(filterArticles);
@@ -187,7 +191,7 @@ const Search = ({ articlesFetch }) => {
         </SectionHalf>
       </TopSection>
       <BottomSection>
-        <SearchResults articles={articles} />
+        <SearchResults articles={filterArticles} />
       </BottomSection>
     </SearchCont>
   );

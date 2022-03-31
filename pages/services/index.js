@@ -22,7 +22,7 @@ export const fetchTags = async () => {
     },
   };
 };
-export const getArticlePreviews = async () => {
+const getArticlePreviews = async () => {
   const query = gql`
     query {
       articles {
@@ -48,3 +48,5 @@ export const getArticlePreviews = async () => {
     },
   };
 };
+
+export default getArticlePreviews;
