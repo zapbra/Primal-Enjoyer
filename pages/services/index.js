@@ -41,7 +41,7 @@ const getArticlePreviews = async () => {
       }
     }
   `;
-  const data = (await graphQLClient.request(query)) || [];
+  const data = await graphQLClient.request(query);
   const articlesFetch = data.articles;
 
   return {
