@@ -14,7 +14,7 @@ export const fetchTags = async () => {
       }
     }
   `;
-  const data = await graphQLClient.request(query);
+  const data = (await graphQLClient.request(query) || [];
   const superTags = data.tags;
   return {
     props: {
