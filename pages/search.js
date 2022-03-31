@@ -5,7 +5,7 @@ import SearchBar from "../components/search/SearchBar";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
-import getArticlePreviews, { fetchTags } from "./services";
+import getArticlePreviews} from "./services";
 import { useState } from "react";
 const SearchCont = styled.div`
   border-radius: 1rem;
@@ -29,7 +29,7 @@ const BottomSection = styled.div`
 
 export const getStaticProps = async () => {
   const articlesFetch = getArticlePreviews();
-  const superTags = fetchTags();
+  
   return articlesFetch;
 };
 

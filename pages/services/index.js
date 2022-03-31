@@ -6,7 +6,7 @@ const graphQLClient = new GraphQLClient(url, {
     Authorization: process.env.GRAPH_CMS_TOKEN,
   },
 });
-export const fetchTags = async () => {
+const fetchTags = async () => {
   const query = gql`
     query {
       tags(first: 100) {
