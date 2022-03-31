@@ -28,7 +28,7 @@ const BottomSection = styled.div`
 `;
 
 export const getStaticProps = async () => {
-  const articlesFetchRes = getArticlePreviews();
+  const articlesFetch = getArticlePreviews();
   const superTags = fetchTags();
   return articlesFetch;
 };
