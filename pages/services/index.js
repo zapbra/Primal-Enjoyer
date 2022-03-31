@@ -6,6 +6,7 @@ const graphQLClient = new GraphQLClient(url, {
     Authorization: process.env.GRAPH_CMS_TOKEN,
   },
 });
+/*
 const fetchTags = async () => {
   const query = gql`
     query {
@@ -22,8 +23,8 @@ const fetchTags = async () => {
     },
   };
 };
-
-const getArticlePreviews = async () => {
+*/
+export default getArticlePreviews = async () => {
   const query = gql`
     query {
       articles {
@@ -49,5 +50,3 @@ const getArticlePreviews = async () => {
     },
   };
 };
-
-export default getArticlePreviews;
