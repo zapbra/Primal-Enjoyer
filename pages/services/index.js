@@ -7,7 +7,7 @@ const graphQLClient = new GraphQLClient(url, {
   },
 });
 export const fetchTags = async () => {
-  const queyr = gql`
+  const query = gql`
     query {
       tags(first: 100) {
         text
