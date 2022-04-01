@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Country, State, City } from "country-state-city";
 import COLORS from "../Data/colors";
 import Resources from "../components/resources/Aajonus";
 import FoodFinder from "../components/resources/FoodFinder";
