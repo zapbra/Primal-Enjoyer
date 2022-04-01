@@ -199,7 +199,7 @@ const Search = ({ articlesFetch, superTags }) => {
   }, []);
 
   return (
-    <SearchCont>
+    <div className="container">
       <TopSection>
         <SectionHalf>
           <h2>Search - </h2>
@@ -228,7 +228,7 @@ const Search = ({ articlesFetch, superTags }) => {
       <BottomSection>
         <SearchResults articles={filterArticles} />
       </BottomSection>
-    </SearchCont>
+    </div>
   );
 };
 

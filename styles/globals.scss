@@ -19,6 +19,14 @@ p {
   font-size: 26px;
   font-weight: 500;
 }
+.md-bold {
+  font-weight: 600;
+  font-size: 18px;
+}
+.semi-lg-bold {
+  font-size: 22px;
+  font-weight: 600;
+}
 h1 {
   font-size: 2.2rem;
   color: $dark-blue;
@@ -35,6 +43,7 @@ h4 {
 }
 a {
   text-decoration: none;
+  font-weight: 500;
   &:hover {
     text-decoration: underline;
   }
@@ -68,7 +77,74 @@ a {
   margin-bottom: 2rem;
   display: inline-block;
 }
+.main-title {
+  width: 90%;
+  margin: 0 auto 3rem;
+  text-align: center;
+  border-bottom: 2px solid $dark-blue;
+}
+.sub-title {
+  width: 90%;
+  margin: 0 auto 1rem;
+  text-align: center;
+  border-bottom: 2px solid $dark-blue;
+}
 
 .flex-one {
   flex: 1;
+}
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container {
+  background-color: white;
+  box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
+  border-radius: 0.5rem;
+  padding: 20px;
+}
+
+.input-form {
+  margin-top: 1rem;
+  border: 1px solid black;
+  box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
+  padding: 5%;
+}
+
+input {
+  border: 1px solid black;
+  background-color: $ultra-light-blue;
+  font-size: 16px;
+  padding: 5px;
+  &:not(:placeholder-shown) {
+    background-color: #fff;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
+    background-color: #fff;
+  }
+}
+
+.submit-btn {
+  background-color: #fff;
+  box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
+  font-weight: 600;
+  font-size: 20px;
+  padding: 10px 20px;
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  background: #dc143c;
+  color: white;
+  &:hover {
+    background-color: $ultra-light-blue;
+    color: #dc143c;
+  }
+  &:active {
+    box-shadow: none;
+  }
 }

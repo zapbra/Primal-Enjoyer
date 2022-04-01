@@ -12,6 +12,8 @@ const Container = styled.div`
   display: grid;
   grid-template-areas: "left left left right";
   gap: 2rem;
+  margin-left: 5%;
+  margin-right: -5%;
 `;
 const Left = styled.div`
   grid-area: left;

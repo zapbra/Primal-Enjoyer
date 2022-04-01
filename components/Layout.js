@@ -3,8 +3,8 @@ import Navbar from "./Navbar";
 import styled from "styled-components";
 import Head from "next/head";
 const Center = styled.div`
-  width: 85%;
-  margin: 0 5% 0 10%;
+  width: 80%;
+  margin: 0 10% 0 10%;
 `;
 const Layout = ({ title, keywords, description, children }) => {
   return (

@@ -6,12 +6,6 @@ const Container = styled.div`
   border-radius: 0.5rem;
   padding: 20px;
 
-  .main-title {
-    width: 90%;
-    margin: 0 auto 3rem;
-    text-align: center;
-    border-bottom: 2px solid ${(props) => props.colors.darkBlue};
-  }
   ul {
     margin-left: 20px;
   }
