@@ -35,8 +35,8 @@ const resources = () => {
       <div className="main-title">
         <h1>Resources</h1>
       </div>
-      <Resources colors={COLORS} />
-      <FoodFinder />
+      {/*<Resources colors={COLORS} />*/}
+      <FoodFinder colors={COLORS} />
     </div>
   );
 };

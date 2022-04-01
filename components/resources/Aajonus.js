@@ -11,6 +11,9 @@ const Title = styled.div`
 
 const Section = styled.div`
   max-width: 500px;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid black;
   table,
   th,
   td {
