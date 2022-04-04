@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { nanoid } from "nanoid";
+import FoodDisplay from "./FoodDisplay";
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -12,7 +13,13 @@ const Title = styled.div`
 `;
 
 const Section = styled.div`
-  max-width: 500px;
+  max-width: 600px;
+  select {
+    width: 100%;
+  }
+  option {
+    width: 100%;
+  }
 `;
 
 const Location = styled.div`
@@ -137,6 +144,7 @@ const FoodFinder = (props) => {
           </select>
         </div>
       </Location>
+      <FoodDisplay />
     </Section>
   );
 };
