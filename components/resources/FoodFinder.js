@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { nanoid } from "nanoid";
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -35,7 +36,7 @@ const Location = styled.div`
 `;
 
 const FoodFinder = (props) => {
-  const [country, setCountry] = useState("United States");
+  const [country, setCountry] = useState("");
   const [state, setState] = useState("All");
   const [city, setCity] = useState("None");
   const [states, setStates] = useState([]);
@@ -56,11 +57,19 @@ const FoodFinder = (props) => {
   }, []);
 
   const countries = [...new Set(data.map((item) => item.country))];
-  console.log(countries);
+  countries.sort();
   function updateCountry(e) {
     const value = e.currentTarget.value;
     setCountry((prevCountry) => {
       return value;
+    });
+    let states = data.filter((item) => {
+      return item.country === value;
+    });
+    states = [...new Set(states.map((item) => item.subcountry))];
+    states.sort();
+    setStates((prevStates) => {
+      return states;
     });
   }
 
@@ -69,6 +78,10 @@ const FoodFinder = (props) => {
     setState((prevState) => {
       return value;
     });
+    let cities = data.filter((city) => city.subcountry === value);
+    cities = cities.map((city) => city.name);
+    cities.sort();
+    setCities(cities);
   }
 
   function updateCity(e) {
@@ -89,9 +102,12 @@ const FoodFinder = (props) => {
             <p>Country:</p>
           </div>
           <select name="country" value={country} onChange={updateCountry}>
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="United Kingdom">United Kingdom</option>
+            <option>Select Country</option>
+            {countries.map((item) => (
+              <option value={item} key={nanoid()}>
+                {item}
+              </option>
+            ))}
           </select>
         </div>
         <div className="location-item">
@@ -99,10 +115,12 @@ const FoodFinder = (props) => {
             <p>State/Province:</p>
           </div>
           <select value={state} onChange={updateState}>
-            <option value="All">All</option>
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="United Kingdom">United Kingdom</option>
+            <option>All</option>
+            {states.map((item) => (
+              <option value={item} key={nanoid()}>
+                {item}
+              </option>
+            ))}
           </select>
         </div>
         <div className="location-item">
@@ -111,9 +129,11 @@ const FoodFinder = (props) => {
           </div>
           <select value={city} onChange={updateCity}>
             <option value="None">None</option>
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="United Kingdom">United Kingdom</option>
+            {cities.map((item) => (
+              <option value={item} key={nanoid()}>
+                {item}
+              </option>
+            ))}
           </select>
         </div>
       </Location>
