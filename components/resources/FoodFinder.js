@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { Country, State, City } from "country-state-city";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -36,21 +35,49 @@ const Location = styled.div`
 `;
 
 const FoodFinder = (props) => {
-  const [location, setLocation] = useState({
-    country: { name: "United States", code: "US" },
-    state: { name: "All", code: "All" },
-    city: { name: "None", code: "None" },
-  });
-  function updateLocation(e) {
+  const [country, setCountry] = useState("United States");
+  const [state, setState] = useState("All");
+  const [city, setCity] = useState("None");
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(
+        "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json"
+      )
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  useEffect(() => {
+    const getCountries = async () => {
+      const res = await fetch();
+    };
+  }, []);
+
+  const countries = [...new Set(data.map((item) => item.country))];
+  console.log(countries);
+  function updateCountry(e) {
     const value = e.currentTarget.value;
-    const region = e.currentTarget.name;
-    setLocation((prevLocation) => {
-      return {
-        ...prevLocation,
-        [region]: value,
-      };
+    setCountry((prevCountry) => {
+      return value;
     });
   }
+
+  function updateState(e) {
+    const value = e.currentTarget.value;
+    setState((prevState) => {
+      return value;
+    });
+  }
+
+  function updateCity(e) {
+    const value = e.currentTarget.value;
+    setCity((prevCity) => {
+      return value;
+    });
+  }
+
   return (
     <Section>
       <Title colors={props.colors}>
@@ -61,11 +88,7 @@ const FoodFinder = (props) => {
           <div className="header">
             <p>Country:</p>
           </div>
-          <select
-            name="country"
-            value={location.country.name}
-            onChange={updateLocation}
-          >
+          <select name="country" value={country} onChange={updateCountry}>
             <option value="United States">United States</option>
             <option value="Canada">Canada</option>
             <option value="United Kingdom">United Kingdom</option>
@@ -75,7 +98,8 @@ const FoodFinder = (props) => {
           <div className="header">
             <p>State/Province:</p>
           </div>
-          <select value={location.state.name}>
+          <select value={state} onChange={updateState}>
+            <option value="All">All</option>
             <option value="United States">United States</option>
             <option value="Canada">Canada</option>
             <option value="United Kingdom">United Kingdom</option>
@@ -85,7 +109,8 @@ const FoodFinder = (props) => {
           <div className="header">
             <p>City:</p>
           </div>
-          <select value={location.city.name}>
+          <select value={city} onChange={updateCity}>
+            <option value="None">None</option>
             <option value="United States">United States</option>
             <option value="Canada">Canada</option>
             <option value="United Kingdom">United Kingdom</option>
