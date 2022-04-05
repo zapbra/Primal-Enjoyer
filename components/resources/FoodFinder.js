@@ -49,6 +49,8 @@ const FoodFinder = (props) => {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [data, setData] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const locationElems = locations.map((location) => {});
   useEffect(() => {
     axios
       .get(
@@ -56,12 +58,43 @@ const FoodFinder = (props) => {
       )
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
+
+    setLocations(props.foodLocations);
   }, []);
+
   useEffect(() => {
     const getCountries = async () => {
       const res = await fetch();
     };
   }, []);
+
+  useEffect(() => {
+    setLocations((prevLocations) => {
+      return props.foodLocations.filter((location) => {
+        return location.country.title === country;
+      });
+    });
+  }, [country]);
+
+  useEffect(() => {
+    setLocations((prevLocations) => {
+      return props.foodLocations.filter((location) => {
+        return location.state.title === state;
+      });
+    });
+  }, [state]);
+
+  useEffect(() => {
+    setLocations((prevLocations) => {
+      return props.foodLocations.filter((location) => {
+        return location.city.title === city;
+      });
+    });
+  }, [city]);
+
+  useEffect(() => {
+    console.log(locations);
+  }, [locations]);
 
   const countries = [...new Set(data.map((item) => item.country))];
   countries.sort();

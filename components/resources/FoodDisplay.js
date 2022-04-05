@@ -55,7 +55,7 @@ const FoodDisplay = () => {
           <h2>All</h2>
         </Location>
       </Header>
-      <FoodSection />
+      <FoodSection location="Ottawa" />
     </Container>
   );
 };

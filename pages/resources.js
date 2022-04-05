@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../Data/colors";
+import { gql, GraphQLClient } from "graphql-request";
 import Resources from "../components/resources/Aajonus";
 import FoodFinder from "../components/resources/FoodFinder";
 const Title = styled.div`
@@ -29,14 +30,56 @@ const Section = styled.div`
   }
 `;
 
-const resources = () => {
+export const getStaticProps = async () => {
+  const url = process.env.ENDPOINT;
+  const graphQLClient = new GraphQLClient(url, {
+    header: {
+      Authorization: process.env.GRAPH_CMS_TOKEN,
+    },
+  });
+
+  const query = gql`
+    query {
+      foodLocations {
+        title
+        address
+        website
+        description
+        hours
+        subLocations {
+          title
+          address
+        }
+        country {
+          title
+        }
+        state {
+          title
+        }
+        city {
+          title
+        }
+      }
+    }
+  `;
+  const data = await graphQLClient.request(query);
+  const foodLocations = data.foodLocations;
+  return {
+    props: {
+      foodLocations,
+    },
+  };
+};
+
+const resources = ({ foodLocations }) => {
+  console.log(foodLocations);
   return (
     <div className="container">
       <div className="main-title">
         <h1>Resources</h1>
       </div>
       {/*<Resources colors={COLORS} />*/}
-      <FoodFinder colors={COLORS} />
+      <FoodFinder colors={COLORS} foodLocations={foodLocations} />
     </div>
   );
 };
