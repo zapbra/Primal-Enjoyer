@@ -34,6 +34,10 @@ p {
 .semi-bold {
   font-weight: 600;
 }
+.md-bold {
+  font-size: 18px;
+  font-weight: 700;
+}
 
 h1 {
   font-size: 2.2rem;
@@ -41,6 +45,7 @@ h1 {
   font-weight: bold;
 }
 h2 {
+  font-size: 1.9rem;
   color: $dark-blue;
 }
 h3 {
@@ -158,4 +163,10 @@ input {
   &:active {
     box-shadow: none;
   }
+}
+
+.text-box {
+  background-color: #fff;
+  box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
+  padding: 10px;
 }

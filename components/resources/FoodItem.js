@@ -62,12 +62,12 @@ const FoodItem = (props) => {
       <Title>
         <h2>{props.title}</h2>
       </Title>
-      <ContentLine colors={COLORS}>
+      <ContentLine colors={props.colors}>
         <p className="semi-lg-bold">Address</p>
 
         <p className="semi-bold">{props.address}</p>
       </ContentLine>
-      <ContentLine colors={COLORS}>
+      <ContentLine colors={props.colors}>
         <p className="semi-lg-bold">Website</p>
         <a target="_blank" href={props.website}>
           <p className="semi-bold">{props.website}</p>

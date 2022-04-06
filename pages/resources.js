@@ -3,6 +3,7 @@ import COLORS from "../Data/colors";
 import { gql, GraphQLClient } from "graphql-request";
 import Resources from "../components/resources/Aajonus";
 import FoodFinder from "../components/resources/FoodFinder";
+import FoodForm from "../components/resources/FoodForm";
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -79,7 +80,8 @@ const resources = ({ foodLocations }) => {
         <h1>Resources</h1>
       </div>
       {/*<Resources colors={COLORS} />*/}
-      <FoodFinder colors={COLORS} foodLocations={foodLocations} />
+      {/*<FoodFinder colors={COLORS} foodLocations={foodLocations} />*/}
+      <FoodForm colors={COLORS} />
     </div>
   );
 };

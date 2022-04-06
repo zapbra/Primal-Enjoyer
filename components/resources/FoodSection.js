@@ -27,6 +27,7 @@ const FoodSection = (props) => {
   const foodItems = props.locations.map((location) => {
     return (
       <FoodItem
+        colors={COLORS}
         title={location.title}
         address={location.address}
         website={location.website}
@@ -45,6 +46,7 @@ const FoodSection = (props) => {
         </div>
         <div className="flex-one"></div>
       </SectionHeader>
+      {foodItems}
     </WhiteBg>
   );
 };
