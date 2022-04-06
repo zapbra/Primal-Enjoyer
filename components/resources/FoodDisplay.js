@@ -39,23 +39,23 @@ const Location = styled.div`
   }
 `;
 
-const FoodDisplay = () => {
+const FoodDisplay = (props) => {
   return (
     <Container colors={COLORS}>
       <Header colors={COLORS}>
         <Location>
-          <h2>Canada</h2>
+          <h2>{props.country}</h2>
         </Location>
 
         <Location>
-          <h2>Ontario</h2>
+          <h2>{props.state}</h2>
         </Location>
 
         <Location>
-          <h2>All</h2>
+          <h2>{props.city}</h2>
         </Location>
       </Header>
-      <FoodSection location="Ottawa" />
+      <FoodSection city={props.city} locations={props.locations} />
     </Container>
   );
 };

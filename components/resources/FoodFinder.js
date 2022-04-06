@@ -50,7 +50,7 @@ const FoodFinder = (props) => {
   const [cities, setCities] = useState([]);
   const [data, setData] = useState([]);
   const [locations, setLocations] = useState([]);
-  const locationElems = locations.map((location) => {});
+
   useEffect(() => {
     axios
       .get(
@@ -92,10 +92,6 @@ const FoodFinder = (props) => {
     });
   }, [city]);
 
-  useEffect(() => {
-    console.log(locations);
-  }, [locations]);
-
   const countries = [...new Set(data.map((item) => item.country))];
   countries.sort();
   function updateCountry(e) {
@@ -111,6 +107,8 @@ const FoodFinder = (props) => {
     setStates((prevStates) => {
       return states;
     });
+    setState("All");
+    setCity("None");
   }
 
   function updateState(e) {
@@ -177,7 +175,14 @@ const FoodFinder = (props) => {
           </select>
         </div>
       </Location>
-      <FoodDisplay />
+      <FoodDisplay
+        country={country}
+        state={state}
+        city={city}
+        states={states}
+        cities={cities}
+        locations={locations}
+      />
     </Section>
   );
 };
