@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { nanoid } from "nanoid";
 import FoodDisplay from "./FoodDisplay";
+import CustomSelect from "./CustomSelect";
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -22,7 +23,7 @@ const Section = styled.div`
   }
   option {
     width: 100%;
-  }s
+  }
 `;
 
 const Location = styled.div`
@@ -54,6 +55,68 @@ const FoodFinder = (props) => {
   const [data, setData] = useState([]);
   const [locations, setLocations] = useState([]);
 
+  useState(() => {
+    console.log(locations);
+  }, [locations]);
+
+  const [formData, setFormData] = useState({
+    country: {
+      value: "",
+      error: "",
+    },
+    state: {
+      value: "",
+      error: "",
+    },
+    city: {
+      value: "",
+      error: "",
+    },
+  });
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let errors = {};
+    for (let key in formData) {
+      if ((formData[key].value = "")) {
+        errors[key] = "Please select one option";
+      }
+    }
+
+    if (Object.keys(errors).length === 0) {
+      console.log(
+        formData.country.value,
+        formData.state.value,
+        formData.city.value
+      );
+      console.log("submit form...");
+    } else {
+      setFormData((prev) => {
+        let data = {};
+        for (let key in errors) {
+          data[key] = {
+            ...prev[key],
+            error: errors[key],
+          };
+        }
+        return {
+          ...prev,
+          ...data,
+        };
+      });
+    }
+  };
+
+  const changeHandler = (value, name) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: {
+        value,
+        error: value !== "" ? "" : prev[name].error,
+      },
+    }));
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -70,6 +133,7 @@ const FoodFinder = (props) => {
   }, []);
 
   useEffect(() => {
+    //DELETE??
     const getCountries = async () => {
       const res = await fetch();
     };
@@ -183,6 +247,41 @@ const FoodFinder = (props) => {
           </select>
         </div>
       </Location>
+      <div>
+        <form className="form" onSubmit={submitHandler}>
+          <CustomSelect
+            label="Country"
+            searchPlaceholder="Search"
+            data={countries}
+            value={formData.country.value}
+            onChange={changeHandler}
+            error={formData.country.error}
+            name="country"
+          />
+
+          <CustomSelect
+            label="State"
+            data={states}
+            value={formData.state.value}
+            onChange={changeHandler}
+            error={formData.state.error}
+            name="state"
+          />
+
+          <CustomSelect
+            label="City"
+            data={cities}
+            value={formData.city.value}
+            onChange={changeHandler}
+            error={formData.city.error}
+            name="city"
+          />
+
+          <button className="btn" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
       <FoodDisplay
         country={country}
         state={state}
