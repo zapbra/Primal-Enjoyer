@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { useState } from "react";
 const Container = styled.div`
+  width: 100%;
   background-color: ${(props) => props.colors.ultraLightBlue};
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
   border-radius: 0.5rem;
+  margin-top: 3rem;
   span {
     font-weight: 500;
   }
@@ -116,7 +118,6 @@ const FoodForm = (props) => {
               />
             </div>
           </div>
-
           <div className="content-line">
             <div>
               <p className="md-bold">Country</p>
@@ -166,25 +167,31 @@ const FoodForm = (props) => {
                 onChange={updateForm}
               />
             </div>
-          </div>
+          </div>{" "}
+          <p className="md-bold mar-bottom-one">
+            Farm/Store Contact Info(optional)
+          </p>
           <div className="content-line">
-            <p className="md-bold">Farm/Store Contact Info(optional)</p>
-            <p className="md-bold">Email</p>
-            <input
-              name="email"
-              value={form.email}
-              type="email"
-              placeholder="Email"
-              onChange={updateForm}
-            />
-            <p className="md-bold">Phone</p>
-            <input
-              name="phone"
-              value={form.phone}
-              type="number"
-              placeholder="Phone #"
-              onChange={updateForm}
-            />
+            <div>
+              <p className="md-bold">Email</p>
+              <input
+                name="email"
+                value={form.email}
+                type="email"
+                placeholder="Email"
+                onChange={updateForm}
+              />
+            </div>
+            <div>
+              <p className="md-bold">Phone</p>
+              <input
+                name="phone"
+                value={form.phone}
+                type="number"
+                placeholder="Phone #"
+                onChange={updateForm}
+              />
+            </div>
           </div>
           <div className="description">
             <p className="md-bold">

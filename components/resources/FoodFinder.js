@@ -13,7 +13,9 @@ const Title = styled.div`
 `;
 
 const Section = styled.div`
-  max-width: 600px;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid black;
+  width: 100%;
   select {
     width: 100%;
   }

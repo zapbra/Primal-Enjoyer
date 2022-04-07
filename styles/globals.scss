@@ -192,3 +192,15 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.mar-bottom-one {
+  margin-bottom: 1rem;
+}
+
+.flex-break {
+  display: flex;
+  gap: 5%;
+  @media only screen and (max-width: 1200px) {
+    flex-direction: column;
+  }
+}
