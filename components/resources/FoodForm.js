@@ -5,7 +5,7 @@ const Container = styled.div`
   background-color: ${(props) => props.colors.ultraLightBlue};
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
   border-radius: 0.5rem;
-  margin-top: 3rem;
+
   span {
     font-weight: 500;
   }
@@ -23,7 +23,6 @@ const Container = styled.div`
     border-bottom: 2px solid black;
     text-align: center;
     h2 {
-      margin-top: 1rem;
       line-height: 50px;
       text-shadow: 3px 3px 5px rgba(1, 1, 1, 0.5);
     }

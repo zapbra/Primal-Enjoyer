@@ -48,7 +48,7 @@ const Aajonus = (props) => {
   function updateForm(e) {
     const value = e.currentTarget.value;
     const field = e.currentTarget.name;
-    console.log(field);
+
     setForm((prevForm) => {
       return {
         ...prevForm,

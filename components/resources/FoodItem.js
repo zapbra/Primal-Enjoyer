@@ -14,13 +14,14 @@ const Title = styled.div`
   border: 2px solid black;
   border-radius: 1rem;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
-  padding: 2px 5px;
+  padding: 2px 15px;
 `;
 
 const ContentLine = styled.div`
   display: inline-block;
   border: 2px solid black;
   background-color: ${(props) => props.colors.ultraLightBlue};
+
   p {
     display: inline-block;
     &:nth-of-type(1) {
@@ -31,6 +32,7 @@ const ContentLine = styled.div`
     }
   }
   a {
+    width: 100%;
     p {
       min-width: 300px !important;
       background-color: ${(props) => props.colors.ultraLightBlue} !important;
@@ -62,15 +64,16 @@ const FoodItem = (props) => {
       <Title>
         <h2>{props.title}</h2>
       </Title>
+      <br />
       <ContentLine colors={props.colors}>
         <p className="semi-lg-bold">Address</p>
 
-        <p className="semi-bold">{props.address}</p>
+        <p className="semi-bold padding-hor-md">{props.address}</p>
       </ContentLine>
       <ContentLine colors={props.colors}>
         <p className="semi-lg-bold">Website</p>
         <a target="_blank" href={props.website}>
-          <p className="semi-bold">{props.website}</p>
+          <p className="semi-bold">{props.title}</p>
         </a>
       </ContentLine>
       <Description>

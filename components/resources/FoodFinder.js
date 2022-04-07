@@ -14,6 +14,7 @@ const Title = styled.div`
 
 const Section = styled.div`
   padding-bottom: 2rem;
+  margin-bottom: 3rem;
   border-bottom: 2px solid black;
   width: 100%;
   select {
@@ -21,7 +22,7 @@ const Section = styled.div`
   }
   option {
     width: 100%;
-  }
+  }s
 `;
 
 const Location = styled.div`
@@ -61,7 +62,11 @@ const FoodFinder = (props) => {
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
 
-    setLocations(props.foodLocations);
+    setLocations((prevLocations) => {
+      let newLocations = props.foodLocations.sort((a, b) => {
+        return a.title.localeCompare(b.title);
+      });
+    });
   }, []);
 
   useEffect(() => {
@@ -143,6 +148,7 @@ const FoodFinder = (props) => {
           </div>
           <select name="country" value={country} onChange={updateCountry}>
             <option>Select Country</option>
+
             {countries.map((item) => (
               <option value={item} key={nanoid()}>
                 {item}
