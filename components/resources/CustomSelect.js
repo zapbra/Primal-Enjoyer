@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import styled from "styled-components";
 
 import Dropdown from "./Dropdown";
 
+const FormGroup = styled.div``;
 const CustomSelect = ({
   label,
   data,
@@ -60,7 +62,7 @@ const CustomSelect = ({
   };
 
   return (
-    <div className="form__group">
+    <FormGroup>
       <label>{label}</label>
       <div className="dropdown" ref={dropdownEl}>
         <input
@@ -94,7 +96,7 @@ const CustomSelect = ({
         )}
       </div>
       {error && <div className="error">{error}</div>}
-    </div>
+    </FormGroup>
   );
 };
 
