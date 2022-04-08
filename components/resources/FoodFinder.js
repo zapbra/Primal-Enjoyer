@@ -48,8 +48,8 @@ const Location = styled.div`
 
 const FoodFinder = (props) => {
   const [country, setCountry] = useState("");
-  const [state, setState] = useState("All");
-  const [city, setCity] = useState("None");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [data, setData] = useState([]);
@@ -146,6 +146,7 @@ const FoodFinder = (props) => {
 
   const countries = [...new Set(data.map((item) => item.country))];
   countries.sort();
+  const [ultraCountries, setUltraCountries] = useState(countries);
   function updateCountry(value) {
     setCountry((prevCountry) => {
       return value;

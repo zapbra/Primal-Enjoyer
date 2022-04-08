@@ -15,7 +15,7 @@ const Select = ({
     value !== "" ? regions.indexOf(value) : null
   );
   const [search, setSearch] = useState("");
-  const [options, setOptions] = useState(data);
+  const [options, setOptions] = useState(regions);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef();
 
@@ -43,7 +43,7 @@ const Select = ({
 
   const searchChangeHandler = (e) => {
     setSearch(e.target.value);
-    const filteredOptions = regions.filter((opt) => {
+    const filteredOptions = options.filter((opt) => {
       return opt.toLowerCase().includes(e.target.value.trim().toLowerCase());
     });
   };
@@ -84,7 +84,6 @@ const Select = ({
             selectedIndex={selectedIndex}
             changedSelectedHandler={changeSelectedHandler}
             name={title}
-            regions={regions}
           />
         )}
       </div>

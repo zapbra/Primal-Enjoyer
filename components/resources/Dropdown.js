@@ -9,13 +9,13 @@ const Dropdown = ({
   selectedIndex,
   changeSelectedHandler,
   name,
-  regions,
 }) => {
   const searchInputEl = useRef();
   const itemsEl = useRef();
 
   useEffect(() => {
     searchInputEl.current.focus();
+
     if (selectedValue) {
       itemsEl.current.scrollTop =
         itemsEl.current.querySelector(`.item-${selectedIndex}`).offsetTop - 42;
