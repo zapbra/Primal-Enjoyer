@@ -247,6 +247,7 @@ const FoodFinder = (props) => {
         regions={countries}
         value={country}
         updateValue={updateRegion}
+        searchPlaceholder="Search"
       />
 
       <Select
