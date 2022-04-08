@@ -146,7 +146,7 @@ const FoodFinder = (props) => {
 
   const countries = [...new Set(data.map((item) => item.country))];
   countries.sort();
-  const [ultraCountries, setUltraCountries] = useState(countries);
+
   function updateCountry(value) {
     setCountry((prevCountry) => {
       return value;
