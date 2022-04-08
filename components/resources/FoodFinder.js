@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { nanoid } from "nanoid";
 import FoodDisplay from "./FoodDisplay";
-import CustomSelect from "./CustomSelect";
+import Select from "./Select";
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -55,25 +55,6 @@ const FoodFinder = (props) => {
   const [data, setData] = useState([]);
   const [locations, setLocations] = useState([]);
 
-  useState(() => {
-    console.log(locations);
-  }, [locations]);
-
-  const [formData, setFormData] = useState({
-    country: {
-      value: "",
-      error: "",
-    },
-    state: {
-      value: "",
-      error: "",
-    },
-    city: {
-      value: "",
-      error: "",
-    },
-  });
-
   const submitHandler = (e) => {
     e.preventDefault();
     let errors = {};
@@ -115,6 +96,13 @@ const FoodFinder = (props) => {
         error: value !== "" ? "" : prev[name].error,
       },
     }));
+    if (name === "country") {
+      updateCountry(value);
+    } else if (name === "state") {
+      updateState(value);
+    } else if (name === "city") {
+      updateCity(value);
+    }
   };
 
   useEffect(() => {
@@ -130,13 +118,6 @@ const FoodFinder = (props) => {
         return a.title.localeCompare(b.title);
       });
     });
-  }, []);
-
-  useEffect(() => {
-    //DELETE??
-    const getCountries = async () => {
-      const res = await fetch();
-    };
   }, []);
 
   useEffect(() => {
@@ -165,8 +146,7 @@ const FoodFinder = (props) => {
 
   const countries = [...new Set(data.map((item) => item.country))];
   countries.sort();
-  function updateCountry(e) {
-    const value = e.currentTarget.value;
+  function updateCountry(value) {
     setCountry((prevCountry) => {
       return value;
     });
@@ -182,8 +162,7 @@ const FoodFinder = (props) => {
     setCity("None");
   }
 
-  function updateState(e) {
-    const value = e.currentTarget.value;
+  function updateState(value) {
     setState((prevState) => {
       return value;
     });
@@ -193,12 +172,13 @@ const FoodFinder = (props) => {
     setCities(cities);
   }
 
-  function updateCity(e) {
-    const value = e.currentTarget.value;
+  function updateCity(value) {
     setCity((prevCity) => {
       return value;
     });
   }
+
+  function updateRegion(e) {}
 
   return (
     <Section>
@@ -249,34 +229,6 @@ const FoodFinder = (props) => {
       </Location>
       <div>
         <form className="form" onSubmit={submitHandler}>
-          <CustomSelect
-            label="Country"
-            searchPlaceholder="Search"
-            data={countries}
-            value={formData.country.value}
-            onChange={changeHandler}
-            error={formData.country.error}
-            name="country"
-          />
-
-          <CustomSelect
-            label="State"
-            data={states}
-            value={formData.state.value}
-            onChange={changeHandler}
-            error={formData.state.error}
-            name="state"
-          />
-
-          <CustomSelect
-            label="City"
-            data={cities}
-            value={formData.city.value}
-            onChange={changeHandler}
-            error={formData.city.error}
-            name="city"
-          />
-
           <button className="btn" type="submit">
             Submit
           </button>
@@ -289,6 +241,26 @@ const FoodFinder = (props) => {
         states={states}
         cities={cities}
         locations={locations}
+      />
+      <Select
+        title={"Enter Country"}
+        regions={countries}
+        value={country}
+        updateValue={updateRegion}
+      />
+
+      <Select
+        title={"Enter State"}
+        regions={states}
+        value={state}
+        updateValue={updateRegion}
+      />
+
+      <Select
+        title={"Enter City"}
+        regions={cities}
+        value={city}
+        updateValue={updateRegion}
       />
     </Section>
   );
