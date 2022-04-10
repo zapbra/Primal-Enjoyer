@@ -32,7 +32,6 @@ const FoodSection = (props) => {
         address={location.address}
         website={location.website}
         description={location.description}
-        address={location.address}
         hours={location.hours}
         sublocations={location.subLocations}
       />

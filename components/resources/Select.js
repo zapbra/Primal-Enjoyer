@@ -14,8 +14,8 @@ const Select = ({
   const [selectedIndex, setSelectedIndex] = useState(
     value !== "" ? regions.indexOf(value) : null
   );
-  const [search, setSearch] = useState("");
   const [options, setOptions] = useState(regions);
+  const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef();
 
@@ -28,7 +28,6 @@ const Select = ({
       ) {
         setShowDropdown(false);
         setSearch("");
-        setOptions(data);
       }
     },
     [showDropdown, setShowDropdown, dropdownEl, data]
@@ -43,9 +42,10 @@ const Select = ({
 
   const searchChangeHandler = (e) => {
     setSearch(e.target.value);
-    const filteredOptions = options.filter((opt) => {
+    const filteredOptions = regions.filter((opt) => {
       return opt.toLowerCase().includes(e.target.value.trim().toLowerCase());
     });
+    setOptions(filteredOptions);
   };
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -54,6 +54,7 @@ const Select = ({
       document.removeEventListener("click", handleClickOutside);
     };
   }, [handleClickOutside]);
+
   return (
     <div className="form__group">
       <label>{title}</label>
@@ -79,11 +80,11 @@ const Select = ({
             searchPlaceholder={searchPlaceholder}
             search={search}
             searchChangeHandler={searchChangeHandler}
-            options={options}
             selectedValue={selectedValue}
             selectedIndex={selectedIndex}
-            changedSelectedHandler={changeSelectedHandler}
+            changeSelectedHandler={changeSelectedHandler}
             name={title}
+            regions={options}
           />
         )}
       </div>

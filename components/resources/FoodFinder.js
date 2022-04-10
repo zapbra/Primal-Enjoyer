@@ -4,6 +4,7 @@ import axios from "axios";
 import { nanoid } from "nanoid";
 import FoodDisplay from "./FoodDisplay";
 import Select from "./Select";
+import { ultraCountries } from "../../Data/data";
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -179,7 +180,10 @@ const FoodFinder = (props) => {
     });
   }
 
-  function updateRegion(e) {}
+  function updateRegion(e) {
+    console.log("kappa one two three");
+    console.log(e);
+  }
 
   return (
     <Section>
@@ -253,14 +257,14 @@ const FoodFinder = (props) => {
 
       <Select
         title={"Enter State"}
-        regions={states}
+        regions={countries}
         value={state}
         updateValue={updateRegion}
       />
 
       <Select
         title={"Enter City"}
-        regions={cities}
+        regions={countries}
         value={city}
         updateValue={updateRegion}
       />
