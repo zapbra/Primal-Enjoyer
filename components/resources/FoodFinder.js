@@ -180,10 +180,7 @@ const FoodFinder = (props) => {
     });
   }
 
-  function updateRegion(e) {
-    console.log("kappa one two three");
-    console.log(e);
-  }
+  function updateRegion(name) {}
 
   return (
     <Section>
@@ -257,14 +254,14 @@ const FoodFinder = (props) => {
 
       <Select
         title={"Enter State"}
-        regions={countries}
+        regions={states}
         value={state}
         updateValue={updateRegion}
       />
 
       <Select
         title={"Enter City"}
-        regions={countries}
+        regions={cities}
         value={city}
         updateValue={updateRegion}
       />

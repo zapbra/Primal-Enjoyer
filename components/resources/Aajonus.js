@@ -81,6 +81,7 @@ const Aajonus = (props) => {
             <td>
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://drive.google.com/drive/u/0/folders/16I7xn0PZTofRf_mNyn3qtfI81WgbM1eB"
               >
                 <p>Google Drive</p>
@@ -94,6 +95,7 @@ const Aajonus = (props) => {
             <td>
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://www.youtube.com/channel/UCdHSzt83x7LjGcdNTJu2LSA"
               >
                 <p> Youtube</p>
@@ -107,6 +109,7 @@ const Aajonus = (props) => {
             <td>
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://www.youtube.com/watch?v=ZJbgJmXIxAo&list=PLA4-m0Jyxx3mHBv5fxOwmyWYton1z_4qk"
               >
                 <p>Youtube</p>
