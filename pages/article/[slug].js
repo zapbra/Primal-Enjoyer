@@ -1,6 +1,6 @@
 import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
-import { RichText } from "@graphcms/rich-text-react-renderer";
+
 import COLORS from "../../Data/colors";
 const Article = styled.div`
   background-color: #fff;
@@ -8,34 +8,11 @@ const Article = styled.div`
   box-shadow: 5px 5px 5px 5px rgba(1, 1, 1, 0.5);
   border-radius: 1rem;
   padding: 10px;
-  max-width: 1100px;
-  margin: 0 auto;
-  img {
-    width: 100%;
-  }
   h1 {
     text-align: center;
   }
-  .description {
-    background-color: #e9f1fd;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    p {
-      text-shadow: 2px 2px 5px rgba(1, 1, 1, 0.5);
-      border-bottom: 1px solid black;
-      border-top: 1px solid black;
-      background-color: #fff;
-      padding: 0 5px;
-    }
-
-    box-shadow: 0 2px 5px 1px rgba(1, 1, 1, 0.5);
-  }
 `;
 const Header = styled.header`
-  h1 {
-    margin-bottom: 2rem;
-  }
   p {
     color: ${(props) => props.colors.darkBlue};
     font-style: italic;
@@ -45,51 +22,12 @@ const Header = styled.header`
 `;
 const SubHeader = styled.div`
   display: flex;
-  gap: 2rem;
-  padding: 20px;
-  justify-content: space-around;
-  & > div {
-    max-width: 350px;
-  }
 `;
 const TextContent = styled.div`
   background-color: ${(props) => props.colors.lightGrey};
   border: 1px solid black;
   border-radius: 0.5rem;
   padding: 10px;
-  ul {
-    margin-left: 1.5rem;
-  }
-  li {
-    line-height: 2;
-  }
-  h1 {
-    margin-bottom: 1rem;
-  }
-  h2 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-  }
-  h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 1.6rem;
-  }
-  h5 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-  }
-  img {
-    width: 100%;
-    height: 300px;
-    object-fit: contain;
-    margin-bottom: 1rem;
-  }
-  p {
-    margin-bottom: 1rem;
-  }
 `;
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
@@ -103,23 +41,20 @@ export const getServerSideProps = async (pageContext) => {
 
   const query = gql`
     query ($pageSlug: String!) {
-      selfArticle(where: { title: $pageSlug }) {
+      article(where: { slug: $pageSlug }) {
+        id
         title
+        author
         content {
           raw
+          markdown
         }
-        description
+        date
+        catagory
         coverImage {
           url
         }
-        date
-        sources
-        catagory {
-          title
-          coverImage {
-            url
-          }
-        }
+        description
       }
     }
   `;
@@ -127,7 +62,7 @@ export const getServerSideProps = async (pageContext) => {
     pageSlug,
   };
   const data = await graphQLClient.request(query, variables);
-  const article = data.selfArticle;
+  const article = data.article;
 
   return {
     props: {
@@ -141,20 +76,18 @@ const slug = ({ article }) => {
     <Article>
       <Header colors={COLORS}>
         <h1>{article.title}</h1>
-        <p>Published {new Date(article.date).toDateString()}</p>
-        <p>Written By Matthew Pierce</p>
+        <p>Published {article.date}</p>
+        <p>Written By {article.author}</p>
       </Header>
       <SubHeader>
-        <div className="flex-one description">
-          <p className="lg-bold">{article.description} </p>
+        <div>
+          <p>{article.description} </p>
         </div>
-        <div className="flex-one">
+        <div>
           <img src={article.coverImage.url} />
         </div>
       </SubHeader>
-      <TextContent colors={COLORS}>
-        <RichText content={article.content.raw.children} />
-      </TextContent>
+      <TextContent colors={COLORS}></TextContent>
     </Article>
   );
 };
