@@ -131,7 +131,7 @@ const Aajonus = (props) => {
             value={form.name}
             placeholder="name"
             required
-            maxlength="30"
+            maxLength="30"
           />
         </label>
         <label>
@@ -142,7 +142,7 @@ const Aajonus = (props) => {
             name="link"
             value={form.link}
             placeholder="link"
-            maxlength="100"
+            maxLength="100"
             required
           />
           <button type="submit" className="submit-btn">

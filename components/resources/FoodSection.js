@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import styled from "styled-components";
 import COLORS from "../../Data/colors";
 import FoodItem from "./FoodItem";
@@ -27,6 +28,7 @@ const FoodSection = (props) => {
   const foodItems = props.locations.map((location) => {
     return (
       <FoodItem
+        key={nanoid()}
         colors={COLORS}
         title={location.title}
         address={location.address}
