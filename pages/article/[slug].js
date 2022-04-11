@@ -41,10 +41,10 @@ export const getServerSideProps = async (pageContext) => {
 
   const query = gql`
     query ($pageSlug: String!) {
-      article(where: { slug: $pageSlug }) {
+      selfArticle(where: { slug: $pageSlug }) {
         id
         title
-        author
+
         content {
           raw
           markdown
