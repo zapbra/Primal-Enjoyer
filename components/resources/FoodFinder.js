@@ -4,7 +4,6 @@ import axios from "axios";
 import { nanoid } from "nanoid";
 import FoodDisplay from "./FoodDisplay";
 import Select from "./Select";
-import { ultraCountries } from "../../Data/data";
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -51,11 +50,12 @@ const FoodFinder = (props) => {
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
+  const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [data, setData] = useState([]);
   const [locations, setLocations] = useState([]);
-
+  const [options, setOptions] = useState([]);
   const submitHandler = (e) => {
     e.preventDefault();
     let errors = {};
@@ -111,7 +111,14 @@ const FoodFinder = (props) => {
       .get(
         "https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json"
       )
-      .then((res) => setData(res.data))
+      .then((res) => {
+        setData((prevData) => {
+          return [...new Set(res.data.map((item) => item.country))].sort();
+        });
+        setOptions((prevData) => {
+          return [...new Set(res.data.map((item) => item.country))].sort();
+        });
+      })
       .catch((err) => console.log(err));
 
     setLocations((prevLocations) => {
@@ -145,9 +152,6 @@ const FoodFinder = (props) => {
     });
   }, [city]);
 
-  const countries = [...new Set(data.map((item) => item.country))];
-  countries.sort();
-
   function updateCountry(value) {
     setCountry((prevCountry) => {
       return value;
@@ -160,8 +164,8 @@ const FoodFinder = (props) => {
     setStates((prevStates) => {
       return states;
     });
-    setState("All");
-    setCity("None");
+    setState("");
+    setCity("");
   }
 
   function updateState(value) {
@@ -180,7 +184,16 @@ const FoodFinder = (props) => {
     });
   }
 
-  function updateRegion(name) {}
+  function updateRegion(location, name) {
+    console.log(states);
+    if (name === "country") {
+      updateCountry(location);
+    } else if (name === "state") {
+      updateState(location);
+    } else if (name == "city") {
+      updateCity(location);
+    }
+  }
 
   return (
     <Section>
@@ -243,13 +256,17 @@ const FoodFinder = (props) => {
         states={states}
         cities={cities}
         locations={locations}
+        name="country"
       />
       <Select
         title={"Enter Country"}
-        regions={countries}
+        regions={data}
         value={country}
         updateValue={updateRegion}
         searchPlaceholder="Search"
+        options={options}
+        setOptions={setOptions}
+        name="state"
       />
 
       <Select
@@ -257,6 +274,7 @@ const FoodFinder = (props) => {
         regions={states}
         value={state}
         updateValue={updateRegion}
+        name="city"
       />
 
       <Select

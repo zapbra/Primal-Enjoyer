@@ -1,4 +1,10 @@
-import { useRef, useCallback, useEffect, useState } from "react";
+import {
+  componentWillMount,
+  useRef,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import Dropdown from "./Dropdown";
 
 const Select = ({
@@ -9,12 +15,15 @@ const Select = ({
   defaultOptionLabel,
   searchPlaceholder,
   data,
+  options,
+  setOptions,
+  name,
 }) => {
   const [selectedValue, setSelectedValue] = useState(value);
   const [selectedIndex, setSelectedIndex] = useState(
     value !== "" ? regions.indexOf(value) : null
   );
-  const [options, setOptions] = useState(regions);
+
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownEl = useRef();
