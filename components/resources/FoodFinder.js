@@ -169,7 +169,7 @@ const FoodFinder = (props) => {
     setStates((prevStates) => {
       return states;
     });
-    setState("");
+    setState("?");
     setCity("");
   }
 
@@ -207,63 +207,7 @@ const FoodFinder = (props) => {
       <Title colors={props.colors}>
         <h1>Food Finder</h1>
       </Title>
-      <Location>
-        <div className="location-item">
-          <div className="header">
-            <p>Country:</p>
-          </div>
-          <select name="country" value={country} onChange={updateCountry}>
-            <option>Select Country</option>
 
-            {countries.map((item) => (
-              <option value={item} key={nanoid()}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="location-item">
-          <div className="header">
-            <p>State/Province:</p>
-          </div>
-          <select value={state} onChange={updateState}>
-            <option>All</option>
-            {states.map((item) => (
-              <option value={item} key={nanoid()}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="location-item">
-          <div className="header">
-            <p>City:</p>
-          </div>
-          <select value={city} onChange={updateCity}>
-            <option value="None">None</option>
-            {cities.map((item) => (
-              <option value={item} key={nanoid()}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
-      </Location>
-      <div>
-        <form className="form" onSubmit={submitHandler}>
-          <button className="btn" type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
-      <FoodDisplay
-        country={country}
-        state={state}
-        city={city}
-        states={states}
-        cities={cities}
-        locations={locations}
-      />
       <Select
         title={"Enter Country"}
         regions={regions}
@@ -278,6 +222,8 @@ const FoodFinder = (props) => {
       <Select
         title={"Enter State"}
         regions={states}
+        options={states}
+        setOptions={setStates}
         value={state}
         updateValue={updateRegion}
         name="state"
@@ -286,9 +232,19 @@ const FoodFinder = (props) => {
       <Select
         title={"Enter City"}
         regions={cities}
+        options={cities}
+        setOptions={setCities}
         value={city}
         updateValue={updateRegion}
         name="city"
+      />
+      <FoodDisplay
+        country={country}
+        state={state}
+        city={city}
+        states={states}
+        cities={cities}
+        locations={locations}
       />
     </Section>
   );
