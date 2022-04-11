@@ -46,7 +46,7 @@ const Select = ({
     setSelectedValue(item);
     setSelectedIndex(index);
     setShowDropdown(false);
-    updateValue(item);
+    updateValue(item, name);
   };
 
   const searchChangeHandler = (e) => {
@@ -92,7 +92,7 @@ const Select = ({
             selectedValue={selectedValue}
             selectedIndex={selectedIndex}
             changeSelectedHandler={changeSelectedHandler}
-            name={title}
+            name={name}
             regions={options}
           />
         )}

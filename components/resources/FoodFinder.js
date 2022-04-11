@@ -56,6 +56,7 @@ const FoodFinder = (props) => {
   const [data, setData] = useState([]);
   const [locations, setLocations] = useState([]);
   const [options, setOptions] = useState([]);
+  const [regions, setRegions] = useState([]);
   const submitHandler = (e) => {
     e.preventDefault();
     let errors = {};
@@ -113,6 +114,9 @@ const FoodFinder = (props) => {
       )
       .then((res) => {
         setData((prevData) => {
+          return res.data;
+        });
+        setRegions((prevData) => {
           return [...new Set(res.data.map((item) => item.country))].sort();
         });
         setOptions((prevData) => {
@@ -153,6 +157,7 @@ const FoodFinder = (props) => {
   }, [city]);
 
   function updateCountry(value) {
+    console.log(value);
     setCountry((prevCountry) => {
       return value;
     });
@@ -168,6 +173,9 @@ const FoodFinder = (props) => {
     setCity("");
   }
 
+  useEffect(() => {
+    console.log(states);
+  }, [states]);
   function updateState(value) {
     setState((prevState) => {
       return value;
@@ -185,7 +193,6 @@ const FoodFinder = (props) => {
   }
 
   function updateRegion(location, name) {
-    console.log(states);
     if (name === "country") {
       updateCountry(location);
     } else if (name === "state") {
@@ -256,17 +263,16 @@ const FoodFinder = (props) => {
         states={states}
         cities={cities}
         locations={locations}
-        name="country"
       />
       <Select
         title={"Enter Country"}
-        regions={data}
+        regions={regions}
         value={country}
         updateValue={updateRegion}
         searchPlaceholder="Search"
         options={options}
         setOptions={setOptions}
-        name="state"
+        name="country"
       />
 
       <Select
@@ -274,7 +280,7 @@ const FoodFinder = (props) => {
         regions={states}
         value={state}
         updateValue={updateRegion}
-        name="city"
+        name="state"
       />
 
       <Select
@@ -282,6 +288,7 @@ const FoodFinder = (props) => {
         regions={cities}
         value={city}
         updateValue={updateRegion}
+        name="city"
       />
     </Section>
   );
