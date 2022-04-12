@@ -55,6 +55,20 @@ const TextContent = styled.div`
   border: 1px solid black;
   border-radius: 0.5rem;
   padding: 10px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  p {
+    margin-bottom: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin-bottom: 1rem;
+  }
 `;
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
@@ -67,8 +81,8 @@ export const getServerSideProps = async (pageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = gql`
-    query {
-      selfArticle(where: { title: "How To Get Sodium Naturally" }) {
+    query ($pageSlug: String!) {
+      selfArticle(where: { title: $pageSlug }) {
         title
         content {
           raw
