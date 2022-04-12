@@ -55,6 +55,12 @@ const TextContent = styled.div`
   border: 1px solid black;
   border-radius: 0.5rem;
   padding: 10px;
+  ul {
+    padding-left: 1rem;
+  }
+  li {
+    margin-bottom: 1rem;
+  }
   img {
     width: 100%;
     height: auto;
