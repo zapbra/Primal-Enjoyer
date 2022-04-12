@@ -19,7 +19,7 @@ const SectionHeader = styled.div`
 `;
 const OverflowCont = styled.div`
   max-height: 800px;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 const WhiteBg = styled.div`

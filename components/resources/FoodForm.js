@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs, { init } from "@emailjs/browser";
+
 const Container = styled.div`
   width: 100%;
   background-color: ${(props) => props.colors.ultraLightBlue};
@@ -50,7 +52,8 @@ const ContentHolder = styled.div`
 `;
 
 const FoodForm = (props) => {
-  const [form, setForm] = useState({
+  const form = useRef();
+  const [formData, setFormData] = useState({
     name: "",
     country: "",
     state: "",
@@ -62,10 +65,29 @@ const FoodForm = (props) => {
   });
   function submitFood(e) {
     e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_3hso67w",
+        "template_4o9p0rn",
+        form.current,
+        "VuMtr83gozV6G7IIc"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
     clearForm();
   }
   function clearForm() {
-    setForm((prevForm) => {
+    init("VuMtr83gozV6G7IIc");
+
+    setFormData((prevForm) => {
       return {
         name: "",
         country: "",
@@ -82,7 +104,7 @@ const FoodForm = (props) => {
     const value = e.currentTarget.value;
     const name = e.currentTarget.name;
 
-    setForm((prevForm) => {
+    setFormData((prevForm) => {
       return {
         ...prevForm,
         [name]: value,
@@ -104,13 +126,13 @@ const FoodForm = (props) => {
             name or instagram and I’ll give you credit. Or leave it anonymous
           </p>
         </div>
-        <form onSubmit={submitFood}>
+        <form onSubmit={submitFood} ref={form}>
           <div className="content-line">
             <div>
               <p className="md-bold">Your Name or Instagram (optional)</p>
               <input
                 name="name"
-                value={form.name}
+                value={formData.name}
                 type="text"
                 placeholder="Name or Instagram"
                 onChange={updateForm}
@@ -123,7 +145,7 @@ const FoodForm = (props) => {
               <input
                 type="text"
                 name="country"
-                value={form.country}
+                value={formData.country}
                 placeholder="country"
                 onChange={updateForm}
                 required
@@ -134,7 +156,7 @@ const FoodForm = (props) => {
               <p className="md-bold">State/Province</p>
               <input
                 name="state"
-                value={form.state}
+                value={formData.state}
                 required
                 type="text"
                 placeholder="State/Province"
@@ -146,7 +168,7 @@ const FoodForm = (props) => {
               <p className="md-bold">City</p>
               <input
                 name="city"
-                value={form.vity}
+                value={formData.vity}
                 required
                 type="text"
                 placeholder="city"
@@ -159,7 +181,7 @@ const FoodForm = (props) => {
               <p className="md-bold">Farm/Store/Business Name </p>
               <input
                 name="farm"
-                value={form.farm}
+                value={formData.farm}
                 required
                 type="text"
                 placeholder="Name"
@@ -175,7 +197,7 @@ const FoodForm = (props) => {
               <p className="md-bold">Email</p>
               <input
                 name="email"
-                value={form.email}
+                value={formData.email}
                 type="email"
                 placeholder="Email"
                 onChange={updateForm}
@@ -185,7 +207,7 @@ const FoodForm = (props) => {
               <p className="md-bold">Phone</p>
               <input
                 name="phone"
-                value={form.phone}
+                value={formData.phone}
                 type="number"
                 placeholder="Phone #"
                 onChange={updateForm}
@@ -199,7 +221,7 @@ const FoodForm = (props) => {
             </p>
             <textarea
               name="description"
-              value={form.description}
+              value={formData.description}
               placeholder="Describe the farm"
               onChange={updateForm}
             ></textarea>

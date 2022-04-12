@@ -79,7 +79,7 @@ const resources = ({ foodLocations }) => {
       <div className="main-title">
         <h1>Resources</h1>
       </div>
-      {/*<Resources colors={COLORS} /> */}
+      <Resources colors={COLORS} />
       <div className="flex-break">
         <FoodFinder colors={COLORS} foodLocations={foodLocations} />
         <div style={{ width: "100%" }}>
