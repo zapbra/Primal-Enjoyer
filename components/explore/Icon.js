@@ -34,7 +34,7 @@ const IconTitle = styled.h4`
 
 const Icon = (props) => {
   return (
-    <Link href={`/article/${props.article.title}`}>
+    <Link passHref href={`/article/${props.article.title}`}>
       <IconElem url={props.article.coverImage.url}>
         <IconTitle colors={props.colors}>{props.article.briefTitle}</IconTitle>{" "}
       </IconElem>

@@ -39,7 +39,7 @@ const Article = (props) => {
   return (
     <ArticleCont>
       <div className="flex-one image-cont">
-        <img src={props.article.coverImage.url} />
+        <img alt="cover image" src={props.article.coverImage.url} />
       </div>
 
       <TextContent className="flex-one">

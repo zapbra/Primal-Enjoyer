@@ -87,15 +87,9 @@ const Search = ({ articlesFetch, superTags }) => {
   }
 
   useEffect(() => {
-    console.log(superTags);
-    console.log(TAGS);
-  }, []);
-
-  useEffect(() => {
     updateArticles();
   }, [filterTags, searchTags]);
 
-  useEffect(() => {}, [filterArticles]);
   function submitSearch(e) {
     e.preventDefault();
     let id = filterTags[0].id;

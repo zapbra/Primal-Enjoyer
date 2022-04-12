@@ -41,20 +41,20 @@ const Title = styled.h1`
 const Navbar = () => {
   return (
     <NavCont>
-      <Link href="/" clasName="link">
+      <Link passHref href="/" clasName="link">
         <Title>Aajonus World</Title>
       </Link>
       <NavRight>
-        <Link href="/course" className="link">
+        <Link passHref href="/course" className="link">
           <h3>Course</h3>
         </Link>
-        <Link href="/documents" className="link">
+        <Link passHref href="/documents" className="link">
           <h3>Documents</h3>
         </Link>
-        <Link href="/search" className="link">
+        <Link passHref href="/search" className="link">
           <h3>Search</h3>
         </Link>
-        <Link href="/resources" className="link">
+        <Link passHref href="/resources" className="link">
           <h3>Resources</h3>
         </Link>
       </NavRight>
