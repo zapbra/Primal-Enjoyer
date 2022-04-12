@@ -11,6 +11,22 @@ const Article = styled.div`
   h1 {
     text-align: center;
   }
+  .block {
+    width: 100%;
+    height: 2rem;
+    background-color: ${(props) => props.colors.ultraLightBlue};
+  }
+  .article-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      padding: 10px;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+    }
+  }
 `;
 const Header = styled.header`
   p {
@@ -21,6 +37,14 @@ const Header = styled.header`
   border-bottom: 2px solid ${(props) => props.colors.darkBlue};
 `;
 const SubHeader = styled.div`
+  box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+
+  padding: 5% 5%;
+  & div {
+    flex: 1;
+  }
   display: flex;
   img {
     width: 100%;
@@ -75,20 +99,24 @@ export const getServerSideProps = async (pageContext) => {
 
 const slug = ({ article }) => {
   return (
-    <Article>
+    <Article colors={COLORS}>
       <Header colors={COLORS}>
         <h1>{article.title}</h1>
         <p>Published {article.date}</p>
       </Header>
       <SubHeader>
-        <div>
-          <p>{article.description} </p>
+        <div className="article-description">
+          <div className="block"></div>
+          <p className="semi-lg-bold">{article.description} </p>
+          <div className="block"></div>
         </div>
         <div>
           <img src={article.coverImage.url} />
         </div>
       </SubHeader>
-      <TextContent colors={COLORS}></TextContent>
+      <TextContent colors={COLORS}>
+        <RichText content={article.content.raw} />
+      </TextContent>
     </Article>
   );
 };
