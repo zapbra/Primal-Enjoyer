@@ -1,6 +1,6 @@
 import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
-
+import { RichText } from "@graphcms/rich-text-react-renderer";
 import COLORS from "../../Data/colors";
 const Article = styled.div`
   background-color: #fff;
@@ -22,6 +22,9 @@ const Header = styled.header`
 `;
 const SubHeader = styled.div`
   display: flex;
+  img {
+    width: 100%;
+  }
 `;
 const TextContent = styled.div`
   background-color: ${(props) => props.colors.lightGrey};
@@ -40,17 +43,16 @@ export const getServerSideProps = async (pageContext) => {
   const pageSlug = pageContext.query.slug;
 
   const query = gql`
-    query ($pageSlug: String!) {
-      selfArticle(where: { slug: $pageSlug }) {
-        id
+    query {
+      selfArticle(where: { title: "How To Get Sodium Naturally" }) {
         title
-
         content {
           raw
-          markdown
         }
         date
-        catagory
+        catagory {
+          title
+        }
         coverImage {
           url
         }
@@ -62,7 +64,7 @@ export const getServerSideProps = async (pageContext) => {
     pageSlug,
   };
   const data = await graphQLClient.request(query, variables);
-  const article = data.article;
+  const article = data.selfArticle;
 
   return {
     props: {
@@ -77,7 +79,6 @@ const slug = ({ article }) => {
       <Header colors={COLORS}>
         <h1>{article.title}</h1>
         <p>Published {article.date}</p>
-        <p>Written By {article.author}</p>
       </Header>
       <SubHeader>
         <div>
