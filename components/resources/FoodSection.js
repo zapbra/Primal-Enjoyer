@@ -17,6 +17,10 @@ const SectionHeader = styled.div`
     }
   }
 `;
+const OverflowCont = styled.div`
+  max-height: 800px;
+  overflow: scroll;
+`;
 
 const WhiteBg = styled.div`
   padding-top: 2rem;
@@ -47,7 +51,7 @@ const FoodSection = (props) => {
         </div>
         <div className="flex-one"></div>
       </SectionHeader>
-      {foodItems}
+      <OverflowCont>{foodItems}</OverflowCont>
     </WhiteBg>
   );
 };

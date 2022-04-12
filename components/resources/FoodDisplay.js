@@ -9,32 +9,29 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
-  margin-right: 2rem;
-  margin-left: 2rem;
-  display: flex;
-  height: 60px;
-  gap: 2rem;
-  justify-content: space-between;
+  border-radius: 0.5rem;
   background-color: ${(props) => props.colors.ultraLightBlue};
 `;
 
 const Location = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  background-color: #fff;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
+  text-align: center;
+  margin-right: 2rem;
+  margin-left: 2rem;
+
   &:nth-of-type(2) {
+    border-top: 2px solid black;
     h2 {
-      font-size: 21px;
+      font-size: 1.7rem;
+      font-weight: 600;
     }
   }
   &:nth-of-type(3) {
+    margin-right: 3rem;
+    margin-left: 3rem;
+    border-top: 2px solid black;
     h2 {
-      font-size: 18px;
+      font-size: 1.5rem;
+      font-weight: 500;
     }
   }
 `;
