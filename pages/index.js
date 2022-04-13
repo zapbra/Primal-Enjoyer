@@ -20,7 +20,7 @@ const Container = styled.div`
       "left left left left";
     margin: 2%;
   }
-  @media only screen and (max-width: 991px) {
+  @media only screen and (max-width: 991x) {
     margin: 0;
   }
 `;
@@ -63,13 +63,24 @@ export const getStaticProps = async () => {
 
 export default function Home({ articles }) {
   return (
-    <Container>
-      <Left>
-        <Introduction colors={COLORS} />
-      </Left>
-      <Right>
-        <Explore articles={articles} colors={COLORS} />
-      </Right>
-    </Container>
+    <main>
+      <Head>
+        <title>Aajonus Vonderplanitz Raw Primal Diet Introduction</title>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+        <meta
+          name="description"
+          content="Introduction to the Raw Primal Diet by Aajonus Vonderplanitz"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Container>
+        <Left>
+          <Introduction colors={COLORS} />
+        </Left>
+        <Right>
+          <Explore articles={articles} colors={COLORS} />
+        </Right>
+      </Container>
+    </main>
   );
 }
