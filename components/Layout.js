@@ -5,6 +5,10 @@ import Head from "next/head";
 const Center = styled.div`
   width: 80%;
   margin: 0 10% 0 10%;
+  @media only screen and (max-width: 1199px) {
+    margin: 0 0;
+    width: 100%;
+  }
 `;
 const Layout = ({ title, keywords, description, children }) => {
   return (

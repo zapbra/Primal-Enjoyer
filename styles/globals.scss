@@ -54,9 +54,11 @@ h2 {
   color: $dark-blue;
 }
 h3 {
+  font-size: 1.7rem;
   color: $dark-blue;
 }
 h4 {
+  font-size: 1.5rem;
   color: $dark-blue;
 }
 h5 {
@@ -332,4 +334,15 @@ input[type="number"] {
   border: 0;
   outline: 0;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .mobile-sm {
+    display: none;
+  }
 }

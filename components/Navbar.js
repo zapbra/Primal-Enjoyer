@@ -26,10 +26,22 @@ const NavCont = styled.nav`
       background-color: #fff;
     }
   }
+  @media only screen and (max-width: 767px) {
+    padding: 0 0;
+  }
 `;
 
 const NavRight = styled.div`
   display: flex;
+
+  @media only screen and (max-width: 767px) {
+    margin: 0 auto;
+  }
+  @media only screen and (max-width: 600px) {
+    h3 {
+      font-size: 4vw;
+    }
+  }
 `;
 const Title = styled.h1`
   text-shadow: 3px 3px 5px rgba(1, 1, 1, 0.5);
@@ -41,9 +53,11 @@ const Title = styled.h1`
 const Navbar = () => {
   return (
     <NavCont>
-      <Link passHref href="/" clasName="link">
-        <Title>Aajonus World</Title>
-      </Link>
+      <div className="mobile">
+        <Link passHref href="/" clasName="link">
+          <Title>Aajonus World</Title>
+        </Link>
+      </div>
       <NavRight>
         <Link passHref href="/course" className="link">
           <h3>Course</h3>
@@ -54,9 +68,11 @@ const Navbar = () => {
         <Link passHref href="/search" className="link">
           <h3>Search</h3>
         </Link>
-        <Link passHref href="/resources" className="link">
-          <h3>Resources</h3>
-        </Link>
+        <div className="mobile-sm">
+          <Link passHref href="/resources">
+            <h3>Resources</h3>
+          </Link>
+        </div>
       </NavRight>
     </NavCont>
   );

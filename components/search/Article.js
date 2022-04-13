@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 const ArticleCont = styled.div`
   box-shadow: 0 2px 5px 1px rgba(1, 1, 1, 0.5);
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   width: 200px;
   height: 200px;
-  margin-bottom: 1rem;
   cursor: pointer;
   transition: box-shadow 0.5s ease, border 0.5s ease, transform 0.5s ease;
   border: 1px solid transparent;
@@ -27,7 +27,7 @@ const TextContent = styled.div`
   display: flex;
   align-items: center;
 
-  h2 {
+  h4 {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     width: 90%;
@@ -43,7 +43,7 @@ const Article = (props) => {
       </div>
 
       <TextContent className="flex-one">
-        <h2>{props.article.title}</h2>
+        <h4>{props.article.title}</h4>
       </TextContent>
     </ArticleCont>
   );

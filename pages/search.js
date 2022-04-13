@@ -196,8 +196,6 @@ const Search = ({ articlesFetch, superTags }) => {
     <div className="container">
       <TopSection>
         <SectionHalf>
-          <h2>Search - </h2>
-          <h3>Type and click enter to auto-fill</h3>
           <SearchBar
             text={text}
             updateText={updateText}
@@ -209,8 +207,6 @@ const Search = ({ articlesFetch, superTags }) => {
           />
         </SectionHalf>
         <SectionHalf>
-          <h2>Tags - </h2>
-          <h3>Click to add</h3>
           <TagBox
             pushSearchTag={pushSearchTag}
             removeTag={removeTag}
