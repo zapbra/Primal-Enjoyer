@@ -5,7 +5,8 @@ const IconElem = styled.div`
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
   background-image: url(${(props) => props.url});
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
   width: 100%;
   position: relative;
   cursor: pointer;
@@ -23,20 +24,26 @@ const IconElem = styled.div`
   }
 `;
 
-const IconTitle = styled.h4`
+const IconTitle = styled.p`
   background-color: ${(props) => props.colors.ultraLightBlue};
   text-align: center;
   bottom: 0;
   position: absolute;
   width: 100%;
   border-radius: 0 0 0.5rem 0.5rem;
+  overflow: hidden;
+  @media only screen and (max-width: 1199px) {
+    font-size: 20px;
+  }
 `;
 
 const Icon = (props) => {
   return (
     <Link passHref href={`/article/${props.article.title}`}>
       <IconElem url={props.article.coverImage.url}>
-        <IconTitle colors={props.colors}>{props.article.briefTitle}</IconTitle>{" "}
+        <IconTitle className="semi-bold" colors={props.colors}>
+          {props.article.briefTitle}
+        </IconTitle>{" "}
       </IconElem>
     </Link>
   );

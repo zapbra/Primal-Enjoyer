@@ -46,6 +46,7 @@ const NavRight = styled.div`
 const Title = styled.h1`
   text-shadow: 3px 3px 5px rgba(1, 1, 1, 0.5);
   cursor: pointer;
+  line-height: 1;
   &:hover {
     background-color: #fff;
   }

@@ -14,6 +14,15 @@ const Container = styled.div`
   gap: 2rem;
   margin-left: 5%;
   margin-right: -5%;
+  @media only screen and (max-width: 1199px) {
+    grid-template-areas:
+      "right right right right"
+      "left left left left";
+    margin: 2%;
+  }
+  @media only screen and (max-width: 991px) {
+    margin: 0;
+  }
 `;
 const Left = styled.div`
   grid-area: left;

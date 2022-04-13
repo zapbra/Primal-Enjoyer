@@ -40,14 +40,16 @@ const SubHeader = styled.div`
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
   margin-bottom: 2rem;
   margin-top: 2rem;
+  padding: 2% 2%;
+  position: relative;
 
-  padding: 5% 5%;
-  & div {
-    flex: 1;
-  }
-  display: flex;
   img {
+    height: 100%;
     width: 100%;
+    object-fit: cover;
+  }
+  .article-header {
+    height: 200px;
   }
 `;
 const TextContent = styled.div`
@@ -125,12 +127,7 @@ const slug = ({ article }) => {
         <p>Published {article.date}</p>
       </Header>
       <SubHeader>
-        <div className="article-description">
-          <div className="block"></div>
-          <p className="semi-lg-bold">{article.description} </p>
-          <div className="block"></div>
-        </div>
-        <div>
+        <div className="article-header">
           <img src={article.coverImage.url} />
         </div>
       </SubHeader>

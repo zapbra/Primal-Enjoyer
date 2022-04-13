@@ -12,6 +12,9 @@ const IconContainer = styled.div`
   grid-auto-rows: 50px;
   gap: 1rem;
   grid-template-columns: 1fr 1fr;
+  @media only screen and (max-width: 1199px) {
+    grid-auto-rows: 60px;
+  }
 `;
 
 export default function RecentPosts({ articles }) {

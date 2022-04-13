@@ -16,6 +16,9 @@ const SearchCont = styled.div`
 const TopSection = styled.div`
   display: flex;
   gap: 2rem;
+  @media only screen and (max-width: 365px) {
+    flex-direction: column;
+  }
 `;
 const SectionHalf = styled.div`
   flex: 1;

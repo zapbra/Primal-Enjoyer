@@ -8,6 +8,9 @@ const ExploreContainer = styled.div`
   padding: 20px;
   width: 100%;
   max-width: 244px;
+  @media only screen and (max-width: 1199px) {
+    max-width: 100%;
+  }
   .main-title {
     width: 90%;
     margin: 0 auto 1rem;
