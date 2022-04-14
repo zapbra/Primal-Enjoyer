@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "./Navbar";
 import styled from "styled-components";
-import Head from "next/head";
+import { DefaultSeo } from "next-seo";
+import SEO from "../next.config";
+
 const Center = styled.div`
   width: 80%;
   margin: 0 10% 0 10%;
@@ -10,20 +12,14 @@ const Center = styled.div`
     width: 100%;
   }
 `;
-const Layout = ({ title, keywords, description, children }) => {
+const Layout = ({ children }) => {
   return (
-    <div>
-      <Head> {title}</Head>
+    <>
+      <DefaultSeo {...SEO} />
       <Navbar />
       <Center>{children}</Center>
-    </div>
+    </>
   );
-};
-
-Layout.defaultProps = {
-  title: "Conspiracy Blog",
-  description: "Blogs about common conspiracies",
-  keywords: "matrix, conspiracy, blog, nwo",
 };
 
 export default Layout;

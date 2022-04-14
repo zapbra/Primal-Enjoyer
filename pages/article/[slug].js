@@ -1,6 +1,7 @@
 import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
 import { RichText } from "@graphcms/rich-text-react-renderer";
+import { NextSeo } from "next-seo";
 import COLORS from "../../Data/colors";
 const Article = styled.div`
   background-color: #fff;
@@ -28,6 +29,25 @@ const Article = styled.div`
     }
   }
 `;
+const CenterText = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-right: 2%;
+  text-align: center;
+`;
+const TextBox = styled.div`
+  position: absolute;
+  width: 96%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50%;
+  background-color: ${(props) => props.colors.lightGrey};
+  opacity: 70%;
+  @media only screen and (max-width: 550px) {
+    height: 80%;
+  }
+`;
 const Header = styled.header`
   p {
     color: ${(props) => props.colors.darkBlue};
@@ -49,7 +69,7 @@ const SubHeader = styled.div`
     object-fit: cover;
   }
   .article-header {
-    height: 200px;
+    height: 250px;
   }
 `;
 const TextContent = styled.div`
@@ -120,21 +140,32 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 const slug = ({ article }) => {
+  const SEO = {
+    title: article.title,
+    description: article.description,
+  };
   return (
-    <Article colors={COLORS}>
-      <Header colors={COLORS}>
-        <h1>{article.title}</h1>
-        <p>Published {article.date}</p>
-      </Header>
-      <SubHeader>
-        <div className="article-header">
-          <img src={article.coverImage.url} />
-        </div>
-      </SubHeader>
-      <TextContent colors={COLORS}>
-        <RichText content={article.content.raw} />
-      </TextContent>
-    </Article>
+    <>
+      <NextSeo {...SEO} />
+      <Article colors={COLORS}>
+        <Header colors={COLORS}>
+          <h1>{article.title}</h1>
+          <p>Published {article.date}</p>
+        </Header>
+        <SubHeader>
+          <div className="article-header">
+            <img src={article.coverImage.url} />
+            <TextBox colors={COLORS} />
+            <CenterText>
+              <h2>{article.description}</h2>
+            </CenterText>
+          </div>
+        </SubHeader>
+        <TextContent colors={COLORS}>
+          <RichText content={article.content.raw} />
+        </TextContent>
+      </Article>
+    </>
   );
 };
 

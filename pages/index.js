@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import Introduction from "../components/Introduction";
 import Explore from "../components/explore/index";
 import { GraphQLClient, gql } from "graphql-request";
+import { NextSeo } from "next-seo";
 import COLORS from "../Data/colors";
 
 const Container = styled.div`
@@ -62,25 +63,24 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ articles }) {
+  const SEO = {
+    title: "Raw Primal Diet Introduction",
+    description:
+      "How to do the Raw Primal Diet and what is the Raw Primal Diet",
+  };
   return (
-    <main>
-      <Head>
-        <title>Aajonus Vonderplanitz Raw Primal Diet Introduction</title>
-        <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-        <meta
-          name="description"
-          content="Introduction to the Raw Primal Diet by Aajonus Vonderplanitz"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <Container>
-        <Left>
-          <Introduction colors={COLORS} />
-        </Left>
-        <Right>
-          <Explore articles={articles} colors={COLORS} />
-        </Right>
-      </Container>
-    </main>
+    <>
+      <NextSeo {...SEO} />
+      <main>
+        <Container>
+          <Left>
+            <Introduction colors={COLORS} />
+          </Left>
+          <Right>
+            <Explore articles={articles} colors={COLORS} />
+          </Right>
+        </Container>
+      </main>
+    </>
   );
 }

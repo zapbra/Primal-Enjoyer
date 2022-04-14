@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import COLORS from "../Data/colors";
 import { gql, GraphQLClient } from "graphql-request";
+import { NextSeo } from "next-seo";
 import Resources from "../components/resources/Aajonus";
 import FoodFinder from "../components/resources/FoodFinder";
 import FoodForm from "../components/resources/FoodForm";
+
 const Title = styled.div`
   padding: 5px 20px;
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
@@ -73,20 +75,30 @@ export const getStaticProps = async () => {
 };
 
 const resources = ({ foodLocations }) => {
-  console.log(foodLocations);
+  const SEO = {
+    title: "Resources Page",
+    description: "Raw primal diet Q&A, videos, documentation, food sourcing",
+    openGraph: {
+      title: "Resources Page",
+      description: "Raw primal diet Q&A, videos, documentation, food sourcing",
+    },
+  };
   return (
-    <div className="container">
-      <div className="main-title">
-        <h1>Resources</h1>
-      </div>
-      <Resources colors={COLORS} />
-      <div className="flex-break">
-        <FoodFinder colors={COLORS} foodLocations={foodLocations} />
-        <div style={{ width: "100%" }}>
-          <FoodForm colors={COLORS} />
+    <>
+      <NextSeo {...SEO} />
+      <div className="container">
+        <div className="main-title">
+          <h1>Resources</h1>
+        </div>
+        <Resources colors={COLORS} />
+        <div className="flex-break">
+          <FoodFinder colors={COLORS} foodLocations={foodLocations} />
+          <div style={{ width: "100%" }}>
+            <FoodForm colors={COLORS} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
