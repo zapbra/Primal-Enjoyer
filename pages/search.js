@@ -3,6 +3,7 @@ import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
 import COLORS, { tagColors } from "../Data/colors";
 import SearchBar from "../components/search/SearchBar";
+import { NextSeo } from "next-seo";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
@@ -88,6 +89,10 @@ const Search = ({ articlesFetch, superTags }) => {
       return articles;
     });
   }
+  const SEO = {
+    title: "Raw Primal Search Bar",
+    description: "Search for any topic discussed by Aajonus Vonderplantiz",
+  };
 
   useEffect(() => {
     updateArticles();
@@ -196,32 +201,35 @@ const Search = ({ articlesFetch, superTags }) => {
   }, []);
 
   return (
-    <div className="container">
-      <TopSection>
-        <SectionHalf>
-          <SearchBar
-            text={text}
-            updateText={updateText}
-            removeSearchTag={removeSearchTag}
-            pushTag={pushSearchTag}
-            tags={searchTags}
-            submitSearch={submitSearch}
-            colors={COLORS}
-          />
-        </SectionHalf>
-        <SectionHalf>
-          <TagBox
-            pushSearchTag={pushSearchTag}
-            removeTag={removeTag}
-            tags={filterTags}
-            colors={COLORS}
-          />
-        </SectionHalf>
-      </TopSection>
-      <BottomSection>
-        <SearchResults articles={filterArticles} />
-      </BottomSection>
-    </div>
+    <>
+      <NextSeo {...SEO} />
+      <div className="container">
+        <TopSection>
+          <SectionHalf>
+            <SearchBar
+              text={text}
+              updateText={updateText}
+              removeSearchTag={removeSearchTag}
+              pushTag={pushSearchTag}
+              tags={searchTags}
+              submitSearch={submitSearch}
+              colors={COLORS}
+            />
+          </SectionHalf>
+          <SectionHalf>
+            <TagBox
+              pushSearchTag={pushSearchTag}
+              removeTag={removeTag}
+              tags={filterTags}
+              colors={COLORS}
+            />
+          </SectionHalf>
+        </TopSection>
+        <BottomSection>
+          <SearchResults articles={filterArticles} />
+        </BottomSection>
+      </div>
+    </>
   );
 };
 
