@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import "scrollbar.scss";
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Open+Sans:ital,wght@0,400;0,500;1,300&display=swap");
 $ultra-light-blue: #e9f1fd;
 $light-blue: #d8dde3;
 $dark-blue: #002b67;
@@ -12,12 +13,13 @@ $error-color: red;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Montserrat;
+  font-family: "Open Sans";
 }
 body {
   background: $light-blue;
 }
 p {
+  font-size: 1rem;
   line-height: 1.5;
 }
 .lg-bold {
@@ -43,26 +45,34 @@ p {
   font-size: 18px;
   font-weight: 700;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Archivo;
+}
 
 h1 {
-  font-size: 2.2rem;
+  font-size: 3.052rem;
   color: $dark-blue;
   font-weight: bold;
 }
 h2 {
-  font-size: 1.9rem;
+  font-size: 2.441rem;
   color: $dark-blue;
 }
 h3 {
-  font-size: 1.7rem;
+  font-size: 1.953rem;
   color: $dark-blue;
 }
 h4 {
-  font-size: 1.5rem;
+  font-size: 1.563rem;
   color: $dark-blue;
 }
 h5 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 a {
   text-decoration: none;
@@ -143,6 +153,7 @@ input {
   background-color: $ultra-light-blue;
   font-size: 16px;
   padding: 5px;
+
   &:not(:placeholder-shown) {
     background-color: #fff;
   }

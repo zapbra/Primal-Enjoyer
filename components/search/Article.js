@@ -26,8 +26,9 @@ const TextContent = styled.div`
   background-color: #fefafa;
   display: flex;
   align-items: center;
-
+  overflow: hidden;
   h4 {
+    font-size: 1.2rem;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     width: 90%;

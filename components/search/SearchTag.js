@@ -14,6 +14,7 @@ const TagElem = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  height: 32px;
 `;
 const SearchTag = (props) => {
   return (

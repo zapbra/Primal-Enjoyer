@@ -4,9 +4,9 @@ import SearchTagBox from "./SearchTagBox";
 
 const TagInput = styled.div`
   border: 1px solid black;
-  border-radius: 0.5rem;
   padding: 5px;
-  background-color: ${(props) => props.colors.grey};
+  background-color: ${(props) => props.colors.darkGrey};
+  box-shadow: 0px 5px 25px 3px rgba(0, 0, 0, 0.8);
   input {
     border-radius: 0.25rem;
     border: 1px solid black;

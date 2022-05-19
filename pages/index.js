@@ -1,37 +1,76 @@
-import Head from "next/head";
+import React, { useEffect } from "react";
+import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Layout from "../components/Layout";
-import Introduction from "../components/Introduction";
-import Explore from "../components/explore/index";
-import { GraphQLClient, gql } from "graphql-request";
+import COLORS, { tagColors } from "../Data/colors";
+import SearchBar from "../components/search/SearchBar";
 import { NextSeo } from "next-seo";
-import COLORS from "../Data/colors";
+import TAGS from "../Data/tags";
+import TagBox from "../components/search/TagBox";
+import SearchResults from "../components/search/SearchResults";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass, faTags } from "@fortawesome/free-solid-svg-icons";
 
-const Container = styled.div`
-  display: grid;
-  grid-template-areas: "left left left right";
+import { useState } from "react";
+const SearchCont = styled.div`
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: 20px;
+`;
+const TopSection = styled.div`
+  display: flex;
   gap: 2rem;
-  margin-left: 5%;
-  margin-right: -5%;
-  @media only screen and (max-width: 1199px) {
-    grid-template-areas:
-      "right right right right"
-      "left left left left";
-    margin: 2%;
-  }
-  @media only screen and (max-width: 991x) {
-    margin: 0;
+  @media only screen and (max-width: 365px) {
+    flex-direction: column;
   }
 `;
-const Left = styled.div`
-  grid-area: left;
+const SectionHalf = styled.div`
+  flex: 1;
+  h2 {
+    text-shadow: 2px 2px 5px rgba(1, 1, 1, 0.5);
+  }
 `;
 
-const Right = styled.div`
-  grid-area: right;
+const BottomSection = styled.div`
+  margin-top: 3rem;
 `;
+
+const SubTitle = styled.div`
+  display: inline-block;
+
+  padding: 0.5rem 1rem;
+  border: 2px solid ${(props) => props.colors.grey};
+  background-color: ${(props) => props.colors.darkBlue};
+  .cont {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .color {
+    * {
+      color: ${(props) => props.colors.grey};
+    }
+  }
+  &.search {
+    h3 {
+      color: white;
+      font-weight: 400;
+    }
+  }
+  &.tags {
+    background-color: ${(props) => props.colors.grey};
+    border: 2px solid ${(props) => props.colors.darkBlue};
+    h3 {
+      font-weight: 400;
+    }
+    .color {
+      * {
+        color: ${(props) => props.colors.darkBlue};
+      }
+    }
+  }
+`;
+
 export const getStaticProps = async () => {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
@@ -40,47 +79,219 @@ export const getStaticProps = async () => {
     },
   });
   const query = gql`
-    query myQuery {
-      selfArticles(last: 8) {
+    query {
+      articles(first: 5000) {
         title
-        briefTitle
-        description
         coverImage {
           url
         }
+
+        tags {
+          ... on Tag {
+            text
+          }
+        }
+      }
+      tags(first: 200) {
+        text
       }
     }
   `;
-
   const data = await graphQLClient.request(query);
-  const articles = data.selfArticles;
-
+  const articlesFetch = data.articles;
+  const superTags = data.tags;
   return {
     props: {
-      articles,
+      articlesFetch,
+      superTags,
     },
   };
 };
 
-export default function Home({ articles }) {
+const Search = ({ articlesFetch, superTags }) => {
+  console.log(articlesFetch);
+  const [tags, setTags] = React.useState([]);
+  const [searchTags, setSearchTags] = React.useState([]);
+  const [text, setText] = React.useState("");
+  const [filterTags, setFilterTags] = React.useState([]);
+  const [articles, setArticles] = useState(articlesFetch);
+  const [filterArticles, setFilterArticles] = React.useState(articlesFetch);
+
+  function updateArticles() {
+    setFilterArticles((prevArticles) => {
+      const articles = articlesFetch.filter((article) => {
+        return searchTags.every((tag) => {
+          return article.tags.some((artTag) => {
+            return artTag.text === tag.title;
+          });
+        });
+      });
+      return articles;
+    });
+  }
   const SEO = {
-    title: "Raw Primal Diet Introduction",
-    description:
-      "How to do the Raw Primal Diet and what is the Raw Primal Diet",
+    title: "Raw Primal Search Bar",
+    description: "Search for any topic discussed by Aajonus Vonderplantiz",
   };
+
+  useEffect(() => {
+    updateArticles();
+  }, [filterTags, searchTags]);
+
+  function submitSearch(e) {
+    e.preventDefault();
+    let id = filterTags[0].id;
+
+    removeTag(id);
+    setText((prevText) => {
+      return "";
+    });
+  }
+
+  function generateColor() {
+    return tagColors[Math.floor(Math.random() * tagColors.length)];
+  }
+  function findClosestTag() {
+    setFilterTags((prevTags) => {
+      return tags.filter((tag) => {
+        return tag.title.includes(text);
+      });
+    });
+  }
+
+  function updateText(e) {
+    let val = e.currentTarget.value;
+    setText((prevText) => {
+      return val;
+    });
+  }
+  React.useEffect(() => {
+    findClosestTag();
+  }, [text]);
+
+  function pushSearchTag(tag) {
+    setTags((prevTags) => {
+      return [...prevTags, tag];
+    });
+  }
+  function removeSearchTag(id) {
+    const item = searchTags.find((tag) => {
+      return tag.id === id;
+    });
+    setFilterTags((prevTags) => {
+      return [...prevTags, item];
+    });
+    setTags((prevTags) => {
+      return [...prevTags, item];
+    });
+    setSearchTags((prevTags) => {
+      const tags = prevTags.filter((tag) => {
+        return tag.id !== id;
+      });
+      return [...tags];
+    });
+  }
+
+  function pushSearchTag(tag) {
+    setSearchTags((prevTags) => {
+      return [...prevTags, tag];
+    });
+  }
+
+  function removeTag(id) {
+    const item = tags.find((tag) => {
+      return tag.id === id;
+    });
+    pushSearchTag(item);
+    setTags((prevTags) => {
+      const tags = prevTags.filter((tag) => {
+        return tag.id !== id;
+      });
+      return [...tags];
+    });
+    setFilterTags((prevTags) => {
+      const tags = prevTags.filter((tag) => {
+        return tag.id !== id;
+      });
+      return [...tags];
+    });
+  }
+
+  React.useEffect(() => {
+    setTags((prevTags) => {
+      return superTags.map((tag, index) => {
+        let newTag = {
+          title: tag.text,
+          color: generateColor(),
+          id: `tag-${index + 1}`,
+        };
+        return newTag;
+      });
+    });
+    setFilterTags((prevTags) => {
+      return superTags.map((tag, index) => {
+        let newTag = {
+          title: tag.text,
+          color: generateColor(),
+          id: `tag-${index + 1}`,
+        };
+        return newTag;
+      });
+    });
+  }, []);
+
   return (
     <>
       <NextSeo {...SEO} />
-      <main>
-        <Container>
-          <Left>
-            <Introduction colors={COLORS} />
-          </Left>
-          <Right>
-            <Explore articles={articles} colors={COLORS} />
-          </Right>
-        </Container>
-      </main>
+      <div className="container">
+        <TopSection>
+          <SectionHalf>
+            <SubTitle className="search" colors={COLORS}>
+              <div className="cont">
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  size="xl"
+                  className="color"
+                ></FontAwesomeIcon>
+                <h3>Search</h3>
+              </div>
+            </SubTitle>
+
+            <SearchBar
+              text={text}
+              updateText={updateText}
+              removeSearchTag={removeSearchTag}
+              pushTag={pushSearchTag}
+              tags={searchTags}
+              submitSearch={submitSearch}
+              colors={COLORS}
+            />
+          </SectionHalf>
+          <SectionHalf>
+            <SubTitle className="tags" colors={COLORS}>
+              <div className="cont">
+                <FontAwesomeIcon
+                  icon={faTags}
+                  size="xl"
+                  className="color"
+                ></FontAwesomeIcon>
+                <h3>Tags</h3>
+              </div>
+            </SubTitle>
+            <TagBox
+              pushSearchTag={pushSearchTag}
+              removeTag={removeTag}
+              tags={filterTags}
+              colors={COLORS}
+            />
+          </SectionHalf>
+        </TopSection>
+        <BottomSection>
+          <SearchResults articles={filterArticles} />
+        </BottomSection>
+      </div>
     </>
   );
-}
+};
+
+export default Search;

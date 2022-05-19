@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { nanoid } from "nanoid";
 import SearchTag from "./SearchTag";
 const TagBoxElem = styled.div`
-  background-color: ${(props) => props.colors.grey};
   border-radius: 0.5rem;
 `;
 const TagsCont = styled.div`
@@ -11,10 +10,11 @@ const TagsCont = styled.div`
   overflow: auto;
 `;
 const InputLine = styled.input`
-  width: 75px;
-  height: 25px;
+  width: 100px;
+  height: 32px;
   margin-top: 5px;
   font-weight: bold;
+  border-radius: 0.5rem !important;
 `;
 const SearchTagBox = (props) => {
   const tags = props.tags.map((tag, index) => {

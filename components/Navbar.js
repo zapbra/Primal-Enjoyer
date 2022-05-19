@@ -43,7 +43,7 @@ const NavRight = styled.div`
     }
   }
 `;
-const Title = styled.h1`
+const Title = styled.h2`
   text-shadow: 3px 3px 5px rgba(1, 1, 1, 0.5);
   cursor: pointer;
   line-height: 1;
@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <NavCont>
       <div className="mobile">
-        <Link passHref href="/" clasName="link">
+        <Link passHref href="/introduction" clasName="link">
           <Title>Aajonus World</Title>
         </Link>
       </div>
@@ -66,7 +66,7 @@ const Navbar = () => {
         <Link passHref href="/documents" className="link">
           <h3>Documents</h3>
         </Link>
-        <Link passHref href="/search" className="link">
+        <Link passHref href="/" className="link">
           <h3>Search</h3>
         </Link>
         <div className="mobile-sm">
