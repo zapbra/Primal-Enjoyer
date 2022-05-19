@@ -110,19 +110,20 @@ export const getServerSideProps = async (pageContext) => {
 
   const query = gql`
     query ($pageSlug: String!) {
-      selfArticle(where: { title: $pageSlug }) {
+      article(where: { title: $pageSlug }) {
         title
-        content {
-          raw
-        }
-        date
-        catagory {
-          title
-        }
         coverImage {
           url
         }
-        description
+        audio {
+          url
+        }
+        tags(first: 10) {
+          text
+        }
+        content {
+          raw
+        }
       }
     }
   `;
@@ -130,7 +131,7 @@ export const getServerSideProps = async (pageContext) => {
     pageSlug,
   };
   const data = await graphQLClient.request(query, variables);
-  const article = data.selfArticle;
+  const article = data.article;
 
   return {
     props: {
@@ -140,31 +141,16 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 const slug = ({ article }) => {
+  /*
   const SEO = {
     title: article.title,
     description: article.description,
-  };
+  }; */
+
   return (
     <>
-      <NextSeo {...SEO} />
-      <Article colors={COLORS}>
-        <Header colors={COLORS}>
-          <h1>{article.title}</h1>
-          <p>Published {article.date}</p>
-        </Header>
-        <SubHeader>
-          <div className="article-header">
-            <img src={article.coverImage.url} />
-            <TextBox colors={COLORS} />
-            <CenterText>
-              <h2>{article.description}</h2>
-            </CenterText>
-          </div>
-        </SubHeader>
-        <TextContent colors={COLORS}>
-          <RichText content={article.content.raw} />
-        </TextContent>
-      </Article>
+      {/*<NextSeo {...SEO} />*/}
+      <div>{article.title}</div>
     </>
   );
 };

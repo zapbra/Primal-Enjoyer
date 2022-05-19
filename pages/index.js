@@ -16,9 +16,15 @@ const SearchCont = styled.div`
   background-color: #fff;
   padding: 20px;
 `;
-const TopSection = styled.div`
+const SectionSplit = styled.div`
   display: flex;
+  gap: 3rem;
+`;
+const TopSection = styled.div`
+  flex: 1;
   gap: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
   @media only screen and (max-width: 365px) {
     flex-direction: column;
   }
@@ -31,7 +37,11 @@ const SectionHalf = styled.div`
 `;
 
 const BottomSection = styled.div`
-  margin-top: 3rem;
+  overflow-y: scroll;
+  height: 800px;
+  margin: 0 auto;
+  flex: 1;
+  max-width: 600px;
 `;
 
 const SubTitle = styled.div`
@@ -244,51 +254,53 @@ const Search = ({ articlesFetch, superTags }) => {
     <>
       <NextSeo {...SEO} />
       <div className="container">
-        <TopSection>
-          <SectionHalf>
-            <SubTitle className="search" colors={COLORS}>
-              <div className="cont">
-                <FontAwesomeIcon
-                  icon={faMagnifyingGlass}
-                  size="xl"
-                  className="color"
-                ></FontAwesomeIcon>
-                <h3>Search</h3>
-              </div>
-            </SubTitle>
+        <SectionSplit>
+          <TopSection>
+            <SectionHalf>
+              <SubTitle className="search" colors={COLORS}>
+                <div className="cont">
+                  <FontAwesomeIcon
+                    icon={faMagnifyingGlass}
+                    size="xl"
+                    className="color"
+                  ></FontAwesomeIcon>
+                  <h3>Search</h3>
+                </div>
+              </SubTitle>
 
-            <SearchBar
-              text={text}
-              updateText={updateText}
-              removeSearchTag={removeSearchTag}
-              pushTag={pushSearchTag}
-              tags={searchTags}
-              submitSearch={submitSearch}
-              colors={COLORS}
-            />
-          </SectionHalf>
-          <SectionHalf>
-            <SubTitle className="tags" colors={COLORS}>
-              <div className="cont">
-                <FontAwesomeIcon
-                  icon={faTags}
-                  size="xl"
-                  className="color"
-                ></FontAwesomeIcon>
-                <h3>Tags</h3>
-              </div>
-            </SubTitle>
-            <TagBox
-              pushSearchTag={pushSearchTag}
-              removeTag={removeTag}
-              tags={filterTags}
-              colors={COLORS}
-            />
-          </SectionHalf>
-        </TopSection>
-        <BottomSection>
-          <SearchResults articles={filterArticles} />
-        </BottomSection>
+              <SearchBar
+                text={text}
+                updateText={updateText}
+                removeSearchTag={removeSearchTag}
+                pushTag={pushSearchTag}
+                tags={searchTags}
+                submitSearch={submitSearch}
+                colors={COLORS}
+              />
+            </SectionHalf>
+            <SectionHalf>
+              <SubTitle className="tags" colors={COLORS}>
+                <div className="cont">
+                  <FontAwesomeIcon
+                    icon={faTags}
+                    size="xl"
+                    className="color"
+                  ></FontAwesomeIcon>
+                  <h3>Tags</h3>
+                </div>
+              </SubTitle>
+              <TagBox
+                pushSearchTag={pushSearchTag}
+                removeTag={removeTag}
+                tags={filterTags}
+                colors={COLORS}
+              />
+            </SectionHalf>
+          </TopSection>
+          <BottomSection>
+            <SearchResults articles={filterArticles} />
+          </BottomSection>
+        </SectionSplit>
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Link from "next/link";
 const ArticleCont = styled.div`
   box-shadow: 0 2px 5px 1px rgba(1, 1, 1, 0.5);
   margin-bottom: 3rem;
@@ -38,15 +38,17 @@ const TextContent = styled.div`
 `;
 const Article = (props) => {
   return (
-    <ArticleCont>
-      <div className="flex-one image-cont">
-        <img alt="cover image" src={props.article.coverImage.url} />
-      </div>
+    <Link href={`/article/Athletes Foot`}>
+      <ArticleCont>
+        <div className="flex-one image-cont">
+          <img alt="cover image" src={props.article.coverImage.url} />
+        </div>
 
-      <TextContent className="flex-one">
-        <h4>{props.article.title}</h4>
-      </TextContent>
-    </ArticleCont>
+        <TextContent className="flex-one">
+          <h4>{props.article.title}</h4>
+        </TextContent>
+      </ArticleCont>
+    </Link>
   );
 };
 
