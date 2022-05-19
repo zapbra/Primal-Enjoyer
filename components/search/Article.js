@@ -38,7 +38,7 @@ const TextContent = styled.div`
 `;
 const Article = (props) => {
   return (
-    <Link href={`/article/Athletes Foot`}>
+    <Link href={`/article/${props.article.title}`}>
       <ArticleCont>
         <div className="flex-one image-cont">
           <img alt="cover image" src={props.article.coverImage.url} />

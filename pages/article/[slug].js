@@ -2,102 +2,11 @@ import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { NextSeo } from "next-seo";
-import COLORS from "../../Data/colors";
-const Article = styled.div`
-  background-color: #fff;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px 5px rgba(1, 1, 1, 0.5);
-  border-radius: 1rem;
-  padding: 10px;
-  h1 {
-    text-align: center;
-  }
-  .block {
-    width: 100%;
-    height: 2rem;
-    background-color: ${(props) => props.colors.ultraLightBlue};
-  }
-  .article-description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    p {
-      padding: 10px;
-      border-top: 2px solid black;
-      border-bottom: 2px solid black;
-    }
-  }
-`;
-const CenterText = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding-right: 2%;
-  text-align: center;
-`;
-const TextBox = styled.div`
-  position: absolute;
-  width: 96%;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 50%;
-  background-color: ${(props) => props.colors.lightGrey};
-  opacity: 70%;
-  @media only screen and (max-width: 550px) {
-    height: 80%;
-  }
-`;
-const Header = styled.header`
-  p {
-    color: ${(props) => props.colors.darkBlue};
-    font-style: italic;
-  }
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid ${(props) => props.colors.darkBlue};
-`;
-const SubHeader = styled.div`
-  box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  padding: 2% 2%;
-  position: relative;
-
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-  .article-header {
-    height: 250px;
-  }
-`;
-const TextContent = styled.div`
-  background-color: ${(props) => props.colors.lightGrey};
-  border: 1px solid black;
-  border-radius: 0.5rem;
-  padding: 10px;
-  ul {
-    padding-left: 1rem;
-  }
-  li {
-    margin-bottom: 1rem;
-  }
-  img {
-    width: 100%;
-    height: auto;
-  }
-  p {
-    margin-bottom: 1rem;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    margin-bottom: 1rem;
-  }
-`;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTags, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import COLORS, { tagColors } from "../../Data/colors";
+import { nanoid } from "nanoid";
+import GetRelatedArticles from "../../Functions/index";
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
@@ -125,6 +34,21 @@ export const getServerSideProps = async (pageContext) => {
           raw
         }
       }
+      articles {
+        title
+        coverImage {
+          url
+        }
+        audio {
+          url
+        }
+        tags(first: 10) {
+          text
+        }
+        content {
+          raw
+        }
+      }
     }
   `;
   const variables = {
@@ -132,25 +56,110 @@ export const getServerSideProps = async (pageContext) => {
   };
   const data = await graphQLClient.request(query, variables);
   const article = data.article;
+  const articles = data.articles;
 
   return {
     props: {
       article,
+      articles,
     },
   };
 };
 
-const slug = ({ article }) => {
-  /*
+const Grid = styled.div`
+  display: grid;
+  grid-template-areas: "tags audio audio related";
+`;
+
+const Tags = styled.div`
+  box-shadow: 0px 5px 25px 3px rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+  border: 1px solid ${(props) => props.colors.darkBlue};
+  .tag-title {
+    border-bottom: 1px solid ${(props) => props.colors.darkBlue};
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .tag-list {
+    padding: 1rem;
+    background: ${(props) => props.colors.grey};
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 1rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`;
+const Tag = styled.div`
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  background: ${(props) => props.color};
+  border: 1px solid ${(props) => props.colors.darkBlue};
+  border-radius: 1rem;
+`;
+
+const Related = styled.div`
+  border-radius: 1rem;
+  box-shadow: 0px 5px 25px 3px rgba(0, 0, 0, 0.8);
+  border: 1px solid ${(props) => props.colors.darkBlue};
+  .related-title {
+    border-radius: 1rem 1rem 0 0;
+    text-align: center;
+    background-color: #fff;
+    border-bottom: 1px solid ${(props) => props.colors.darkBlue};
+  }
+  .related-list {
+    background: ${(props) => props.colors.grey};
+  }
+  .related-article {
+  }
+  .related-line {
+    border-bottom: 1px solid ${(props) => props.colors.darkBlue};
+    padding: 1rem 0.5rem;
+  }
+`;
+
+const slug = ({ article, articles }) => {
+  function generateColor() {
+    return tagColors[Math.floor(Math.random() * tagColors.length)];
+  }
   const SEO = {
     title: article.title,
     description: article.description,
-  }; */
+  };
+
+  const tagElems = article.tags.map((tag) => {
+    return (
+      <Tag key={nanoid()} colors={COLORS} color={generateColor()}>
+        <p>{tag.text}</p>
+      </Tag>
+    );
+  });
+
+  const relatedArticles = GetRelatedArticles(articles, article.tags);
 
   return (
     <>
       {/*<NextSeo {...SEO} />*/}
-      <div>{article.title}</div>
+      <div className="container">
+        <h2>{article.title}</h2>
+        <Grid>
+          <Tags colors={COLORS}>
+            <div className="tag-title">
+              <h3>Tags</h3>
+              <FontAwesomeIcon icon={faTags} size="2xl"></FontAwesomeIcon>
+            </div>
+            <div className="tag-list">{tagElems}</div>
+          </Tags>
+          <Related colors={COLORS}>
+            <div className="related-title">
+              <h3>Related</h3>
+            </div>
+            <div className="related-list"></div>
+          </Related>
+        </Grid>
+      </div>
     </>
   );
 };
