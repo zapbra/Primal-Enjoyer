@@ -18,10 +18,12 @@ const GetRelatedArticles = (data, preTags) => {
     const sortRelated = related.sort((a, b) => {
       return a.length - b.length;
     });
+
     const finalRelated = sortRelated.filter((related) => {
       return related.length > 3;
     });
-    return finalRelated;
+
+    return finalRelated[0].slice(0, 4);
   } else {
     const finalRelated = related[0];
     return finalRelated;

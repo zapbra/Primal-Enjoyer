@@ -7,6 +7,7 @@ import { faTags, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import COLORS, { tagColors } from "../../Data/colors";
 import { nanoid } from "nanoid";
 import GetRelatedArticles from "../../Functions/index";
+import Link from "next/link";
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
@@ -75,11 +76,14 @@ const Tags = styled.div`
   box-shadow: 0px 5px 25px 3px rgba(0, 0, 0, 0.8);
   border-radius: 1rem;
   border: 1px solid ${(props) => props.colors.darkBlue};
+  background: ${(props) => props.colors.grey};
   .tag-title {
+    border-radius: 1rem 1rem 0 0;
     border-bottom: 1px solid ${(props) => props.colors.darkBlue};
     display: flex;
     justify-content: center;
     gap: 0.5rem;
+    background: #fff;
   }
   .tag-list {
     padding: 1rem;
@@ -111,16 +115,25 @@ const Related = styled.div`
   }
   .related-list {
     background: ${(props) => props.colors.grey};
+    border-radius: 0 0 1rem 1rem;
   }
   .related-article {
   }
   .related-line {
     border-bottom: 1px solid ${(props) => props.colors.darkBlue};
     padding: 1rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    &:nth-of-type(4) {
+      border-radius: 0 0 1rem 1rem;
+    }
   }
 `;
 
 const slug = ({ article, articles }) => {
+  const relatedArticles = GetRelatedArticles(articles, article.tags);
+
   function generateColor() {
     return tagColors[Math.floor(Math.random() * tagColors.length)];
   }
@@ -136,9 +149,16 @@ const slug = ({ article, articles }) => {
       </Tag>
     );
   });
-
-  const relatedArticles = GetRelatedArticles(articles, article.tags);
-
+  const relatedElems = relatedArticles.map((article) => {
+    return (
+      <Link href={`/article/${article.title}`}>
+        <div className="related-line">
+          <p>{article.title}</p>
+          <FontAwesomeIcon icon={faArrowRight} size="lg"></FontAwesomeIcon>
+        </div>
+      </Link>
+    );
+  });
   return (
     <>
       {/*<NextSeo {...SEO} />*/}
@@ -156,7 +176,7 @@ const slug = ({ article, articles }) => {
             <div className="related-title">
               <h3>Related</h3>
             </div>
-            <div className="related-list"></div>
+            <div className="related-list">{relatedElems}</div>
           </Related>
         </Grid>
       </div>
