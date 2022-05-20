@@ -69,7 +69,7 @@ const Cont = styled.div`
   top: 25%;
   transform: translate(-50%, -50%);
 `;
-const Audio = ({ onChange, percentage }) => {
+const Slider = ({ onChange, percentage }) => {
   const [position, setPosition] = useState(0);
   const [marginLeft, setMarginLeft] = useState(0);
   const [progressBarWidth, setProgressBarWidth] = useState(0);
@@ -110,6 +110,7 @@ const Audio = ({ onChange, percentage }) => {
           ref={rangeRef}
           step="0.01"
           className="range"
+          value={position}
           onChange={onChange}
         />
       </Slider>
@@ -117,4 +118,4 @@ const Audio = ({ onChange, percentage }) => {
   );
 };
 
-export default Audio;
+export default Slider;
