@@ -1,15 +1,22 @@
 import styled from "styled-components";
-import RelatedArticles from "../Functions/index";
-import Slider from "../components/audio/Slider";
+
+import Slider from "./Slider";
 import { useState, useRef } from "react";
-import ControlPanel from "../components/audio/ControlPanel";
+import ControlPanel from "./ControlPanel";
 
 const SliderCont = styled.div`
+  padding: 2rem;
   border: 1px solid black;
   background-color: #d8dde3;
   border-radius: 1rem;
+  grid-area: audio;
+  max-width: 500px;
+  height: 200px;
+  margin: auto;
+  width: 100%;
+  background: #002b67;
 `;
-const Audio = () => {
+const Audio = ({ file }) => {
   const [percentage, setPercentage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -52,7 +59,7 @@ const Audio = () => {
       <Slider onChange={onChange} percentage={percentage} />
       <audio
         ref={audioRef}
-        src="/Ionizers.mp3"
+        src={file}
         onLoadedData={(e) => {}}
         onTimeUpdate={getCurrDuration}
       ></audio>

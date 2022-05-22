@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const SliderElem = styled.div`
+  position: relative;
+
   &::before {
     content: "";
     background-color: white;
@@ -62,13 +64,8 @@ const SliderElem = styled.div`
   }
 `;
 
-const Cont = styled.div`
-  width: 500px;
-  position: absolute;
-  left: 50%;
-  top: 25%;
-  transform: translate(-50%, -50%);
-`;
+const Cont = styled.div``;
+
 const Slider = ({ onChange, percentage }) => {
   const [position, setPosition] = useState(0);
   const [marginLeft, setMarginLeft] = useState(0);

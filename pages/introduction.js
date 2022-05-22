@@ -72,14 +72,9 @@ export default function Home({ articles }) {
     <>
       <NextSeo {...SEO} />
       <main>
-        <Container>
-          <Left>
-            <Introduction colors={COLORS} />
-          </Left>
-          <Right>
-            <Explore articles={articles} colors={COLORS} />
-          </Right>
-        </Container>
+        <div>
+          <Introduction colors={COLORS} />
+        </div>
       </main>
     </>
   );

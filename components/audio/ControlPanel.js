@@ -12,6 +12,9 @@ const Timer = styled.div`
   font-size: 10px;
   font-weight: 200;
   color: rgb(196, 196, 196);
+  p {
+    color: #f9f9f9;
+  }
 `;
 
 const ControlPanel = ({ play, isPlaying, duration, currentTime }) => {
@@ -46,9 +49,13 @@ const ControlPanel = ({ play, isPlaying, duration, currentTime }) => {
 
   return (
     <ControlElem>
-      <Timer>{secondsToHms(currentTime)}</Timer>
+      <Timer>
+        <p>{secondsToHms(currentTime)}</p>
+      </Timer>
       <Button play={play} isPlaying={isPlaying}></Button>
-      <Timer>{secondsToHms(duration)}</Timer>
+      <Timer>
+        <p>{secondsToHms(duration)}</p>
+      </Timer>
     </ControlElem>
   );
 };

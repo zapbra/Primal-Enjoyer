@@ -29,10 +29,9 @@ const Article = styled.article`
       font-size: 18px;
       margin-bottom: 1rem;
     }
-    p.header {
-      font-size: 20px;
-      font-weight: 600;
+    .header {
       border-bottom: 1px solid ${(props) => props.colors.darkBlue};
+      margin-bottom: 1rem;
     }
     li {
       p {
@@ -43,16 +42,15 @@ const Article = styled.article`
 `;
 
 const BulletPoint = styled.div`
+  h3 {
+    padding: 0;
+    background: #e9f1fd;
+    border: 1px solid black;
+    padding: 2px;
+    margin-bottom: 1rem;
+  }
   p {
     padding-left: 1rem;
-    &:nth-of-type(1) {
-      font-weight: bold;
-      font-size: 20px;
-      padding: 0;
-      background: #e9f1fd;
-      border: 1px solid black;
-      padding: 2px;
-    }
   }
 `;
 
@@ -68,7 +66,7 @@ const Introduction = (props) => {
             <h1>Introduction</h1>
           </div>
           <div className="content">
-            <p className="header">What Is This Site?</p>
+            <h3 className="header">What Is This Site?</h3>
             <p>
               This is the unoffical Raw Primal Diet website. Sharing many
               articles with Aajonus's first hand knowledge. Aajonus's
@@ -76,7 +74,7 @@ const Introduction = (props) => {
               sharing my experience with the diet and provide some of my
               experimentation.
             </p>
-            <p className="header">Learn More</p>
+            <h3 className="header">Learn More</h3>
             <p>
               Feel free to browse many of the recent articles, read the pure
               documentation, take the free course (unfinished) or search for any
@@ -89,11 +87,11 @@ const Introduction = (props) => {
             <h1>What Is The Raw Primal Diet</h1>
           </div>
           <div className="content">
-            <p>
+            <h4 className="mar-bottom-one">
               It is a diet completely consisting of raw meat (beef, chicken,
               pork), raw dairy, eggs and vegetable juices.
-            </p>
-            <p className="header">Whats The Logic?</p>
+            </h4>
+            <h3 className="header">Whats The Logic?</h3>
             <p>
               The logic behind it is when you cook foods the enzymes, proteins,
               fats, and nutrients are damaged or destroyed. Advanced glycation
@@ -102,7 +100,7 @@ const Introduction = (props) => {
               fruit or especially grains leads to a buildup of AGES (advanced
               glycation end-products) in the process of using sugar for energy.
             </p>
-            <p className="header">Bacteria</p>
+            <h3 className="header">Bacteria</h3>
             <p>
               Raw uncooked meats, dairy, and eggs are also much higher in
               beneficial bacteria to help your cells function and feed the
@@ -110,7 +108,7 @@ const Introduction = (props) => {
               that it will make you feel much happier because you are feeding
               your body what it needs.
             </p>
-            <p className="header">Diet History</p>
+            <h3 className="header">Diet History</h3>
             <p>
               Humans originated on raw meat many “hundreds of thouands” of years
               ago and no other animal eats cooked foods except humans. No tribes
@@ -127,7 +125,7 @@ const Introduction = (props) => {
               By eating proteins, and fats in their raw state, you can preserve
               the nutrients
             </p>
-            <p className="header">Macronutrients</p>
+            <h3 className="header">Macronutrients</h3>
             <p>
               By eating a diet of 15-20% protein, 75-80%fat, an 5% carbohydrates
               you will reduce the production of advanced glycation end products.
@@ -141,7 +139,7 @@ const Introduction = (props) => {
               help use the fat for fuel, aid in detox and help digest the
               proteins.
             </p>
-            <p className="header">Creator</p>
+            <h3 className="header">Creator</h3>
             <p>
               Officially created by Aajonus Vonderplanitz in 1997 after his
               release of the book, “We Want To Live”. He had already been
@@ -157,29 +155,45 @@ const Introduction = (props) => {
           </div>
           <div className="content">
             <BulletPoint>
-              <p>
+              <h3>
                 (1) Read The Book "We Want To Live", By Aajonus Vonderplanitz.
-              </p>
+              </h3>
               <p>
-                Linked here is the PDF version of We Want To Live. You don’t
-                need to read the whole thing, but it is a good introduction to
-                what the diet is and how it can help you.
+                Linked here is the{" "}
+                <a
+                  href="https://drive.google.com/drive/u/0/folders/1bvHKfS5LA9aG6yK5yEYMIlnLluZ-riY7"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  PDF version of We Want To Live
+                </a>
+                . You don’t need to read the whole thing, but it is a good
+                introduction to what the diet is and how it can help you.
               </p>
             </BulletPoint>
 
             <BulletPoint>
-              <p>(2) Listen To The Aajonus Workshop.</p>
+              <h3>(2) Listen To The Aajonus Workshop.</h3>
               <p>
-                This is a video of one of the many Aajonus Vonderplanitz
-                workshops. It’s best to listen right from the source and he will
-                teach you must more than I will be able to. It goes into
-                parasites, cooked vs raw foods, bacteria, and how to do the diet
-                correctly.
+                This is a{" "}
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                  href="https://www.youtube.com/watch?v=6eEOgEch3q4&t=6687s&ab_channel=MikaelM%C3%A4ntysalo"
+                >
+                  video
+                </a>{" "}
+                of one of the many Aajonus Vonderplanitz workshops. It’s best to
+                listen right from the source and he will teach you must more
+                than I will be able to. It goes into parasites, cooked vs raw
+                foods, bacteria, and how to do the diet correctly.
               </p>
             </BulletPoint>
 
             <BulletPoint>
-              <p>(3) Listen To Atleast One Q&A. (optional)</p>
+              <h3>(3) Listen To Atleast One Q&A. (optional)</h3>
 
               <p>
                 By This point you are ready to eat raw meat{" "}
@@ -197,6 +211,7 @@ const Introduction = (props) => {
                 <a
                   rel="noreferrer"
                   target="_blank"
+                  className="link"
                   href="https://www.youtube.com/channel/UCdHSzt83x7LjGcdNTJu2LSA?app=desktop"
                 >
                   Mantysalo Youtube
@@ -209,13 +224,13 @@ const Introduction = (props) => {
             </BulletPoint>
 
             <BulletPoint>
-              <p>(4) Find Farms Near You or a Good Quality Butcher</p>
+              <h3>(4) Find Farms Near You or a Good Quality Butcher</h3>
               <p>
                 Feel free to read this article <b>-insert article-</b> on how to
                 find farms near you or this webpage <b>-insert webpage-</b> with
                 all the online resources to find farms near you
               </p>
-              <p className="header">Google</p>
+              <h3 className="header">Google</h3>
               <p>
                 Just literally look up organic/grass fed farms near me,
                 organic/grass fed butcher near me. Worst case scenario, you can
@@ -224,13 +239,13 @@ const Introduction = (props) => {
                 find the best quality you can. Also, ask your farmer about
                 people they know.
               </p>
-              <p className="header">Ask Questions</p>
+              <h3 className="header">Ask Questions</h3>
               <p>
                 Don't feel bad to ask questions and possibly stop purchasing
                 from certain farmers if they don't fit your criteria. Product
                 quality is driven by consumer demand.
               </p>
-              <p className="header">Grocery Store</p>
+              <h3 className="header">Grocery Store</h3>
               <p>
                 The only problem with buying from the grocery store is you can't
                 verify the quality. It's often quite old and sprayed with
@@ -251,9 +266,9 @@ const Introduction = (props) => {
               meal. Here is a good steak tartare recipe <b>-recipe link -</b>
             </p>
             <p className="border-bottom">
-              <b>
+              <h3>
                 Some foods which should be easy to get started with include...
-              </b>
+              </h3>
             </p>
             <ul>
               <li>
