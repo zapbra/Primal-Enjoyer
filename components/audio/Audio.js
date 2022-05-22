@@ -9,7 +9,7 @@ const SliderCont = styled.div`
   background-color: #d8dde3;
   border-radius: 1rem;
 `;
-const Testing = () => {
+const Audio = () => {
   const [percentage, setPercentage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -67,4 +67,4 @@ const Testing = () => {
   );
 };
 
-export default Testing;
+export default Audio;

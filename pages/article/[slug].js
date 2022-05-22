@@ -1,12 +1,13 @@
 import { gql, GraphQLClient } from "graphql-request";
 import styled from "styled-components";
+import GetRelatedArticles from "../../Functions/index";
+import Audio from "../../components/audio/Audio";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { NextSeo } from "next-seo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTags, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import COLORS, { tagColors } from "../../Data/colors";
 import { nanoid } from "nanoid";
-import GetRelatedArticles from "../../Functions/index";
 import Link from "next/link";
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
@@ -172,6 +173,7 @@ const slug = ({ article, articles }) => {
             </div>
             <div className="tag-list">{tagElems}</div>
           </Tags>
+          <Audio />
           <Related colors={COLORS}>
             <div className="related-title">
               <h3>Related</h3>
