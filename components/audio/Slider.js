@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-const Slider = styled.div`
+const SliderElem = styled.div`
   &::before {
     content: "";
     background-color: white;
@@ -90,7 +90,7 @@ const Slider = ({ onChange, percentage }) => {
   }, [percentage]);
   return (
     <Cont>
-      <Slider>
+      <SliderElem>
         <div
           className="progress-bar-cover"
           style={{
@@ -113,7 +113,7 @@ const Slider = ({ onChange, percentage }) => {
           value={position}
           onChange={onChange}
         />
-      </Slider>
+      </SliderElem>
     </Cont>
   );
 };

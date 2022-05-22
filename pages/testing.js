@@ -1,7 +1,10 @@
+import styled from 'styled-components';
 import RelatedArticles from "../Functions/index";
 import Slider from "../components/audio/Slider";
 import { useState, useRef } from "react";
+import ControlPanel from "../components/audio/ControlPanel";
 
+const 
 const Testing = () => {
   const [percentage, setPercentage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -28,7 +31,6 @@ const Testing = () => {
 
   const play = () => {
     const audio = audioRef.current;
-    audio.volume = 0.1;
 
     if (!isPlaying) {
       setIsPlaying(true);
@@ -41,16 +43,17 @@ const Testing = () => {
     }
   };
 
+
+
   return (
-    <>
-      <Audio onChange={onChange} percentage={percentage} />
+    <SliderCont>
+      <Slider onChange={onChange} percentage={percentage} />
       <audio
         ref={audioRef}
         src="/Ionizers.mp3"
         onLoadedData={(e) => {}}
         onTimeUpdate={getCurrDuration}
       ></audio>
-      <button onClick={play}>Play</button>
 
       <ControlPanel
         play={play}
@@ -58,7 +61,7 @@ const Testing = () => {
         duration={duration}
         currentTime={currentTime}
       />
-    </>
+    </SliderCont>
   );
 };
 
