@@ -119,14 +119,19 @@ export const getStaticProps = async () => {
 };
 
 const Search = ({ articlesFetch, superTags }) => {
-  console.log(articlesFetch);
   const [tags, setTags] = React.useState([]);
   const [searchTags, setSearchTags] = React.useState([]);
   const [text, setText] = React.useState("");
   const [filterTags, setFilterTags] = React.useState([]);
   const [articles, setArticles] = useState(articlesFetch);
   const [filterArticles, setFilterArticles] = React.useState(articlesFetch);
-
+  const [alphaTags, setAlphaTags] = React.useState(
+    superTags.sort(function (a, b) {
+      var textA = a.text.toUpperCase();
+      var textB = b.text.toUpperCase();
+      return textA < textB ? -1 : textA > textB ? 1 : 0;
+    })
+  );
   function updateArticles() {
     setFilterArticles((prevArticles) => {
       const articles = articlesFetch.filter((article) => {
@@ -229,7 +234,7 @@ const Search = ({ articlesFetch, superTags }) => {
 
   React.useEffect(() => {
     setTags((prevTags) => {
-      return superTags.map((tag, index) => {
+      return alphaTags.map((tag, index) => {
         let newTag = {
           title: tag.text,
           color: generateColor(),
@@ -239,7 +244,7 @@ const Search = ({ articlesFetch, superTags }) => {
       });
     });
     setFilterTags((prevTags) => {
-      return superTags.map((tag, index) => {
+      return alphaTags.map((tag, index) => {
         let newTag = {
           title: tag.text,
           color: generateColor(),

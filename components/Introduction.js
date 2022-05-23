@@ -226,9 +226,27 @@ const Introduction = (props) => {
             <BulletPoint>
               <h3>(4) Find Farms Near You or a Good Quality Butcher</h3>
               <p>
-                Feel free to read this article <b>-insert article-</b> on how to
-                find farms near you or this webpage <b>-insert webpage-</b> with
-                all the online resources to find farms near you
+                Feel free to read this article on how to find farms near you{" "}
+                <a
+                  href="https://www.localfarmmarkets.org/COnefarmmarkets.php"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  {" "}
+                  Local Food Markets
+                </a>{" "}
+                or this webpage
+                <a
+                  href="https://www.realmilk.com/raw-milk-finder/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  {" "}
+                  Raw Milk Finder
+                </a>{" "}
+                with all the online resources to find farms near you
               </p>
               <h3 className="header">Google</h3>
               <p>
@@ -303,7 +321,7 @@ const Introduction = (props) => {
               </li>
             </ul>
             <p className="border-bottom">
-              <b>Some advanced foods you may not be ready for...</b>
+              <h3>Some advanced foods you may not be ready for...</h3>
             </p>
             <ul>
               <li>

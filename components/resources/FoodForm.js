@@ -8,6 +8,9 @@ const Container = styled.div`
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
   border-radius: 0.5rem;
 
+  h3 {
+    text-align: center;
+  }
   span {
     font-weight: 500;
   }
@@ -17,9 +20,12 @@ const Container = styled.div`
     width: 100%;
     height: 100px;
     border: 1px solid black;
+    font-size: 20px;
   }
   input {
-    width: 175px;
+    width: 300px;
+    height: 48px;
+    font-size: 20px;
   }
   .title-unique {
     border-bottom: 2px solid black;
@@ -36,8 +42,13 @@ const Container = styled.div`
     border-bottom: 1px solid black;
     padding-bottom: 0.5rem;
 
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 1rem;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 `;
 
@@ -54,13 +65,12 @@ const ContentHolder = styled.div`
 const FoodForm = (props) => {
   const form = useRef();
   const [formData, setFormData] = useState({
-    name: "",
     country: "",
     state: "",
     city: "",
     farm: "",
     email: "",
-    phone: "",
+
     description: "",
   });
   function submitFood(e) {
@@ -89,13 +99,12 @@ const FoodForm = (props) => {
 
     setFormData((prevForm) => {
       return {
-        name: "",
         country: "",
         state: "",
         city: "",
         farm: "",
         email: "",
-        phone: "",
+
         description: "",
       };
     });
@@ -118,30 +127,15 @@ const FoodForm = (props) => {
       </div>
       <ContentHolder>
         <div className="text-box">
-          <p>
-            I can’t find all the food in the entire world. Even many states I
-            have no idea where to find what. Please share some places to get
-            high quality products near you or somewhere you have travelled in
-            the past so people can have access to them. Feel free to link your
-            name or instagram and I’ll give you credit. Or leave it anonymous
-          </p>
+          <h3 className="red">
+            Share places near you to find high quality food. No matter where you
+            are located and I'll add it to the food finder.
+          </h3>
         </div>
         <form onSubmit={submitFood} ref={form}>
           <div className="content-line">
             <div>
-              <p className="md-bold">Your Name or Instagram (optional)</p>
-              <input
-                name="name"
-                value={formData.name}
-                type="text"
-                placeholder="Name or Instagram"
-                onChange={updateForm}
-              />
-            </div>
-          </div>
-          <div className="content-line">
-            <div>
-              <p className="md-bold">Country</p>
+              <h3>Country</h3>
               <input
                 type="text"
                 name="country"
@@ -153,7 +147,7 @@ const FoodForm = (props) => {
             </div>
 
             <div>
-              <p className="md-bold">State/Province</p>
+              <h3>State/Province</h3>
               <input
                 name="state"
                 value={formData.state}
@@ -165,7 +159,7 @@ const FoodForm = (props) => {
             </div>
 
             <div>
-              <p className="md-bold">City</p>
+              <h3>City</h3>
               <input
                 name="city"
                 value={formData.vity}
@@ -178,7 +172,7 @@ const FoodForm = (props) => {
           </div>
           <div className="content-line">
             <div>
-              <p className="md-bold">Farm/Store/Business Name </p>
+              <h3>Farm/Store/Business Name</h3>
               <input
                 name="farm"
                 value={formData.farm}
@@ -189,12 +183,9 @@ const FoodForm = (props) => {
               />
             </div>
           </div>{" "}
-          <p className="md-bold mar-bottom-one">
-            Farm/Store Contact Info(optional)
-          </p>
           <div className="content-line">
             <div>
-              <p className="md-bold">Email</p>
+              <h3>Email</h3>
               <input
                 name="email"
                 value={formData.email}
@@ -203,22 +194,11 @@ const FoodForm = (props) => {
                 onChange={updateForm}
               />
             </div>
-            <div>
-              <p className="md-bold">Phone</p>
-              <input
-                name="phone"
-                value={formData.phone}
-                type="number"
-                placeholder="Phone #"
-                onChange={updateForm}
-              />
-            </div>
           </div>
           <div className="description">
-            <p className="md-bold">
-              Description -{" "}
-              <span>What do they sell? Organic/grass fed, cheap?</span>
-            </p>
+            <h3>Description</h3>
+            <h5 className="align-center">What products do they sell?</h5>
+
             <textarea
               name="description"
               value={formData.description}
@@ -227,7 +207,7 @@ const FoodForm = (props) => {
             ></textarea>
           </div>
           <button className="submit-btn" type="submit">
-            Submit
+            <h3>Submit</h3>
           </button>
         </form>
       </ContentHolder>

@@ -5,7 +5,9 @@ const colors = {
   darkGrey: "#C4C4C4",
   grey: "#D8DDE3",
   offWhite: "#D8DDE3",
+  white: "#EBF3FF",
   ultraLightBlue: "#E9F1FD",
+  blue: "#0F52BA",
 };
 
 export const tagColors = [
