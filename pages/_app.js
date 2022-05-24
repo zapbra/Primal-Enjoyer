@@ -1,12 +1,8 @@
 import "../styles/globals.scss";
 import { usePanelbear } from "@panelbear/panelbear-nextjs";
 import Layout from "../components/Layout";
-<<<<<<< HEAD
-
-function MyApp({ Component, pageProps }) {
-  usePanelbear;
-=======
 import { NextSeo } from "next-seo";
+
 function MyApp({ Component, pageProps }) {
   usePanelbear("2QcVdyTPC6X");
 
@@ -30,7 +26,7 @@ function MyApp({ Component, pageProps }) {
       ],
     },
   };
->>>>>>> 50a24995b033dc14ad466d2cefafe97709a389ab
+
   return (
     <>
       <NextSeo {...SEO} />
