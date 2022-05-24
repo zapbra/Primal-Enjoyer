@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { nanoid } from "nanoid";
 import COLORS from "../../Data/colors";
 
 const Lines = styled.div`
@@ -27,13 +28,13 @@ const FooterLine = ({ lines }) => {
   const lineElems = lines.map((lines, index) => {
     if (index === 0) {
       return (
-        <Link href={`/${lines[1]}`}>
+        <Link key={nanoid()} href={`/${lines[1]}`}>
           <h3>{lines[0]}</h3>
         </Link>
       );
     } else {
       return (
-        <Link href={`/${lines[1]}`}>
+        <Link key={nanoid()} href={`/${lines[1]}`}>
           <p>{lines[0]}</p>
         </Link>
       );

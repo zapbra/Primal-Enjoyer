@@ -269,6 +269,7 @@ const Search = ({ articlesFetch, superTags }) => {
                     size="xl"
                     className="color"
                   ></FontAwesomeIcon>
+
                   <h3>Search</h3>
                 </div>
               </SubTitle>
@@ -291,6 +292,7 @@ const Search = ({ articlesFetch, superTags }) => {
                     size="xl"
                     className="color"
                   ></FontAwesomeIcon>
+
                   <h3>Tags</h3>
                 </div>
               </SubTitle>

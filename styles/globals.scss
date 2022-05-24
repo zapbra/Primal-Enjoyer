@@ -131,6 +131,16 @@ a {
     color: $light-grey;
   }
 }
+.blue-icon-hover {
+  cursor: pointer;
+  border-radius: 1rem;
+  &:hover {
+    background: white;
+    * {
+      color: blue;
+    }
+  }
+}
 
 .text-lg {
   font-size: 18px;

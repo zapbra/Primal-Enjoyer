@@ -56,7 +56,7 @@ const Navbar = () => {
     <NavCont>
       <div className="mobile">
         <Link passHref href="/introduction" clasName="link">
-          <Title>Aajonus World</Title>
+          <Title>Primal Enjoyer</Title>
         </Link>
       </div>
       <NavRight>
