@@ -1,8 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar";
 import styled from "styled-components";
 import { DefaultSeo } from "next-seo";
 import SEO from "../next.config";
+import Navbar from "./Navbar";
+import Footer from "../components/Footer/index";
 
 const Center = styled.div`
   width: 80%;
@@ -18,6 +19,7 @@ const Layout = ({ children }) => {
       <DefaultSeo {...SEO} />
       <Navbar />
       <Center>{children}</Center>
+      <Footer />
     </>
   );
 };
