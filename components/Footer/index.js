@@ -10,7 +10,7 @@ const FooterElem = styled.div`
   padding: 1rem 2rem;
   display: flex;
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
   justify-content: space-between;
   @media only screen and (max-width: 760px) {
     flex-direction: column;
@@ -41,13 +41,13 @@ const Footer = () => {
       />
       <FooterLine lines={[["Search", ""]]} />
       <FooterLine lines={[["Resources", "resources"]]} />
-      <a href="" target="_blank" rel="noreferrer">
+      <div>
         <FontAwesomeIcon
           icon={faInstagram}
           size="3x"
           className="icon-white blue-icon-hover"
         />
-      </a>
+      </div>
     </FooterElem>
   );
 };

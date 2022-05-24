@@ -3,7 +3,7 @@ import { usePanelbear } from "@panelbear/panelbear-nextjs";
 import Layout from "../components/Layout";
 import { NextSeo } from "next-seo";
 function MyApp({ Component, pageProps }) {
-  usePanelbear(process.env.SITE_ID);
+  usePanelbear("2QcVdyTPC6X");
 
   const SEO = {
     title: "Primal Enjoyer",
