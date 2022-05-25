@@ -168,10 +168,9 @@ const CoverImage = styled.div`
 `;
 
 const TextContent = styled.div`
-  border: 1px solid black;
-  box-shadow: 0px 5px 25px 3px rgba(0, 0, 0, 0.8);
   padding: 1rem;
   max-width: 1000px;
+
   margin: auto;
   p {
     line-height: 2;
