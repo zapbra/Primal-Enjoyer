@@ -177,7 +177,7 @@ const Search = ({ articlesFetch, superTags }) => {
   function updateText(e) {
     let val = e.currentTarget.value;
     setText((prevText) => {
-      return val;
+      return val.toLowerCase();
     });
   }
   React.useEffect(() => {

@@ -8,6 +8,16 @@ function MyApp({ Component, pageProps }) {
     description: "Find Aajonus Vonderplanitz articles through a search bar",
     keywords: ["Aajonus Vonderplanitz", " raw primal", "raw meat"],
     icon: "/favicon.ico",
+    canonical: "https://www.primalenjoyer.com/",
+    images: [
+      {
+        url: "/websitePreview",
+        width: 800,
+        height: 600,
+        alt: "Primal Search",
+        type: "image/png",
+      },
+    ],
   };
   return (
     <>

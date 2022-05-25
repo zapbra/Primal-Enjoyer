@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import Dropdown from "./dropdown/index";
+import DropdownHolder from "./dropdown/DropdownHolder";
+
 const NavCont = styled.nav`
   display: flex;
   height: 70px;
@@ -15,6 +18,9 @@ const NavCont = styled.nav`
     text-shadow: 2px 2px 2px rgba(1, 1, 1, 0.25);
     cursor: pointer;
     padding: 10px;
+    &:nth-of-type(1) {
+      border-left: 1px solid black;
+    }
     &:nth-of-type(2) {
       border-right: 1px solid black;
       border-left: 1px solid black;
@@ -56,16 +62,15 @@ const Navbar = () => {
     <NavCont>
       <div className="mobile">
         <Link passHref href="/introduction" clasName="link">
-          <Title>Aajonus World</Title>
+          <Title>Primal Enjoyer</Title>
         </Link>
       </div>
       <NavRight>
+        <DropdownHolder></DropdownHolder>
         <Link passHref href="/course" className="link">
           <h3>Course</h3>
         </Link>
-        <Link passHref href="/documents" className="link">
-          <h3>Documents</h3>
-        </Link>
+
         <Link passHref href="/" className="link">
           <h3>Search</h3>
         </Link>
