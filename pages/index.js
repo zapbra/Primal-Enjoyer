@@ -7,7 +7,7 @@ import { NextSeo } from "next-seo";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
-
+import { SearchIcon, TagIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 const SearchCont = styled.div`
   border-radius: 1rem;
@@ -65,6 +65,11 @@ const SubTitle = styled.div`
       font-weight: 400;
     }
   }
+  .icon-grey {
+    color: ${(props) => props.colors.grey};
+    width: 30px;
+  }
+
   &.tags {
     background-color: ${(props) => props.colors.grey};
     border: 2px solid ${(props) => props.colors.darkBlue};
@@ -116,7 +121,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Search = ({ articlesFetch, superTags }) => {
+const SearchPage = ({ articlesFetch, superTags }) => {
   const [tags, setTags] = React.useState([]);
   const [searchTags, setSearchTags] = React.useState([]);
   const [text, setText] = React.useState("");
@@ -262,6 +267,7 @@ const Search = ({ articlesFetch, superTags }) => {
             <SectionHalf>
               <SubTitle className="search" colors={COLORS}>
                 <div className="cont">
+                  <SearchIcon className="icon-grey" />
                   <h3>Search</h3>
                 </div>
               </SubTitle>
@@ -279,6 +285,7 @@ const Search = ({ articlesFetch, superTags }) => {
             <SectionHalf>
               <SubTitle className="tags" colors={COLORS}>
                 <div className="cont">
+                  <TagIcon className="icon-blue" />
                   <h3>Tags</h3>
                 </div>
               </SubTitle>
@@ -299,4 +306,4 @@ const Search = ({ articlesFetch, superTags }) => {
   );
 };
 
-export default Search;
+export default SearchPage;

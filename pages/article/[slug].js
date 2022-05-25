@@ -5,7 +5,7 @@ import Audio from "../../components/audio/Audio";
 import Return from "../../components/Buttons/Return";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { NextSeo } from "next-seo";
-
+import { TagIcon, ArrowNarrowRightIcon } from "@heroicons/react/solid";
 import COLORS, { tagColors } from "../../Data/colors";
 import { nanoid } from "nanoid";
 import Link from "next/link";
@@ -151,7 +151,7 @@ const Related = styled.div`
       p {
         color: white;
       }
-      .icon * {
+      .icon-blue {
         color: white;
       }
     }
@@ -202,6 +202,7 @@ const slug = ({ article, articles }) => {
       <Link key={nanoid()} href={`/article/${article.title}`}>
         <div className="related-line">
           <p>{article.title}</p>
+          <ArrowNarrowRightIcon className="icon-blue" />
         </div>
       </Link>
     );
@@ -216,6 +217,7 @@ const slug = ({ article, articles }) => {
           <Tags colors={COLORS}>
             <div className="tag-title">
               <h3>Tags</h3>
+              <TagIcon className="icon-blue" />
             </div>
             <div className="tag-list">{tagElems}</div>
           </Tags>
