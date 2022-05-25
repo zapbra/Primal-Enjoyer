@@ -5,8 +5,7 @@ import Audio from "../../components/audio/Audio";
 import Return from "../../components/Buttons/Return";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { NextSeo } from "next-seo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTags, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 import COLORS, { tagColors } from "../../Data/colors";
 import { nanoid } from "nanoid";
 import Link from "next/link";
@@ -203,12 +202,6 @@ const slug = ({ article, articles }) => {
       <Link key={nanoid()} href={`/article/${article.title}`}>
         <div className="related-line">
           <p>{article.title}</p>
-
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            className="icon"
-            size="lg"
-          ></FontAwesomeIcon>
         </div>
       </Link>
     );
@@ -223,7 +216,6 @@ const slug = ({ article, articles }) => {
           <Tags colors={COLORS}>
             <div className="tag-title">
               <h3>Tags</h3>
-              <FontAwesomeIcon icon={faTags} size="2xl"></FontAwesomeIcon>
             </div>
             <div className="tag-list">{tagElems}</div>
           </Tags>

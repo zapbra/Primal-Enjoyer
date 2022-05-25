@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
 import COLORS from "../../Data/colors";
 
 const Button = styled.div`
@@ -82,11 +81,6 @@ const Return = ({ link, text }) => {
         <h3>
           {shown && "Hide"} {!shown && "Show"}
         </h3>
-        <FontAwesomeIcon
-          icon={faCircleChevronLeft}
-          size="xl"
-          className="icon-white"
-        />
       </div>
     </Button>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { XCircleIcon } from "@heroicons/react/solid";
+import COLORS from "../../Data/colors";
+
 const TagElem = styled.div`
   float: left;
   border: 1px solid black;
@@ -15,16 +16,22 @@ const TagElem = styled.div`
   align-items: center;
   gap: 5px;
   height: 32px;
+  .x-icon {
+    width: 24px;
+    cursor: pointer;
+    &:hover {
+      color: ${(props) => props.colors.white};
+    }
+  }
 `;
 const SearchTag = (props) => {
   return (
-    <TagElem id={props.id} color={props.color}>
+    <TagElem id={props.id} colors={COLORS} color={props.color}>
       {props.title}
-      <FontAwesomeIcon
+      <XCircleIcon
         onClick={() => props.removeSearchTag(props.id)}
-        icon={faCircleXmark}
-        className="icon"
-      ></FontAwesomeIcon>
+        className="x-icon"
+      />
     </TagElem>
   );
 };

@@ -7,8 +7,6 @@ import { NextSeo } from "next-seo";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faTags } from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from "react";
 const SearchCont = styled.div`
@@ -264,11 +262,6 @@ const Search = ({ articlesFetch, superTags }) => {
             <SectionHalf>
               <SubTitle className="search" colors={COLORS}>
                 <div className="cont">
-                  <FontAwesomeIcon
-                    icon={faMagnifyingGlass}
-                    size="xl"
-                    className="color"
-                  ></FontAwesomeIcon>
                   <h3>Search</h3>
                 </div>
               </SubTitle>
@@ -286,11 +279,6 @@ const Search = ({ articlesFetch, superTags }) => {
             <SectionHalf>
               <SubTitle className="tags" colors={COLORS}>
                 <div className="cont">
-                  <FontAwesomeIcon
-                    icon={faTags}
-                    size="xl"
-                    className="color"
-                  ></FontAwesomeIcon>
                   <h3>Tags</h3>
                 </div>
               </SubTitle>
