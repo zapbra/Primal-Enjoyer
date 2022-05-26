@@ -121,6 +121,7 @@ const Aajonus = (props) => {
       <form onSubmit={submitForm} className="input-form">
         <div className="sub-title">
           <h3>Submit a Resource</h3>
+          <p>This hasn't been coded to submit.</p>
         </div>
         <label>
           <p className="md-bold"> Name:</p>
