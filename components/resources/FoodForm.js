@@ -104,7 +104,9 @@ const FoodForm = (props) => {
         city: "",
         farm: "",
         email: "",
+        address: "",
 
+        number: "",
         description: "",
       };
     });
@@ -162,7 +164,7 @@ const FoodForm = (props) => {
               <h3>City</h3>
               <input
                 name="city"
-                value={formData.vity}
+                value={formData.city}
                 required
                 type="text"
                 placeholder="city"
@@ -191,6 +193,31 @@ const FoodForm = (props) => {
                 value={formData.email}
                 type="email"
                 placeholder="Email"
+                onChange={updateForm}
+              />
+            </div>
+          </div>
+          <div className="content-line">
+            <div>
+              <h3>Address</h3>
+              <input
+                name="address"
+                value={formData.address}
+                required
+                type="text"
+                placeholder="Address"
+                onChange={updateForm}
+              />
+            </div>
+          </div>
+          <div className="content-line">
+            <div>
+              <h3>Phone Number (optional)</h3>
+              <input
+                name="number"
+                value={formData.number}
+                type="text"
+                placeholder="Number"
                 onChange={updateForm}
               />
             </div>

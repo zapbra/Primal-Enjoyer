@@ -8,6 +8,9 @@ const colors = {
   white: "#EBF3FF",
   ultraLightBlue: "#E9F1FD",
   blue: "#0F52BA",
+  brightBlue: "#1E90FF",
+  red: "#DC143C",
+  offBlue: "#D6E9FC",
 };
 
 export const tagColors = [
