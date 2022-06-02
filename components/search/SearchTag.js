@@ -16,6 +16,9 @@ const TagElem = styled.div`
   align-items: center;
   gap: 5px;
   height: 32px;
+  p {
+    font-size: 1.25rem;
+  }
   .x-icon {
     width: 24px;
     cursor: pointer;
@@ -27,7 +30,7 @@ const TagElem = styled.div`
 const SearchTag = (props) => {
   return (
     <TagElem id={props.id} colors={COLORS} color={props.color}>
-      {props.title}
+      <p>{props.title}</p>
       <XCircleIcon
         onClick={() => props.removeSearchTag(props.id)}
         className="x-icon"

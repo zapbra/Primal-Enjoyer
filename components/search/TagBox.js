@@ -5,7 +5,7 @@ import Tag from "./Tag";
 const TagBoxElem = styled.div`
   border: 1px solid black;
   box-shadow: 0px 5px 25px 3px rgba(0, 0, 0, 0.8);
-  height: 300px;
+  height: 590px;
   overflow-y: scroll;
 `;
 const TagsCont = styled.div`
