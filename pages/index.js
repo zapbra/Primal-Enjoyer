@@ -93,7 +93,7 @@ export const getStaticProps = async () => {
   });
   const query = gql`
     query {
-      articles(first: 5000) {
+      articles(first: 5001) {
         title
         coverImage {
           url
