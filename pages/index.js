@@ -84,6 +84,15 @@ const SubTitle = styled.div`
     }
   }
 `;
+const Title = styled.div`
+  background-color: ${(props) => props.colors.offBlue};
+  padding: 0.5rem;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.75);
+  h1 {
+    text-align: center;
+  }
+  margin-bottom: 2rem;
+`;
 
 export const getStaticProps = async () => {
   const url = process.env.ENDPOINT;
@@ -262,7 +271,11 @@ const SearchPage = ({ articlesFetch, superTags }) => {
   return (
     <>
       <NextSeo {...SEO} />
+
       <div className="container">
+        <Title colors={COLORS}>
+          <h1>Search By Tag By Clicking Or Typing</h1>
+        </Title>
         <SectionSplit>
           <TopSection>
             <SectionHalf>
