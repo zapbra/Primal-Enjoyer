@@ -24,6 +24,7 @@ const TopSection = styled.div`
   max-width: 400px;
   margin: 0 auto;
   height: 800px;
+
   @media only screen and (max-width: 365px) {
     flex-direction: column;
   }
@@ -38,9 +39,9 @@ const SectionHalf = styled.div`
 const BottomSection = styled.div`
   overflow-y: scroll;
   height: 800px;
+  max-width: 900px;
   margin: 0 auto;
   flex: 1;
-  max-width: 600px;
 `;
 
 const SubTitle = styled.div`
