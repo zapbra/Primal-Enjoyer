@@ -31,7 +31,7 @@ const GetRelatedArticles = (data, preTags) => {
 };
 
 const FakeFunction = () => {
-  console.log("Im Fake!");
+  console.log("Im Fake! as fuck");
 };
 
 export default GetRelatedArticles;
