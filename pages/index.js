@@ -8,6 +8,7 @@ import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
 import { SearchIcon, TagIcon } from "@heroicons/react/solid";
+import Icon from "../components/Buttons/Icon";
 import { useState } from "react";
 const SearchCont = styled.div`
   border-radius: 1rem;
@@ -66,10 +67,6 @@ const SubTitle = styled.div`
       color: white;
       font-weight: 400;
     }
-  }
-  .icon-grey {
-    color: ${(props) => props.colors.grey};
-    width: 30px;
   }
 
   &.tags {
@@ -146,6 +143,7 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     })
   );
+  const articlesLength = filterArticles.length;
   function updateArticles() {
     setFilterArticles((prevArticles) => {
       const articles = articlesFetch.filter((article) => {
@@ -276,6 +274,7 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       <div className="container">
         <Title colors={COLORS}>
           <h1>Search By Tag By Clicking Or Typing</h1>
+          <Icon number={articlesLength}></Icon>
         </Title>
         <SectionSplit>
           <TopSection>
