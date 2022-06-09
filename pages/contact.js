@@ -45,6 +45,7 @@ const contact = () => {
     feedback: "",
     images: [],
   });
+  const form = React.useRef();
 
   function updateForm(e) {
     const value = e.currentTarget.value;
