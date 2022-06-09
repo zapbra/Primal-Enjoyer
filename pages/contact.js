@@ -42,7 +42,7 @@ const contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    feedback: "",
+    suggestion: "",
     images: [],
   });
   const form = React.useRef();
@@ -128,9 +128,9 @@ const contact = () => {
               <h4>What Is Your Suggestion or Feedback? *</h4>
               <textarea
                 required
-                name="feedback"
+                name="suggestion"
                 onChange={updateForm}
-                value={formData.feedback}
+                value={formData.suggestion}
               ></textarea>
             </div>
             <SubmitBtn type="submit"></SubmitBtn>
