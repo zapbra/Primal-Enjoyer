@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import COLORS from "../Data/colors";
+
 const NavCont = styled.nav`
   display: flex;
   height: 70px;
@@ -11,6 +13,16 @@ const NavCont = styled.nav`
   border-bottom: 1px solid black;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.4);
   margin-bottom: 2rem;
+  .white {
+    background-color: #fff;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    &:hover {
+      color: #fff;
+      background-color: ${(props) => props.colors.darkBlue};
+    }
+  }
   h3 {
     text-shadow: 2px 2px 2px rgba(1, 1, 1, 0.25);
     cursor: pointer;
@@ -53,7 +65,7 @@ const Title = styled.h2`
 `;
 const Navbar = () => {
   return (
-    <NavCont>
+    <NavCont colors={COLORS}>
       <div className="mobile">
         <Link passHref href="/introduction" clasName="link">
           <Title>Primal Enjoyer</Title>
@@ -72,7 +84,7 @@ const Navbar = () => {
 
         <div className="mobile-sm">
           <Link passHref href="/contact" className="link">
-            <h3>Contact</h3>
+            <h3 className="white">Contact</h3>
           </Link>
         </div>
       </NavRight>
