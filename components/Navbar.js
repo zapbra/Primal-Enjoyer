@@ -60,18 +60,19 @@ const Navbar = () => {
         </Link>
       </div>
       <NavRight>
-        <Link passHref href="/course" className="link">
-          <h3>Course</h3>
-        </Link>
-        <Link passHref href="/documents" className="link">
-          <h3>Documents</h3>
-        </Link>
         <Link passHref href="/" className="link">
           <h3>Search</h3>
         </Link>
+        <Link passHref href="/catagories" className="link">
+          <h3>Catagories</h3>
+        </Link>
+        <Link passHref href="/resources">
+          <h3>Resources</h3>
+        </Link>
+
         <div className="mobile-sm">
-          <Link passHref href="/resources">
-            <h3>Resources</h3>
+          <Link passHref href="/contact" className="link">
+            <h3>Contact</h3>
           </Link>
         </div>
       </NavRight>
