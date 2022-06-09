@@ -7,6 +7,14 @@ import emailjs, { init } from "@emailjs/browser";
 const Cont = styled.div`
   display: flex;
   background-color: #fff;
+  @media only screen and (max-width: 960px) {
+    flex-direction: column;
+    .form-line {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
   h2,
   h4,
   p {
@@ -25,6 +33,12 @@ const Flex = styled.div`
 
 const TextField = styled.div`
   width: 496px;
+  text-align: center;
+  @media only screen and (max-width: 960px) {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #002b67;
+  }
   p {
     font-size: 20px;
   }
