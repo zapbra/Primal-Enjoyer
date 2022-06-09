@@ -50,7 +50,7 @@ const contact = () => {
   function updateForm(e) {
     const value = e.currentTarget.value;
     const name = e.currentTarget.name;
-    setForm((prevForm) => {
+    setFormData((prevForm) => {
       return {
         ...prevForm,
         [name]: value,
@@ -62,7 +62,7 @@ const contact = () => {
 
     emailjs
       .sendForm(
-        "service_u2eoqnp",
+        "service_3hso67w",
         "template_cxvs4sn",
         form.current,
         "VuMtr83gozV6G7IIc"
