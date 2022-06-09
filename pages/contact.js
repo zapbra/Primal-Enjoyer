@@ -77,6 +77,7 @@ const contact = () => {
       );
 
     clearForm();
+    alert("Thank you for your submission!");
   }
   function clearForm() {
     init("VuMtr83gozV6G7IIc");
@@ -85,7 +86,7 @@ const contact = () => {
       return {
         name: "",
         email: "",
-        feedback: "",
+        suggestion: "",
         images: [],
       };
     });
