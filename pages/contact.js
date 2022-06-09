@@ -52,7 +52,7 @@ const FormElem = styled.form`
   }
 `;
 
-const contact = () => {
+const Contact = () => {
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -156,4 +156,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;
