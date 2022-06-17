@@ -18,6 +18,20 @@ function MyApp({ Component, pageProps }) {
         type: "image/png",
       },
     ],
+    openGraph: {
+      type: "website",
+      locale: "en_IE",
+      url: "https://www.primalenjoyer.com/",
+      site_name: "Primal Enjoyer",
+      images: [
+        {
+          url: "/website.PNG",
+          width: 800,
+          height: 600,
+          alt: "Search Articles",
+        },
+      ],
+    },
   };
   usePanelbear("2QcVdyTPC6X");
   return (
