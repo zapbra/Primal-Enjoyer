@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
     canonical: "https://www.primalenjoyer.com/",
     images: [
       {
-        url: "/websitePreview",
+        url: "website.PNG",
         width: 800,
         height: 600,
         alt: "Primal Search",
