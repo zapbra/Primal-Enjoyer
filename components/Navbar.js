@@ -17,7 +17,7 @@ const NavCont = styled.nav`
     background-color: #fff;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-left: 1px solid black;
     &:hover {
       color: #fff;
       background-color: ${(props) => props.colors.darkBlue};
@@ -73,10 +73,10 @@ const Navbar = () => {
       </div>
       <NavRight>
         <Link passHref href="/" className="link">
-          <h3>Search</h3>
+          <h3 className="white">Search</h3>
         </Link>
-        <Link passHref href="/catagories" className="link">
-          <h3>Catagories</h3>
+        <Link passHref href="/introduction" className="link">
+          <h3>Home</h3>
         </Link>
         <Link passHref href="/resources">
           <h3>Resources</h3>
@@ -84,7 +84,7 @@ const Navbar = () => {
 
         <div className="mobile-sm">
           <Link passHref href="/contact" className="link">
-            <h3 className="white">Contact</h3>
+            <h3>Contact</h3>
           </Link>
         </div>
       </NavRight>

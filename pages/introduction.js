@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Layout from "../components/Layout";
-import Introduction from "../components/Introduction";
+import Introduction from "../components/introduction/index";
 import Explore from "../components/explore/index";
 import { GraphQLClient, gql } from "graphql-request";
 import { NextSeo } from "next-seo";
