@@ -156,6 +156,7 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       return articles;
     });
   }
+  console.log("render");
   const SEO = {
     title: "Raw Primal Search Bar",
     description: "Search for any topic discussed by Aajonus Vonderplantiz",
@@ -196,11 +197,11 @@ const SearchPage = ({ articlesFetch, superTags }) => {
     findClosestTag();
   }, [text]);
 
-  function pushSearchTag(tag) {
+  /*function pushSearchTag(tag) {
     setTags((prevTags) => {
       return [...prevTags, tag];
     });
-  }
+  } NO IDEA */
   function removeSearchTag(id) {
     const item = searchTags.find((tag) => {
       return tag.id === id;
