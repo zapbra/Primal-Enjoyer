@@ -15,7 +15,7 @@ const TagElem = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  height: 32px;
+  min-height: 32px;
   p {
     font-size: 1.25rem;
   }
