@@ -156,7 +156,7 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       return articles;
     });
   }
-  console.log("render");
+
   const SEO = {
     title: "Raw Primal Search Bar",
     description: "Search for any topic discussed by Aajonus Vonderplantiz",
