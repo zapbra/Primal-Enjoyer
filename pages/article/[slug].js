@@ -187,6 +187,25 @@ const slug = ({ article, articles }) => {
   const SEO = {
     title: article.title,
     description: article.description,
+    images: [
+      {
+        url: article.coverImage.url,
+        width: 800,
+        height: 600,
+        alt: "Article Logo",
+        type: "image/png",
+      },
+    ],
+    openGraph: {
+      images: [
+        {
+          url: article.coverImage.url,
+          width: 800,
+          height: 600,
+          alt: "Article Logo",
+        },
+      ],
+    },
   };
 
   const tagElems = article.tags.map((tag) => {
@@ -208,7 +227,7 @@ const slug = ({ article, articles }) => {
   });
   return (
     <>
-      {/*<NextSeo {...SEO} />*/}
+      <NextSeo {...SEO} />
       <Return text="Search" link="" />
       <div className="container">
         <h1 className="align-center">{article.title}</h1>
