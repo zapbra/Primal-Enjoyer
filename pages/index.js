@@ -136,6 +136,7 @@ const SearchPage = ({ articlesFetch, superTags }) => {
   const [filterTags, setFilterTags] = React.useState([]);
   const [articles, setArticles] = useState(articlesFetch);
   const [filterArticles, setFilterArticles] = React.useState(articlesFetch);
+  const [callFilter, setCallFilter] = React.useState([]);
   const [alphaTags, setAlphaTags] = React.useState(
     superTags.sort(function (a, b) {
       var textA = a.text.toUpperCase();
@@ -155,16 +156,15 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       });
       return articles;
     });
+    setCallFilter((prev) => {
+      return [...prev];
+    });
   }
 
   const SEO = {
     title: "Raw Primal Search Bar",
     description: "Search for any topic discussed by Aajonus Vonderplantiz",
   };
-
-  useEffect(() => {
-    updateArticles();
-  }, [filterTags, searchTags]);
 
   function submitSearch(e) {
     e.preventDefault();
@@ -193,9 +193,6 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       return val.toLowerCase();
     });
   }
-  React.useEffect(() => {
-    findClosestTag();
-  }, [text]);
 
   /*function pushSearchTag(tag) {
     setTags((prevTags) => {
@@ -220,11 +217,68 @@ const SearchPage = ({ articlesFetch, superTags }) => {
     });
   }
 
+  function updateTags() {
+    let tags = [];
+
+    filterArticles.map((article) => {
+      article.tags.map((tag) => {
+        if (
+          tags.some((innerTag) => {
+            return innerTag.text == tag.text;
+          })
+        ) {
+        } else {
+          tags.push(tag);
+        }
+      });
+    });
+
+    setTags((prevTags) => {
+      let returnTags = tags.map((tag, index) => {
+        let newTag = {
+          title: tag.text,
+          color: generateColor(),
+          id: `tag-${index + 1}`,
+        };
+        return newTag;
+      });
+      returnTags = returnTags.sort(function (a, b) {
+        var textA = a.title.toUpperCase();
+        var textB = b.title.toUpperCase();
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
+      });
+
+      return returnTags;
+    });
+
+    setFilterTags((prevTags) => {
+      let returnTags = tags.map((tag, index) => {
+        let newTag = {
+          title: tag.text,
+          color: generateColor(),
+          id: `tag-${index + 1}`,
+        };
+        return newTag;
+      });
+      return returnTags.sort(function (a, b) {
+        var textA = a.title.toUpperCase();
+        var textB = b.title.toUpperCase();
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
+      });
+      return returnTags;
+    });
+  }
+  useEffect(() => {
+    updateTags();
+  }, [callFilter]);
   function pushSearchTag(tag) {
     setSearchTags((prevTags) => {
       return [...prevTags, tag];
     });
   }
+  useEffect(() => {
+    updateArticles();
+  }, [searchTags]);
 
   function removeTag(id) {
     const item = tags.find((tag) => {
@@ -244,8 +298,12 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       return [...tags];
     });
   }
-
   React.useEffect(() => {
+    findClosestTag();
+  }, [text]);
+
+  // #1 Page loads and sets all the tags into state objects
+  /* React.useEffect(() => {
     setTags((prevTags) => {
       return alphaTags.map((tag, index) => {
         let newTag = {
@@ -267,7 +325,7 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       });
     });
   }, []);
-
+*/
   return (
     <>
       <NextSeo {...SEO} />
