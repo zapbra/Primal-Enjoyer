@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   background-color: ${(props) => props.colors.ultraLightBlue};
-
+  padding: 3rem;
   .flex-cont {
     display: flex;
     gap: 2rem;
@@ -40,7 +40,7 @@ const SectionTwo = () => {
         <div className="flex-one">
           <div className="text">
             <h2>What Is The Primal Diet?</h2>
-            <p>
+            <p className="contrast">
               It is a diet completely consisting of raw meat (beef, chicken,
               pork), raw dairy, eggs and vegetable juices.{" "}
             </p>
