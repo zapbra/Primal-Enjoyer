@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Line from "./line";
-
+import { nanoid } from "nanoid";
 const Container = styled.div`
   padding: 0 3rem;
   max-width: 1000px;
@@ -52,6 +52,7 @@ const index = () => {
         index={item.index}
         image={item.image}
         paragraphs={item.paragraphs}
+        key={nanoid()}
       />
     );
   });

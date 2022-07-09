@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../../../Data/colors";
-
+import { nanoid } from "nanoid";
 const Container = styled.div`
   margin-bottom: 128px;
   hr {
@@ -66,7 +66,7 @@ const line = ({ title, image, paragraphs, index }) => {
       </Title>
       <hr />
       {paragraphs.map((para) => {
-        return <p>{para}</p>;
+        return <p key={nanoid()}>{para}</p>;
       })}
     </Container>
   );

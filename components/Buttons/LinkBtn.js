@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 import { PaperAirplaneIcon } from "@heroicons/react/solid";
 
@@ -29,15 +29,13 @@ const SubmitElem = styled.button`
   }
 `;
 
-
-const LinkBtn = ({text}) => {
+const LinkBtn = ({ text }) => {
   return (
-    <a href = 
     <SubmitElem>
-      <h5>text/h5>
+      <h5>text</h5>
       <PaperAirplaneIcon className="white-icon"></PaperAirplaneIcon>
     </SubmitElem>
   );
 };
 
-export default LinkBtn
+export default LinkBtn;
