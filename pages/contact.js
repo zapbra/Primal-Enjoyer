@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SubmitBtn from "../components/Buttons/SubmitBtn";
+import LinkBtn from "../components/Buttons/LinkBtn";
 import COLORS from "../Data/colors";
 import emailjs, { init } from "@emailjs/browser";
 
@@ -148,7 +148,7 @@ const Contact = () => {
                 value={formData.suggestion}
               ></textarea>
             </div>
-            <SubmitBtn type="submit"></SubmitBtn>
+            <LinkBtn type="submit"></LinkBtn>
           </FormElem>
         </Flex>
       </Cont>
