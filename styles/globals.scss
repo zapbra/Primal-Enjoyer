@@ -183,6 +183,10 @@ a {
   padding: 20px;
   margin: 0 10% 0 10%;
   width: 80%;
+  @media only screen and (max-width: 1199px) {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .input-form {

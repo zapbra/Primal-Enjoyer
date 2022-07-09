@@ -38,16 +38,18 @@ const TextContent = styled.div`
 `;
 const Article = (props) => {
   return (
-    <Link href={`/article/${props.article.title}`}>
-      <ArticleCont>
-        <div className="flex-one image-cont">
-          <img alt="cover image" src={props.article.coverImage.url} />
-        </div>
+    <Link href={`/article/${props.article.title}`} passHref>
+      <a rel="noopener noreferrer">
+        <ArticleCont>
+          <div className="flex-one image-cont">
+            <img alt="cover image" src={props.article.coverImage.url} />
+          </div>
 
-        <TextContent className="flex-one">
-          <h4>{props.article.title}</h4>
-        </TextContent>
-      </ArticleCont>
+          <TextContent className="flex-one">
+            <h4>{props.article.title}</h4>
+          </TextContent>
+        </ArticleCont>
+      </a>
     </Link>
   );
 };

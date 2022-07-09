@@ -29,10 +29,10 @@ const SubmitElem = styled.button`
   }
 `;
 
-const LinkBtn = ({ text }) => {
+const LinkBtn = () => {
   return (
     <SubmitElem>
-      <h5>text</h5>
+      <h5>Submit</h5>
       <PaperAirplaneIcon className="white-icon"></PaperAirplaneIcon>
     </SubmitElem>
   );
