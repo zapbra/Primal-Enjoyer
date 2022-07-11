@@ -7,32 +7,45 @@ const FooterElem = styled.div`
   background-color: ${(props) => props.colors.blue};
   padding: 1rem 2rem;
   display: flex;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4rem;
   gap: 2rem;
+  .top {
+    background: #fff;
+    padding: 0.5rem 0.25rem;
+    box-shadow: 5px 5px ${(props) => props.colors.blue}, 5px 5px 0px 3px white;
+    position: absolute;
+    right: 2rem;
+    cursor: pointer;
+    &:hover {
+      background-color: ${(props) => props.colors.ultraLightBlue};
+    }
+    h3 {
+      color: ${(props) => props.colors.blue};
+    }
+    &:active {
+      box-shadow: none;
+      right: 27px;
+      top: 21px;
+    }
+  }
 `;
 
 const Footer = () => {
   return (
     <FooterElem colors={COLORS}>
-      <FooterLine
-        lines={[
-          ["Course", "course"],
-          ["Introduction", "course/introduction"],
-          ["Why Do The Diet", "course/whydothediet"],
-          ["How To Start", "course/howtostart"],
-        ]}
-      />
-      <FooterLine
-        lines={[
-          ["Documents", "documents"],
-          [
-            "Books",
-            "https://drive.google.com/drive/u/0/folders/1YxtuNUHFupiccplUtJQjBSjil8y1QeK9",
-          ],
-          ["Recipes", "recipes"],
-        ]}
-      />
-      <FooterLine lines={[["Search", ""]]} />
-      <FooterLine lines={[["Resources", "resources"]]} />
+      <a href="#top">
+        <div className="top">
+          <h3>
+            Back <br></br>To Top
+          </h3>
+        </div>
+      </a>
+      <FooterLine text="Search" link="/" />
+      <FooterLine text="Home" link="/introduction" />
+      <FooterLine text="Contact" link="/contact" />
     </FooterElem>
   );
 };

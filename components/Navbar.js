@@ -65,7 +65,7 @@ const Title = styled.h2`
 `;
 const Navbar = () => {
   return (
-    <NavCont colors={COLORS}>
+    <NavCont colors={COLORS} name = 'top'>
       <div className="mobile">
         <Link passHref href="/introduction" clasName="link">
           <Title>Primal Enjoyer</Title>

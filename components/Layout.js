@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer/index";
 import styled from "styled-components";
 import { DefaultSeo } from "next-seo";
 import SEO from "../next.config";
@@ -18,6 +19,7 @@ const Layout = ({ children }) => {
       <DefaultSeo {...SEO} />
       <Navbar />
       <Center>{children}</Center>
+      <Footer />
     </>
   );
 };

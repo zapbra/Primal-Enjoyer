@@ -3,43 +3,31 @@ import Link from "next/link";
 import styled from "styled-components";
 import COLORS from "../../Data/colors";
 
-const Lines = styled.div`
-  h3 {
-    color: ${(props) => props.colors.white};
-    font-weight: 500;
-    cursor: pointer;
-    &:hover {
-      text-decoration: underline;
-    }
+const Line = styled.div`
+  border: 1px solid white;
+  padding: 1rem 0.5rem;
+  transition: background-color 0.5s ease;
+  h4 {
+    color: #fff;
   }
-  p {
-    color: ${(props) => props.colors.offWhite};
-    font-weight: 400;
-    font-size: 18px;
-    cursor: pointer;
-    &:hover {
-      text-decoration: underline;
+  &:hover {
+    background-color: white;
+    h4 {
+      color: ${(props) => props.colors.blue};
     }
   }
 `;
 
-const FooterLine = ({ lines }) => {
-  const lineElems = lines.map((lines, index) => {
-    if (index === 0) {
-      return (
-        <Link href={`/${lines[1]}`}>
-          <h3>{lines[0]}</h3>
-        </Link>
-      );
-    } else {
-      return (
-        <Link href={`/${lines[1]}`}>
-          <p>{lines[0]}</p>
-        </Link>
-      );
-    }
-  });
-  return <Lines colors={COLORS}>{lineElems}</Lines>;
+const FooterLine = ({ text, link }) => {
+  return (
+    <Link href={link} passHref>
+      <a rel="noopener noreferrer">
+        <Line colors={COLORS}>
+          <h4>{text}</h4>
+        </Line>
+      </a>
+    </Link>
+  );
 };
 
 export default FooterLine;
