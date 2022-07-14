@@ -65,7 +65,7 @@ const Title = styled.h2`
 `;
 const Navbar = () => {
   return (
-    <NavCont colors={COLORS} name = 'top'>
+    <NavCont colors={COLORS} name="top">
       <div className="mobile">
         <Link passHref href="/introduction" clasName="link">
           <Title>Primal Enjoyer</Title>
@@ -78,8 +78,8 @@ const Navbar = () => {
         <Link passHref href="/introduction" className="link">
           <h3>Home</h3>
         </Link>
-        <Link passHref href="/resources">
-          <h3>Resources</h3>
+        <Link passHref href="/account">
+          <h3>Account</h3>
         </Link>
 
         <div className="mobile-sm">
