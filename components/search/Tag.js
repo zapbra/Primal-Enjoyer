@@ -32,8 +32,12 @@ const Tag = (props) => {
       color={props.color}
     >
       {" "}
-      <p>{props.title}</p>
-      <PlusIcon className="plus-icon" />
+      <div className="flex-one">
+        <p>{props.title}</p>
+      </div>
+      <div className="flex-one">
+        <PlusIcon className="plus-icon" />
+      </div>
     </TagElem>
   );
 };
