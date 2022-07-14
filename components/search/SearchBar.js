@@ -8,6 +8,7 @@ const TagInput = styled.div`
   background-color: ${(props) => props.colors.darkGrey};
   box-shadow: 0px 5px 25px 3px rgba(0, 0, 0, 0.8);
   margin-bottom: 2rem;
+  
   input {
     border-radius: 0.25rem;
     border: 1px solid black;

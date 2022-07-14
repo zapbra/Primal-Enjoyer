@@ -13,6 +13,7 @@ const TagElem = styled.div`
   background-color: ${(props) => props.color};
   display: flex;
   gap: 0.5rem;
+
   .plus-icon {
     width: 24px;
   }
