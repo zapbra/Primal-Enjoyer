@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { PlusIcon } from "@heroicons/react/solid";
 const TagElem = styled.div`
   float: left;
   border: 1px solid black;
@@ -11,6 +11,11 @@ const TagElem = styled.div`
   cursor: pointer;
   text-align: center;
   background-color: ${(props) => props.color};
+  display: flex;
+  gap: 0.5rem;
+  .plus-icon {
+    width: 24px;
+  }
   &:hover {
     opacity: 0.7;
   }
@@ -27,6 +32,7 @@ const Tag = (props) => {
     >
       {" "}
       <p>{props.title}</p>
+      <PlusIcon className="plus-icon" />
     </TagElem>
   );
 };
