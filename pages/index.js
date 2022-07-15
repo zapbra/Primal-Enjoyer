@@ -9,7 +9,7 @@ import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
 import { SearchIcon, TagIcon, BookOpenIcon } from "@heroicons/react/solid";
 import Icon from "../components/Buttons/Icon";
-import  Instructions  from "../components/instructions";
+import Instructions from "../components/Instructions";
 import { useState } from "react";
 
 const Header = styled.div`
