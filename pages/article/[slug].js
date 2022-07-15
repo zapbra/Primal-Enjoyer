@@ -98,11 +98,11 @@ const Tags = styled.div`
     background: #fff;
     padding: 8px;
     position: relative;
-    display: flex;
-    .flex-one{
-      display:flex;
-      justify-content: center;
+    .center-this{
+      width:130px;
+      margin: 0 auto;
     }
+    
     
     }
     h3 {
@@ -137,7 +137,7 @@ const Related = styled.div`
   border-radius: 1rem;
   box-shadow: 0px 5px 25px 3px rgba(0, 0, 0, 0.8);
   border: 1px solid ${(props) => props.colors.darkBlue};
-  margin: auto 0 auto auto;
+
   .related-title {
     border-radius: 1rem 1rem 0 0;
     padding: 8px;
@@ -255,22 +255,21 @@ const slug = ({ article, articles }) => {
   return (
     <>
       <NextSeo {...SEO} />
-      <Return text="Search" link="" />
+
       <div className="container">
         <h1 className="align-center">{article.title}</h1>
         <Grid>
           <Tags colors={COLORS}>
             <div className="tag-title">
-              <div className="flex-one">
+              <div className="center-this">
                 <h3>Tags</h3>
                 <TagIcon className="icon-blue" />
               </div>
             </div>
             <div className="tag-list">{tagElems}</div>
           </Tags>
-          <div className="audio-cont">
-            <Audio file={article.audio.url} />
-          </div>
+
+          <Audio file={article.audio.url} />
 
           <Related colors={COLORS}>
             <div className="related-title">
