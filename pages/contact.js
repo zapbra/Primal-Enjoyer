@@ -119,7 +119,9 @@ const Contact = () => {
           <FormElem ref={form} onSubmit={submitSuggestion} colors={COLORS}>
             <div className="form-line line">
               <div className="field">
-                <h4>Name</h4>
+                <h4>
+                  Name <span className="light">(optional)</span>
+                </h4>
                 <input
                   type="text"
                   name="name"
@@ -129,7 +131,9 @@ const Contact = () => {
                 />
               </div>
               <div className="field">
-                <h4>Email</h4>
+                <h4>
+                  Email <span className="light">(optional)</span>
+                </h4>
                 <input
                   type="email"
                   name="email"
