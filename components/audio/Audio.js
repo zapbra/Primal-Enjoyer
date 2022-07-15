@@ -10,7 +10,7 @@ const SliderCont = styled.div`
   background-color: #d8dde3;
   border-radius: 1rem;
   grid-area: audio;
-  max-width: 500px;
+  //max-width: 500px;
   height: 200px;
   margin: auto;
   width: 100%;

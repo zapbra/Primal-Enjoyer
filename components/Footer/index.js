@@ -11,6 +11,7 @@ const FooterElem = styled.div`
   display: flex;
   justify-content: center;
   padding-bottom: 4rem;
+
   gap: 2rem;
   .top {
     background: #fff;

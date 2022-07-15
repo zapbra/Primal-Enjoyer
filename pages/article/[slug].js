@@ -80,6 +80,9 @@ const Grid = styled.div`
       "related"
       "audio";
   }
+  .audio-cont {
+    grid-area: audio;
+  }
 `;
 
 const Tags = styled.div`
@@ -95,6 +98,10 @@ const Tags = styled.div`
     justify-content: center;
     gap: 0.5rem;
     background: #fff;
+    padding: 8px;
+    h3 {
+      flex: 1;
+    }
   }
   .tag-list {
     padding: 1rem;
@@ -122,6 +129,7 @@ const Related = styled.div`
   margin: auto 0 auto auto;
   .related-title {
     border-radius: 1rem 1rem 0 0;
+    padding: 8px;
     text-align: center;
     background-color: #fff;
     border-bottom: 1px solid ${(props) => props.colors.darkBlue};
@@ -153,6 +161,7 @@ const Related = styled.div`
       }
       .icon-blue {
         color: white;
+        flex: 1;
       }
     }
   }
@@ -239,7 +248,10 @@ const slug = ({ article, articles }) => {
             </div>
             <div className="tag-list">{tagElems}</div>
           </Tags>
-          <Audio file={article.audio.url} />
+          <div className="audio-cont">
+            <Audio file={article.audio.url} />
+          </div>
+
           <Related colors={COLORS}>
             <div className="related-title">
               <h3>Related</h3>
