@@ -10,7 +10,7 @@ const FooterElem = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
 
   gap: 2rem;
   .top {
