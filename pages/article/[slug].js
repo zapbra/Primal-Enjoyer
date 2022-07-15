@@ -94,13 +94,24 @@ const Tags = styled.div`
   .tag-title {
     border-radius: 1rem 1rem 0 0;
     border-bottom: 1px solid ${(props) => props.colors.darkBlue};
-    display: flex;
-    justify-content: center;
     gap: 0.5rem;
     background: #fff;
     padding: 8px;
+    position: relative;
+    display: flex;
+    .flex-one{
+      display:flex;
+      justify-content: center;
+    }
+    
+    }
     h3 {
-      flex: 1;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    .icon-blue {
+      position: relative;
+      top: 5px;
     }
   }
   .tag-list {
@@ -147,6 +158,14 @@ const Related = styled.div`
     justify-content: space-between;
     p {
       font-weight: 500;
+      flex: 1;
+      flex-basis: 90%;
+    }
+    .icon-blue {
+      flex: 1;
+      width: 24px;
+      height: 24px;
+      flex-basis: 10%;
     }
 
     &:nth-of-type(4) {
@@ -161,7 +180,6 @@ const Related = styled.div`
       }
       .icon-blue {
         color: white;
-        flex: 1;
       }
     }
   }
@@ -243,8 +261,10 @@ const slug = ({ article, articles }) => {
         <Grid>
           <Tags colors={COLORS}>
             <div className="tag-title">
-              <h3>Tags</h3>
-              <TagIcon className="icon-blue" />
+              <div className="flex-one">
+                <h3>Tags</h3>
+                <TagIcon className="icon-blue" />
+              </div>
             </div>
             <div className="tag-list">{tagElems}</div>
           </Tags>
