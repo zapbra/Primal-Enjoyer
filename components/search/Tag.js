@@ -16,21 +16,18 @@ const TagElem = styled.div`
 
   .plus-icon {
     width: 24px;
-    display:inline-block;
-   
-    
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    height: 24px;
   }
   &:hover {
     opacity: 0.7;
   }
   p {
     font-size: 1.25rem;
-    display:inline-block;
-    
-  }
-  .flex-cont{
-    display:flex;
-    vertical-align: center;
+    display: inline-block;
+    margin-right: 4px;
   }
 `;
 const Tag = (props) => {
@@ -41,11 +38,8 @@ const Tag = (props) => {
       color={props.color}
     >
       {" "}
-      <div className="flex-cont">
       <p>{props.title}</p>
-
       <PlusIcon className="plus-icon" />
-      </div>
     </TagElem>
   );
 };
