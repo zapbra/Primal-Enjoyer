@@ -11,17 +11,26 @@ const TagElem = styled.div`
   cursor: pointer;
   text-align: center;
   background-color: ${(props) => props.color};
-  display: flex;
+
   gap: 0.5rem;
 
   .plus-icon {
     width: 24px;
+    display:inline-block;
+   
+    
   }
   &:hover {
     opacity: 0.7;
   }
   p {
     font-size: 1.25rem;
+    display:inline-block;
+    
+  }
+  .flex-cont{
+    display:flex;
+    vertical-align: center;
   }
 `;
 const Tag = (props) => {
@@ -32,11 +41,10 @@ const Tag = (props) => {
       color={props.color}
     >
       {" "}
-      <div className="flex-one">
-        <p>{props.title}</p>
-      </div>
-      <div className="flex-one">
-        <PlusIcon className="plus-icon" />
+      <div className="flex-cont">
+      <p>{props.title}</p>
+
+      <PlusIcon className="plus-icon" />
       </div>
     </TagElem>
   );
