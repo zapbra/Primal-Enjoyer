@@ -7,9 +7,28 @@ import { NextSeo } from "next-seo";
 import TAGS from "../Data/tags";
 import TagBox from "../components/search/TagBox";
 import SearchResults from "../components/search/SearchResults";
-import { SearchIcon, TagIcon } from "@heroicons/react/solid";
+import { SearchIcon, TagIcon, BookOpenIcon } from "@heroicons/react/solid";
 import Icon from "../components/Buttons/Icon";
+import  Instructions  from "../components/instructions";
 import { useState } from "react";
+
+const Header = styled.div`
+  align-items: center;
+  display: flex;
+  margin-bottom: 3rem;
+  .flex-one {
+    &:nth-of-type(2) {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      & > div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+  }
+`;
 const SearchCont = styled.div`
   border-radius: 1rem;
   background-color: #fff;
@@ -25,7 +44,7 @@ const TopSection = styled.div`
   max-width: 400px;
   margin: 0 auto;
   height: 800px;
-  
+
   @media only screen and (max-width: 365px) {
     flex-direction: column;
   }
@@ -83,13 +102,15 @@ const SubTitle = styled.div`
   }
 `;
 const Title = styled.div`
-  background-color: ${(props) => props.colors.offBlue};
-  padding: 0.5rem;
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.75);
-  h1 {
-    text-align: center;
-  }
-  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  display: inline-block;
+  border: 2px solid ${(props) => props.colors.darkBlue};
+  background-image: linear-gradient(
+    to right,
+    ${(props) => props.colors.veryLightBlue},
+    ${(props) => props.colors.ultraLightBlue}
+  );
 `;
 
 export const getStaticProps = async () => {
@@ -331,10 +352,24 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       <NextSeo {...SEO} />
 
       <div className="container">
-        <Title colors={COLORS}>
-          <h1>Search By Tag By Clicking Or Typing</h1>
-          <Icon number={articlesLength}></Icon>
-        </Title>
+        <Header>
+          <div className="flex-one">
+            <Title colors={COLORS}>
+              <h1>Aajonus Search</h1>
+            </Title>
+          </div>
+          <div className="flex-one">
+            <div>
+              <h3>Articles</h3>
+              <BookOpenIcon className="lrg-icon" />
+            </div>
+            <Title colors={COLORS}>
+              <h1 className="light green">{articlesLength}</h1>
+            </Title>
+          </div>
+        </Header>
+        <Instructions />
+
         <SectionSplit>
           <TopSection>
             <SectionHalf>

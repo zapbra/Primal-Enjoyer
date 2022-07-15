@@ -12,7 +12,8 @@ const colors = {
   red: "#DC143C",
   offBlue: "#D6E9FC",
   black: "#00132E",
-  green:"#009e6c"
+  green:"#009e6c",
+  veryLightBlue: '#f8fbff'
 };
 
 export const tagColors = [

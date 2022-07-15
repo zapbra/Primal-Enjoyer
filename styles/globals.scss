@@ -1,5 +1,5 @@
 @import "scrollbar.scss";
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Open+Sans:ital,wght@0,400;0,500;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;700&family=Open+Sans:ital,wght@0,400;0,500;1,300&display=swap");
 $ultra-light-blue: #e9f1fd;
 $light-blue: #d8dde3;
 $off-black: #01142f;
@@ -54,6 +54,9 @@ p {
 }
 .contrast {
   color: $light-black;
+}
+.light {
+  font-weight: 300;
 }
 h1,
 h2,
@@ -258,6 +261,14 @@ textarea {
   color: $dark-blue;
   width: 30px;
 }
+.lrg-icon {
+  width: 40px;
+  height: 40px;
+}
+.green {
+  color: $primary-color;
+}
+
 .icon-grey {
   color: $light-blue;
   width: 30px;
