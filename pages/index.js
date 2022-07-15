@@ -111,6 +111,7 @@ const SubTitle = styled.div`
   }
 `;
 const Title = styled.div`
+  margin: 0 auto;
   padding: 1rem 2rem;
   border-radius: 3rem;
   display: inline-block;
@@ -381,25 +382,20 @@ const SearchPage = ({ articlesFetch, superTags }) => {
 
       <div className="container">
         <Header>
-          <div className="flex-one">
-            <Title colors={COLORS}>
-              <h1>Aajonus Search</h1>
-            </Title>
-          </div>
-          <div className="flex-one">
-            <div>
-              <h3>Articles</h3>
-              <BookOpenIcon className="lrg-icon" />
-            </div>
-            <Title colors={COLORS}>
-              <h1 className="light green">{articlesLength}</h1>
-            </Title>
-          </div>
+          <Title colors={COLORS}>
+            <h1>Aajonus Search</h1>
+          </Title>
         </Header>
         <Instructions />
+
         <PlaceToggle>
           <ChangeView condition={view} func={changeView} />
         </PlaceToggle>
+        <Header>
+          <Title colors={COLORS}>
+            <h1 className="light green">{articlesLength}</h1>
+          </Title>
+        </Header>
         <SectionSplit style={{ flexDirection: style }}>
           <TopSection>
             <SectionHalf>

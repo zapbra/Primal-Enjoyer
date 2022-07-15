@@ -18,8 +18,7 @@ const FooterElem = styled.div`
     padding: 0.5rem 0.25rem;
     box-shadow: 5px 5px ${(props) => props.colors.darkBlue},
       5px 5px 0px 3px white;
-    position: absolute;
-    right: 2rem;
+
     cursor: pointer;
     &:hover {
       background-color: ${(props) => props.colors.ultraLightBlue};
@@ -32,6 +31,9 @@ const FooterElem = styled.div`
       right: 27px;
       top: 21px;
     }
+  }
+  @media only screen and (max-width: 520px) {
+    flex-direction: column-reverse;
   }
 `;
 
