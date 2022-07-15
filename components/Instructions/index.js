@@ -1,23 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import TextInstructions from "./TextInstructions";
+import Gif from "./Gif";
 
+import COLORS from "../../Data/colors";
 const Title = styled.div`
-  border-bottom: 1px solid black;
   text-align: center;
   padding: 1rem;
+  background-color: ${(props) => props.colors.ultraLightBlue};
 `;
 
-const Content = styled.div``;
+const Content = styled.div`
+  display: flex;
+  margin-bottom: 4rem;
+`;
 
 const index = () => {
   return (
     <>
-      <Title>
+      <Title colors={COLORS}>
         <h2>How To Use</h2>
       </Title>
       <Content>
         <TextInstructions />
+        <Gif />
       </Content>
     </>
   );

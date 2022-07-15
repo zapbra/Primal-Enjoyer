@@ -10,12 +10,14 @@ import SearchResults from "../components/search/SearchResults";
 import { SearchIcon, TagIcon, BookOpenIcon } from "@heroicons/react/solid";
 import Icon from "../components/Buttons/Icon";
 import Instructions from "../components/Instructions";
+import ChangeView from "../components/Buttons/ChangeView";
 import { useState } from "react";
 
 const Header = styled.div`
   align-items: center;
   display: flex;
   margin-bottom: 3rem;
+  gap: 2rem;
   .flex-one {
     &:nth-of-type(2) {
       display: flex;
@@ -27,6 +29,9 @@ const Header = styled.div`
         gap: 8px;
       }
     }
+  }
+  @media only screen and (max-width: 680px) {
+    flex-direction: column;
   }
 `;
 const SearchCont = styled.div`
@@ -48,6 +53,10 @@ const TopSection = styled.div`
   @media only screen and (max-width: 365px) {
     flex-direction: column;
   }
+`;
+const PlaceToggle = styled.div`
+  width: 100px;
+  margin: 0 auto 4rem;
 `;
 const SectionHalf = styled.div`
   flex: 1;
@@ -165,6 +174,12 @@ const SearchPage = ({ articlesFetch, superTags }) => {
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     })
   );
+  const [view, setView] = React.useState(false);
+  const changeView = () => {
+    setView((prevView) => {
+      return !prevView;
+    });
+  };
   const articlesLength = filterArticles.length;
   function updateArticles() {
     setFilterArticles((prevArticles) => {
@@ -347,6 +362,19 @@ const SearchPage = ({ articlesFetch, superTags }) => {
     });
   }, []);
 */
+  const [style, setStyle] = React.useState("row");
+  React.useEffect(() => {
+    if (view) {
+      setStyle((prevStyle) => {
+        return "column";
+      });
+    } else {
+      setStyle((prevStyle) => {
+        return "row";
+      });
+    }
+  }, [view]);
+
   return (
     <>
       <NextSeo {...SEO} />
@@ -369,8 +397,10 @@ const SearchPage = ({ articlesFetch, superTags }) => {
           </div>
         </Header>
         <Instructions />
-
-        <SectionSplit>
+        <PlaceToggle>
+          <ChangeView condition={view} func={changeView} />
+        </PlaceToggle>
+        <SectionSplit style={{ flexDirection: style }}>
           <TopSection>
             <SectionHalf>
               <SubTitle className="search" colors={COLORS}>
