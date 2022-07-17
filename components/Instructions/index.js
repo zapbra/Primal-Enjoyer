@@ -13,6 +13,9 @@ const Title = styled.div`
 const Content = styled.div`
   display: flex;
   margin-bottom: 4rem;
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 const index = () => {
