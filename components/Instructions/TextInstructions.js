@@ -22,6 +22,7 @@ const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     h5 {
     }
   }
@@ -35,7 +36,7 @@ const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const TextInstructions = () => {

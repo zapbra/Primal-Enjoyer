@@ -13,6 +13,9 @@ const Container = styled.div`
     h2 {
       color: black;
     }
+    @media only screen and (max-width: 800px) {
+      flex-direction: column;
+    }
   }
   .flex-one {
     display: flex;

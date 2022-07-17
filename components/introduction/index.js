@@ -35,7 +35,9 @@ const SectionOne = styled.div`
 const Introduction = (props) => {
   return (
     <Content>
+      {/*
       <SectionOne className="section">
+        
         <h1>Welcome Primal Enjoyer</h1>
         <p className="contrast">
           {" "}
@@ -52,6 +54,7 @@ const Introduction = (props) => {
 
       <SectionTwo />
       <SectionThree />
+      */}
       <SectionFour />
     </Content>
   );

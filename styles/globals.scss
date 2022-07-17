@@ -81,6 +81,73 @@ h6 {
   }
 }
 
+@media only screen and (min-width: 1201px) {
+  html {
+    font-size: 21px;
+  }
+  h1 {
+    font-size: 5.653rem;
+  }
+  h2 {
+    font-size: 3.998rem;
+  }
+  h3 {
+    font-size: 2.827rem;
+  }
+  h4 {
+    font-size: 1.9993rem;
+  }
+  h5 {
+    font-size: 1.414rem;
+  }
+  p {
+    font-size: 21px;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 3.998rem;
+  }
+  h2 {
+    font-size: 2.441rem;
+  }
+  h3 {
+    font-size: 1.953rem;
+  }
+  h4 {
+    font-size: 1.563rem;
+  }
+  h5 {
+    font-size: 1.25rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 3.052rem;
+  }
+  h2 {
+    font-size: 2.441rem;
+  }
+  h3 {
+    font-size: 1.953rem;
+  }
+  h4 {
+    font-size: 1.563rem;
+  }
+  h5 {
+    font-size: 1.25rem;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
 h1 {
   font-size: 3.052rem;
   color: $dark-blue;
@@ -183,7 +250,7 @@ a {
   box-shadow: 0 2px 5px 2px rgba(1, 1, 1, 0.5);
   border-radius: 0.5rem;
   padding: 20px;
-  margin: 0 10% 0 10%;
+  margin: 0 10% 6rem 10%;
   width: 80%;
   @media only screen and (max-width: 1199px) {
     width: 100%;
@@ -264,9 +331,12 @@ textarea {
 .lrg-icon {
   width: 40px;
   height: 40px;
+  color: $dark-blue;
 }
 .main-icon {
   width: 30px;
+  flex-shrink: 0;
+  color: $dark-blue;
 }
 .green {
   color: $primary-color;
