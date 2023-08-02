@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import COLORS from "../../../data/colors";
-import ScheduleData from "../../../Data/Schedule.json";
+import ScheduleData from "../../../data/Schedule.json";
 import Line from "./Line";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";

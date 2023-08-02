@@ -1,7 +1,7 @@
 import { fetchFoods, fetchVotes } from "../../../utils/supabaseFunction";
 import Render from "./Render";
 
-export async function getServerSideProps() {
+export async function fetchData() {
   const foodsFetch = await fetchFoods();
   const { votesTodayFetch, allVotesFetch } = await fetchVotes();
   return {
@@ -14,7 +14,7 @@ export async function getServerSideProps() {
 }
 
 const Page = async () => {
-  const data = await getServerSideProps();
+  const data = await fetchData();
 
   const { foodsFetch, votesTodayFetch, allVotesFetch } = data.props;
 

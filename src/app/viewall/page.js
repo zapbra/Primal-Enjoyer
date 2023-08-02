@@ -1,7 +1,7 @@
 import supabase from "../../../utils/supabaseClient";
 import Render from "./Render";
 
-export const getServerSideProps = async (pageContext) => {
+export const fetchData = async (pageContext) => {
   const { data, error } = await supabase
     .from("alphabet")
     .select("*, post(title, created_at, tags(title))");
@@ -28,7 +28,7 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 const Page = async () => {
-  const data = await getServerSideProps();
+  const data = await fetchData();
   const { sortedPosts, onlyTitles, tagsSort, tagsUnique } = data.props;
 
   return (

@@ -1,6 +1,7 @@
 import Render from "./render";
 import supabase from "../../../utils/supabaseClient";
-export async function getServerSideProps() {
+
+export async function fetchData() {
   const { data: data2, error: error2 } = await supabase
     .from("testimonials")
     .select("*")
@@ -14,7 +15,7 @@ export async function getServerSideProps() {
 }
 
 const Page = async () => {
-  const data2 = await getServerSideProps();
+  const data2 = await fetchData();
 
   return (
     <div>

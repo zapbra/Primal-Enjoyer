@@ -9,19 +9,6 @@ export async function generateStaticParams() {
   });
 }
 
-export async function getStaticProps(name) {
-  const { data: timecode, error } = await supabase
-    .from("timecodes")
-    .select("name, content, article_titles")
-    .eq("name", name)
-    .single();
-  return {
-    props: {
-      timecode: error,
-    },
-  };
-}
-
 const Page = async ({ params }) => {
   const { data: timecode, error } = await supabase
     .from("timecodes")
