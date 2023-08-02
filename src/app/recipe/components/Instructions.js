@@ -15,7 +15,7 @@ const Instructions = ({ instructions }) => {
       <div className="instruction-box">
         {instructions.map((instruction, index) => {
           return (
-            <div className="">
+            <div key={index} className="">
               <h5 className="mar-bottom-8">
                 ({index + 1}) - {instruction.title}
               </h5>

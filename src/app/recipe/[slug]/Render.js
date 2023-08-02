@@ -56,9 +56,9 @@ const Cont = styled.div`
 
 const Render = ({ recipe }) => {
   const [iconElems, setIconElems] = useState(
-    recipe.ingredients.map((ingredient) => {
+    recipe.ingredients.map((ingredient, index) => {
       return (
-        <Popup text={ingredient.description}>
+        <Popup text={ingredient.description} key={index}>
           <div className="icon">
             <div className=" inner-padding">
               <Image

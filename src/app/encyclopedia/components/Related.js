@@ -31,7 +31,7 @@ const Cont = styled.div`
 const Related = ({ links }) => {
   const linkElems = links.map((link, index) => {
     if (link.url === "") {
-      return <p>{link.title},</p>;
+      return <p key={index}>{link.title},</p>;
     }
     return (
       <Link key={index} href={{ pathname: link.url }}>

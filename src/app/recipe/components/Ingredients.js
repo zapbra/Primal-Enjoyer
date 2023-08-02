@@ -17,8 +17,8 @@ const Ingredients = ({ ingredients }) => {
       </h5>
       <div className="grey-line mar-bottom-16"></div>
       <ul className="mar-left-8">
-        {ingredients.map((ingredient) => {
-          return <li>{ingredient.name} </li>;
+        {ingredients.map((ingredient, index) => {
+          return <li key={index}>{ingredient.name} </li>;
         })}
       </ul>
     </Cont>
