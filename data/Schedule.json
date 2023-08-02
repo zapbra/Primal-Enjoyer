@@ -1,0 +1,53 @@
+[
+  {
+  "text": "After waking, drink 4-12 ounces green vegetable juices.",
+  "img": "/images/schedule/vegetable_juice.jpg",
+  "time":"7:30 AM"
+  },
+  {
+      "text":"45-60 minutes later, eat 6-10 ounces green (1-2 cups) raw meat with raw egg(s) and/or 2-5 tablespoons raw butter, raw cream, raw coconut cream, no-salt-added raw cheese with equal amount of butter or avocado. One or a combination of several raw fats may be eaten at a meal, such as in a sauce.",
+  "img":"/images/schedule/raw_meat.jpg", 
+  "time":"8:15 AM"
+},
+  {
+      "text":"Next, 45-90 minutes later, drink a blended milkshake consisting of 1-4 raw eggs, 3-6 ounces raw milk, 1-4 ounces raw cream and 1-2 tablespoons unheated honey.",
+  "img":"/images/schedule/milkshake.jpg", 
+  "time":"9:30 AM"
+},
+{
+  "text": "At least 1 hour later, drink another 4-12 ounces green vegetable juices.",
+  "img": "/images/schedule/vegetable_juice.jpg",
+  "time":"10:30 AM"
+  },
+  {
+      "text":"At least 1 hour later, eat 6-10 ounces (1-2 cups) raw meat with raw egg(s) and/or 2-5 tablespoons raw butter, raw cream, raw coconut cream, no-salt-added raw cheese with an equal amount of btter or avocado. One or a combination of several raw fats may be eatan at a meal, such as in a sauce.",
+  "img":"/images/schedule/raw_meat.jpg", 
+  "time":"11:30 AM"
+},
+  {
+  "text":"60-90 minutes later, eat 4-6 ounces fruit with 3-6 ounces of either raw cream, raw coconut cream, no-salt-added raw cheese with an equal amount of butter or avocado. One or a combination of several raw fats may be eaten at a meal, such as in a sauce.",
+  "img":"/images/schedule/fruit_and_cream.jpg", 
+  "time":"12:45 PM"
+},
+{
+  "text": "At least 1 hour later, drink another 4-12 ounces green vegetable juices.",
+  "img": "/images/schedule/vegetable_juice.jpg",
+  "time":"1:45 PM"
+  },
+  {
+  "text":"At least 1 hour later, eat 6-10 ounces (1-2 cups) raw meat with raw egg(s) and/or 2-5 tablespoons raw butter, raw cream, raw coconut cream, no-salt-added raw cheese with an equal amount of butter or avocado. One or a combination of several raw fats may be eaten at a meal, such as in a sauce.",
+  "img":"/images/schedule/raw_meat.jpg", 
+  "time":"2:45 PM"
+},
+  {
+  "text":"45-90 minutes later, drink a blended Moisturizing/Lubrication Forumula",
+  "img":"/images/schedule/lemon.jpg", 
+  "time":"4:00 PM"
+},
+  {
+  "text":"At least 1 hour later, drink another 4-12 ounces green vegetable juices.",
+  "img":"/images/schedule/vegetable_juice.jpg", 
+  "time":"5:00PM"
+}
+ 
+]

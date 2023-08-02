@@ -1,0 +1,24 @@
+::-webkit-scrollbar {
+  width: 1rem;
+  background: #d8dde3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #002b67;
+  border-radius: 1rem;
+
+  &:hover {
+    background: #1e90ff;
+  }
+}
+@supports (scrollbar-color: #002b67 #d8dde3) {
+  * {
+    scrollbar-color: #002b67 #d8dde3;
+    scrollbar-width: auto;
+  }
+}
+.small-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+}

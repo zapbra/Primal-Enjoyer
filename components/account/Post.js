@@ -1,0 +1,56 @@
+import styled from "styled-components";
+import COLORS from "../../data/colors";
+import Link from "next/link";
+import {
+  EyeIcon,
+  HeartIcon,
+  ChatIcon,
+  ArrowRightIcon,
+} from "@heroicons/react/solid";
+
+const Cont = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  padding: 8px;
+  border-bottom: 1px solid ${(props) => props.colors.darkBlue};
+  &:hover {
+    /*
+    background-color: ${(props) => props.colors.darkBlue};
+    .icon-blue,
+    p {
+      color: ${(props) => props.colors.ultraLightBlue};
+    }*/
+    background-color: #fff;
+  }
+  .flex-column {
+    align-items: flex-start;
+  }
+`;
+
+const Post = ({ title, link, views, likes, comments }) => {
+  return (
+    <Link href={`/encyclopedia/${title}`}>
+      <Cont className="post-class" colors={COLORS}>
+        <div className="flex flex-column">
+          <p className="bold dark-blue">{title}</p>
+          <div className="flex">
+            <div className="flex mar-right-8">
+              <HeartIcon className="icon-blue hero-icon-sm mar-right-4" />
+              <p className="contrast small">{likes}</p>
+            </div>
+            <div className="flex">
+              <ChatIcon className="icon-blue hero-icon-sm mar-right-4" />
+              <p className="contrast small">{comments}</p>
+            </div>
+          </div>
+        </div>
+        <ArrowRightIcon className="icon-blue hero-icon-sm arrow" />
+      </Cont>
+    </Link>
+  );
+};
+
+export default Post;

@@ -1,0 +1,14 @@
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #002b67;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease;
+  &:hover {
+    border-bottom: 20px solid #50c878;
+    transform: translateY(-2px);
+  }
+}
