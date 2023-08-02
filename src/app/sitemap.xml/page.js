@@ -105,11 +105,7 @@ function generateSiteMap(articles, categories, posts) {
 `;
 }
 
-function SiteMap() {
-  // getServerSideProps will do the heavy lifting
-}
-
-export async function getServerSideProps({ res }) {
+export async function GET() {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
     header: {
@@ -138,18 +134,13 @@ export async function getServerSideProps({ res }) {
   const categories = data.aajonusCatagories;
 
   const { data: posts, error } = await supabase.from("post").select("title");
+  const body = generateSiteMap(articlesFetch, categories, posts);
 
-  // We generate the XML sitemap with the posts data
-  const sitemap = generateSiteMap(articlesFetch, categories, posts);
-
-  res.setHeader("Content-Type", "text/xml");
-  // we send the XML to the browser
-  res.write(sitemap);
-  res.end();
-
-  return {
-    props: {},
-  };
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "Cache-control": "public, s-maxage=86400, stale-while-revalidate",
+      "content-type": "application/xml",
+    },
+  });
 }
-
-export default SiteMap;
