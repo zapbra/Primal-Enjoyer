@@ -8,11 +8,6 @@ import Navbar from "../../components/Navbar";
 import NextTopLoader from "nextjs-toploader";
 export const AppContext = createContext();
 
-export const metadata = {
-  title: "Primal Enjoyer",
-  description: "Aajonus Vonderplanitz raw meat diet website.",
-};
-
 export default function RootLayout({ children }) {
   const [context, setContext] = useState({
     tags: [],
@@ -23,9 +18,8 @@ export default function RootLayout({ children }) {
     <AppContext.Provider value={[context, setContext]}>
       <html lang="en">
         <body className="main-holder">
-        <NextTopLoader />
+          <NextTopLoader />
           <StyledComponentsRegistry>
-           
             <Navbar />
             {children}
 
