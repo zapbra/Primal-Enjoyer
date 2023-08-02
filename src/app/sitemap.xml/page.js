@@ -1,5 +1,5 @@
 import { gql, GraphQLClient } from "graphql-request";
-import supabase from "../utils/supabaseClient";
+import supabase from "../../../utils/supabaseClient";
 //pages/sitemap.xml.js
 
 function generateSiteMap(articles, categories, posts) {
