@@ -2,7 +2,7 @@
 
 import React, { useEffect, useContext } from "react";
 
-import { AppContext } from "../layout";
+/* import { AppContext } from "../layout"; */
 import styled from "styled-components";
 import COLORS, { tagColors } from "../../../data/colors";
 import SuperSearchBar from "./components/SuperSearchBar";
@@ -155,7 +155,7 @@ const Render = ({ articlesFetch, superTags }) => {
   );
 
   // Set articles on global context
-  const [context, setContext] = useContext(AppContext);
+  /* const [context, setContext] = useContext(AppContext); */
 
   useEffect(() => {
     if (context.tags.length > 0) {

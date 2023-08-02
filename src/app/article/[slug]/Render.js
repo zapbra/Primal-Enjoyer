@@ -40,7 +40,7 @@ import {
 import { nanoid } from "nanoid";
 import COLORS, { tagColors } from "../../../../data/colors";
 
-import { AppContext } from "../../layout";
+/* import { AppContext } from "../../layout"; */
 import ArticleCollection from "../../../../components/account/ArticleCollection";
 import supabase from "../../../../utils/supabaseClient";
 import insertCollection, {
@@ -417,7 +417,7 @@ const Slug = ({ article, articles, slug }) => {
     viewFunc();
   }, []);
   const [session, setSession] = useState(null);
-  const [context, setContext] = useContext(AppContext);
+  /* const [context, setContext] = useContext(AppContext); */
   const relatedArticles =
     article.tags.length > 0 ? GetRelatedArticles(articles, article.tags) : [];
   const [favorited, setFavorited] = useState(false);

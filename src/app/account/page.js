@@ -8,7 +8,7 @@ import { faGear, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { PlusIcon } from "@heroicons/react/solid";
 import SavedCollection from "../../../components/account/SavedCollection";
 import { useEffect, useRef, useCallback, useState, useContext } from "react";
-import { AppContext } from "../layout";
+/* import { AppContext } from "../layout"; */
 import {
   checkLocalStorageValid,
   fetchDaysDiff,
@@ -197,7 +197,7 @@ const Account = () => {
   const [user, setUser] = useState({});
   const { data, error } = supabase.auth.getSession();
   const [session, setSession] = useState({});
-  const [context, setContext] = useContext(AppContext);
+  /* const [context, setContext] = useContext(AppContext); */
   const [collections, setCollections] = useState([]);
   const [postCollections, setPostCollections] = useState([]);
   const [collection, setCollection] = useState("");
