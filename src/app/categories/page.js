@@ -2,7 +2,7 @@ import Head from "next/head";
 import { gql, GraphQLClient } from "graphql-request";
 import Render from "./Render";
 
-export const getStaticProps = async () => {
+export const fetchData = async () => {
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
     header: {
@@ -35,7 +35,7 @@ export const getStaticProps = async () => {
 };
 
 const Page = async () => {
-  let data = await getStaticProps();
+  let data = await fetchData();
   data = data.props.catagoriesFetch;
 
   const meta = {

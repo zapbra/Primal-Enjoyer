@@ -4,7 +4,7 @@ import Head from "next/head";
 const YOUTUBE_PLAYLIST_ITEMS_API =
   "https://www.googleapis.com/youtube/v3/playlistItems";
 
-export async function getStaticProps() {
+export async function fetchData() {
   const res = await fetch(
     `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLA4-m0Jyxx3mHBv5fxOwmyWYton1z_4qk&maxResults=50&key=${process.env.YOUTUBE_API_KEY}`
   );
@@ -18,7 +18,7 @@ export async function getStaticProps() {
 }
 
 const Page = async () => {
-  let data = await getStaticProps();
+  let data = await fetchData();
   data = data.props.data;
   const meta = {
     title: "Raw Primal diet Aajonus Vonderplanitz introduction.",

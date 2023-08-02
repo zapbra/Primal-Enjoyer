@@ -1,10 +1,8 @@
-"use client";
-
 import Head from "next/head";
 import supabase from "../../../utils/supabaseClient";
 import Render from "./Render";
 
-export const getServerSideProps = async () => {
+export const fetchData = async () => {
   const { data, error } = await supabase
     .from("post")
     .select(
@@ -23,7 +21,7 @@ export const getServerSideProps = async () => {
   };
 };
 const Encyclopedia = async () => {
-  const data = await getServerSideProps();
+  const data = await fetchData();
   const { sortedPosts } = data.props;
 
   const meta = {

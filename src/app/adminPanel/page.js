@@ -5,7 +5,8 @@ import {
   fetchTextFiles,
 } from "../../../utils/supabaseFunction";
 import Render from "../encyclopedia/Render";
-export async function getServerSideProps() {
+
+export async function fetchData() {
   const testimonialsFetch = await fetchGuestTestimonials();
   const textFilesFetch = await fetchTextFiles();
   return {
@@ -17,7 +18,7 @@ export async function getServerSideProps() {
 }
 
 const Page = async () => {
-  const data = await getServerSideProps();
+  const data = await fetchData();
   const testimonialsFetch = data.props.testimonialsFetch;
   const textFilesFetch = data.props.textFilesFetch;
   return (
