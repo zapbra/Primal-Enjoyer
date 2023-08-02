@@ -1,7 +1,7 @@
 import { gql, GraphQLClient } from "graphql-request";
 import Render from "./Render";
 
-export const getStaticProps = async () => {
+export const fetchData = async () => {
   const url = process.env.ENDPOINT;
 
   const graphQLClient = new GraphQLClient(url, {
@@ -84,7 +84,7 @@ export const getStaticProps = async () => {
 };
 
 const Page = async () => {
-  const data = await getStaticProps();
+  const data = await fetchData();
   const { articlesFetch, superTags } = await data.props;
 
   return (
