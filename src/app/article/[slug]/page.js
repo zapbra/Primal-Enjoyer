@@ -103,7 +103,11 @@ export async function generateStaticParams() {
 
 const Page = async ({ params }) => {
   let { slug } = params;
-  slug = slug.replaceAll("%20", " ");
+  let res = params;
+  slug = slug
+    .replaceAll("%20", " ")
+    .replaceAll("%3F", "?")
+    .replaceAll("%2C", ",");
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
     header: {
@@ -163,6 +167,7 @@ const Page = async ({ params }) => {
 
   return (
     <div>
+      {/*   <Testing data={slug} /> */}
       <Render article={article} articles={articles} slug={slug} />
     </div>
   );
