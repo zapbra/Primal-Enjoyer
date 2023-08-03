@@ -107,7 +107,8 @@ const Page = async ({ params }) => {
   slug = slug
     .replaceAll("%20", " ")
     .replaceAll("%3F", "?")
-    .replaceAll("%2C", ",");
+    .replaceAll("%2C", ",")
+    .replaceAll("%2F", "/");
   const url = process.env.ENDPOINT;
   const graphQLClient = new GraphQLClient(url, {
     header: {
