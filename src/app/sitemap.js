@@ -1,5 +1,5 @@
 import { gql, GraphQLClient } from "graphql-request";
-import supabase from "../../../utils/supabaseClient";
+import supabase from "../../utils/supabaseClient";
 
 export default async function sitemap() {
   const url = process.env.ENDPOINT;
