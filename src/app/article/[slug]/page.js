@@ -168,7 +168,7 @@ const Page = async ({ params }) => {
 
   return (
     <div>
-      {/*   <Testing data={slug} /> */}
+      {/*   <Testing data={slug} /> /*/}
       <Render article={article} articles={articles} slug={slug} />
     </div>
   );
