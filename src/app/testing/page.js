@@ -4,7 +4,8 @@ import styled from "styled-components";
 import COLORS from "../../../data/colors";
 import Editor from "../../../components/Editor";
 import supabase from "../../../utils/supabaseClient";
-
+import { lightColors } from "../../../data/colors";
+import { returnRandom } from "../../../utils/Functions";
 const Cont = styled.div`
   min-height: 100vh;
   padding-top: 200px;
@@ -13,7 +14,7 @@ const Cont = styled.div`
 const Testing = () => {
   const [text, setText] = useState("hello world");
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetcher = async () => {
       try {
         const { data, error } = await supabase
@@ -28,6 +29,12 @@ const Testing = () => {
       }
     };
     fetcher();
+  }, []); */
+
+  useEffect(() => {
+    for (let i = 0; i < 20; i++) {
+      console.log(returnRandom(lightColors));
+    }
   }, []);
   return (
     <Cont colors={COLORS}>

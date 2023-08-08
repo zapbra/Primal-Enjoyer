@@ -251,3 +251,9 @@ export const fetchDaysDiff = (dateProp) => {
     return `${Math.round(microSecondsDiff / (1000 * 60))}m`;
   }
 };
+
+export const returnRandom = (arr) => {
+  const rand = Math.floor(Math.random() * (arr.length - 1));
+
+  return arr[rand];
+};

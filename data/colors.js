@@ -39,3 +39,11 @@ export const tagColors = [
 ];
 
 export default colors;
+
+export const lightColors = [
+  "rgba(217,127,208, 0.5)", //purple
+  "rgba(118, 204,204, 0.5)", //turquoise
+  "rgba(133, 160, 230, 0.5)", //blue
+  "rgba(134, 227, 149, 0.5)", //green
+  "rgba(233, 170, 170, 0.5)", //red
+];

@@ -89,6 +89,10 @@ a.visit-link:visited {
   color: $grey !important;
 }
 
+.light-blue {
+  color: $ultra-light-blue;
+}
+
 .white {
   color: #fff !important;
 }
@@ -1251,6 +1255,9 @@ input[type="number"] {
 
 .padding-16{
   padding: 16px;
+}
+.padding-32 {
+  padding: 32px;
 }
 .px-16{
   padding: 0 16px;
