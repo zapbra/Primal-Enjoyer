@@ -26,12 +26,12 @@ const Categories = ({
   selectedCategories,
   removeCategory,
 }) => {
-  const categoryElems = unselectedCategories.map((category) => {
-    return <Category name={category} />;
+  const categoryElems = unselectedCategories.map((category, index) => {
+    return <Category name={category} key={index} />;
   });
 
-  const selectedCategoryElems = selectedCategories.map((category) => {
-    return <RemoveTag name={category} removeTag={removeCategory} />;
+  const selectedCategoryElems = selectedCategories.map((category, index) => {
+    return <RemoveTag name={category} removeTag={removeCategory} key={index} />;
   });
   return (
     <Cont colors={COLORS}>

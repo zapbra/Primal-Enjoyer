@@ -17,12 +17,12 @@ const Cont = styled.div`
 `;
 
 const Tags = ({ selectedTags, unselectedTags, removeTag }) => {
-  const tagElems = unselectedTags.map((tag) => {
-    return <Tag name={tag} />;
+  const tagElems = unselectedTags.map((tag, index) => {
+    return <Tag name={tag} key={index} />;
   });
 
-  const removeTagElems = selectedTags.map((tag) => {
-    return <RemoveTag name={tag} removeTag={removeTag} />;
+  const removeTagElems = selectedTags.map((tag, index) => {
+    return <RemoveTag name={tag} removeTag={removeTag} key={index} />;
   });
 
   return (

@@ -67,9 +67,12 @@ const Recipe = ({
   text,
 }) => {
   let xd = "chicken soup";
-  let ingredientElems = ingredients.map((ingredient) => {
+  let ingredientElems = ingredients.map((ingredient, index) => {
     return (
-      <div className="mar-bottom-4 flex align-center justify-center">
+      <div
+        className="mar-bottom-4 flex align-center justify-center"
+        key={index}
+      >
         <div className="blue-circle mar-right-8"></div>
         <p className="dark-blue mar-right-8">
           <Highlight text={text}>{ingredient.food_id.name}</Highlight> (

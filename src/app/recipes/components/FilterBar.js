@@ -46,9 +46,10 @@ const Cont = styled.div`
 `;
 
 const FilterBar = ({ categories, setCategories, selectCategory }) => {
-  const filterElems = categories.map((category) => {
+  const filterElems = categories.map((category, index) => {
     return (
       <div
+        key={index}
         className={
           category.selected ? "filter-tag filter-tag-selected" : "filter-tag"
         }

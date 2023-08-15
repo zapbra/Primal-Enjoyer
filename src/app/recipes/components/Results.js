@@ -18,9 +18,10 @@ const Results = ({
   selectCategory,
   text,
 }) => {
-  const recipeElems = recipesRender.map((recipe) => {
+  const recipeElems = recipesRender.map((recipe, index) => {
     return (
       <Recipe
+        key={index}
         text={text}
         name={recipe.name}
         briefDescription={recipe.briefDescription}
