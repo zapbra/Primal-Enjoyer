@@ -1,7 +1,5 @@
-import { useState } from "react";
-import styled from "styled-components";
-
-const Highlight = ({ children, text }) => {
+const Highlight = ({ children, text = "" }) => {
+  console.log(text);
   let ch = children;
   let terms = text.split(" ").map((term) => term.toLowerCase());
   console.log("terms");
