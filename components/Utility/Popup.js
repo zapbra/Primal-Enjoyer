@@ -31,11 +31,7 @@ const Popup = ({ children, text, link }) => {
   };
   return (
     <Cont colors={COLORS}>
-      <div
-        onMouseEnter={showPopup}
-        onMouseLeave={hidePopup}
-        style={{ background: "black" }}
-      >
+      <div onMouseEnter={showPopup} onMouseLeave={hidePopup}>
         {children}
         <div
           style={{

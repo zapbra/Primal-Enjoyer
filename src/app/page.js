@@ -1,5 +1,6 @@
 import Render from "./home/Render";
 import Head from "next/head";
+import supabase from "../../utils/supabaseClient";
 
 const YOUTUBE_PLAYLIST_ITEMS_API =
   "https://www.googleapis.com/youtube/v3/playlistItems";
@@ -10,16 +11,26 @@ export async function fetchData() {
   );
   const data = await res.json();
 
+  const { data: recipesFetch, error } = await supabase
+    .from("aaj_recipes")
+    .select(
+      "*, aaj_recipe_category(name), food_instances(quantity, food_id(name))"
+    )
+    .limit(20);
+
   return {
     props: {
       data,
+      recipesFetch,
     },
   };
 }
 
 const Page = async () => {
-  let data = await fetchData();
-  data = data.props.data;
+  const data = await fetchData();
+  const recipesFetch = data.props.recipesFetch;
+  let ytData = data.props.data;
+
   const meta = {
     title: "Raw Primal diet Aajonus Vonderplanitz introduction.",
     description:
@@ -48,7 +59,7 @@ const Page = async () => {
 
         <meta name="description" content={meta.description} />
       </Head>
-      <Render data={data}></Render>
+      <Render data={ytData} recipesFetch={recipesFetch}></Render>
     </>
   );
 };

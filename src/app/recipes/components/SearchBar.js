@@ -6,15 +6,23 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Cont = styled.div`
   padding: 32px;
+  display: flex;
+  justify-content: center;
   .searchbar-holder {
     display: inline-flex;
     border-radius: 32px;
-    background-color: ${(props) => props.colors.ultraLightBlue};
+    background-color: #fff;
     padding: 4px;
-    border: 1px solid transparent;
+    border: 1px solid ${(props) => props.colors.grey};
+    .contrast {
+      transition: color 0.25s ease;
+    }
     &:focus-within {
-      background-color: ${(props) => props.colors.veryLightBlue};
-      border: 1px solid ${(props) => props.colors.grey};
+      background-color: #fff;
+      border: 1px solid ${(props) => props.colors.blue2};
+      .contrast {
+        color: ${(props) => props.colors.blue2} !important;
+      }
     }
   }
   .search-icon {
@@ -39,10 +47,18 @@ const Cont = styled.div`
     border-radius: 32px;
     outline: none;
     border: none;
+    background-color: #fff;
+    min-width: 5px !important;
+  }
+  .icon-search {
+    position: relative;
+    top: 50%;
+    transform: translateY(-25%);
+    right: 8px;
   }
 `;
 
-const SearchBar = ({ text, updateText }) => {
+const SearchBar = ({ text, setText }) => {
   return (
     <Cont colors={COLORS}>
       <div className="searchbar-holder">
@@ -50,10 +66,13 @@ const SearchBar = ({ text, updateText }) => {
           type="text"
           placeholder="Tomato cheese sauce"
           text={text}
-          onChange={updateText}
+          onChange={(e) => setText(e.target.value)}
         />
-        <div className="search-icon light-blue">
+        {/* <div className="search-icon light-blue">
           <FontAwesomeIcon icon={faSearch} className="icon-ssm" />
+        </div> */}
+        <div className="icon-search">
+          <FontAwesomeIcon icon={faSearch} className="icon-ssm contrast" />
         </div>
       </div>
     </Cont>

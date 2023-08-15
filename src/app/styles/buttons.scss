@@ -22,7 +22,8 @@ $very-light-blue: #f8fbff;
 $super-green: #3a4656;
 $offGrey: #4f5b6c;
 $grey: #b9bfc7;
-
+$orange: #C87450;
+$light-orange: #da8c6b;
 $mainColor: #ffc000;
 
 .red-bg-btn{
@@ -48,7 +49,7 @@ $mainColor: #ffc000;
 
 .green-btn{
   background-color: $green;
-  border-radius: 32px;
+  border-radius: 8px;
   padding: 8px 16px;
   cursor:pointer;
   h5{
@@ -62,6 +63,26 @@ $mainColor: #ffc000;
   }
   &:active{
     outline: 2px solid $light-green;
+    outline-offset: 3px;
+  }
+}
+
+.orange-btn{
+  background-color: $orange;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor:pointer;
+  h5{
+    margin-bottom:0 !important;
+  }
+  h2,h3,h4,h5{
+    color: #fff;
+  }
+  &:hover{
+    background-color: $light-orange;
+  }
+  &:active{
+    outline: 2px solid $light-orange;
     outline-offset: 3px;
   }
 }
@@ -223,8 +244,20 @@ p {
   background-color: $dark-blue-2;
   border-radius: 32px;
   padding: 8px 16px;
+  cursor:pointer;
+  box-shadow: inset 2px 2px 2px 0px rgb(128 149 179 / 41%),
+  inset -2px -2px 2px 0 rgb(0 43 103 / 70%);
+  transition: background-color .25s ease;
   h2,h3,h4,h5{
     color: #fff;
+  }
+
+  &:hover {
+    background-color: $blue2;
+  }
+  &:active {
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
 }
 
@@ -234,6 +267,7 @@ p {
   background-color: $blue;
   padding: 8px 16px;
   cursor:pointer;
+  
   h1,h2,h3,h4,h5,p{
     color: #fff;
   }

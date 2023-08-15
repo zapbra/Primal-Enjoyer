@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../../../../data/colors";
-
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 const Cont = styled.div`
   border: 1px solid ${(props) => props.colors.ultraLightGrey};
   background-color: #fff;
@@ -13,7 +13,7 @@ const Instructions = ({ instructions }) => {
       <h5 className="mar-bottom-4">Instructions</h5>
       <div className="grey-line mar-bottom-8"></div>
       <div className="instruction-box">
-        {instructions.map((instruction, index) => {
+        {/* {instructions.map((instruction, index) => {
           return (
             <div key={index} className="">
               <h5 className="mar-bottom-8">
@@ -23,7 +23,8 @@ const Instructions = ({ instructions }) => {
               <div className="grey-line mar-bottom-8"></div>
             </div>
           );
-        })}
+        })} */}
+        <ReactMarkdown>{instructions}</ReactMarkdown>
       </div>
     </Cont>
   );

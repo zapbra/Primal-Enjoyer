@@ -10,7 +10,7 @@ import DetailedInstructions from "../components/DetailedInstructions";
 import Popup from "../../../../components/Utility/Popup";
 
 const Cont = styled.div`
-  padding-top: 160px;
+  padding-top: 120px !important;
   min-height: 100vh;
   background: #fff;
   padding: 16px;
@@ -44,6 +44,7 @@ const Cont = styled.div`
       height: 64px;
       padding: 8px;
       background-color: #fff;
+      margin-bottom: 16px;
     }
     .inner-padding {
       width: 100%;
@@ -55,14 +56,16 @@ const Cont = styled.div`
 `;
 
 const Render = ({ recipe }) => {
+  console.log("recipe");
+  console.log(recipe);
   const [iconElems, setIconElems] = useState(
-    recipe.ingredients.map((ingredient, index) => {
+    recipe.food_instances.map((food_instance, index) => {
       return (
-        <Popup text={ingredient.description} key={index}>
+        <Popup text={"ingredient.description"} key={index}>
           <div className="icon">
             <div className=" inner-padding">
               <Image
-                src={`/icons/${ingredient.name.toLowerCase()}.png`}
+                src={`/icons/${food_instance.food_id.name.toLowerCase()}.png`}
                 fill
                 style={{ objectFit: "cover" }}
               />
@@ -84,17 +87,18 @@ const Render = ({ recipe }) => {
           />
         </div>
 
-        <div className="icons-holder flex align-start flex-wrap mar-bottom-16">
+        <div className="icons-holder flex align-start flex-wrap">
           {iconElems}
         </div>
 
-        <Ingredients ingredients={recipe.ingredients} />
+        <Ingredients
+          servings={recipe.servings}
+          food_instances={recipe.food_instances}
+        />
 
         <Instructions instructions={recipe.instructions} />
       </div>
-      <DetailedInstructions
-        detailedInstructions={recipe.detailedInstructions}
-      />
+      {/*  <DetailedInstructions detailedInstructions={recipe.instructions} /> */}
     </Cont>
   );
 };

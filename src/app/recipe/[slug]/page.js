@@ -1,7 +1,29 @@
 import React from "react";
 import Render from "./Render";
+import supabase from "../../../../utils/supabaseClient";
 
-const page = () => {
+export async function generateStaticParams() {
+  const { data, error } = await supabase.from("aaj_recipes").select("name");
+
+  return data.map((recipe) => {
+    return { slug: recipe.title };
+  });
+}
+
+const fetchData = async (name) => {
+  const { data, error } = await supabase
+    .from("aaj_recipes")
+    .select(
+      "*, aaj_recipe_category(name), food_instances(quantity, food_id(name) )"
+    )
+    .eq("name", name)
+    .maybeSingle();
+  return data;
+};
+
+const page = async ({ params }) => {
+  const slug = decodeURI(params.slug);
+  const recipeX = await fetchData(slug);
   const recipe = {
     name: "Lemonade",
     ingredients: [
@@ -47,7 +69,7 @@ const page = () => {
 
   return (
     <>
-      <Render recipe={recipe} />
+      <Render recipe={recipeX} params={slug} />
     </>
   );
 };

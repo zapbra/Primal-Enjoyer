@@ -11,6 +11,7 @@ import Explore from "./Explore";
 import Schedule from "./Schedule/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import PrimalRecipes from "./PrimalRecipes/Index";
 
 const Content = styled.div`
   padding-top: 6rem;
@@ -102,6 +103,7 @@ const Introduction = (props) => {
           <DonationButtonSmall />
         </div>
       </SectionOne>
+      <PrimalRecipes recipes={props.recipesFetch} />
       <Explore />
       <Schedule />
       {/* <UserHelp filesFetch={props.files} user={props.user} /> */}

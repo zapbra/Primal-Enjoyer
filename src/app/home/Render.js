@@ -34,7 +34,7 @@ const Right = styled.div`
 const YOUTUBE_PLAYLIST_ITEMS_API =
   "https://www.googleapis.com/youtube/v3/playlistItems";
 
-export default function Home({ data }) {
+export default function Home({ data, recipesFetch }) {
   const [user, setUser] = useState(null);
 
   const fileNames = [
@@ -66,6 +66,7 @@ export default function Home({ data }) {
           };
         })}
         user={user}
+        recipesFetch={recipesFetch}
       />
     </main>
   );

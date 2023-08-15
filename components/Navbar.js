@@ -421,6 +421,16 @@ const Navbar = () => {
                   <li>
                     <Link
                       href={{
+                        pathname: `/recipes`,
+                      }}
+                    >
+                      <h5 className="light opacity-anim">Recipes</h5>
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      href={{
                         pathname: `/encyclopedia`,
                       }}
                     >

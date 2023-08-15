@@ -42,6 +42,24 @@ $light-red: #fdccd6;
   }
 }
 
+@keyframes shiftText{
+  0% {
+    left:0px;
+  }
+  50% {
+    left:10px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+.shift-text{
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-name: shiftText;
+  animation-timing-function: linear;
+}
 .rotate{
   animation-duration: 1s;
   animation-iteration-count: 1;
