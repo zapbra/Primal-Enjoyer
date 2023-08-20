@@ -29,7 +29,7 @@
     "graphql": "^16.7.1",
     "graphql-request": "^6.1.0",
     "nanoid": "^4.0.2",
-    "next": "13.4.8",
+    "next": "^13.4.8",
     "nextjs-toploader": "^1.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",

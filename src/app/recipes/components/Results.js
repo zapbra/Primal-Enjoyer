@@ -27,7 +27,7 @@ const Results = ({
         briefDescription={recipe.briefDescription}
         ingredients={recipe.food_instances}
         category={recipe.aaj_recipe_category.name}
-        url={"/cheesecake.jpg"}
+        url={recipe.url}
       />
     );
   });

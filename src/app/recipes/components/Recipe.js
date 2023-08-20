@@ -37,6 +37,8 @@ const Cont = styled.div`
     width: 75%;
     height: 200px;
     margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   .blue-circle {
@@ -82,6 +84,8 @@ const Recipe = ({
       </div>
     );
   });
+
+  if (url == null) url = "/No_image_available.svg.png";
 
   return (
     <Cont colors={COLORS}>

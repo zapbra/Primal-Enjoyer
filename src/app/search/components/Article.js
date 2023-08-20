@@ -239,6 +239,7 @@ const Article = ({ article, allArticles, index }) => {
       href={{
         pathname: `/article/${article?.title}`,
       }}
+      className="visit-link"
     >
       <Flex>
         <div className="flex align-center">

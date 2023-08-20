@@ -1,9 +1,7 @@
 const Highlight = ({ children, text = "" }) => {
-  console.log(text);
   let ch = children;
   let terms = text.split(" ").map((term) => term.toLowerCase());
-  console.log("terms");
-  console.log(terms);
+
   // map over each word of the element text
   if (!text.length == 0) {
     children = children

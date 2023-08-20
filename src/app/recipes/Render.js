@@ -33,6 +33,8 @@ const Cont = styled.div`
 `;
 
 const Render = ({ recipesFetch, firstRecipes, recipesCache, allRecipes }) => {
+  console.log("allRecipes");
+  console.log(allRecipes);
   const [firstRender, setFirstRender] = useState(true);
 
   const [categories, setCategories] = useState([
@@ -150,7 +152,13 @@ const Render = ({ recipesFetch, firstRecipes, recipesCache, allRecipes }) => {
     setCategories((prev) => {
       return prev.map((category) => {
         if (category.name == name) {
-          category.selected = true;
+          // if selected category, check to see if already selected and unselect and set name to all to render all
+          if (category.selected) {
+            category.selected = false;
+            name = "all";
+          } else {
+            category.selected = true;
+          }
         } else {
           category.selected = false;
         }
