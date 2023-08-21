@@ -120,8 +120,8 @@ const Render = ({ recipe }) => {
   );
   return (
     <Cont colors={COLORS}>
-      <div className="holder">
-        <div className="recipe-holder mar-bottom-64 padding-16">
+      <div className="holder ">
+        <div className="recipe-holder mar-bottom-64 padding-16 rounded-shadow">
           <div className="image-holder relative">
             <Image
               src={recipe.url}

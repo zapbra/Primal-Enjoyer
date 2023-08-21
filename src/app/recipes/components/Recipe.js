@@ -14,7 +14,7 @@ const Cont = styled.div`
   border-radius: 8px;
   border: 1px solid ${(props) => props.colors.grey};
   background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px 0px;
+  //box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px 0px;
   margin-bottom: 32px;
   cursor: pointer;
   padding: 16px;
@@ -88,7 +88,7 @@ const Recipe = ({
   if (url == null) url = "/No_image_available.svg.png";
 
   return (
-    <Cont colors={COLORS}>
+    <Cont colors={COLORS} className="rounded-shadow">
       <Link href={`/recipe/${name}`}>
         <div className="flex flex-end mar-bottom-16">
           <div className="category flex align-center">
