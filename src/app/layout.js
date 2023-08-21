@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import NextTopLoader from "nextjs-toploader";
 export const AppContext = createContext();
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 export default function RootLayout({ children }) {
   const [context, setContext] = useState({
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className="main-holder">
           <NextTopLoader />
+          <GoogleAnalytics trackPageViews />
           <StyledComponentsRegistry>
             <Navbar />
             {children}
