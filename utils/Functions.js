@@ -157,6 +157,14 @@ export const UpperCase = (text) => {
   return split;
 };
 
+export const UpperCaseWhole = (text) => {
+  let split = text.split(" ");
+  split = split.map((str) => {
+    return str.substring(0, 1).toUpperCase() + str.substring(1);
+  });
+  return split.join(" ");
+};
+
 export const ReturnPreview = (text) => {
   const length = text.children.length;
 

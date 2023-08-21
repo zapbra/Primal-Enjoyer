@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useState, useCallback, useRef, useEffect, useContext } from "react";
 import {
   MenuIcon,
@@ -23,6 +23,7 @@ import {
   faHome,
   faSort,
   faEye,
+  faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 import { AppContext } from "../src/app/layout";
 import { getLocalStorage, checkFavorite } from "../utils/Functions";
@@ -326,7 +327,9 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const [user, setUser] = useState(null);
   const router = useRouter();
-
+  const pathname = usePathname();
+  console.log("pathname");
+  console.log(pathname);
   // Hide and show navbar on scroll
   let prevY = 0;
   const controlNavbar = () => {
@@ -585,7 +588,7 @@ const Navbar = () => {
               >
                 <div
                   className={
-                    router.route == "/timecodes"
+                    pathname == "/timecodes"
                       ? "nav-box hide-360 bg-green"
                       : "nav-box hide-360"
                   }
@@ -595,18 +598,18 @@ const Navbar = () => {
               </Link>
               <Link
                 href={{
-                  pathname: `/categories`,
+                  pathname: `/recipes`,
                 }}
               >
                 <div
                   className={
-                    router.route == "/categories"
+                    pathname == "/recipes"
                       ? "nav-box hide-310 bg-green"
                       : "nav-box hide-310"
                   }
                 >
                   <FontAwesomeIcon
-                    icon={faFolderTree}
+                    icon={faUtensils}
                     className="icon-blue icon-sm"
                   />
                 </div>
@@ -614,7 +617,7 @@ const Navbar = () => {
               <Link href="/">
                 <div
                   className={
-                    router.route == "/"
+                    pathname == "/"
                       ? "nav-box hide-260 bg-green"
                       : "nav-box hide-260"
                   }
@@ -680,6 +683,16 @@ const Navbar = () => {
             <h5>Home</h5>
           </div>
         </Link>
+        <Link href="/recipes">
+          <div onClick={ToggleDropdown} className="nav-line">
+            <FontAwesomeIcon
+              icon={faUtensils}
+              className="nav-icon icon-ssm mar-right-8"
+            />
+            <h5>Recipes</h5>
+          </div>
+        </Link>
+        {/* End of nav line*/}
         {/* End of nav line*/}
         <Link href="/categories">
           <div onClick={ToggleDropdown} className="nav-line">

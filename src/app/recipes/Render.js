@@ -19,6 +19,7 @@ import {
   faPepperHot,
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
+import Disclaimer from "./Disclaimer";
 
 const Cont = styled.div`
   min-height: 100vh;
@@ -246,6 +247,7 @@ const Render = ({ recipesFetch, firstRecipes, recipesCache, allRecipes }) => {
         unselectedTags={unselectedTags}
       /> */}
       </div>
+      <Disclaimer />
     </Cont>
   );
 };

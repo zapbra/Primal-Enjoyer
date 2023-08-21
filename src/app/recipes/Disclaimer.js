@@ -4,6 +4,10 @@ import COLORS from "../../../data/colors";
 
 const Cont = styled.div`
   padding: 32px;
+
+  @media only screen and (max-width: 500px) {
+    padding: 8px;
+  }
 `;
 
 const Disclaimer = () => {
@@ -41,11 +45,11 @@ const Disclaimer = () => {
         So, if you search "coconut cream", it turns into "coconut" and "cream".{" "}
       </p>
       <p className="mar-bottom-8">
-        These two terms are completely seperate, so I suggest search "coconut".
+        These two terms are completely seperate, so I suggest that you search
+        "coconut".
       </p>
       <p className="mar-bottom-8">
-        All of the recipes are searched for keywords in the titles and
-        ingredients that include part of your search term.
+        Every recipe title and ingredients are filtered for your search term(s).
       </p>
       <p className="mar-bottom-8">
         So, if you search "chick", every recipe that has "chicken" will become a
@@ -62,14 +66,12 @@ const Disclaimer = () => {
         match
       </p>
       <p className="mar-bottom-8">
-        If you have three search terms "beef" "meat" "sauce" ("beef meat
+        If you have three search terms "beef", "meat", "sauce" ("beef meat
         sauce"), if any of those match, the recipe becomes a match and the more
         terms, the more matches.
       </p>
-      <p>
-        I know this seems backwards and I will probably change it. It would take
-        only 1 minute.
-      </p>
+      <p>I know this seems backwards and I will probably change it.</p>
+      <div className="mar-bottom-32"></div>
     </Cont>
   );
 };

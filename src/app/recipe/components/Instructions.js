@@ -24,7 +24,7 @@ const Instructions = ({ instructions }) => {
             </div>
           );
         })} */}
-        <ReactMarkdown>{instructions}</ReactMarkdown>
+        <div>{instructions}</div>
       </div>
     </Cont>
   );

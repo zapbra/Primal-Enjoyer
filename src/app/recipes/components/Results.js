@@ -41,6 +41,11 @@ const Results = ({
       />
       <div className="mar-bottom-32"></div>
       <div className="recipes-holder ">{recipeElems}</div>
+      {recipeElems.length == 0 && (
+        <div className="padding-16">
+          <p>No results... try another search.</p>
+        </div>
+      )}
     </Cont>
   );
 };

@@ -12,6 +12,7 @@ import Disclaimer from "@/app/recipes/Disclaimer";
 
 const Cont = styled.div`
   background: #fff;
+
   .holder {
     padding-top: 120px !important;
     min-height: 100vh;
@@ -36,9 +37,22 @@ const Cont = styled.div`
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 8px;
+    @media only screen and (max-width: 450px) {
+      height: 300px;
+    }
+    @media only screen and (max-width: 350px) {
+      height: 200px;
+    }
+    @media only screen and (max-width: 250px) {
+      height: 150px;
+    }
+    @media only screen and (max-width: 175px) {
+      height: 100px;
+    }
   }
 
   .icons-holder {
+    position: relative;
     .icon {
       margin-right: 16px;
       border: 1px solid ${(props) => props.colors.ultraLightGrey};
@@ -66,15 +80,29 @@ const Cont = styled.div`
       position: relative;
     }
   }
+  @media only screen and (max-width: 500px) {
+    .holder {
+      padding: 0px;
+    }
+    .recipe-holder {
+      border-radius: 0px;
+      border: none;
+      padding: 8px;
+      border-top: 1px solid ${(props) => props.colors.ultraLightGrey};
+      border-bottom: 1px solid ${(props) => props.colors.ultraLightGrey};
+    }
+  }
 `;
 
 const Render = ({ recipe }) => {
-  console.log("recipe");
-  console.log(recipe);
   const [iconElems, setIconElems] = useState(
     recipe.food_instances.map((food_instance, index) => {
       return (
-        <Popup text={food_instance.food_id.description} key={index}>
+        <Popup
+          text={food_instance.food_id.description}
+          key={index}
+          title={food_instance.food_id.name}
+        >
           <div className="icon">
             <div className=" inner-padding">
               <Image
