@@ -21,7 +21,9 @@ const Cont = styled.div`
   max-width: 400px;
   margin-left: 16px;
   margin-right: 16px;
-  text-align: center;
+  .ingredient {
+    border-bottom: 1px solid ${(props) => props.colors.grey};
+  }
   li {
     margin-left: 16px;
   }
@@ -48,10 +50,11 @@ const Cont = styled.div`
     background-color: ${(props) => props.colors.darkBlue};
   }
 
+  transition: background-color 0.25s ease;
   &:hover {
-    h4,
+    background-color: ${(props) => props.colors.lightGrey};
     p {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
   &:active {
@@ -72,15 +75,19 @@ const Recipe = ({
   let ingredientElems = ingredients.map((ingredient, index) => {
     return (
       <div
-        className="mar-bottom-4 flex align-center justify-center"
+        className="mar-bottom-16 padding-8 ingredient flex align-center space-between"
         key={index}
       >
-        <div className="blue-circle mar-right-8"></div>
         <p className="dark-blue mar-right-8">
-          <Highlight text={text}>{ingredient.food_id.name}</Highlight> (
-          {ingredient.quantity})
+          <Highlight text={text}>{ingredient.food_id.name}</Highlight>{" "}
+          <span className="light-grey2">({ingredient.quantity})</span>
         </p>
-        <p></p>
+        <Image
+          src={`/icons${ingredient.food_id.icon}`}
+          width={40}
+          height={40}
+          alt={""}
+        />
       </div>
     );
   });
@@ -108,7 +115,7 @@ const Recipe = ({
             <Highlight text={text}>{name}</Highlight>
           </h4>
         </div>
-        <div className="">
+        <div className="ingredients">
           {/* {ingredients.map((ingredient) => {
             return (
               <div className="mar-bottom-4 flex align-center justify-center">

@@ -9,20 +9,20 @@ const fetchRecipes = async () => {
     const { data, error } = await supabase
       .from("aaj_recipe_category")
       .select(
-        "*, aaj_recipes(name, servings, instructions, description, url, aaj_recipe_category(name), food_instances(quantity, food_id(name) ) )"
+        "*, aaj_recipes(name, servings, instructions, description, url, aaj_recipe_category(name), food_instances(quantity, food_id(name, icon) ) )"
       );
 
     const { data: firstRecipes, error: firstError } = await supabase
       .from("aaj_recipes")
       .select(
-        "name, servings, instructions, description, url, aaj_recipe_category(name), food_instances(quantity, food_id(name))"
+        "name, servings, instructions, description, url, aaj_recipe_category(name), food_instances(quantity, food_id(name, icon))"
       )
       .limit(20);
 
     const { data: allRecipes, error: allError } = await supabase
       .from("aaj_recipes")
       .select(
-        "name, servings, instructions, description, url, aaj_recipe_category(name), food_instances(quantity, food_id(name))"
+        "name, servings, instructions, description, url, aaj_recipe_category(name), food_instances(quantity, food_id(name, icon))"
       );
     if (error) throw error;
     return [data, firstRecipes, allRecipes];
