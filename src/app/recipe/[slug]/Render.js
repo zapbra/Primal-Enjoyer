@@ -95,6 +95,8 @@ const Cont = styled.div`
 `;
 
 const Render = ({ recipe }) => {
+  console.log("recipe");
+  console.log(recipe);
   const [iconElems, setIconElems] = useState(
     recipe.food_instances.map((food_instance, index) => {
       return (
@@ -106,7 +108,7 @@ const Render = ({ recipe }) => {
           <div className="icon">
             <div className=" inner-padding">
               <Image
-                src={`/icons/${food_instance.food_id.name.toLowerCase()}.png`}
+                src={`/icons${food_instance.food_id.icon}`}
                 fill
                 style={{ objectFit: "cover" }}
               />
@@ -128,7 +130,7 @@ const Render = ({ recipe }) => {
               quality={100}
             />
           </div>
-          <h3 className="mar-bottom-8">{recipe.name}</h3>
+          <h3 className="mar-bottom-16 mar-top-16">{recipe.name}</h3>
           <div className="grey-line mar-bottom-16"></div>
           <div className="icons-holder flex align-start flex-wrap">
             {iconElems}

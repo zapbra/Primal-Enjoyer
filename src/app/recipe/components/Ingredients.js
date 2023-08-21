@@ -7,6 +7,16 @@ const Cont = styled.div`
   li {
     margin-left: 16px;
   }
+
+  .ingredients {
+    background-color: #fff;
+  }
+  .ingredient {
+    padding: 8px;
+    p:first-of-type {
+    }
+    border-bottom: 1px solid ${(props) => props.colors.grey};
+  }
 `;
 
 const Ingredients = ({ food_instances }) => {
@@ -19,15 +29,22 @@ const Ingredients = ({ food_instances }) => {
         </span>
       </h5>
       <div className="grey-line mar-bottom-16"></div>
-      <ul className="mar-left-8">
+      <div className="mar-left-8 ingredients">
         {food_instances.map((food_instance, index) => {
           return (
-            <li key={index}>
-              {food_instance.food_id.name} <i>({food_instance.quantity})</i>
-            </li>
+            <div
+              className="ingredient flex space-between align-center"
+              key={index}
+            >
+              <div className="flex align-center">
+                <p className="light-grey2 small mar-right-8">({index + 1})</p>
+                <p className="">{food_instance.food_id.name}</p>
+              </div>
+              <p className="grey small">({food_instance.quantity})</p>
+            </div>
           );
         })}
-      </ul>
+      </div>
     </Cont>
   );
 };

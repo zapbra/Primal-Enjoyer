@@ -14,7 +14,7 @@ const fetchData = async (name) => {
   const { data, error } = await supabase
     .from("aaj_recipes")
     .select(
-      "*, aaj_recipe_category(name), food_instances(quantity, food_id(name, description) )"
+      "*, aaj_recipe_category(name), food_instances(quantity, food_id(name, description, icon) )"
     )
     .eq("name", name)
     .maybeSingle();

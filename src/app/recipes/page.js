@@ -1,3 +1,4 @@
+//export const revalidate = 0;
 import Render from "./Render";
 import supabase from "../../../utils/supabaseClient";
 import Tester from "./Tester";
