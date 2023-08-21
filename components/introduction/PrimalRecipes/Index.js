@@ -65,19 +65,22 @@ const Index = ({ recipes }) => {
       <div className="flex justify-center">
         <div className="relative">
           <div ref={recipeRef}>{recipeRender}</div>
-          <div className="flex space-between mar-bottom-16">
-            <div className="orange-btn" onClick={decreaseIndex}>
-              <h5>Last Recipe</h5>
+          <div className="padding-16">
+            <div className="flex space-between mar-bottom-16">
+              <div className="orange-btn" onClick={decreaseIndex}>
+                <h5>Last Recipe</h5>
+              </div>
+              <div className="green-btn" onClick={increaseIndex}>
+                <h5>Next Recipe</h5>
+              </div>
             </div>
-            <div className="green-btn" onClick={increaseIndex}>
-              <h5>Next Recipe</h5>
-            </div>
+
+            <Link href="/recipes">
+              <div className="blue-bg-btn">
+                <h3>View All</h3>
+              </div>
+            </Link>
           </div>
-          <Link href="/recipes">
-            <div className="blue-bg-btn">
-              <h3>View All</h3>
-            </div>
-          </Link>
         </div>
         <div></div>
       </div>
