@@ -128,7 +128,8 @@ const Render = ({ recipe }) => {
               quality={100}
             />
           </div>
-
+          <h3 className="mar-bottom-8">{recipe.name}</h3>
+          <div className="grey-line mar-bottom-16"></div>
           <div className="icons-holder flex align-start flex-wrap">
             {iconElems}
           </div>
