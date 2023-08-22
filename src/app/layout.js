@@ -1,4 +1,5 @@
 "use client";
+import { Analytics } from "@vercel/analytics/react";
 import "./styles/globals.scss";
 import StyledComponentsRegistry from "../../lib/registry";
 import { useState, useEffect, createContext } from "react";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
     <AppContext.Provider value={[context, setContext]}>
       <html lang="en">
         <body className="main-holder">
+          <Analytics />
           <NextTopLoader />
           <GoogleAnalytics trackPageViews />
           <StyledComponentsRegistry>

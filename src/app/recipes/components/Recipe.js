@@ -23,6 +23,7 @@ const Cont = styled.div`
   margin-right: 16px;
   .ingredient {
     border-bottom: 1px solid ${(props) => props.colors.grey};
+    text-align: left;
   }
   li {
     margin-left: 16px;

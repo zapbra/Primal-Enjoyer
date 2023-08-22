@@ -14,7 +14,7 @@ export async function fetchData() {
   const { data: recipesFetch, error } = await supabase
     .from("aaj_recipes")
     .select(
-      "*, aaj_recipe_category(name), food_instances(quantity, food_id(name))"
+      "*, aaj_recipe_category(name), food_instances(quantity, food_id(name, icon))"
     )
     .limit(20);
 
