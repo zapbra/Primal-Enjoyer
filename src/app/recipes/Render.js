@@ -75,7 +75,7 @@ const Render = ({ recipesFetch, firstRecipes, recipesCache, allRecipes }) => {
     }
 
     // iterates over each title and ingredient to see if it contain any of the search terms
-    // it is more likely to find the more search terms. This might need to be the reverse...
+    // it is more likely to find the more search terms. This might need to be the reverse..l.
     setRecipesRender((prev) => {
       const newRecipes = recipeList.filter((recipe) => {
         let returnState = false;
