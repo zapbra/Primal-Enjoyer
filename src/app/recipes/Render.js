@@ -20,6 +20,7 @@ import {
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
 import Disclaimer from "./Disclaimer";
+import Feedback from "../../../components/Utility/Feedback";
 
 const Cont = styled.div`
   min-height: 100vh;
@@ -247,6 +248,9 @@ const Render = ({ recipesFetch, firstRecipes, recipesCache, allRecipes }) => {
         unselectedTags={unselectedTags}
       /> */}
       </div>
+      <div className="sm-spacer-bot-res"></div>
+      <Feedback />
+      <div className="ssm-spacer-bot-res"></div>
       <Disclaimer />
     </Cont>
   );

@@ -124,7 +124,9 @@ const Render = ({ recipe }) => {
         <div className="recipe-holder mar-bottom-64 padding-16 rounded-shadow">
           <div className="image-holder relative">
             <Image
-              src={recipe.url}
+              src={
+                recipe.url != null ? recipe.url : "/No_image_available.svg.png"
+              }
               fill
               style={{ objectFit: "cover" }}
               quality={100}
