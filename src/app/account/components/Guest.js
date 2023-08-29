@@ -7,6 +7,11 @@ import COLORS from "../../../../data/colors";
 import SavedRecipes from "./SavedRecipes";
 const Cont = styled.div`
   padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  @media only screen and (max-width: 600px) {
+    padding: 16px;
+  }
 `;
 
 const Guest = () => {
