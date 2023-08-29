@@ -36,6 +36,7 @@ import ArticleCollection from "../../../components/account/ArticleCollection";
 import PostCollection from "../../../components/account/PostCollection";
 import Posts from "../../../components/account/Posts";
 import Notifications from "../../../components/account/Notifications";
+import Guest from "./components/Guest";
 
 const Cont = styled.div`
   min-height: 100vh;
@@ -434,25 +435,10 @@ const Account = () => {
       <Toaster />
 
       <div className="center-inline mar-bottom-one"></div>
-
+      {/** If user is not signed in */}
       {session.session === null ? (
         <>
-          <div className="shallow-cont ssm-spacer">
-            <h3>Have an Account?</h3>
-
-            <p className="mar-bottom-one">Login or sign up below</p>
-            <div className="mar-bottom-16 sign-up">
-              <Link href={{ pathname: "/signup" }}>
-                <DefaultBtn text="Sign Up" />
-              </Link>
-            </div>
-            <div>
-              <Link href={{ pathname: "/login" }}>
-                {" "}
-                <AntiDefaultBtn text="Sign In" />
-              </Link>
-            </div>
-          </div>
+          <Guest />
         </>
       ) : (
         <>

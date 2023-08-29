@@ -41,7 +41,7 @@ import { nanoid } from "nanoid";
 import COLORS, { tagColors } from "../../../../data/colors";
 
 /* import { AppContext } from "../../layout"; */
-import ArticleCollection from "../../../../components/account/ArticleCollection";
+import ArticleCollection from "../../../../components/Misc/ArticleCollection";
 import supabase from "../../../../utils/supabaseClient";
 import insertCollection, {
   getLikeCount,
@@ -498,6 +498,7 @@ const Slug = ({ article, articles, slug }) => {
     return false;
   };
 
+  // calls on page load to set user session and set article collection
   useEffect(() => {
     const getSession = async () => {
       const { data, error } = await supabase.auth.getSession();
@@ -516,11 +517,19 @@ const Slug = ({ article, articles, slug }) => {
         );
 
         const res = getCollections(data.session.user.id);
-        res.then((res) => setCollections(res));
+
+        res.then((res) => {
+          setCollections(res);
+        });
       }
     };
     getSession();
   }, []);
+
+  /*   useEffect(() => {
+    console.log("collections");
+    console.log(collections);
+  }, [collections]); */
 
   const createCollection = async (e) => {
     e.preventDefault();
@@ -569,8 +578,6 @@ const Slug = ({ article, articles, slug }) => {
   const setLoadingTrue = () => {
     setLoading(true);
   };
-
-  useEffect(() => {}, [setCollections]);
 
   const updateFavorites = () => {
     if (favorited) {
@@ -628,6 +635,11 @@ const Slug = ({ article, articles, slug }) => {
   const setCollectionVisible = () => {
     setShowCollection(true);
   };
+
+  useEffect(() => {
+    console.log("collections");
+    console.log(collections);
+  }, [collections]);
 
   const [copied, setCopied] = useState(false);
   const copyLink = () => {
@@ -849,10 +861,14 @@ const Slug = ({ article, articles, slug }) => {
 
                     <div
                       onClick={() => setCollectionVisible(true)}
-                      className="flex-center hover-grey"
-                      style={{ display: showCollection ? "none" : "flex" }}
+                      className=" hover-grey"
+                      style={{
+                        display: showCollection ? "none" : "flex",
+                        width: "100%",
+                      }}
                     >
                       <PlusIcon className="hero-icon-sm off-black" />
+
                       <p
                         style={{ marginLeft: "8px" }}
                         className=" cursor small"

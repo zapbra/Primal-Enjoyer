@@ -1,6 +1,8 @@
 "use client";
+
 import Image from "next/image";
-import React, { useState } from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import COLORS from "../../../../data/colors";
 
@@ -9,18 +11,30 @@ import Instructions from "../components/Instructions";
 import DetailedInstructions from "../components/DetailedInstructions";
 import Popup from "../../../../components/Utility/Popup";
 import Disclaimer from "@/app/recipes/Disclaimer";
+import Bookmark from "../../../../components/Utility/Bookmark";
+import {
+  bookmarkRecipe,
+  checkBookmarked,
+  removeRecipeBookmark,
+} from "../../../../utils/Functions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Cont = styled.div`
   background: #fff;
-
+  padding-top: 120px !important;
   .holder {
-    padding-top: 120px !important;
     min-height: 100vh;
 
     padding: 16px;
     display: flex;
-    flex-wrap: wrap;
+
     justify-content: center;
+  }
+
+  .saved-holder {
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .recipe-holder {
@@ -97,6 +111,19 @@ const Cont = styled.div`
 const Render = ({ recipe }) => {
   console.log("recipe");
   console.log(recipe);
+  const [bookmarked, setBookmarked] = useState(false);
+
+  useEffect(() => {
+    if (checkBookmarked(recipe.name)) {
+      setBookmarked(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("bookmarked");
+    console.log(bookmarked);
+  }, [bookmarked]);
+
   const [iconElems, setIconElems] = useState(
     recipe.food_instances.map((food_instance, index) => {
       return (
@@ -120,8 +147,36 @@ const Render = ({ recipe }) => {
   );
   return (
     <Cont colors={COLORS}>
+      <div className="flex saved-holder flex-end mar-bottom-16 flex-one">
+        <Link href="/account">
+          <div className="base-box mar-bottom-16 flex-inline mar-right-16 align-center">
+            <h5 className="mar-right-8">View Saved</h5>
+            <FontAwesomeIcon icon={faStar} className="icon-sm dark-blue" />
+          </div>
+        </Link>
+      </div>
       <div className="holder ">
         <div className="recipe-holder mar-bottom-64 padding-16 rounded-shadow">
+          {/** Title */}
+          <div className="flex flex-wrap align-center space-between mar-bottom-16">
+            <h3 className="mar-bottom-16">{recipe.name}</h3>
+            <div className="mar-bottom-16">
+              <Bookmark
+                bookmarkState={bookmarked}
+                addBookmark={() => {
+                  bookmarkRecipe(recipe.name);
+                  setBookmarked(true);
+                }}
+                removeBookmark={() => {
+                  removeRecipeBookmark(recipe.name);
+                  setBookmarked(false);
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="grey-line mar-bottom-8"></div>
+          {/** Image */}
           <div className="image-holder relative">
             <Image
               src={
@@ -132,8 +187,7 @@ const Render = ({ recipe }) => {
               quality={100}
             />
           </div>
-          <h3 className="mar-bottom-16 mar-top-16">{recipe.name}</h3>
-          <div className="grey-line mar-bottom-16"></div>
+          {/** Icons */}
           <div className="icons-holder flex align-start flex-wrap">
             {iconElems}
           </div>

@@ -63,6 +63,70 @@ export const deleteCollection = (title) => {
   }
 };
 
+export const getBookmarkedRecipes = () => {
+  // check if window open
+  if (typeof window != "undefined") {
+    // get recipes
+    let recipes = JSON.parse(localStorage.getItem("recipes"));
+    // if null set recipes to empty object
+    if (recipes == null) {
+      localStorage.setItem("recipes", JSON.stringify([]));
+      recipes = [];
+    }
+    return recipes;
+  }
+  return [];
+};
+export const bookmarkRecipe = (name) => {
+  // check if window is open
+  if (typeof window != "undefined") {
+    // get recipes
+    const recipes = JSON.parse(localStorage.getItem("recipes"));
+    //check if recipes null, if null create empty array
+    if (recipes == null) {
+      localStorage.setItem("recipes", JSON.stringify([]));
+    } else {
+      recipes.push(name);
+      localStorage.setItem("recipes", JSON.stringify(recipes));
+    }
+  }
+};
+
+// returns true if bookmarked, else returns false
+export const checkBookmarked = (name) => {
+  // check if window is open
+  let returnState = false;
+  if (typeof window != "undefined") {
+    // get recipes from local storage
+    const recipes = JSON.parse(localStorage.getItem("recipes"));
+    if (recipes == null) {
+      localStorage.setItem("recipes", JSON.stringify([]));
+    } else {
+      // check if recipes includes name
+      if (recipes.includes(name)) {
+        returnState = true;
+      }
+    }
+  }
+  return returnState;
+};
+
+export const removeRecipeBookmark = (name) => {
+  // check if window is open
+  if (typeof window != "undefined") {
+    // get recipes
+    let recipes = JSON.parse(localStorage.getItem("recipes"));
+    //check if recipes null, if null create empty array
+    if (recipes == null) {
+      localStorage.setItem("recipes", JSON.stringify([]));
+    } else {
+      // remove recipe that matches name and set local storage recipes
+      recipes = recipes.filter((recipe) => recipe != name);
+      localStorage.setItem("recipes", JSON.stringify(recipes));
+    }
+  }
+};
+
 export const insertArticle = (title, articleTitle) => {
   if (typeof window != "undefined") {
     const collection = JSON.parse(localStorage.getItem("collection"));

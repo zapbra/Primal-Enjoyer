@@ -1,5 +1,6 @@
 import SavedCollection from "./SavedCollection";
 import { useState, useReducer } from "react";
+
 const ArticleCollection = ({
   removeFromCollectionFunctional,
   deleteCollectionFunctional,

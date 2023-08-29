@@ -39,7 +39,25 @@ a.visit-link:visited {
   }
 }
 
+.base-box {
+  border: 1px solid $grey;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor:pointer;
+  transition: border .25s ease;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
+  &:hover{
+    border: 1px solid $dark-blue;
+  }
+  &:active{
+    background-color: $ultra-light-blue;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+  rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+}
 .main-holder{
 
   width: 100%;
@@ -54,13 +72,20 @@ a.visit-link:visited {
   min-height:100vh;
   padding-top: 160px;
 }
+
+
 .hover-grey{
-  border-radius: 50%;
-  width:26px;
-  height:26px;
+  border-radius: 8px;
+  padding: 4px;
+  align-items: center;
+  display: none;
+  cursor:pointer;
   transition: background-color .25s ease;
   &:hover {
     background-color: $light-blue;
+  }
+  &:active {
+    background-color: $grey;
   }
   
 }
@@ -630,14 +655,7 @@ a {
   border-bottom: 2px solid $dark-blue;
 }
 
-.hover-grey {
-  &:hover {
-    background-color: $light-blue;
-  }
-  &:active {
-    background-color: $grey;
-  }
-}
+
 .flex {
   display: flex;
 }
