@@ -9,9 +9,11 @@ const Cont = styled.div`
   display: flex;
   justify-content: center;
   .searchbar-holder {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px 0px;
     display: inline-flex;
     border-radius: 32px;
     background-color: #fff;
+    transition: box-shadow 0.25s ease;
     padding: 4px;
     border: 1px solid ${(props) => props.colors.grey};
     .contrast {
@@ -19,6 +21,7 @@ const Cont = styled.div`
     }
     &:focus-within {
       background-color: #fff;
+      box-shadow: none;
       border: 1px solid ${(props) => props.colors.blue2};
       .contrast {
         color: ${(props) => props.colors.blue2} !important;
@@ -61,7 +64,7 @@ const Cont = styled.div`
 const SearchBar = ({ text, setText }) => {
   return (
     <Cont colors={COLORS}>
-      <div className="searchbar-holder">
+      <div className="searchbar-holder ">
         <input
           type="text"
           placeholder="Tomato cheese sauce"

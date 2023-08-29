@@ -29,14 +29,11 @@ const Ingredients = ({ food_instances }) => {
         </span>
       </h5>
       <div className="grey-line mar-bottom-16"></div>
-      <div className="mar-left-8 ingredients">
+      <div className="mar-left-16 ingredients">
         {food_instances.map((food_instance, index) => {
           return (
-            <div
-              className="ingredient flex space-between align-center"
-              key={index}
-            >
-              <div className="flex align-center">
+            <div className="ingredient flex  align-center" key={index}>
+              <div className="flex align-center mar-right-16">
                 <p className="light-grey2 small mar-right-8">({index + 1})</p>
                 <p className="">{food_instance.food_id.name}</p>
               </div>

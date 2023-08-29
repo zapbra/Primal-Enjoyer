@@ -29,6 +29,8 @@ const Cont = styled.div`
     margin-left: 16px;
   }
   .category {
+    box-shadow: inset 2px 2px 2px 0px rgb(128 149 179 / 41%),
+      inset -2px -2px 2px 0 rgb(0 43 103 / 70%);
     border-radius: 8px;
     background-color: ${(props) => props.colors.darkBlue};
     padding: 4px 8px;
@@ -42,6 +44,7 @@ const Cont = styled.div`
     margin: 0 auto;
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px 0px;
   }
 
   .blue-circle {
@@ -72,21 +75,20 @@ const Recipe = ({
   url,
   text,
 }) => {
-  let xd = "chicken soup";
   let ingredientElems = ingredients.map((ingredient, index) => {
     return (
       <div
-        className="mar-bottom-16 padding-8 ingredient flex align-center space-between"
+        className="mar-bottom-8 padding-8 ingredient flex align-center space-between"
         key={index}
       >
-        <p className="dark-blue mar-right-8">
+        <p className="dark-blue mar-right-8 small">
           <Highlight text={text}>{ingredient.food_id.name}</Highlight>{" "}
           <span className="light-grey2">({ingredient.quantity})</span>
         </p>
         <Image
           src={`/icons${ingredient.food_id.icon}`}
-          width={40}
-          height={40}
+          width={32}
+          height={32}
           alt={""}
         />
       </div>
@@ -107,12 +109,12 @@ const Recipe = ({
             <h5>{category}</h5>
           </div>
         </div>
-        <div className="relative image-holder ">
+        <div className="relative image-holder">
           <Image src={url} alt={name} fill style={{ objectFit: "cover" }} />
         </div>
         <div className="mar-bottom-16"></div>
         <div className="center-inline">
-          <h4 className="mar-bottom-16">
+          <h4 className="mar-bottom-16 text-shadow-2">
             <Highlight text={text}>{name}</Highlight>
           </h4>
         </div>

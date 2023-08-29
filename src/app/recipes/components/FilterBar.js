@@ -18,7 +18,7 @@ const Cont = styled.div`
     margin-left: 4px;
     margin-right: 4px;
     margin-bottom: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px 0px;
+    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px 0px;
     padding: 8px 12px;
     &:hover {
       background-color: ${(props) => props.colors.darkBlue};
@@ -35,6 +35,8 @@ const Cont = styled.div`
   .filter-tag-selected {
     background-color: ${(props) => props.colors.darkBlue};
     position: relative;
+    box-shadow: inset 2px 2px 2px 0px rgb(128 149 179 / 41%),
+      inset -2px -2px 2px 0 rgb(0 43 103 / 70%);
     h5 {
       position: relative;
     }
@@ -51,7 +53,9 @@ const FilterBar = ({ categories, setCategories, selectCategory }) => {
       <div
         key={index}
         className={
-          category.selected ? "filter-tag filter-tag-selected" : "filter-tag"
+          category.selected
+            ? "filter-tag filter-tag-selected"
+            : "filter-tag rounded-shadow"
         }
         onClick={() => selectCategory(category.name)}
       >

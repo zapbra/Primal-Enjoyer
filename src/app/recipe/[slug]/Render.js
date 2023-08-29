@@ -18,7 +18,7 @@ import {
   removeRecipeBookmark,
 } from "../../../../utils/Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faTurnDown } from "@fortawesome/free-solid-svg-icons";
 
 const Cont = styled.div`
   background: #fff;
@@ -47,6 +47,7 @@ const Cont = styled.div`
   }
 
   .image-holder {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px 0px;
     height: 400px;
     overflow: hidden;
     border-radius: 8px;
@@ -147,9 +148,21 @@ const Render = ({ recipe }) => {
   );
   return (
     <Cont colors={COLORS}>
-      <div className="flex saved-holder flex-end mar-bottom-16 flex-one">
+      <div className="flex saved-holder flex-wrap align-center padding-16 space-between mar-bottom-16 flex-one">
+        <div>
+          <h5 className="mar-bottom-8">Back to recipes</h5>
+          <Link href="/recipes">
+            <div className="mar-bottom-one  sm-icon-circle">
+              <FontAwesomeIcon
+                style={{ transform: "rotate(90deg)" }}
+                icon={faTurnDown}
+                className="icon-blue icon-sm"
+              />
+            </div>
+          </Link>
+        </div>
         <Link href="/account">
-          <div className="base-box mar-bottom-16 flex-inline mar-right-16 align-center">
+          <div className="base-box mar-bottom-16 flex-inline  align-center">
             <h5 className="mar-right-8">View Saved</h5>
             <FontAwesomeIcon icon={faStar} className="icon-sm dark-blue" />
           </div>
@@ -159,7 +172,7 @@ const Render = ({ recipe }) => {
         <div className="recipe-holder mar-bottom-64 padding-16 rounded-shadow">
           {/** Title */}
           <div className="flex flex-wrap align-center space-between mar-bottom-16">
-            <h3 className="mar-bottom-16">{recipe.name}</h3>
+            <h3 className="mar-bottom-16 text-shadow-2">{recipe.name}</h3>
             <div className="mar-bottom-16">
               <Bookmark
                 bookmarkState={bookmarked}

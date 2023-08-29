@@ -46,7 +46,12 @@ const Bookmark = ({ addBookmark, removeBookmark, bookmarkState }) => {
     }, 1000);
   };
   return (
-    <Cont colors={COLORS} onClick={toggleBookmark} ref={bookmarkRef}>
+    <Cont
+      colors={COLORS}
+      onClick={toggleBookmark}
+      ref={bookmarkRef}
+      className="rounded-shadow"
+    >
       <Toaster />
       <h5 className={bookmarkState ? "mar-right-16" : "mar-right-16 grey"}>
         {bookmarkState ? "Saved" : "Save"}
