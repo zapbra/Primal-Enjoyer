@@ -18,16 +18,21 @@ const fetchData = async (name) => {
     )
     .eq("name", name)
     .maybeSingle();
-  return data;
+
+  const { data: recipe_joins, error: joins_error } = await supabase
+    .from("recipe_joins")
+    .select("sub_recipe_id(name, url)")
+    .eq("main_recipe_id", data.id);
+  return { recipe: data, recipe_joins };
 };
 
 const page = async ({ params }) => {
   const slug = decodeURI(params.slug);
-  const recipe = await fetchData(slug);
+  const { recipe, recipe_joins } = await fetchData(slug);
 
   return (
     <>
-      <Render recipe={recipe} params={slug} />
+      <Render recipe_joins={recipe_joins} recipe={recipe} params={slug} />
     </>
   );
 };

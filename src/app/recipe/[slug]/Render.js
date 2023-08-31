@@ -18,7 +18,11 @@ import {
   removeRecipeBookmark,
 } from "../../../../utils/Functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faTurnDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStar,
+  faTurnDown,
+  faTurnUp,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Cont = styled.div`
   background: #fff;
@@ -107,12 +111,40 @@ const Cont = styled.div`
       border-bottom: 1px solid ${(props) => props.colors.ultraLightGrey};
     }
   }
+  .included-recipe {
+    width: 160px;
+    text-align: center;
+    border: 1px solid ${(props) => props.colors.grey};
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #fff;
+    transition: background-color 0.25s ease;
+    &:active {
+      box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    }
+    .grey {
+      transition: color 0.25s ease;
+    }
+    &:hover {
+      background-color: ${(props) => props.colors.lightGrey};
+      h5 {
+        text-decoration: underline;
+      }
+      .grey {
+        color: ${(props) => props.colors.darkBlue} !important;
+      }
+    }
+  }
 `;
 
-const Render = ({ recipe }) => {
+const Render = ({ recipe, recipe_joins }) => {
   console.log("recipe");
   console.log(recipe);
   const [bookmarked, setBookmarked] = useState(false);
+
+  console.log("recipe_joins");
+  console.log(recipe_joins);
 
   useEffect(() => {
     if (checkBookmarked(recipe.name)) {
@@ -120,11 +152,31 @@ const Render = ({ recipe }) => {
     }
   }, []);
 
-  useEffect(() => {
-    console.log("bookmarked");
-    console.log(bookmarked);
-  }, [bookmarked]);
-
+  const [recipeElems, setRecipeElems] = recipe_joins.map((recipe, index) => {
+    return (
+      <Link key={index} href={`/recipe/${recipe.sub_recipe_id.name}`}>
+        <div className="included-recipe cursor rounded-shadow flex flex-column justify-center align-center">
+          <h5 className="mar-bottom-8">{recipe.sub_recipe_id.name}</h5>
+          <Image
+            src={
+              recipe.sub_recipe_id.url != null
+                ? recipe.sub_recipe_id.url
+                : "/No_image_available.svg.png"
+            }
+            width={64}
+            height={64}
+            style={{ objectFit: "cover", borderRadius: "8px" }}
+          />
+          <div className="mar-bottom-16"></div>
+          <FontAwesomeIcon
+            icon={faTurnUp}
+            style={{ rotate: "90deg" }}
+            className="grey icon-sm"
+          />
+        </div>
+      </Link>
+    );
+  });
   const [iconElems, setIconElems] = useState(
     recipe.food_instances.map((food_instance, index) => {
       return (
@@ -211,6 +263,10 @@ const Render = ({ recipe }) => {
           />
 
           <Instructions instructions={recipe.instructions} />
+          <div className="mar-bottom-32"></div>
+          <h5 className="mar-bottom-4">Included Recipes</h5>
+          <div className="grey-line mar-bottom-16"></div>
+          <div className="flex flex-wrap">{recipeElems}</div>
         </div>
       </div>
       <Disclaimer />

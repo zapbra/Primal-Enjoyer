@@ -26,7 +26,7 @@ const Cont = styled.div`
     cursor: pointer;
     transition: background-color 0.25s ease;
     &:hover {
-      background-color: ${(props) => props.colors.green};
+      background-color: ${(props) => props.colors.lightGrey};
     }
   }
 `;
@@ -43,7 +43,7 @@ const SavedRecipes = () => {
   const recipeLines = recipes.map((recipe, index) => {
     return (
       <Link href={`/recipe/${recipe}`} key={index}>
-        <div className="line flex align-center ">
+        <div className="line space-between flex align-center ">
           <div className="flex align-center">
             <p className="small contrast mar-right-8">({index + 1})</p>
             <p>{recipe}</p>
