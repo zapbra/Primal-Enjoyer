@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import COLORS from "../../data/colors";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -40,10 +40,6 @@ const Bookmark = ({ addBookmark, removeBookmark, bookmarkState }) => {
       toast.success("Recipe saved!");
       addBookmark();
     }
-    bookmarkRef.current.classList.add("shift-text");
-    setTimeout(() => {
-      bookmarkRef.current.classList.remove("shift-text");
-    }, 1000);
   };
   return (
     <Cont
@@ -53,13 +49,13 @@ const Bookmark = ({ addBookmark, removeBookmark, bookmarkState }) => {
       className="rounded-shadow"
     >
       <Toaster />
-      <h5 className={bookmarkState ? "mar-right-16" : "mar-right-16 grey"}>
-        {bookmarkState ? "Saved" : "Save"}
-      </h5>
+
       <FontAwesomeIcon
         icon={faBookmark}
         className={
-          bookmarkState ? "icon-sm relative dark-blue" : "icon-sm relative grey"
+          bookmarkState
+            ? "icon-sm relative dark-blue"
+            : "icon-sm relative light-grey"
         }
       />
     </Cont>

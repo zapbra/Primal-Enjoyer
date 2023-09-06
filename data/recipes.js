@@ -590,3 +590,5811 @@ export const recipesCache = [
       "fresh ginger root juice or grated fresh ginger root, fresh lemon juice, honey",
   },
 ];
+
+export const recipesData = [
+  {
+    id: 1,
+    name: "meat meals",
+    aaj_recipes: [
+      {
+        name: "Himalayan Meat",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "2 to 3 ounces",
+            food_id: {
+              name: "CHEESY SPICED PASTE",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw meat (beef, lamb, fowl, seafood)",
+              icon: "/beef.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "French Chicken",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "finely chopped thyme",
+              icon: "/thyme.png",
+            },
+          },
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "diced tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "SOUR CREAM or SOUR CREAM QUICK",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "finely chopped bay leaves",
+              icon: "/bay.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "freshly ground mixed peppercorns",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "chopped parsley",
+              icon: "/parsley.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Salmon With Lemon and Parsley",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "salmon, chopped into bite-sized pieces",
+              icon: "/salmon.png",
+            },
+          },
+          {
+            quantity: "6 to 9 tablespoons",
+            food_id: {
+              name: "fresh lemon or lime juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/2 cup",
+            food_id: {
+              name: "fresh parsley, finely chopped",
+              icon: "/parsley.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Liver Pâté",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1 to 3 tablespoons",
+            food_id: {
+              name: "diced fresh red onion (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "organic raw liver",
+              icon: "/liver.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Chicken Salad",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "MAYONNAISE",
+              icon: "mayonnaise",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "PICKLED PEPPERS (PIMENTOS)",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "diced cucumbers",
+              icon: "/cucumber.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped summer squash",
+              icon: "/cucumber.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Salsa Chicken",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "sprig cilantro (optional)",
+              icon: "/cilantro.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "diced red onions",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "fresh hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "skinned, boned, diced chicken breasts",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "diced red bell pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/4 stalk",
+            food_id: {
+              name: "stalk celery",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "1/4 stalk",
+            food_id: {
+              name: "stalk celery",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "slice avocado or raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh lime juice",
+              icon: "/lime.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Steak Tartare",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "red onions",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "unheated honey (optional)",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "horseradish (optional)",
+              icon: "/radish.png",
+            },
+          },
+          {
+            quantity: "2 pinches",
+            food_id: {
+              name: "freshly ground caraway seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "2 pinches",
+            food_id: {
+              name: "freshly ground mixed peppercorns",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "5 - 8 ounces",
+            food_id: {
+              name: "raw sirloin steak or New York steak",
+              icon: "/beef.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "sprig parsley or cilantro",
+              icon: "/parsley.png",
+            },
+          },
+          {
+            quantity: "1 to 3 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "raw MUSTARD",
+              icon: "/mustard.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Orange-Glazed Duck",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "soft unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "section fresh orange",
+              icon: "/orange.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "fresh mint leaf",
+              icon: "/mint.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw duck",
+              icon: "/duck.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "black pepper (optional)",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "soft unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "section fresh orange",
+              icon: "/orange.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "fresh mint leaf",
+              icon: "/mint.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw duck",
+              icon: "/duck.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Beef Pâté",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "ground beef",
+              icon: "/beef.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "diced red onions",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "slice fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "pumpkin seeds",
+              icon: "/seeds.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Nuts Over Meat",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "4 to 5 ounces",
+            food_id: {
+              name: "NUT BUTTER",
+              icon: "/nut_butter.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw meat (beef, lamb, fowl, seafood)",
+              icon: "/beef.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "1/4 quarter of a zucchini or cucumber, or combination",
+              icon: "/cucumber.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Liver Pâté, Two",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "organic raw liver",
+              icon: "/liver.png",
+            },
+          },
+          {
+            quantity: "2 to 4 tablespoons",
+            food_id: {
+              name: "raw sunflower seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1 to 3 tablespoons",
+            food_id: {
+              name: "red onions (optional)",
+              icon: "/onion.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Hot Buttered Salmon",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh ocean wild-caught raw salmon",
+              icon: "/salmon.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "lemon or lime juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/8 to 1/2",
+            food_id: {
+              name: "hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "grated no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Spiced Sashimi",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "flax oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "WASABE or HORSERADISH",
+              icon: "/radish.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "very soft unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "unheated honey (optional)",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh ocean wild-caught raw fish",
+              icon: "/fish.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Carpaccio (pronounced carpachio)",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "5 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "mushroom",
+              icon: "/mushroom.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "finely chopped fresh basil leaves",
+              icon: "/basil.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "meat (beef, lamb, fowl, seafood)",
+              icon: "/beef.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped fresh parsley",
+              icon: "/parsley.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "minced or crushed fresh garlic (optional)",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "chopped fresh red onion",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "grated no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "finely chopped fresh bay leaves",
+              icon: "/bay.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Macaroni and Cheese-Tasting Chicken",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "SOUR CREAM",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "red hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "6 ounces",
+            food_id: {
+              name: "chopped or ground raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "grated no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Oysters Over Cheese",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1 to 2 slices",
+            food_id: {
+              name: "fresh sweet red peppers, circular slices",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "red onions, chopped",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "5",
+            food_id: {
+              name: "fresh oysters",
+              icon: "/oyster.png",
+            },
+          },
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "grated no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "5 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "2",
+            food_id: {
+              name: "mushrooms",
+              icon: "/mushroom.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Beef Stroganoff",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "3",
+            food_id: {
+              name: "chopped mushrooms",
+              icon: "/mushroom.png",
+            },
+          },
+          {
+            quantity: "2",
+            food_id: {
+              name: "chopped chives",
+              icon: "/chives.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "minced garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "chopped beef",
+              icon: "/beef.png",
+            },
+          },
+          {
+            quantity: "5 tablespoons",
+            food_id: {
+              name: "SOUR CREAM or SOUR CREAM QUICK",
+              icon: "/cream.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Parmesan Chicken",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "minced garlic clove",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "4",
+            food_id: {
+              name: "walnut halves",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "6 ounces",
+            food_id: {
+              name: "raw chicken, diced",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "finely chopped oregano",
+              icon: "/bay.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Spiced Salmon",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1/4 to 1/2",
+            food_id: {
+              name: "chopped fresh hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "slivered shallots",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "sliced mushroom",
+              icon: "/mushroom.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped fresh dill",
+              icon: "/dill.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh ocean wild-caught raw salmon",
+              icon: "/salmon.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Ethiopian Kitfo",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "fresh hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "freshly ground cardamon seed",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "red, yellow and/or green bell pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "SPICE PASTE",
+              icon: "/allspice.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "freshly grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "red onions",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh beef",
+              icon: "/beef.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Escolar Fresca",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "apples, diced",
+              icon: "apple.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "Escolar fish",
+              icon: "/fish.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "red onion, diced",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh lime or lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/2, diced",
+            food_id: {
+              name: "fresh tomato",
+              icon: "/tomato.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Sexy Chicken",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "skinned, boned, diced chicken breasts",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "1 inch section",
+            food_id: {
+              name: "chopped celery stalk",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "1 inch section",
+            food_id: {
+              name: "chopped celery stalk",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "4 to 5 ounces",
+            food_id: {
+              name: "NUT BUTTER made with peanuts",
+              icon: "/nut_butter.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped fresh arugula leaves",
+              icon: "/bay.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Cajun Chicken",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "refrigerated raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "diced tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "fresh ground mixed peppercorns",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 (keep refrigerated for 2 hours)",
+            food_id: {
+              name: "chilled raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "freshly grated nutmeg",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "refrigerated unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Tahitian Chicken",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "COCONUT CREAM",
+              icon: "/coconut.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh lime juice",
+              icon: "/lime.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/2 to 1",
+            food_id: {
+              name: "diced tomato",
+              icon: "/tomato.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Turkey Pâté",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "diced red onions",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "turkey",
+              icon: "/duck.png",
+            },
+          },
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "MUSTARD and/or HORSERADISH",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "1 to 2",
+            food_id: {
+              name: "raw eggs",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "diced tomato",
+              icon: "/tomato.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Lamb Shanks",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "spear asparagus",
+              icon: "/asparagus.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "chopped red onions (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "bone marrow",
+              icon: "/bone.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "lamb shanks",
+              icon: "/lamb.png",
+            },
+          },
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "grated raw unsalted Monterey cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "chopped fresh bay leaves (optional)",
+              icon: "/bay.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped fresh parsley",
+              icon: "/parsley.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "minced fresh garlic (optional)",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "chopped fresh basil (optional)",
+              icon: "/basil.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Meat au Gratin",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "red bell pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw meat (beef, lamb, fowl, seafood)",
+              icon: "/beef.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "no-salt-added raw cheddar cheese (1 1/2-inch cube)",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "unsalted raw butter (may substitute stone-pressed olive oil)",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "African Lamb",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "slice crushed fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "freshly ground peppercorns",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "lamb",
+              icon: "/lamb.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "3",
+            food_id: {
+              name: "seedless raisins",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "5 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "freshly ground clove",
+              icon: "/clove.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Ceviche",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "4 to 6 tablespoons",
+            food_id: {
+              name: "flax oil or stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "fresh garlic, minced",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh ocean wild-caught raw fish",
+              icon: "/fish.png",
+            },
+          },
+          {
+            quantity: "3 to 4 ounces",
+            food_id: {
+              name: "fresh lemon or lime juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/2 to 1, diced",
+            food_id: {
+              name: "fresh tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh cilantro, chopped",
+              icon: "/cilantro.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "red onion, chopped",
+              icon: "/onion.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Thai Ceviche",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "2 to 4 tablespoons",
+            food_id: {
+              name: "flax oil or stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh ocean wild-caught raw fish",
+              icon: "/fish.png",
+            },
+          },
+          {
+            quantity: "4 to 6 tablespoons",
+            food_id: {
+              name: "fresh lemon or lime juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "chopped PICKLED GINGER",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped fresh mint (optional)",
+              icon: "/mint.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Swordfish Sashimi",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh Swordfish",
+              icon: "/fish.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "fresh hot pepper (like jalapeno)",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "as needed",
+            food_id: {
+              name: "small assortment of herbs or lettuce",
+              icon: "/bay.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "fresh lemon or lime juice",
+              icon: "/lemon.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Tahitian Fish",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "COCONUT CREAM",
+              icon: "/coconut.png",
+            },
+          },
+          {
+            quantity: "1/2 to 1",
+            food_id: {
+              name: "diced tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "3 to 4 tablespoons",
+            food_id: {
+              name: "fresh lime juice",
+              icon: "/lime.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "fresh ocean wild-caught raw fish",
+              icon: "/fish.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Oyster Sauce and Pasta",
+        servings: null,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "2",
+            food_id: {
+              name: "mushrooms",
+              icon: "/mushroom.png",
+            },
+          },
+          {
+            quantity: "3",
+            food_id: {
+              name: "oysters",
+              icon: "/oyster.png",
+            },
+          },
+          {
+            quantity: "1 serving",
+            food_id: {
+              name: "PASTA SUBSTITUTE (see recipe)",
+              icon: null,
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 1/2 -inch cube",
+            food_id: {
+              name: "raw unsalted Monterey or Muenster cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "red or white onion, sliced",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh sweet red pepper",
+              icon: "/pepper.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Cheesy Chicken",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "meat meals",
+        },
+        food_instances: [
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "5 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh red onion (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "fresh hot pepper (1/4 to 1)",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "milkshakes",
+    aaj_recipes: [
+      {
+        name: "Infant Nervous System Booster",
+        servings: 8,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "1 ounce",
+            food_id: {
+              name: "fresh ocean wild-caught raw fish",
+              icon: "/fish.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 raw",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1/4 cup",
+            food_id: {
+              name: "fresh organic liver",
+              icon: "/liver.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Infant Glandular Booster",
+        servings: 8,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "1 cup",
+            food_id: {
+              name: "raw liver",
+              icon: "/liver.png",
+            },
+          },
+          {
+            quantity: "1 cup",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Infant Immune Booster",
+        servings: 8,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "1 cup",
+            food_id: {
+              name: "organic raw liver",
+              icon: "/liver.png",
+            },
+          },
+          {
+            quantity: "2 raw",
+            food_id: {
+              name: "eggs",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1/2 cup",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Infant Milkshake",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 raw",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Orange Smoothie",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "2 to 3",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey (optional)",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "peeled and seeded orange",
+              icon: "/orange.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Milkshake",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "3 to 6 ounces",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "2 to 4 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 to 3",
+            food_id: {
+              name: "raw eggs",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Raspberry Smoothie",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "4 ounces",
+            food_id: {
+              name: "raspberries",
+              icon: "/raspberries.png",
+            },
+          },
+          {
+            quantity: "1 ounce",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 to 3",
+            food_id: {
+              name: "raw eggs",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Banana Smoothie",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "freshly ground nutmeg",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1 ounce",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 to 3",
+            food_id: {
+              name: "raw eggs",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1/3",
+            food_id: {
+              name: "banana",
+              icon: "/banana.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Liver Booster Two",
+        servings: null,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "4 to 8 ounces",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "red onions",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "4 to 8 ounces",
+            food_id: {
+              name: "organic raw liver",
+              icon: "/liver.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Liver Booster",
+        servings: null,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "4 to 8 ounces",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "4 to 8 ounces",
+            food_id: {
+              name: "organic raw liver",
+              icon: "/liver.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Power Drink",
+        servings: null,
+        aaj_recipe_category: {
+          name: "milkshakes",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "organic raw liver",
+              icon: "/liver.png",
+            },
+          },
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "red onions",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "4 ounces",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "organic raw thyroid gland",
+              icon: "/gland.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "organic raw lung",
+              icon: "/lung.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "organic raw brain",
+              icon: "/brain.png",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "vegetable juice",
+    aaj_recipes: [
+      {
+        name: "Helps Remove & Eliminate Mercury And Other Heavy Metals, Regulate Body Salts, And Increase Oxygen Absorption",
+        servings: 12,
+        aaj_recipe_category: {
+          name: "vegetable juice",
+        },
+        food_instances: [
+          {
+            quantity: "4 medium",
+            food_id: {
+              name: "raw zucchini, crookneck or sunburst squash",
+              icon: "/cucumber.png",
+            },
+          },
+          {
+            quantity: "12 tablespoons",
+            food_id: {
+              name: "coconut cream, or unsalted raw butter.",
+              icon: "/coconut.png",
+            },
+          },
+          {
+            quantity: "3 bunches",
+            food_id: {
+              name: "fresh cilantro",
+              icon: "/cilantro.png",
+            },
+          },
+          {
+            quantity: "3 bunches",
+            food_id: {
+              name: "fresh parsley",
+              icon: "/parsley.png",
+            },
+          },
+          {
+            quantity: "3 bunches",
+            food_id: {
+              name: "fresh celery stalks",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Helps Eliminate Toxicity From Liver, Other Glands, Decrease Lymphatic Congestion, Regulate Body Salts, And Increase Oxygen Absorption",
+        servings: 12,
+        aaj_recipe_category: {
+          name: "vegetable juice",
+        },
+        food_instances: [
+          {
+            quantity: "12 tablespoons",
+            food_id: {
+              name: "coconut cream.",
+              icon: "/coconut.png",
+            },
+          },
+          {
+            quantity: "1 lemon,",
+            food_id: {
+              name: "juice rind and all",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1 bunch",
+            food_id: {
+              name: "cilantro",
+              icon: "/cilantro.png",
+            },
+          },
+          {
+            quantity: "2 medium",
+            food_id: {
+              name: "raw zucchini, crookneck or sunburst squash",
+              icon: "/cucumber.png",
+            },
+          },
+          {
+            quantity: "1 medium",
+            food_id: {
+              name: "cucumber",
+              icon: "/cucumber.png",
+            },
+          },
+          {
+            quantity: "4 bunches",
+            food_id: {
+              name: "fresh celery stalks",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "3 bunches",
+            food_id: {
+              name: "fresh parsley",
+              icon: "/parsley.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Helps Regulate Body Salts, Remove Toxic Salts, And Increase Oxygen Absorption",
+        servings: 12,
+        aaj_recipe_category: {
+          name: "vegetable juice",
+        },
+        food_instances: [
+          {
+            quantity: "5 bunches",
+            food_id: {
+              name: "fresh celery stalks",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "3-4 ounces",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "5 bunches",
+            food_id: {
+              name: "fresh parsley",
+              icon: "/parsley.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Helps Remove Impactions (Plaque) From Arteries And Intestines, Regulate Body Salts, And Increase Oxygen Absorption",
+        servings: 12,
+        aaj_recipe_category: {
+          name: "vegetable juice",
+        },
+        food_instances: [
+          {
+            quantity: "1/2 -inch",
+            food_id: {
+              name: "circular slice pineapple. dice",
+              icon: "/pineapple.png",
+            },
+          },
+          {
+            quantity: "3 medium",
+            food_id: {
+              name: "carrots",
+              icon: "/carrot.png",
+            },
+          },
+          {
+            quantity: "4 bunches",
+            food_id: {
+              name: "fresh celery stalks",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "3 bunches",
+            food_id: {
+              name: "fresh parsley",
+              icon: "/parsley.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Coffee Substitute",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "vegetable juice",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "4 ounces",
+            food_id: {
+              name: "natural mineral water",
+              icon: "/water.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh lemon or lime juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "sauces",
+    aaj_recipes: [
+      {
+        name: "Egg and Cheese Basil Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 diced",
+            food_id: {
+              name: "tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "PICKLED PEPPERS (PIMENTOS) (optional)",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "grated no-salt-added raw Monterey cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unsalted raw butter, or raw cream, or raw milk",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "finely chopped fresh basil leaves",
+              icon: "/basil.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Tomato Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "slice fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "raw unsalted butter (or stone-pressed olive oil)",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "N/A",
+            food_id: {
+              name: "favorite fresh herbs to your taste (optional)",
+              icon: "/bay.png",
+            },
+          },
+          {
+            quantity: "1/2-inch cube",
+            food_id: {
+              name: "no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1/2 to 1 tablespoon",
+            food_id: {
+              name: "chopped fresh red onion",
+              icon: "/onion.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Hollandaise Meat Sauce",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "MUSTARD",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "grated horseradish",
+              icon: "/radish.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "medium tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Caesar Meat-Dressing",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "egg or 4 tablespoons stone-pressed olive oil",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "2 teaspoons",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "freshly chopped thyme",
+              icon: "/thyme.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "walnut halves",
+              icon: "/nuts.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mexican Sour Cream Sauce",
+        servings: 6,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "chopped fresh cilantro",
+              icon: "/cilantro.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "chopped fresh red onion",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1 cup",
+            food_id: {
+              name: "SOUR CREAM",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "minced fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "tomato",
+              icon: "/tomato.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mousseleine Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "HOLLANDAISE MEAT SAUCE, TWO",
+              icon: "/mayo.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mornay Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "BECHAMEL SAUCE",
+              icon: "/mayo.png",
+            },
+          },
+          {
+            quantity: "2 pinches",
+            food_id: {
+              name: "ground white pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "grated no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Pepita Gravy",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "meat-fat trimmings or unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey (optional)",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "pumpkin seeds",
+              icon: "/seeds.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mushroom Cream Cheese Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "no-salt-added raw cheddar cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "large mushroom",
+              icon: "/mushroom.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Horseradish Sauce, Two",
+        servings: 8,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh lime juice",
+              icon: "/lime.png",
+            },
+          },
+          {
+            quantity: "5 tablespoons",
+            food_id: {
+              name: "raw milk, or whey, or raw apple cider vinegar",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "7 tablespoons",
+            food_id: {
+              name: "grated fresh horseradish",
+              icon: "/radish.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Cheesy Spiced Paste",
+        servings: 4,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 cup",
+            food_id: {
+              name: "SOUR COTTAGE CHEESE",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "SPICE PASTE",
+              icon: "/allspice.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Horseradish Sauce",
+        servings: 8,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "grated fresh horseradish",
+              icon: "/radish.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "fresh raw lime juice (optional)",
+              icon: "/lime.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Creamy Cheese Pepper Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "hot red pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "finely chopped fresh bay leaves (optional)",
+              icon: "/bay.png",
+            },
+          },
+          {
+            quantity: "1/3",
+            food_id: {
+              name: "jalapeno",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/2 medium",
+            food_id: {
+              name: "tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "grated no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "MUSTARD",
+              icon: "/mustard.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Spicy African Paste",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "whole clove",
+              icon: "/clove.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "fenugreek seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "whole allspice",
+              icon: "/allspice.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "slice fresh garlic clove",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "3",
+            food_id: {
+              name: "whole mixed peppercorns",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "fresh hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "fresh red onion",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "whole cardamon seed",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "coriander seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "grated nutmeg",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "2",
+            food_id: {
+              name: "tomatoes",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1/4 inch",
+            food_id: {
+              name: "cinnamon stick",
+              icon: "/cinnamon.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "paprika",
+              icon: "/paprika.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Italian Sauce",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "finely chopped basil",
+              icon: "/basil.png",
+            },
+          },
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "garlic clove (optional)",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "5 ounces",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "finely chopped rosemary",
+              icon: "/bay.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Hollandaise Meat Sauce, Two",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/4 to 1/2",
+            food_id: {
+              name: "fresh hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Wasabe",
+        servings: 4,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1/3",
+            food_id: {
+              name: "avocado",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "natural mineral water or whey",
+              icon: "/water.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "grated fresh wasabe or horseradish",
+              icon: "/radish.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Pickled Peppers (pimentos)",
+        servings: 10,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "red, yellow and/or green bell pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "red bell pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/2 cup",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "1 cup",
+            food_id: {
+              name: "natural mineral water",
+              icon: "/water.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mustard Butter",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "MUSTARD",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "3 to 4 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mayonnaise",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh raw lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "raw unpasteurized apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw fertile egg",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Garlic Butter",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 (or more)",
+            food_id: {
+              name: "thin slice of a single section of garlic clove",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/8 teaspoon",
+            food_id: {
+              name: "unheated honey (optional)",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Ketchup",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "freshly ground mixed peppercorns",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh fish eggs (optional, makes for salty taste)",
+              icon: "/fish.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh red onion",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "MUSTARD or SPICE PASTE",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "French Mayonnaise",
+        servings: 3,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "2",
+            food_id: {
+              name: "eggs",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "chilled unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "2 teaspoons",
+            food_id: {
+              name: "MUSTARD",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "2 pinches",
+            food_id: {
+              name: "ground white pepper",
+              icon: "/pepper.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Nut And Spice Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 to 3 teaspoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1/2 slice",
+            food_id: {
+              name: "garlic (optional)",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh red onion, chopped (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "pine nuts",
+              icon: "/nuts.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "White Pepper Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "grated nutmeg",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "2 pinches",
+            food_id: {
+              name: "ground white pepper",
+              icon: "/pepper.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mushroom Cream Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "2 teaspoons",
+            food_id: {
+              name: "diced fresh red onion (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "large mushroom",
+              icon: "/mushroom.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Tango Meat Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "grated horseradish, or HORSERADISH recipe",
+              icon: "/radish.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "room-temperature soft raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "tomato",
+              icon: "/tomato.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Tartar Sauce",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "finely diced fresh red onion (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh dill weed",
+              icon: "/dill.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped PICKLE",
+              icon: "/pickle.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Spicy Thai Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "stalk celery",
+              icon: "/celery.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "walnut halves",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "1/2 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1/2-4 tablespoons",
+            food_id: {
+              name: "fresh hot peppers",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "coconut cream",
+              icon: "/coconut.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped Thai basil, or mint leaves (optional)",
+              icon: "/mint.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Tomato Cream Cheese Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "diced tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "grated no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1-inch cube",
+            food_id: {
+              name: "no-salt-added raw cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Spiced Butter or Oil",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "pinch turmeric",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh red onion (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "6 ounces",
+            food_id: {
+              name: "unsalted raw butter, or olive oil, or flax oil",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "slice garlic clove",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "freshly ground cardamon seed",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "freshly grated ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "freshly ground cloves",
+              icon: "/clove.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "nutmeg, freshly ground",
+              icon: "/nuts.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Spice Paste",
+        servings: 8,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [],
+      },
+      {
+        name: "Thousand Island Meat-Dressing, Two",
+        servings: 5,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "1 1/2 teaspoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "slice fresh garlic (optional)",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "3/4 cup",
+            food_id: {
+              name: "cherry tomatoes",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1/2-inch cube",
+            food_id: {
+              name: "no-salt-added raw Monterey cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh red onion (optional)",
+              icon: "/onion.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Thousand Island Meat-Dressing",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1/2 tablespoon",
+            food_id: {
+              name: "fresh red onion",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "slice fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "cherry tomatoes",
+              icon: "/tomato.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Tartar Coconut Cream Sauce",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh lime juice",
+              icon: "/lime.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "finely chopped fresh dill weed",
+              icon: "/dill.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped PICKLE",
+              icon: "/pickle.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "coconut cream",
+              icon: "/coconut.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Spicy African Paste For Fish",
+        servings: null,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "whole clove",
+              icon: "/clove.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "whole allspice",
+              icon: "/allspice.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "3",
+            food_id: {
+              name: "whole mixed peppercorns",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "grated nutmeg",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "fresh hot red pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "6 tablespoons",
+            food_id: {
+              name: "flax oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "fenugreek seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "coriander seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1/4 inch",
+            food_id: {
+              name: "cinnamon stick",
+              icon: "/cinnamon.png",
+            },
+          },
+          {
+            quantity: "2",
+            food_id: {
+              name: "tomatoes",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "red onions",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "paprika",
+              icon: "/paprika.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Polynesian Ginger Sauce",
+        servings: null,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "2 to 3 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "coarsely grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Island Fish Sauce",
+        servings: null,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 drop",
+            food_id: {
+              name: "organic vanilla extract",
+              icon: "/vanilla.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 ounce",
+            food_id: {
+              name: "banana or pineapple",
+              icon: "/banana.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mustard, Two",
+        servings: 10,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "4 ounces",
+            food_id: {
+              name: "whey or natural mineral water",
+              icon: "/water.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "whole yellow mustard seeds",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "whole brown mustard seeds",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "chopped fresh watercress",
+              icon: "/bay.png",
+            },
+          },
+          {
+            quantity: "2 pinches",
+            food_id: {
+              name: "freshly grated nutmeg",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mustard",
+        servings: 10,
+        aaj_recipe_category: {
+          name: "sauces",
+        },
+        food_instances: [
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw unpasteurized apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "whole brown mustard seeds",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "whole yellow mustard seeds",
+              icon: "/mustard.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "whey or natural mineral water",
+              icon: "/water.png",
+            },
+          },
+          {
+            quantity: "1 to 2 tablespoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "soups",
+    aaj_recipes: [
+      {
+        name: "Split Pea Soup",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "natural mineral water",
+              icon: "/water.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "sunflower seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1 ounce",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Pasta Substitute",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1/2 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "raw sunflower seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Reminiscent Refried Beans",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 ounce",
+            food_id: {
+              name: "raw sunflower seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Reminiscent Mexican Chips",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "red onions (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "soft unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/4 to 1/2",
+            food_id: {
+              name: "fresh hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/4",
+            food_id: {
+              name: "tomato",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "slice fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "1 serving",
+            food_id: {
+              name: "PASTA SUBSTITUTE",
+              icon: null,
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "grated Monterey Jack cheese",
+              icon: "/cheese.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "cream of Chicken Soup",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "raw sunflower seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey (optional)",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "SPICE PASTE",
+              icon: "/allspice.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Shrimp Passion",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "chopped red onions (optional)",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped fresh parsley",
+              icon: "/parsley.png",
+            },
+          },
+          {
+            quantity: "5 - 8 ounces",
+            food_id: {
+              name: "freshly chopped thyme",
+              icon: "/thyme.png",
+            },
+          },
+          {
+            quantity: "1/4 - 1/2",
+            food_id: {
+              name: "fresh hot pepper",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "1/3",
+            food_id: {
+              name: "partially ripe papaya",
+              icon: "/papaya.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped fresh parsley",
+              icon: "/parsley.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Chicken Soup",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "chopped watercress",
+              icon: "/bay.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "red onion, or shallot, or coarsely chopped chives",
+              icon: "/onion.png",
+            },
+          },
+          {
+            quantity: "5 to 8 ounces",
+            food_id: {
+              name: "raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "1 pinch",
+            food_id: {
+              name: "freshly ground mixed peppercorns",
+              icon: "/pepper.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Chicken Tomato Soup",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "2 drops",
+            food_id: {
+              name: "organic vanilla extract",
+              icon: "/vanilla.png",
+            },
+          },
+          {
+            quantity: "1 1/2 teaspoons",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey (optional)",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "3 to 5 ounces",
+            food_id: {
+              name: "chopped raw chicken",
+              icon: "/chicken.png",
+            },
+          },
+          {
+            quantity: "1 1/2 to 2",
+            food_id: {
+              name: "tomatoes",
+              icon: "/tomato.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Lentil Soup",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "whole sprouting lentils, do not sprout",
+              icon: "/lentil.png",
+            },
+          },
+          {
+            quantity: "1 slice",
+            food_id: {
+              name: "fresh garlic",
+              icon: "/garlic.png",
+            },
+          },
+          {
+            quantity: "1 ounce",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "sunflower seeds",
+              icon: "/seeds.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "natural mineral water",
+              icon: "/water.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Grandmas Tomato Soup",
+        servings: null,
+        aaj_recipe_category: {
+          name: "soups",
+        },
+        food_instances: [
+          {
+            quantity: "1 1/2 teaspoons",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "stone-pressed olive oil",
+              icon: "/olive_oil.png",
+            },
+          },
+          {
+            quantity: "2 drops",
+            food_id: {
+              name: "organic vanilla extract",
+              icon: "/vanilla.png",
+            },
+          },
+          {
+            quantity: "1 1/2 to 2",
+            food_id: {
+              name: "tomatoes",
+              icon: "/tomato.png",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "deserts",
+    aaj_recipes: [
+      {
+        name: "Pecan Fudge",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "pecan halves",
+              icon: null,
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "unsalted raw butter, or raw cream, or raw milk",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw carob powder",
+              icon: "/carob.png",
+            },
+          },
+          {
+            quantity: "1 drop",
+            food_id: {
+              name: "organic vanilla extract",
+              icon: "/vanilla.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Fudge Parfait",
+        servings: null,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "2-inch square",
+            food_id: {
+              name: "PECAN FUDGE",
+              icon: "/carob.png",
+            },
+          },
+          {
+            quantity: "5 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 teaspoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "peeled and seeded fresh papaya",
+              icon: "/papaya.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Custard",
+        servings: null,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "1/3",
+            food_id: {
+              name: "papaya (remove seeds and peel)",
+              icon: "/papaya.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw unsalted butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Nut Butter Nut Formula",
+        servings: null,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "1½ to 2 tablespoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "4 to 8 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1 to 2",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "2 to 4 ounces",
+            food_id: {
+              name: "raw pecans or walnuts, pine or hazel nuts, sunflower or pumpkin seeds, or peanuts",
+              icon: "/nuts.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Custard Aphrodisiac",
+        servings: null,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "lime (optional)",
+              icon: "/lime.png",
+            },
+          },
+          {
+            quantity: "1/3",
+            food_id: {
+              name: "avocado",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "1/2",
+            food_id: {
+              name: "orange",
+              icon: "/orange.png",
+            },
+          },
+          {
+            quantity: "4 ounces",
+            food_id: {
+              name: "papaya or mango",
+              icon: "/papaya.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Pineapple Ice Cream",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 1/2 ounces",
+            food_id: {
+              name: "fresh pineapple",
+              icon: "/pineapple.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "egg",
+              icon: "/egg.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Pickled Ginger",
+        servings: 10,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "6 ounces",
+            food_id: {
+              name: "thinly sliced fresh ginger",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "whey or natural mineral water",
+              icon: "/water.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "raw apple cider vinegar",
+              icon: "/vinegar.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Mint Chocolate Substitute",
+        servings: 2,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "7 tablespoons",
+            food_id: {
+              name: "soft unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1",
+            food_id: {
+              name: "raw egg",
+              icon: "/egg.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "finely chopped fresh mint leaves",
+              icon: "/mint.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "2 drops",
+            food_id: {
+              name: "organic vanilla extract",
+              icon: "/vanilla.png",
+            },
+          },
+          {
+            quantity: "1 1/2 tablespoons",
+            food_id: {
+              name: "raw carob powder",
+              icon: "/carob.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Coconut Cream Fruit",
+        servings: null,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "1/8",
+            food_id: {
+              name: "peeled and seeded small papaya",
+              icon: "/papaya.png",
+            },
+          },
+          {
+            quantity: "4 ounces",
+            food_id: {
+              name: "COCONUT CREAM",
+              icon: "/coconut.png",
+            },
+          },
+          {
+            quantity: "1/8 -inch",
+            food_id: {
+              name: "circular slice fresh pineapple",
+              icon: "/pineapple.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon (optional)",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Gingerbread Balls",
+        servings: null,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "2 1/2 ounces",
+            food_id: {
+              name: "raw walnut or pecan halves, pine or hazel nuts, or sunflower seeds",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "raw carob powder",
+              icon: "/carob.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1 tablespoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Cheesecake",
+        servings: null,
+        aaj_recipe_category: {
+          name: "deserts",
+        },
+        food_instances: [
+          {
+            quantity: "3/4 pound",
+            food_id: {
+              name: "no-salt-added raw cheddar cheese",
+              icon: "/cheese.png",
+            },
+          },
+          {
+            quantity: "1 drop",
+            food_id: {
+              name: "organic vanilla extract",
+              icon: "/vanilla.png",
+            },
+          },
+          {
+            quantity: "1 cup",
+            food_id: {
+              name: "raw walnut halves",
+              icon: "/nuts.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 pound",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: "hygiene",
+    aaj_recipes: [
+      {
+        name: "Primal Facial Body Care Cream",
+        servings: null,
+        aaj_recipe_category: {
+          name: "hygiene",
+        },
+        food_instances: [
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "raw COCONUT CREAM",
+              icon: "/coconut.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh ginger juice",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "unheated honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "1 teaspoon",
+            food_id: {
+              name: "fresh lime juice",
+              icon: "/lime.png",
+            },
+          },
+          {
+            quantity: "2 ounces",
+            food_id: {
+              name: "unsalted raw butter",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "royal jelly",
+              icon: "/honey.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Toothpaste",
+        servings: null,
+        aaj_recipe_category: {
+          name: "hygiene",
+        },
+        food_instances: [
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "raw butter or raw cream",
+              icon: "/butter.png",
+            },
+          },
+          {
+            quantity: "1/4 teaspoon",
+            food_id: {
+              name: "sun-dried clay",
+              icon: "/carob.png",
+            },
+          },
+          {
+            quantity: "2 drops",
+            food_id: {
+              name: "ginger or mint leaf juices",
+              icon: "/ginger.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Natural Deodorant",
+        servings: null,
+        aaj_recipe_category: {
+          name: "hygiene",
+        },
+        food_instances: [
+          {
+            quantity: "1 drop",
+            food_id: {
+              name: "ginger juice",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "splash",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Natural Antiperspirant",
+        servings: null,
+        aaj_recipe_category: {
+          name: "hygiene",
+        },
+        food_instances: [
+          {
+            quantity: "pieces",
+            food_id: {
+              name: "lemon rind and pulp (no juice)",
+              icon: "/lemon.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Lemon Throat Lozenge",
+        servings: null,
+        aaj_recipe_category: {
+          name: "hygiene",
+        },
+        food_instances: [
+          {
+            quantity: "2 teaspoons or 2 tablespoons",
+            food_id: {
+              name: "fresh ginger root juice or grated fresh ginger root",
+              icon: "/ginger.png",
+            },
+          },
+          {
+            quantity: "2 tablespoons",
+            food_id: {
+              name: "fresh lemon juice",
+              icon: "/lemon.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "honey",
+              icon: "/honey.png",
+            },
+          },
+          {
+            quantity: "4 ounces",
+            food_id: {
+              name: "butter",
+              icon: "/butter.png",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 8,
+    name: "cheese",
+    aaj_recipes: [
+      {
+        name: "Caraway Cottage Cheese",
+        servings: 4,
+        aaj_recipe_category: {
+          name: "cheese",
+        },
+        food_instances: [
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "1 quart",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "1 1/2",
+            food_id: {
+              name: "caraway seeds",
+              icon: "/seeds.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Sweet Cottage Cheese",
+        servings: 4,
+        aaj_recipe_category: {
+          name: "cheese",
+        },
+        food_instances: [
+          {
+            quantity: "1 quart",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Sour Cottage Cheese",
+        servings: 4,
+        aaj_recipe_category: {
+          name: "cheese",
+        },
+        food_instances: [
+          {
+            quantity: "1 quart",
+            food_id: {
+              name: "raw milk",
+              icon: "/milk.png",
+            },
+          },
+          {
+            quantity: "3 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Sour Cream Quick",
+        servings: 1,
+        aaj_recipe_category: {
+          name: "cheese",
+        },
+        food_instances: [
+          {
+            quantity: "4 tablespoons",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+          {
+            quantity: "3 tablespoons",
+            food_id: {
+              name: "grated no-salt-added cheese",
+              icon: "/cheese.png",
+            },
+          },
+        ],
+      },
+      {
+        name: "Sour Cream",
+        servings: 8,
+        aaj_recipe_category: {
+          name: "cheese",
+        },
+        food_instances: [
+          {
+            quantity: "24 ounces",
+            food_id: {
+              name: "raw cream",
+              icon: "/cream.png",
+            },
+          },
+        ],
+      },
+    ],
+  },
+];

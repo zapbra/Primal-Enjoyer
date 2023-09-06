@@ -66,44 +66,79 @@ export const deleteCollection = (title) => {
 export const getBookmarkedRecipes = () => {
   // check if window open
   if (typeof window != "undefined") {
+    localStorage.removeItem("recipes");
     // get recipes
-    let recipes = JSON.parse(localStorage.getItem("recipes"));
+    let recipes = JSON.parse(localStorage.getItem("recipes_"));
     // if null set recipes to empty object
     if (recipes == null) {
-      localStorage.setItem("recipes", JSON.stringify([]));
-      recipes = [];
+      recipes = {
+        "meat meals": [],
+        milkshakes: [],
+        "vegetable juice": [],
+        sauces: [],
+        soups: [],
+        deserts: [],
+        hygiene: [],
+        cheese: [],
+      };
+
+      localStorage.setItem("recipes_", JSON.stringify(recipes));
     }
     return recipes;
   }
   return [];
 };
-export const bookmarkRecipe = (name) => {
+export const bookmarkRecipe = (name, category) => {
   // check if window is open
   if (typeof window != "undefined") {
     // get recipes
-    const recipes = JSON.parse(localStorage.getItem("recipes"));
+    const recipes = JSON.parse(localStorage.getItem("recipes_"));
     //check if recipes null, if null create empty array
     if (recipes == null) {
-      localStorage.setItem("recipes", JSON.stringify([]));
+      localStorage.setItem(
+        "recipes_",
+        JSON.stringify({
+          "meat meals": [],
+          milkshakes: [],
+          "vegetable juice": [],
+          sauces: [],
+          soups: [],
+          deserts: [],
+          hygiene: [],
+          cheese: [],
+        })
+      );
     } else {
-      recipes.push(name);
-      localStorage.setItem("recipes", JSON.stringify(recipes));
+      recipes[category].push(name);
+      localStorage.setItem("recipes_", JSON.stringify(recipes));
     }
   }
 };
 
 // returns true if bookmarked, else returns false
-export const checkBookmarked = (name) => {
+export const checkBookmarked = (name, category) => {
   // check if window is open
   let returnState = false;
   if (typeof window != "undefined") {
     // get recipes from local storage
-    const recipes = JSON.parse(localStorage.getItem("recipes"));
+    const recipes = JSON.parse(localStorage.getItem("recipes_"));
     if (recipes == null) {
-      localStorage.setItem("recipes", JSON.stringify([]));
+      localStorage.setItem(
+        "recipes_",
+        JSON.stringify({
+          "meat meals": [],
+          milkshakes: [],
+          "vegetable juice": [],
+          sauces: [],
+          soups: [],
+          deserts: [],
+          hygiene: [],
+          cheese: [],
+        })
+      );
     } else {
       // check if recipes includes name
-      if (recipes.includes(name)) {
+      if (recipes[category].includes(name)) {
         returnState = true;
       }
     }
@@ -111,18 +146,30 @@ export const checkBookmarked = (name) => {
   return returnState;
 };
 
-export const removeRecipeBookmark = (name) => {
+export const removeRecipeBookmark = (name, category) => {
   // check if window is open
   if (typeof window != "undefined") {
     // get recipes
-    let recipes = JSON.parse(localStorage.getItem("recipes"));
+    let recipes = JSON.parse(localStorage.getItem("recipes_"));
     //check if recipes null, if null create empty array
     if (recipes == null) {
-      localStorage.setItem("recipes", JSON.stringify([]));
+      localStorage.setItem(
+        "recipes_",
+        JSON.stringify({
+          "meat meals": [],
+          milkshakes: [],
+          "vegetable juice": [],
+          sauces: [],
+          soups: [],
+          deserts: [],
+          hygiene: [],
+          cheese: [],
+        })
+      );
     } else {
       // remove recipe that matches name and set local storage recipes
-      recipes = recipes.filter((recipe) => recipe != name);
-      localStorage.setItem("recipes", JSON.stringify(recipes));
+      recipes[category] = recipes[category].filter((recipe) => recipe != name);
+      localStorage.setItem("recipes_", JSON.stringify(recipes));
     }
   }
 };

@@ -147,7 +147,7 @@ const Render = ({ recipe, recipe_joins }) => {
   console.log(recipe_joins);
 
   useEffect(() => {
-    if (checkBookmarked(recipe.name)) {
+    if (checkBookmarked(recipe.name, recipe.aaj_recipe_category.name)) {
       setBookmarked(true);
     }
   }, []);
@@ -229,11 +229,14 @@ const Render = ({ recipe, recipe_joins }) => {
               <Bookmark
                 bookmarkState={bookmarked}
                 addBookmark={() => {
-                  bookmarkRecipe(recipe.name);
+                  bookmarkRecipe(recipe.name, recipe.aaj_recipe_category.name);
                   setBookmarked(true);
                 }}
                 removeBookmark={() => {
-                  removeRecipeBookmark(recipe.name);
+                  removeRecipeBookmark(
+                    recipe.name,
+                    recipe.aaj_recipe_category.name
+                  );
                   setBookmarked(false);
                 }}
               />
