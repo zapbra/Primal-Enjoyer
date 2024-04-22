@@ -9,6 +9,7 @@ import Introduction from "../../../components/introduction";
 import bg from '../../../public/images/homepage/homepage_hero_image_nature_1920.jpg';
 import zIndex from "@mui/material/styles/zIndex";
 import Explore from '../../../components/introduction/Explore/index.js';
+import About from "../../../components/About";
 
 const YOUTUBE_PLAYLIST_ITEMS_API =
     "https://www.googleapis.com/youtube/v3/playlistItems";
@@ -63,6 +64,9 @@ export default function Home({data, recipesFetch}) {
 
             </main>
             <Explore/>
+
+            <About
+            />
 
         </div>
 

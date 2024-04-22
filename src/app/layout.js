@@ -30,7 +30,7 @@ export default function RootLayout({children}) {
                 </p>
                 {children}
 
-                {/**<Footer/> */}
+                <Footer/>
             </StyledComponentsRegistry>
             </body>
             </html>

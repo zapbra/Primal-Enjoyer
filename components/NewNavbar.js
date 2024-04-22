@@ -20,25 +20,31 @@ const NewNavbar = () => {
 
                 {/** Navbar Links */}
                 <div className="hidden lg:flex space-between gap-4 align-center ">
-                    <Link href={""}>
+                    <Link href={"/"}>
                         <h4 className="text-lg link- transition">
                             Home
                         </h4>
                     </Link>
 
-                    <Link href={""}>
+                    <Link href={"/search"}>
                         <h4 className="text-lg link- transition">
                             Search
                         </h4>
                     </Link>
 
-                    <Link href={""}>
+                    <Link href={"/timecodes"}>
                         <h4 className="text-lg link- transition">
-                            View All
+                            Transcriptions
                         </h4>
                     </Link>
 
-                    <Link href={""}>
+                    <Link href={"/encyclopedia"}>
+                        <h4 className="text-lg link- transition">
+                            Blogs
+                        </h4>
+                    </Link>
+
+                    <Link href={"/contact"}>
                         <h4 className="text-lg link- transition">
                             Contact
                         </h4>

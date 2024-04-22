@@ -1,42 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { XCircleIcon } from "@heroicons/react/solid";
+import {XCircleIcon} from "@heroicons/react/solid";
 import COLORS from "../../../../data/colors";
+import {TiDelete} from "react-icons/ti";
 
-const TagElem = styled.div`
-  float: left;
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 2px 5px;
-  min-width: 70px;
-  margin: 5px;
-  text-align: center;
-  background-color: ${(props) => props.color};
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  min-height: 32px;
-  p {
-    font-size: 1.25rem;
-  }
-  .x-icon {
-    width: 24px;
-    cursor: pointer;
-    &:hover {
-      color: ${(props) => props.colors.white};
-    }
-  }
-`;
 const SearchTag = (props) => {
-  return (
-    <TagElem id={props.id} colors={COLORS} color={props.color}>
-      <p>{props.title}</p>
-      <XCircleIcon
-        onClick={() => props.removeSearchTag(props.id)}
-        className="x-icon"
-      />
-    </TagElem>
-  );
+    return (
+        <div id={props.id}
+             className='inline-flex pl-4 pr-2 py-2 rounded-full shadow  items-center bg-white'>
+            <p className='mr-2 text-slate-500'>{props.title}</p>
+            <TiDelete
+                className='text-3xl transition cursor-pointer text-slate-500 hover:text-black'
+                onClick={() => props.removeSearchTag(props.id)}
+            />
+        </div>
+    );
 };
 
 export default SearchTag;
