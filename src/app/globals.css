@@ -22,8 +22,20 @@
         }
     }
 
+    .link--secondary {
+        @apply text-blue-500;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     .border--primary {
         @apply border-blue-200;
+    }
+
+    .border--secondary {
+        @apply border-blue-950;
     }
 
     .bg-light {
@@ -98,5 +110,11 @@ h1, h2, h3, h4, h5 {
 
     .res-heading-2xl {
         @apply text-4xl sm:text-5xl md:text-6xl;
+    }
+}
+
+.text-renderer {
+    p {
+        margin-bottom: 8px;
     }
 }
