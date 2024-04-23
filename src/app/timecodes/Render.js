@@ -1,39 +1,169 @@
 "use client";
-import { useState } from "react";
-import styled from "styled-components";
+import React, {useState} from "react";
+import Link from 'next/link';
 import COLORS from "../../../data/colors";
 import Preview from "./components/Preview";
 
-const Cont = styled.div`
-  min-height: 100vh;
-  padding-top: 160px;
-  background-color: #fff;
-  padding-bottom: 128px;
-  .previews-holder {
-    max-width: 600px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    @media only screen and (max-width: 400px) {
-      padding: 8px;
+const CHAR_SEARCH_SIZE = 500;
+
+const Render = ({previewData, timecodeData}) => {
+
+    const [searchText, setSearchText] = useState("");
+    const [timecodeElements, setTimecodeElements] = useState(
+        previewData.map((timecode, index) => (
+            <Link href={`/timecode/${timecode.name}`}>
+
+                <div
+                    className="bg-white flex justify-between items-center mb-4 py-2 px-4 rounded border border-blue-900 w-72">
+                    <p className='mr-4'>{timecode.name}</p>
+                    <button
+                        className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
+                    </button>
+                </div>
+            </Link>
+
+        ))
+    );
+
+    const [searchResults, setSearchResults] = useState([]);
+
+    const findTimecodeSearchMatches = (e) => {
+        e.preventDefault();
+        const timecodeMatchObjects = [];
+        // get a list of all timecodes that contain the search text
+        const timecodeArrayMatches = timecodeData.filter(timecode => {
+            return timecode.content.includes(searchText);
+        });
+
+
+        // iterate over the array matches to find matches within 100 characters
+        for (let timecodeArray of timecodeArrayMatches) {
+
+
+            // split the text content into 100 character chunks
+            let stringChunks = [];
+            for (let i = 0; i < timecodeArray.content.length; i += CHAR_SEARCH_SIZE) {
+
+                // second parameter for substring (end of string)
+                let stringEnd = i + CHAR_SEARCH_SIZE;
+                // check to see if the end goes over max possible length of string content
+                if (stringEnd > timecodeArray.content.length) {
+                    stringEnd = timecodeArray.content.length;
+                }
+                // add chunk of current 100 characters from content
+                stringChunks[i] = timecodeArray.content.substring(i, stringEnd);
+            }
+            // filter the string chunks for matches based on user search
+
+            stringChunks = stringChunks.filter(chunk => {
+                return chunk.includes(searchText);
+            });
+
+            // push all string chunk array with the corresponding name for search results
+            timecodeMatchObjects.push({
+                name: timecodeArray.name,
+                stringChunks: stringChunks
+            });
+
+        }
+
+
+        // call the function that updates the searchResults state, which will render the search results
+        renderSearchResults(timecodeMatchObjects);
     }
-  }
-`;
 
-const Render = ({ previewData }) => {
-  const [previews, setPreviews] = useState(
-    previewData.map((timecode, index) => (
-      <Preview key={index} title={timecode.name} index={index} />
-    ))
-  );
+    const renderSearchResults = (timecodeMatchObjects) => {
+        const searchResultsArray = [];
+        for (let timecodeMatchObject of timecodeMatchObjects) {
+            // create the result object for rendering
+            const resultObject = {};
+            resultObject.name = timecodeMatchObject.name;
+            // the list of matches
+            resultObject.chunks = [];
+            for (let chunk of timecodeMatchObject.stringChunks) {
+                // add styling to the
+                chunk = chunk.replaceAll(searchText, `<span class = 'text-emerald-900 bg-emerald-300'>${searchText}</span>`)
+                // add chunk to chunk list to be rendered
+                resultObject.chunks.push(`<p> ${chunk} </p>`);
+            }
 
-  return (
-    <Cont colors={COLORS}>
-      <div className="previews-holder">{previews}</div>
-    </Cont>
-  );
+            // create the result element
+            const resultObjectRender = <div className='border border-slate-300 p-4 rounded bg-white mb-8'>
+                <div className="flex justify-between mb-4">
+
+                    <h5 className="font-bold underline">{resultObject.name}</h5>
+                    <Link href={`/timecode/${resultObject.name}`}>
+
+                        <button
+                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
+                        </button>
+                    </Link>
+
+                </div>
+
+                {resultObject.chunks.map(chunk => {
+                    return (
+                        <div className='mb-4 pb-4 border-b-2 border-blue-950'
+                             dangerouslySetInnerHTML={{__html: chunk}}></div>
+                    )
+                })}
+            </div>;
+
+            // add to the result elements list
+            searchResultsArray.push(resultObjectRender);
+        }
+        // update search results at the end of the function so it renders on screen
+        console.log('res');
+        console.log(searchResultsArray);
+        setSearchResults(searchResultsArray);
+    }
+    return (
+        <div className='bg-whit'>
+            <div className="mx-auto max-w-6xl px-4 py-10">
+                {/** Heading */}
+                <div className="text-center mb-16">
+                    <h1 className="res-heading-2xl mb-2">
+                        Aajonus Recordings Transcriptions
+                    </h1>
+                    <h5 className="res-heading-base">
+                        Global search & view individual recordings
+                    </h5>
+                </div>
+                {/** End of heading */}
+
+                <div className="flex gap-4">
+                    {/** Timecode links */}
+                    <div className='w-full'>
+                        {timecodeElements}
+                    </div>
+                    {/** End of timecode links */}
+
+                    {/** Global timecode search */}
+                    <div className='w-full'>
+                        {/** Search bar */}
+                        <form onSubmit={findTimecodeSearchMatches}>
+                            <label className="input input-bordered flex items-center gap-2 py-8 mb-8 px-4 w-full">
+                                <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)}
+                                       className="grow" placeholder="Search transcriptions"/>
+                                <button
+                                    className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search
+                                </button>
+                            </label>
+                        </form>
+                        {/** End of search bar*/}
+
+                        {/** Search results */}
+                        {searchResults}
+                        {/** End of search results */}
+                    </div>
+                    {/** End of global timecode search */}
+                </div>
+
+
+            </div>
+
+        </div>
+    );
 };
 
 export default Render;
