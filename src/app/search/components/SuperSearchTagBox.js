@@ -7,16 +7,24 @@ import {useState, useCallback, useRef} from "react";
 import {ArrowDownIcon} from "@heroicons/react/solid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons";
-import {FaArrowDown} from "react-icons/fa6";
+import {FaArrowDown, FaMagnifyingGlass} from "react-icons/fa6";
 
 const SuperSearchTagBox = (props) => {
     const searchBar = useRef(null);
     const [extendDropdown, setExtendDropdown] = useState(false);
     const [renderTagCount, setRenderTagCount] = useState(50);
-    const [lines, setLines] = useState([]);
-    const [renderTags, setRenderTags] = useState(
-        props.filterTags.slice(0, renderTagCount)
-    );
+    const tagElements = props.renderTags.map((tag, index) => {
+        return (
+            <div
+                key={index}
+                onClick={() => selectTagWrapper(tag)}
+                className="px-2 py-1 cursor-pointer hover:bg-slate-50 transition hover:text-blue-500"
+            >
+                <p>{tag}</p>
+            </div>
+        )
+    });
+
 
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -32,29 +40,31 @@ const SuperSearchTagBox = (props) => {
     const dropdownEl = useRef();
 
     const tagsText = props.tags.map((tag) => {
+
         return tag.title;
     });
 
     const showMore = () => {
-        if (renderTagCount + 50 <= props.filterTags.length) {
+        if (renderTagCount + 50 <= props.renderTags.length) {
             setRenderTagCount(renderTagCount + 50);
         } else {
-            setRenderTagCount(props.filterTags.length);
+            setRenderTagCount(props.renderTags.length);
         }
     };
 
     // When a tag is clicked it will call the parent remove tag function
     // and hide the dropdown/defocus the search bar
-    const removeTag = (tag_id) => {
-        props.removeTag(tag_id);
+    const selectTagWrapper = (tagText) => {
+        props.selectTag(tagText);
         deFocus();
         searchBar.current.blur();
     }
+    /*
     useEffect(() => {
-        setRenderTags(props.filterTags.slice(0, renderTagCount));
+        setRenderTags(props.renderTags.slice(0, renderTagCount));
         setLines((prev) => {
             const newLines = [];
-            for (let tag of props.filterTags.slice(0, renderTagCount)) {
+            for (let tag of props.renderTags.slice(0, renderTagCount)) {
                 if (tagsText.includes(tag.title)) {
                 } else {
                     newLines.push(
@@ -69,7 +79,7 @@ const SuperSearchTagBox = (props) => {
                     );
                 }
             }
-            renderTagCount < props.filterTags.length &&
+            renderTagCount < props.renderTags.length &&
             newLines.push(
                 <div key={nanoid()} className="item show-more" onClick={showMore}>
                     <h5 className="p-2 font-bold cursor-pointer hover:underline">Show More</h5>
@@ -78,17 +88,17 @@ const SuperSearchTagBox = (props) => {
 
             return newLines;
         });
-    }, [renderTagCount, props.filterTags]);
+    }, [renderTagCount, props.renderTags]);
+     */
 
-    const tags = props.tags.map((tag, index) => {
+    const tags = props.selectedTags.map((tag, index) => {
         return (
             <SearchTag
-                removeSearchTag={props.removeSearchTag}
+                removeTag={props.removeTag}
                 deFocus={deFocus}
                 key={nanoid()}
-                id={tag.id}
-                title={tag.title}
-                color={tag.color}
+                id={index}
+                text={tag}
             />
         );
     });
@@ -102,7 +112,7 @@ const SuperSearchTagBox = (props) => {
                 setShowDropdown(false);
             }
         },
-        [showDropdown, setShowDropdown, dropdownEl, props.filterTags]
+        [showDropdown, setShowDropdown, dropdownEl, props.renderTags]
     );
 
     useEffect(() => {
@@ -122,55 +132,65 @@ const SuperSearchTagBox = (props) => {
 
     // Adds a tag to selected tag list when search/enter key pressed on search bar
     function submitSearch(e) {
-        props.submitSearch(e);
+        e.preventDefault();
+        // get first tag
+        const selectedTag = props.renderTags[0];
+        // select the first tag
+        props.selectTag(selectedTag);
         deFocus();
-        searchBar.current.blur();
+        //searchBar.current.blur();
     }
 
 
     return (
         <div>
             <div className='relative mb-4 flex-wrap flex gap-4'>{tags}
-                {props.tags.length > 0 &&
-                    <p onClick={props.clearAllSearchTags}
+                {props.selectedTags.length > 0 &&
+                    <p onClick={props.clearAllSelectedTags}
                        className='underline text-slate-500 hover:text-slate-900 cursor-pointer transition'>Clear</p>}
             </div>
 
 
             <form
-                className="form-dropdown block"
+                className="form-dropdown block relative"
                 onSubmit={submitSearch}
                 ref={dropdownEl}
             >
                 <div className="relative">
 
                     {/** Search bar */}
-                    <label className="input input-bordered flex items-center gap-2 py-8 px-4">
-                        <input ref={searchBar} type="text" value={props.text} onChange={props.updateText}
+                    <label className="input input-bordered flex items-center gap-2 py-8 px-4 relative">
+                        <input ref={searchBar} type="text" value={props.text}
+                               onChange={(e) => props.updateText(e.target.value)}
                                onFocus={Focus}
-                               className="grow" placeholder="coconut cream"/>
+                               className="grow min-w-5" placeholder="coconut cream"/>
+                        {props.text !== "" && (
+                            <FontAwesomeIcon
+                                onClick={() => props.updateText("")}
+                                icon={faCircleXmark}
+                                className="text-slate-500 absolute right-20 cursor-pointer hover:text-slate-950 transition res-text-base"
+                            />
+                        )}
                         <button
-                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search
+                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <FaMagnifyingGlass
+                                className='res-text-base'
+                            />
                         </button>
                     </label>
                     {/** End of search bar*/}
 
-                    {props.text != "" && (
-                        <FontAwesomeIcon
-                            onClick={props.clearText}
-                            icon={faCircleXmark}
-                            className="icon-ssm contrast cursor delete-icon"
-                        />
-                    )}
+
                 </div>
 
                 {/** Search tags dropdown */}
                 {showDropdown && (
-                    <div className='bg-white shadow '>
+                    <div className='bg-white shadow absolute w-full'>
                         <div
                             className='max-h-60 overflow-y-scroll'
                         >
-                            {lines}
+                            {tagElements}
+
                         </div>
                         <div
                             className='flex justify-center p-2 bg-slate-200 text-blue-500 cursor-pointer hover:bg-blue-500 hover:text-slate-200 transition'

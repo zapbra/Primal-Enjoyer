@@ -117,4 +117,23 @@ h1, h2, h3, h4, h5 {
     p {
         margin-bottom: 8px;
     }
+
+    h3 {
+        @apply res-heading-xs;
+        @apply font-bold;
+        margin-bottom: 16px;
+    }
 }
+
+label:has(input:not(:placeholder-shown)) {
+    @apply bg-slate-50;
+    @apply border;
+    @apply border-blue-700;
+}
+
+input:not(:placeholder-shown).input, textarea:not(:placeholder-shown) {
+    @apply bg-slate-50;
+    @apply border;
+    @apply border-blue-700;
+}
+

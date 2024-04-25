@@ -74,12 +74,15 @@ const Render = ({previewData, timecodeData}) => {
 
     const renderSearchResults = (timecodeMatchObjects) => {
         const searchResultsArray = [];
+        let totalChunks = 0;
         for (let timecodeMatchObject of timecodeMatchObjects) {
             // create the result object for rendering
             const resultObject = {};
             resultObject.name = timecodeMatchObject.name;
             // the list of matches
             resultObject.chunks = [];
+            // increase the total chunk count for analytical information to user
+            totalChunks += timecodeMatchObject.stringChunks.length;
             for (let chunk of timecodeMatchObject.stringChunks) {
                 // add styling to the
                 chunk = chunk.replaceAll(searchText, `<span class = 'text-emerald-900 bg-emerald-300'>${searchText}</span>`)
@@ -100,22 +103,28 @@ const Render = ({previewData, timecodeData}) => {
                     </Link>
 
                 </div>
-
                 {resultObject.chunks.map(chunk => {
                     return (
                         <div className='mb-4 pb-4 border-b-2 border-blue-950'
                              dangerouslySetInnerHTML={{__html: chunk}}></div>
                     )
                 })}
+
             </div>;
 
             // add to the result elements list
             searchResultsArray.push(resultObjectRender);
         }
-        // update search results at the end of the function so it renders on screen
-        console.log('res');
-        console.log(searchResultsArray);
+        // add the query information to the result elements list (quantity, etc)
+        // if no results
+        if (searchResultsArray.length === 0) {
+            searchResultsArray.unshift(<p className='mb-4'>No results...try a different search</p>)
+        } else {
+            searchResultsArray.unshift(<p className='mb-4'>Matched sections: <b>{totalChunks}</b></p>)
+            searchResultsArray.unshift(<p>Matched transcriptions: <b>{searchResultsArray.length}</b></p>)
+        }
         setSearchResults(searchResultsArray);
+
     }
     return (
         <div className='bg-whit'>

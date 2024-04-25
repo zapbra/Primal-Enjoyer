@@ -19,7 +19,7 @@ export default function RootLayout({children}) {
     });
     return (
         <AppContext.Provider value={[context, setContext]}>
-            <html lang="en">
+            <html lang="en" className='scroll-smooth'>
             <body className="main-holder">
             <Analytics/>
             <NextTopLoader/>

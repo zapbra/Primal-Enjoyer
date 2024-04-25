@@ -846,7 +846,7 @@ const Slug = ({article, articles, slug}) => {
 
                     <div className="mx-auto max-w-6xl">
                         {/** Heading */}
-                        <div className="flex justify-between items-center mb-4">
+                        <div className="flex justify-between items-center border-b-2 border--secondary pb-4">
 
                             <h1 className="res-heading-2xl">
                                 {article.title}
@@ -896,6 +896,7 @@ const Slug = ({article, articles, slug}) => {
                                     {tagElems}
                                 </div>
                             </div>
+
                             <div className="text-renderer">
 
                                 <RichText
