@@ -6,8 +6,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTurnDown} from "@fortawesome/free-solid-svg-icons";
 import COLORS from "../../../../data/colors";
 import {ReactMarkdown} from "react-markdown/lib/react-markdown";
-import Featured from "@/app/timecodes/components/Featured";
-import {IoIosReturnLeft} from "react-icons/io";
+import Featured from "@/app/search/components/Featured";
+import {IoIosArrowBack, IoIosReturnLeft} from "react-icons/io";
 
 const Render = ({timecode}) => {
     return (
@@ -15,17 +15,20 @@ const Render = ({timecode}) => {
             <div className="header">
                 <h1 className="res-heading-xl text-center mb-2">{timecode.name} </h1>
             </div>
-            <div className="link-back-holder">
-                <Link
-                    href={{
-                        pathname: `/timecodes`,
-                    }}
-                >
-                    <IoIosReturnLeft
-                        className='res-heading-xl text-slate-500 hover:text-slate-950 transition'
+            <Link href={'/search'} className=' res-text-base cursor-pointer'>
+
+                <div className="inline-flex items-center hover:text-blue-500 mb-4">
+                    <IoIosArrowBack
+                        className='text-xl'
                     />
-                </Link>
-            </div>
+                    <p className='link'>
+                        Back to
+                        search
+                    </p>
+                </div>
+            </Link>
+
+
             <div>
                 {/*  <Sorter /> */}
                 <Featured titles={timecode.article_titles}/>

@@ -59,6 +59,7 @@ import {
 } from "../../../../utils/supabaseFunction";
 import PageViews from "../../../../components/PageViews";
 import CommentSection from "../../../../components/comments/CommentSection";
+import {IoIosArrowBack} from "react-icons/io";
 
 /*
 export const getServerSideProps = async (pageContext) => {
@@ -845,6 +846,18 @@ const Slug = ({article, articles, slug}) => {
                     {/*)}*/}
 
                     <div className="mx-auto max-w-6xl">
+                        <Link href={'/articles'} className=' res-text-base cursor-pointer'>
+
+                            <div className="inline-flex items-center hover:text-blue-500 mb-4">
+                                <IoIosArrowBack
+                                    className='text-xl'
+                                />
+                                <p className='link'>
+                                    Back to
+                                    articles
+                                </p>
+                            </div>
+                        </Link>
                         {/** Heading */}
                         <div className="flex justify-between items-center border-b-2 border--secondary pb-4">
 

@@ -15,19 +15,19 @@ const Footer = () => {
                         </p>
                     </Link>
 
-                    <Link href={"/timecodes"}>
+                    <Link href={"/search"}>
                         <p className="text--secondary link- mb-2">
                             Search
                         </p>
                     </Link>
 
-                    <Link href={"/search"}>
+                    <Link href={"/articles"}>
                         <p className="text--secondary link- mb-2">
                             Articles
                         </p>
                     </Link>
 
-                    <Link href={"/encyclopedia"}>
+                    <Link href={"/blogs"}>
                         <p className="text--secondary link- mb-2">
 
                         </p>

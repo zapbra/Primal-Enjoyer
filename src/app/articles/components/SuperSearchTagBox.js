@@ -53,7 +53,7 @@ const SuperSearchTagBox = (props) => {
     };
 
     // When a tag is clicked it will call the parent remove tag function
-    // and hide the dropdown/defocus the search bar
+    // and hide the dropdown/defocus the articles bar
     const selectTagWrapper = (tagText) => {
         props.selectTag(tagText);
         deFocus();
@@ -130,7 +130,7 @@ const SuperSearchTagBox = (props) => {
         setExtendDropdown((prev) => !prev);
     }
 
-    // Adds a tag to selected tag list when search/enter key pressed on search bar
+    // Adds a tag to selected tag list when articles/enter key pressed on articles bar
     function submitSearch(e) {
         e.preventDefault();
         // get first tag
@@ -178,7 +178,7 @@ const SuperSearchTagBox = (props) => {
                             />
                         </button>
                     </label>
-                    {/** End of search bar*/}
+                    {/** End of articles bar*/}
 
 
                 </div>
@@ -200,7 +200,7 @@ const SuperSearchTagBox = (props) => {
                         </div>
                     </div>
                 )}
-                {/** End of search tags dropdown */}
+                {/** End of articles tags dropdown */}
 
             </form>
         </div>

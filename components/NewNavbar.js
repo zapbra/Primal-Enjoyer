@@ -26,21 +26,27 @@ const NewNavbar = () => {
                         </h4>
                     </Link>
 
+                    <Link href={"/articles"}>
+                        <h4 className="text-lg link- transition">
+                            Articles
+                        </h4>
+                    </Link>
+
                     <Link href={"/search"}>
                         <h4 className="text-lg link- transition">
                             Search
                         </h4>
                     </Link>
 
-                    <Link href={"/timecodes"}>
+                    <Link href={"/blogs"}>
                         <h4 className="text-lg link- transition">
-                            Transcriptions
+                            Blogs
                         </h4>
                     </Link>
 
-                    <Link href={"/encyclopedia"}>
+                    <Link href={"/recipes"}>
                         <h4 className="text-lg link- transition">
-                            Blogs
+                            Recipes
                         </h4>
                     </Link>
 
@@ -62,7 +68,7 @@ const NewNavbar = () => {
                               clip-rule="evenodd"/>
                     </svg>
                 </label>
-                {/** End of search bar */}
+                {/** End of articles bar */}
 
                 {/** Menu Dropdown */}
                 <div className="lg:hidden dropdown dropdown-end ">
@@ -76,8 +82,8 @@ const NewNavbar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href={"/search"}>
-                                Search
+                            <Link href={"/articles"}>
+                                ddd
                             </Link>
                         </li>
 

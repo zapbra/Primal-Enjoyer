@@ -1,613 +1,177 @@
 "use client";
+import React, {useState} from "react";
+import Link from 'next/link';
+import COLORS from "../../../data/colors";
+import Preview from "./components/Preview";
 
-import React, {useEffect, useContext} from "react";
+const CHAR_SEARCH_SIZE = 500;
 
-import {AppContext} from "../layout";
-import COLORS, {tagColors} from "../../../data/colors";
-import SearchResults from "./components/SearchResults";
-import Head from "next/head";
-import {useState} from "react";
-import {FaPlus} from "react-icons/fa6";
-import SuperSearchTagBox from "@/app/search/components/SuperSearchTagBox";
+const Render = ({previewData, timecodeData}) => {
 
-/**
- * Returns a sorted string array list of tags
- * @param tagsInput an unsorted array list of tag objects
- * @returns {*}
- */
-function formatTags(tagsInput) {
-    return tagsInput.sort((a, b) => {
-        let textA = a.text.toUpperCase();
-        let textB = b.text.toUpperCase();
-        return textA < textB ? -1 : textA > textB ? 1 : 0;
-    }).map(tag => {
-        return tag.text;
-    });
-}
+    const [searchText, setSearchText] = useState("");
+    const [timecodeElements, setTimecodeElements] = useState(
+        previewData.map((timecode, index) => (
+            <Link href={`/timecode/${timecode.name}`}>
 
-// amount to increase article render length at a time
-const RENDER_ITERATION = 100;
+                <div
+                    className="bg-white flex justify-between items-center mb-4 py-2 px-4 rounded border border-blue-900 w-72">
+                    <p className='mr-4'>{timecode.name}</p>
+                    <button
+                        className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
+                    </button>
+                </div>
+            </Link>
 
-const Render = ({articlesFetch, superTags}) => {
-    const [renderCount, setRenderCount] = useState(RENDER_ITERATION);
-    // list of all articles
-    const [articles, setArticles] = useState(articlesFetch);
-    // list of articles filtered when the user selects tags
-    const [filterArticles, setFilterArticles] = useState(articlesFetch);
-    // the articles to render on the screen based on selected tags
-    const [renderArticles, setRenderArticles] = useState(articlesFetch.slice(0, renderCount));
-    // list of all tags
-    const [tags, setTags] = useState(formatTags(superTags));
-    // list of tags to actually render based on selected tags and render articles
-    const [renderTags, setRenderTags] = useState(formatTags(superTags));
-    // list of tags to filter through when the search text changes.
-    // It's a cache of the tags when a filter tag is added/removed
-    const [cachedTags, setCachedTags] = useState(formatTags(superTags));
-    // list of tags selected by user to render articles
-    const [selectedTags, setSelectedTags] = useState([]);
-    // the search text
-    const [text, setText] = useState("");
-    
-    const articlesLength = filterArticles.length;
-
-    // UPDATE THIS TO ONLY UPDATE AFTER INTERVALS TO REDUCE RE-RENDERS
-    const updateText = (newSearchText) => {
-        // only filter selected tags if a word is added to the text (longer)
-        // filter all tags based on search text
-        setRenderTags(prev => {
-            const filteredTags = cachedTags.filter(tag => {
-                return tag.includes(newSearchText);
-            });
-            return filteredTags;
-        });
-        // otherwise all tags need to be filtered
-
-        // update the search text
-        setText(prev => {
-            return newSearchText;
-        });
-
-    }
-
-
-    // increase the article render count by 100 if it isn't greater than total number of articles
-    const increaseRender = () => {
-        // the count to set renderCount to
-        let newRenderCount = 0;
-        // make sure render count isn't longer than filter articles with new increase
-        // if it it just make it to filter articles size
-        if (renderCount + RENDER_ITERATION > filterArticles.length) {
-            newRenderCount = filterArticles.length;
-            // else you can increase it by regular iteration of 100
-        } else {
-            newRenderCount = renderCount + RENDER_ITERATION;
-        }
-
-        setRenderCount(newRenderCount);
-        // update the render articles length
-        setRenderArticles(filterArticles.slice(0, newRenderCount));
-
-    }
-
-
-    // When the user clicks on a tag, adds it to the list, and filters the articles to display ones with the
-    // updated tag list
-    const selectTag = (tagText) => {
-        const selectedTagsCopy = selectedTags;
-        selectedTagsCopy.push(tagText);
-
-        setSelectedTags(selectedTagsCopy);
-
-
-        // get filtered articles
-        const filterArticlesCopy = filterArticles.filter(article => {
-            // iterate over each article tags and compare each tag to all the selected tags to find a match
-            // this checks to see if the article contains a searched tag
-            return selectedTagsCopy.every(selTag => {
-                return article.tags.some(tag => {
-                    return selTag === tag.text;
-                })
-            })
-        });
-
-
-        const uniqueTagsMap = new Map();
-
-        for (let i = 0; i < filterArticlesCopy.length; i++) {
-            const articleTags = filterArticlesCopy[i].tags;
-            articleTags.forEach(tag => {
-                if (uniqueTagsMap.get(tag.text) === undefined) {
-                    uniqueTagsMap.set(tag.text, tag.text);
-                }
-            });
-        }
-        // set cached tags based on articles
-        let uniqueTagsArray = Array.from(uniqueTagsMap.keys());
-
-        uniqueTagsArray = uniqueTagsArray.sort((a, b) => {
-            let textA = a.toUpperCase();
-            let textB = b.toUpperCase();
-            return textA < textB ? -1 : textA > textB ? 1 : 0;
-        });
-        // set cached tags based on articles
-        setCachedTags(uniqueTagsArray);
-        // reset render count so only 100 articles get rendered each time a new tag is added
-        setRenderCount(RENDER_ITERATION);
-        // update state
-        setFilterArticles(filterArticlesCopy);
-        setRenderArticles(filterArticlesCopy.slice(0, RENDER_ITERATION));
-        setRenderTags(uniqueTagsArray);
-        // clear the text
-        setText("");
-    }
-
-    const removeTag = (tagText) => {
-        let selectedTagsCopy = selectedTags;
-        // remove tag from selected tag list
-        selectedTagsCopy = selectedTagsCopy.filter(tag => {
-            return tag !== tagText;
-        });
-
-        setSelectedTags(selectedTagsCopy);
-
-
-        const filterArticlesCopy = articles.filter(article => {
-            return selectedTagsCopy.every(selTag => {
-                return article.tags.some(tag => {
-                    return tag.text === selTag;
-                })
-            });
-        });
-
-        const uniqueTagsMap = new Map();
-
-        for (let i = 0; i < filterArticlesCopy.length; i++) {
-            const articleTags = filterArticlesCopy[i].tags;
-            articleTags.forEach(tag => {
-                if (uniqueTagsMap.get(tag.text) === undefined) {
-                    uniqueTagsMap.set(tag.text, tag.text);
-                }
-            });
-        }
-
-        let uniqueTagsArray = Array.from(uniqueTagsMap.keys());
-
-        uniqueTagsArray = uniqueTagsArray.sort((a, b) => {
-            let textA = a.toUpperCase();
-            let textB = b.toUpperCase();
-            return textA < textB ? -1 : textA > textB ? 1 : 0;
-        });
-        // set cached tags based on articles
-        setCachedTags(uniqueTagsArray);
-
-        // set filter tags based on articles and search text
-        uniqueTagsArray = uniqueTagsArray.filter(tag => {
-            return tag.includes(text);
-        })
-
-        // update state
-        setFilterArticles(filterArticlesCopy);
-        setRenderArticles(filterArticlesCopy.slice(0, renderCount));
-        setRenderTags(uniqueTagsArray);
-
-
-    };
-
-    const clearAllSelectedTags = () => {
-        // Make render tags whole tag list
-        setRenderTags(tags);
-        // clear all selected tags
-        setSelectedTags([]);
-        // reset render count to 100
-        setRenderCount(RENDER_ITERATION);
-        // set filtered articles to all of them
-        setFilterArticles(articles);
-        // set render articles to first 100
-        setRenderArticles(articles.slice(0, RENDER_ITERATION));
-    }
-
-    /*
-    // list of all articles tags
-    const [tags, setTags] = React.useState([]);
-    // tags filtered by search text
-    const [searchTags, setSearchTags] = React.useState([]);
-    // search text
-    const [text, setText] = React.useState("");
-    // list of currently applied tags
-    const [filterTags, setFilterTags] = React.useState([]);
-    // all articles
-    const [articles, setArticles] = useState(articlesFetch);
-    // articles filtered by selected tags
-    const [filterArticles, setFilterArticles] = React.useState(articlesFetch);
-    const [callFilter, setCallFilter] = React.useState([]);
-    // number of articles rendered
-    const [renderCount, setRenderCount] = React.useState(100);
-    const [firstRender, setFirstRender] = React.useState(true);
-    // article elements to display on screen
-    const [renderArticles, setRenderArticles] = React.useState([]);
-    const [alphaTags, setAlphaTags] = React.useState(
-        superTags.sort(function (a, b) {
-            var textA = a.text.toUpperCase();
-            var textB = b.text.toUpperCase();
-            return textA < textB ? -1 : textA > textB ? 1 : 0;
-        })
+        ))
     );
 
-    // Set articles on global context
-    const [context, setContext] = useContext(AppContext);
+    const [searchResults, setSearchResults] = useState([]);
 
-    // set tags based on context
-    useEffect(() => {
-        if (context.tags.length > 0) {
-            setSearchTags(context.tags);
-        }
-    }, []);
-
-    // was used to change view. Can be removed I think.
-    const [view, setView] = React.useState(false);
-    const changeView = () => {
-        setView((prevView) => {
-            return !prevView;
-        });
-    };
-
-    // length of filtered articles
-    const articlesLength = filterArticles.length;
-    // length of all articles
-    const allArticlesLength = articles.length;
-
-    // renders more articles by 100
-    function IncreaseRender() {
-        if (renderCount + 100 >= filterArticles.length) {
-            setRenderCount(filterArticles.length);
-        } else {
-            setRenderCount((prev) => {
-                return prev + 100;
-            });
-        }
-        updateArticles();
-    }
-
-    const clearText = () => {
-        setText("");
-    };
-
-    //#Step 5: Filters fetched articles based on tags, runs useEffect setCallFilter at end, also useEffect on filter articles is called to set renderArticles
-    function updateArticles() {
-        setFilterArticles((prevArticles) => {
-            const articles = articlesFetch.filter((article) => {
-                return searchTags.every((tag) => {
-                    return article.tags.some((artTag) => {
-                        return artTag.text === tag.title;
-                    });
-                });
-            });
-            return articles;
-        });
-
-        updateTags();
-        /*
-        setCallFilter((prev) => {
-            return [...prev];
-        });
-    }
-
-    // Step 1 (Tags): Removes clicked tag and clears text input
-    function submitSearch(e) {
+    const findTimecodeSearchMatches = (e) => {
         e.preventDefault();
-        let id = filterTags[0].id;
-        removeTag(id);
-        setText("");
-    }
+        const timecodeMatchObjects = [];
+        // get a list of all search that contain the articles text
+        const timecodeArrayMatches = timecodeData.filter(timecode => {
+            return timecode.content.includes(searchText);
+        });
 
 
-    function generateColor() {
-        return tagColors[Math.floor(Math.random() * tagColors.length)];
-    }
+        // iterate over the array matches to find matches within 100 characters
+        for (let timecodeArray of timecodeArrayMatches) {
 
-    //#Step 3 (Searching): Called after text updates to filter tags
-    function findClosestTag() {
-        setFilterTags((prevTags) => {
-            return tags.filter((tag) => {
-                return tag.title.includes(text);
-            });
-        });
-    }
 
-    //#Step 1 (Searching): Updates text, which calls useEffect
-    function updateText(e) {
-        let val = e.currentTarget.value;
-        setText((prevText) => {
-            return val.toLowerCase();
-        });
-    }
+            // split the text content into 100 character chunks
+            let stringChunks = [];
+            for (let i = 0; i < timecodeArray.content.length; i += CHAR_SEARCH_SIZE) {
 
-    function removeSearchTag(id) {
-        const item = searchTags.find((tag) => {
-            return tag.id === id;
-        });
-        setFilterTags((prevTags) => {
-            return [...prevTags, item];
-        });
-        setTags((prevTags) => {
-            return [...prevTags, item];
-        });
-        setSearchTags((prevTags) => {
-            const tags = prevTags.filter((tag) => {
-                return tag.id !== id;
-            });
-            return [...tags];
-        });
-        setContext((prev) => {
-            return {
-                ...prev,
-                tags: searchTags,
-            };
-        });
-    }
-
-    // #Step 7 (Tags): Filters applicable tags based on the tags the articles contain [FINAL STEP]
-    function updateTags() {
-        let localTags = [];
-        console.log("called update tags");
-        filterArticles.map((article) => {
-            article.tags.map((tag) => {
-                if (
-                    localTags.some((innerTag) => {
-                        return innerTag.text === tag.text;
-                    })
-                ) {
-                } else {
-                    localTags.push(tag);
+                // second parameter for substring (end of string)
+                let stringEnd = i + CHAR_SEARCH_SIZE;
+                // check to see if the end goes over max possible length of string content
+                if (stringEnd > timecodeArray.content.length) {
+                    stringEnd = timecodeArray.content.length;
                 }
-            });
-        });
-
-        setTags((prevTags) => {
-            let returnTags = localTags.map((tag, index) => {
-                let newTag = {
-                    title: tag.text,
-                    color: generateColor(),
-                    id: `tag-${index + 1}`,
-                };
-                return newTag;
-            });
-            console.log('return tags');
-            console.log(returnTags)
-            returnTags = returnTags.sort(function (a, b) {
-                var textA = a.title.toUpperCase();
-                var textB = b.title.toUpperCase();
-                return textA < textB ? -1 : textA > textB ? 1 : 0;
-            });
-
-            return returnTags;
-        });
-
-        setFilterTags((prevTags) => {
-            let returnTags = localTags.map((tag, index) => {
-                let newTag = {
-                    title: tag.text,
-                    color: generateColor(),
-                    id: `tag-${index + 1}`,
-                };
-                return newTag;
-            });
-            return returnTags.sort(function (a, b) {
-                var textA = a.title.toUpperCase();
-                var textB = b.title.toUpperCase();
-                return textA < textB ? -1 : textA > textB ? 1 : 0;
-            });
-            return returnTags;
-        });
-    }
-
-    // #Step 6 (Tags): Updates tags after articles have been filtered, calls updateTags
-    useEffect(() => {
-        updateTags();
-    }, [callFilter]);
-
-    // #Step 3 (Tags): Adds tag to search tags
-    function pushSearchTag(tag) {
-        setSearchTags((prevTags) => {
-            return [...prevTags, tag];
-        });
-    }
-
-    // #Step 4 (Tags): Calls updateArticles
-    useEffect(() => {
-        updateArticles();
-        setContext((prev) => {
-            return {
-                ...prev,
-                tags: searchTags,
-            };
-        });
-    }, [searchTags]);
-
-    // #Step 2 (Tags): Removes tag from tags, and filterTags based on id, pushes to search tags
-    function removeTag(id) {
-        // find the tag to remove
-        const item = tags.find((tag) => {
-            return tag.id === id;
-        });
-        // push it to end of search tags
-        pushSearchTag(item);
-        // remove it from the tags
-        setTags((prevTags) => {
-            const tags = prevTags.filter((tag) => {
-                return tag.id !== id;
-            });
-            return [...tags];
-        });
-        // remove it from filter tags
-        setFilterTags((prevTags) => {
-            const tags = prevTags.filter((tag) => {
-                return tag.id !== id;
-            });
-            return [...tags];
-        });
-        // clear the text
-        setText("");
-    }
-
-    useEffect(() => {
-        let renderArticleElems = [];
-        if (articlesLength >= 100) {
-            for (let i = 0; i < renderCount; i++) {
-                renderArticleElems.push(filterArticles[i]);
+                // add chunk of current 100 characters from content
+                stringChunks[i] = timecodeArray.content.substring(i, stringEnd);
             }
-        } else {
-            renderArticleElems = [...filterArticles];
-        }
+            // filter the string chunks for matches based on user articles
 
-        setRenderArticles(renderArticleElems);
-    }, [filterArticles]);
-    // Set a delay on tag renders until they stop typing for 500ms
-    //#Step 2 (Searching): Called after text is input
-
-    React.useEffect(() => {
-        if (!firstRender) {
-            const delayType = setTimeout(() => {
-                findClosestTag();
-            }, 500);
-            return () => clearTimeout(delayType);
-        } else {
-            setFirstRender(false);
-        }
-    }, [text]);
-
-    const [style, setStyle] = React.useState("row");
-    React.useEffect(() => {
-        if (view) {
-            setStyle((prevStyle) => {
-                return "row";
+            stringChunks = stringChunks.filter(chunk => {
+                return chunk.includes(searchText);
             });
-        } else {
-            setStyle((prevStyle) => {
-                return "column";
+
+            // push all string chunk array with the corresponding name for articles results
+            timecodeMatchObjects.push({
+                name: timecodeArray.name,
+                stringChunks: stringChunks
             });
+
         }
-    }, [view]);
-
-    const [reportActive, setReportActive] = useState(false);
-    const hideReport = () => {
-        setReportActive(false);
-    };
-
-    // removes all the tags selected by the user in the search bar
-    function clearAllSearchTags() {
-
-        // add the search tags to all tags and filter tags
-        setFilterTags(prev => {
-            return [...prev, ...searchTags];
-        });
-
-        setTags(prev => {
-            return [...prev, ...searchTags];
-        });
-
-        // remove all search tags
-        setSearchTags([]);
-
-    } */
 
 
-    const meta = {
-        title: "Raw Primal Search Bar",
-        description:
-            "Search for any topic discussed by Aajonus Vonderplantiz. Raw meat articles, Aajonus Vonderplanitz questions and answers about raw food and nutrition topics.",
-        link: "https://www.primalenjoyer.com/search",
-        type: "website",
-        date: "2024-04-24 20:30:00.000",
-        image: "/seo/search.PNG",
-        keywords:
-            "aajonus vonderplanitz, raw meat, health, information, raw primal, diet",
-    };
+        // call the function that updates the searchResults state, which will render the articles results
+        renderSearchResults(timecodeMatchObjects);
+    }
 
-    return (
-        <>
-            <Head>
-                <title>{meta.title}</title>
-                <meta name="robots" content="follow, index"/>
-                <meta property="og:type" content={meta.type}/>
-                <meta property="og:site_name" content="Primal Enjoyer"/>
-                <meta property="og:description" content={meta.description}/>
-                <meta property="og:title" content={meta.title}/>
-                <meta property="og:image" content={meta.image}/>
-                <meta property="article:published_time" content={meta.date}/>
-                <link rel="canonical" href={meta.image}/>
-                <meta property="og:url" content={meta.link}/>
-                <meta name="keywords" content={meta.keywords}/>
+    const renderSearchResults = (timecodeMatchObjects) => {
+        const searchResultsArray = [];
+        let totalChunks = 0;
+        for (let timecodeMatchObject of timecodeMatchObjects) {
+            // create the result object for rendering
+            const resultObject = {};
+            resultObject.name = timecodeMatchObject.name;
+            // the list of matches
+            resultObject.chunks = [];
+            // increase the total chunk count for analytical information to user
+            totalChunks += timecodeMatchObject.stringChunks.length;
+            for (let chunk of timecodeMatchObject.stringChunks) {
+                // add styling to the
+                chunk = chunk.replaceAll(searchText, `<span class = 'text-emerald-900 bg-emerald-300'>${searchText}</span>`)
+                // add chunk to chunk list to be rendered
+                resultObject.chunks.push(`<p> ${chunk} </p>`);
+            }
 
-                <meta name="description" content={meta.description}/>
-            </Head>
-            <div className='pt-20 px-4 mb-32'>
-                {/** Title header */}
-                <div className='text-center mb-6'>
-                    <h1 className="res-heading-2xl mb-2">
-                        Browse Articles
-                    </h1>
-                    <h3 className="res-heading-base">
-                        Filter primal diet Q&A transcription articles by tag
-                    </h3>
+            // create the result element
+            const resultObjectRender = <div className='border border-slate-300 p-4 rounded bg-white mb-8'>
+                <div className="flex justify-between mb-4">
+
+                    <h5 className="font-bold underline">{resultObject.name}</h5>
+                    <Link href={`/timecode/${resultObject.name}`}>
+
+                        <button
+                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
+                        </button>
+                    </Link>
+
                 </div>
-                {/** End of title header */}
+                {resultObject.chunks.map(chunk => {
+                    return (
+                        <div className='mb-4 pb-4 border-b-2 border-blue-950'
+                             dangerouslySetInnerHTML={{__html: chunk}}></div>
+                    )
+                })}
 
-                {/** Search bar*/}
-                <div className='max-w-7xl mx-auto'>
-                    <div className='max-w-3xl mx-auto mb-8'>
-                        <div>
-                            <SuperSearchTagBox
-                                text={text}
-                                updateText={updateText}
-                                removeSearchTag={() => {
-                                }}
-                                pushTag={() => {
-                                }}
-                                selectTag={selectTag}
-                                removeTag={removeTag}
-                                tags={[]}
-                                submitSearch={() => {
-                                }}
-                                colors={COLORS}
-                                pushSearchTag={() => {
-                                }}
+            </div>;
 
-                                renderTags={renderTags}
-                                selectedTags={selectedTags}
-                                clearText={() => {
-                                }}
-                                clearAllSelectedTags={clearAllSelectedTags}
-                            />
-                        </div>
+            // add to the result elements list
+            searchResultsArray.push(resultObjectRender);
+        }
+        // add the query information to the result elements list (quantity, etc)
+        // if no results
+        if (searchResultsArray.length === 0) {
+            searchResultsArray.unshift(<p className='mb-4'>No results...try a different search</p>)
+        } else {
+            searchResultsArray.unshift(<p className='mb-4'>Matched sections: <b>{totalChunks}</b></p>)
+            searchResultsArray.unshift(<p>Matched transcriptions: <b>{searchResultsArray.length}</b></p>)
+        }
+        setSearchResults(searchResultsArray);
+
+    }
+    return (
+        <div className='bg-whit'>
+            <div className="mx-auto max-w-6xl px-4 py-10">
+                {/** Heading */}
+                <div className="text-center mb-16">
+                    <h1 className="res-heading-2xl mb-2">
+                        Aajonus Recordings Transcriptions
+                    </h1>
+                    <h5 className="res-heading-base">
+                        Global search & view individual recordings
+                    </h5>
+                </div>
+                {/** End of heading */}
+
+                <div className="flex gap-4">
+                    {/** Timecode links */}
+                    <div className='w-full'>
+                        {timecodeElements}
                     </div>
-                    {/** End of search bar */}
+                    {/** End of timecode links */}
 
-                    {/** Search results */}
-                    <div colors={COLORS}>
-                        <SearchResults
-                            allArticles={articlesFetch}
-                            articles={renderArticles}
-                        />
-                        {articlesLength >= 100 && (
-                            <div className="flex justify-center">
-                                <div className='flex flex-col items-center'>
-                                    <p className='mb-4 text-slate-500'>{filterArticles.length - renderArticles.length} more...</p>
-                                    <FaPlus
-                                        onClick={increaseRender}
-                                        className='text-4xl cursor-pointer text-slate-500 hover:text-slate-950 transition'
-                                    />
-                                </div>
+                    {/** Global timecode articles */}
+                    <div className='w-full'>
+                        {/** Search bar */}
+                        <form onSubmit={findTimecodeSearchMatches}>
+                            <label className="input input-bordered flex items-center gap-2 py-8 mb-8 px-4 w-full">
+                                <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)}
+                                       className="grow" placeholder="Search transcriptions"/>
+                                <button
+                                    className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search
+                                </button>
+                            </label>
+                        </form>
+                        {/** End of articles bar*/}
 
-                            </div>
-                        )}
+                        {/** Search results */}
+                        {searchResults}
+                        {/** End of articles results */}
                     </div>
-                    {/** End of search results */}
+                    {/** End of global timecode articles */}
                 </div>
 
 
             </div>
-        </>
+
+        </div>
     );
 };
 

@@ -4,14 +4,14 @@ const links = [
     {
         img: "images/homepage/application.png",
         title: "Articles",
-        link: "/search",
+        link: "/articles",
         description: "Search individual articles by tags"
     },
     {
         img: "images/homepage/search.png",
         title: "Global Search",
-        link: "/timecodes",
-        description: "View full transcripts and search by individual keywords"
+        link: "/search",
+        description: "View full transcripts and articles by individual keywords"
     },
     {
         img: "images/homepage/recipes.png",
@@ -22,7 +22,7 @@ const links = [
     {
         img: "images/homepage/blog.png",
         title: "Blogs",
-        link: "/encyclopedia",
+        link: "/blogs",
         description: "VIew primal health & lifestyle blogs"
     },
 ];
