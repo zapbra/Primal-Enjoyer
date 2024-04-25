@@ -3,20 +3,9 @@
 import React, {useEffect, useContext} from "react";
 
 import {AppContext} from "../layout";
-import styled from "styled-components";
 import COLORS, {tagColors} from "../../../data/colors";
-import SuperSearchBar from "./components/SuperSearchBar";
 import SearchResults from "./components/SearchResults";
 import Head from "next/head";
-import {
-    SearchIcon,
-    TagIcon,
-    BookOpenIcon,
-    PlusIcon,
-} from "@heroicons/react/solid";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faExclamation} from "@fortawesome/free-solid-svg-icons";
-import ReportForm from "../../../components/banners/ReportForm";
 import {useState} from "react";
 import {FaPlus} from "react-icons/fa6";
 import SuperSearchTagBox from "@/app/search/components/SuperSearchTagBox";
@@ -36,6 +25,7 @@ function formatTags(tagsInput) {
     });
 }
 
+// amount to increase article render length at a time
 const RENDER_ITERATION = 100;
 
 const Render = ({articlesFetch, superTags}) => {
@@ -57,8 +47,7 @@ const Render = ({articlesFetch, superTags}) => {
     const [selectedTags, setSelectedTags] = useState([]);
     // the search text
     const [text, setText] = useState("");
-
-
+    
     const articlesLength = filterArticles.length;
 
     // UPDATE THIS TO ONLY UPDATE AFTER INTERVALS TO REDUCE RE-RENDERS

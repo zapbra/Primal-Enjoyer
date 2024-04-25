@@ -42,7 +42,7 @@ const Explore = () => {
 
 
     return (
-        <div className="px-8 py-4 mb-28">
+        <div className=" px-2 md:px-8 py-4 mb-28">
             <h2 className="text res-heading-lg text-center mb-8">
                 Explore
             </h2>

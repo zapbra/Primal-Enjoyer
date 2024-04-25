@@ -54,7 +54,7 @@ export default function Home({data, recipesFetch}) {
                     </h3>
 
                     <label className="input input-bordered flex items-center gap-2 py-8 px-4">
-                        <input type="text" className="grow" placeholder="Search the Aajonus database..."/>
+                        <input type="text" className="grow min-w-5" placeholder="Search the Aajonus database..."/>
                         <button
                             className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search
                         </button>

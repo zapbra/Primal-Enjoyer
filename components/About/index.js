@@ -1,10 +1,10 @@
 const About = () => {
 
     return (
-        <div className='grid grid-cols-2  max-w-7xl mx-auto sm:px-4'>
+        <div className='grid max-w-4xl grid-cols-1 xl:grid-cols-2 xl:max-w-7xl mx-auto sm:px-4 px-4'>
             {/** First grid row */}
             <div className="pr-2">
-                <h2 className="res-heading-base mb-8">
+                <h2 className="res-heading-base mb-8 text-center xl:text-left">
                     What Is the Raw Primal Diet
                 </h2>
 
@@ -43,11 +43,11 @@ const About = () => {
             {/** End of first grid row */}
 
             {/** Second grid row */}
-            <div>
+            <div className='hidden xl:block'>
                 <img src="images/homepage/steak_tartare_640_426.jpg" alt="steak tartare"/>
             </div>
 
-            <div className="pl-8 pt-8">
+            <div className="xl:pl-8 pt-8">
                 <h2 className="res-heading-base mb-8">
                     What Foods Do You Eat on the Primal Diet
                 </h2>
