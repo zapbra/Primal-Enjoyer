@@ -1,6 +1,7 @@
 "use client";
 import Head from "next/head";
 import React, {useState, useEffect} from "react";
+import {useRouter} from "next/navigation";
 import Image from 'next/image';
 import styled from "styled-components";
 import COLORS from "../../../data/colors";
@@ -11,12 +12,15 @@ import zIndex from "@mui/material/styles/zIndex";
 import Explore from '../../../components/introduction/Explore/index.js';
 import About from "../../../components/About";
 
+
 const YOUTUBE_PLAYLIST_ITEMS_API =
     "https://www.googleapis.com/youtube/v3/playlistItems";
 
 
 export default function Home({data, recipesFetch}) {
     const [user, setUser] = useState(null);
+    const [text, setText] = useState('');
+    const router = useRouter();
 
     const fileNames = [
         "OMAHA 22.08.2011 t",
@@ -31,12 +35,16 @@ export default function Home({data, recipesFetch}) {
         const getSession = async () => {
             const {data, error} = await supabase.auth.getSession();
 
-            setUser(data.session);
+
         };
         getSession();
     }, []);
 
 
+    const submitForm = (e) => {
+        e.preventDefault();
+        router.push(`/search?query=${text}`);
+    }
     return (
         <div>
 
@@ -53,12 +61,17 @@ export default function Home({data, recipesFetch}) {
                         best
                     </h3>
 
-                    <label className="input input-bordered flex items-center gap-2 py-8 px-4">
-                        <input type="text" className="grow min-w-5" placeholder="Search the Aajonus database..."/>
-                        <button
-                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search
-                        </button>
-                    </label>
+                    <form onSubmit={submitForm}>
+
+                        <label className="input input-bordered flex items-center gap-2 py-8 px-4">
+                            <input value={text} onChange={(e) => setText(e.target.value)} type="text"
+                                   className="grow min-w-5" placeholder="Search the Aajonus database..."/>
+                            <button type='submit'
+                                    className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search
+                            </button>
+                        </label>
+                    </form>
+
                 </div>
                 <div className="absolute opacity-50 bg-light h-full w-full left-0 top-0" style={{zIndex: "0"}}></div>
 

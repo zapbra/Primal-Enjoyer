@@ -1,8 +1,7 @@
 "use client";
 
-import {useState, useEffect, use} from "react";
+import React, {useState, useEffect, use} from "react";
 import COLORS from "../../../data/colors";
-import styled from "styled-components";
 import SearchBar from "./components/SearchBar";
 import Tags from "./components/Tags";
 import Categories from "./components/Categories";
@@ -21,22 +20,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Disclaimer from "./Disclaimer";
 import Feedback from "../../../components/Utility/Feedback";
+import {IoIosSearch} from "react-icons/io";
 
-const Cont = styled.div`
-  min-height: 100vh;
-  background-color: ${(props) => props.colors.ultraLightBlue};
-  padding-top: 120px;
-  .content-holder {
-    max-width: 1600px;
-    margin: 0 auto;
-  }
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr); */
-`;
 
 const Render = ({recipesFetch, firstRecipes, recipesCache, allRecipes}) => {
-    console.log("allRecipes");
-    console.log(allRecipes);
     const [firstRender, setFirstRender] = useState(true);
 
     const [categories, setCategories] = useState([
@@ -225,16 +212,34 @@ const Render = ({recipesFetch, firstRecipes, recipesCache, allRecipes}) => {
     };
 
     return (
-        <Cont colors={COLORS}>
-            <div className="content-holder">
+        <div className='py-16'>
+
+            <div className='max-w-7xl mx-auto'>
                 {/*   <Categories
         unselectedCategories={unselectedCategories}
         selectedCategories={selectedCategories}
         removeCategory={removeCategory}
       /> */}
-                <div className="padding-16">
-                    <SearchBar text={text} setText={setText}/>
-                </div>
+                <h1 className="res-heading-xl text-center mb-2">
+                    Recipes
+                </h1>
+                <h5 className="res-heading-base text-center mb-6">
+                    Search for your favorite primal recipes
+                </h5>
+                {/** Search bar */}
+                <label className="input input-bordered flex items-center gap-2 py-8 px-4 max-w-96 mx-auto mb-4">
+
+                    <input value={text} onChange={(e) => setText(e.target.value)} type="text" className="grow min-w-5"
+                           placeholder="beef... egg... cream"/>
+                    <button
+                        className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <IoIosSearch
+                            className='text-2xl'
+                        />
+                    </button>
+                </label>
+                {/** End of search bar */}
+
                 <Results
                     recipesRender={recipesRender}
                     categories={categories}
@@ -248,11 +253,8 @@ const Render = ({recipesFetch, firstRecipes, recipesCache, allRecipes}) => {
         unselectedTags={unselectedTags}
       /> */}
             </div>
-            <div className="sm-spacer-bot-res"></div>
-            <Feedback/>
-            <div className="ssm-spacer-bot-res"></div>
-            <Disclaimer/>
-        </Cont>
+
+        </div>
     );
 };
 

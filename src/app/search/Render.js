@@ -1,5 +1,6 @@
 "use client";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {useSearchParams} from "next/navigation";
 import Link from 'next/link';
 import COLORS from "../../../data/colors";
 import Preview from "./components/Preview";
@@ -7,6 +8,9 @@ import Preview from "./components/Preview";
 const CHAR_SEARCH_SIZE = 500;
 
 const Render = ({previewData, timecodeData}) => {
+    // get the search query
+    const searchParams = useSearchParams();
+    const query = searchParams.get('query');
 
     const [searchText, setSearchText] = useState("");
     const [timecodeElements, setTimecodeElements] = useState(
@@ -27,12 +31,11 @@ const Render = ({previewData, timecodeData}) => {
 
     const [searchResults, setSearchResults] = useState([]);
 
-    const findTimecodeSearchMatches = (e) => {
-        e.preventDefault();
+    const findTimecodeSearchMatches = (search) => {
         const timecodeMatchObjects = [];
         // get a list of all search that contain the articles text
         const timecodeArrayMatches = timecodeData.filter(timecode => {
-            return timecode.content.includes(searchText);
+            return timecode.content.includes(search);
         });
 
 
@@ -56,7 +59,7 @@ const Render = ({previewData, timecodeData}) => {
             // filter the string chunks for matches based on user articles
 
             stringChunks = stringChunks.filter(chunk => {
-                return chunk.includes(searchText);
+                return chunk.includes(search);
             });
 
             // push all string chunk array with the corresponding name for articles results
@@ -69,10 +72,10 @@ const Render = ({previewData, timecodeData}) => {
 
 
         // call the function that updates the searchResults state, which will render the articles results
-        renderSearchResults(timecodeMatchObjects);
+        renderSearchResults(timecodeMatchObjects, search);
     }
 
-    const renderSearchResults = (timecodeMatchObjects) => {
+    const renderSearchResults = (timecodeMatchObjects, search) => {
         const searchResultsArray = [];
         let totalChunks = 0;
         for (let timecodeMatchObject of timecodeMatchObjects) {
@@ -85,7 +88,7 @@ const Render = ({previewData, timecodeData}) => {
             totalChunks += timecodeMatchObject.stringChunks.length;
             for (let chunk of timecodeMatchObject.stringChunks) {
                 // add styling to the
-                chunk = chunk.replaceAll(searchText, `<span class = 'text-emerald-900 bg-emerald-300'>${searchText}</span>`)
+                chunk = chunk.replaceAll(search, `<span class = 'text-emerald-900 bg-emerald-300'>${search}</span>`)
                 // add chunk to chunk list to be rendered
                 resultObject.chunks.push(`<p> ${chunk} </p>`);
             }
@@ -126,6 +129,13 @@ const Render = ({previewData, timecodeData}) => {
         setSearchResults(searchResultsArray);
 
     }
+
+    // perform search on load if query is sent
+    useEffect(() => {
+        if (query !== null) {
+            findTimecodeSearchMatches(query);
+        }
+    }, []);
     return (
         <div className='bg-whit'>
             <div className="mx-auto max-w-6xl px-4 py-10">
@@ -140,7 +150,7 @@ const Render = ({previewData, timecodeData}) => {
                 </div>
                 {/** End of heading */}
 
-                <div className="flex gap-4">
+                <div className="flex md:flex-row flex-col-reverse gap-4">
                     {/** Timecode links */}
                     <div className='w-full'>
                         {timecodeElements}
@@ -150,7 +160,10 @@ const Render = ({previewData, timecodeData}) => {
                     {/** Global timecode articles */}
                     <div className='w-full'>
                         {/** Search bar */}
-                        <form onSubmit={findTimecodeSearchMatches}>
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            findTimecodeSearchMatches(searchText);
+                        }}>
                             <label className="input input-bordered flex items-center gap-2 py-8 mb-8 px-4 w-full">
                                 <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)}
                                        className="grow" placeholder="Search transcriptions"/>

@@ -20,7 +20,7 @@ const Highlight = ({children, text = ""}) => {
                 } else {
                     // return text with styling
 
-                    return "<span class = 'highlight'>" + textChild + "</span>";
+                    return "<span class = 'bg-emerald-300 px-1'>" + textChild + "</span>";
                 }
             })
             .join(" ");

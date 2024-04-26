@@ -4,7 +4,18 @@ import {useState, useCallback, useRef, useEffect} from "react";
 import {GiHamburgerMenu} from "react-icons/gi";
 
 const NewNavbar = () => {
+    const router = useRouter();
+    const submitForm = (e) => {
+        e.preventDefault();
+        // get search text
+        const searchText = document.getElementById('searchText');
+        const searchTextValue = searchText.value;
+        searchText.value = "";
+        // redirect to search page with query
+        router.push(`/search?query=${searchTextValue}`);
 
+
+    }
     return (
         <div className='bg-dark p-4'>
             <div className="flex justify-between items-center gap-8">
@@ -59,15 +70,17 @@ const NewNavbar = () => {
                 {/** End of Navbar Links */}
 
                 {/** Search bar **/}
-                <label className="input input-bordered flex items-center gap-2">
-                    <input type="text" className="grow" placeholder="Search"/>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                         className="w-4 h-4 opacity-70">
-                        <path fill-rule="evenodd"
-                              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                              clip-rule="evenodd"/>
-                    </svg>
-                </label>
+                <form onSubmit={submitForm}>
+                    <label className="input input-bordered flex items-center gap-2">
+                        <input id='searchText' type="text" className="grow" placeholder="Search"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                             className="w-4 h-4 opacity-70">
+                            <path fill-rule="evenodd"
+                                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                  clip-rule="evenodd"/>
+                        </svg>
+                    </label>
+                </form>
                 {/** End of articles bar */}
 
                 {/** Menu Dropdown */}
@@ -75,7 +88,7 @@ const NewNavbar = () => {
                     <div tabIndex="0" role="button" className="bg-white btn m-1">
                         <GiHamburgerMenu size={24} className='text--primary'/>
                     </div>
-                    <ul tabIndex="0" className="dropdown-content z-[1] bg-white menu p-2 shadow rounded-box w-52">
+                    <ul tabIndex="0" className="dropdown-content z-[100] bg-white menu p-2 shadow rounded-box w-52">
                         <li>
                             <Link href="/">
                                 Home
@@ -83,13 +96,25 @@ const NewNavbar = () => {
                         </li>
                         <li>
                             <Link href={"/articles"}>
-                                ddd
+                                Articles
                             </Link>
                         </li>
 
                         <li>
-                            <Link href={"/viewall"}>
-                                View All
+                            <Link href={"/search"}>
+                                Search
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link href={"/blogs"}>
+                                Blogs
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link href={"/recipes"}>
+                                Recipes
                             </Link>
                         </li>
 
