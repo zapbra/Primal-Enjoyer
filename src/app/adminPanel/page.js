@@ -1,34 +1,34 @@
 import React from "react";
 
 import {
-  fetchGuestTestimonials,
-  fetchTextFiles,
+    fetchGuestTestimonials,
+    fetchTextFiles,
 } from "../../../utils/supabaseFunction";
-import Render from "../encyclopedia/Render";
+import Render from "@/app/blogs/Render";
 
 export async function fetchData() {
-  const testimonialsFetch = await fetchGuestTestimonials();
-  const textFilesFetch = await fetchTextFiles();
-  return {
-    props: {
-      testimonialsFetch,
-      textFilesFetch,
-    },
-  };
+    const testimonialsFetch = await fetchGuestTestimonials();
+    const textFilesFetch = await fetchTextFiles();
+    return {
+        props: {
+            testimonialsFetch,
+            textFilesFetch,
+        },
+    };
 }
 
 const Page = async () => {
-  const data = await fetchData();
-  const testimonialsFetch = data.props.testimonialsFetch;
-  const textFilesFetch = data.props.textFilesFetch;
-  return (
-    <div>
-      {/*  <Render
+    const data = await fetchData();
+    const testimonialsFetch = data.props.testimonialsFetch;
+    const textFilesFetch = data.props.textFilesFetch;
+    return (
+        <div>
+            {/*  <Render
         testimonialsFetch={testimonialsFetch}
         textFilesFetch={textFilesFetch}
       /> */}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Page;

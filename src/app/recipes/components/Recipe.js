@@ -1,125 +1,64 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import {useState} from "react";
 import styled from "styled-components";
 import COLORS from "../../../../data/colors";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faWeight } from "@fortawesome/free-solid-svg-icons";
-import { returnRandom } from "../../../../utils/Functions";
-import { lightColors } from "../../../../data/colors";
-import { iconsDict } from "../../../../data/recipes";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowRight, faWeight} from "@fortawesome/free-solid-svg-icons";
+import {returnRandom} from "../../../../utils/Functions";
+import {lightColors} from "../../../../data/colors";
+import {iconsDict} from "../../../../data/recipes";
 import Highlight from "../../../../components/Utility/Highlight";
 
-const Cont = styled.div`
-  border-radius: 8px;
-  border: 1px solid ${(props) => props.colors.grey};
-  background-color: #fff;
-  //box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px 0px;
-  margin-bottom: 32px;
-  cursor: pointer;
-  padding: 16px;
-  max-width: 400px;
-  margin-left: 16px;
-  margin-right: 16px;
-  .ingredient {
-    border-bottom: 1px solid ${(props) => props.colors.grey};
-    text-align: left;
-  }
-  li {
-    margin-left: 16px;
-  }
-  .category {
-    box-shadow: inset 2px 2px 2px 0px rgb(128 149 179 / 41%),
-      inset -2px -2px 2px 0 rgb(0 43 103 / 70%);
-    border-radius: 8px;
-    background-color: ${(props) => props.colors.darkBlue};
-    padding: 4px 8px;
-    h5 {
-      color: ${(props) => props.colors.ultraLightBlue};
-    }
-  }
-  .image-holder {
-    width: 75%;
-    height: 200px;
-    margin: 0 auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px 0px;
-  }
-
-  .blue-circle {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: ${(props) => props.colors.darkBlue};
-  }
-
-  transition: background-color 0.25s ease;
-  &:hover {
-    background-color: ${(props) => props.colors.lightGrey};
-    p {
-      text-decoration: none;
-    }
-  }
-  &:active {
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-  }
-`;
 
 const Recipe = ({
-  name,
-  briefDescription,
-  ingredients,
-  category,
-  url,
-  text,
-}) => {
-  let ingredientElems = ingredients.map((ingredient, index) => {
+                    name,
+                    briefDescription,
+                    ingredients,
+                    category,
+                    url,
+                    text,
+                }) => {
+    let ingredientElems = ingredients.map((ingredient, index) => {
+        return (
+            <div
+                className="flex items-center justify-between py-2 border-b-2 border-slate-200"
+                key={index}
+            >
+                <p className="res-text-sm ">
+                    <Highlight text={text}>{ingredient.food_id.name}</Highlight>{" "}
+                    <span className="text-slate-400">({ingredient.quantity})</span>
+                </p>
+                <img src={`/icons/${ingredient.food_id.icon}`} alt={ingredient.food_id.icon} width='32' height='32'
+                     className='object-contain'/>
+
+            </div>
+        );
+    });
+
+    if (url == null) url = "/No_image_available.svg.png";
+
     return (
-      <div
-        className="mar-bottom-8 padding-8 ingredient flex align-center space-between"
-        key={index}
-      >
-        <p className="dark-blue mar-right-8 small">
-          <Highlight text={text}>{ingredient.food_id.name}</Highlight>{" "}
-          <span className="light-grey2">({ingredient.quantity})</span>
-        </p>
-        <Image
-          src={`/icons${ingredient.food_id.icon}`}
-          width={32}
-          height={32}
-          alt={""}
-        />
-      </div>
-    );
-  });
-
-  if (url == null) url = "/No_image_available.svg.png";
-
-  return (
-    <Cont colors={COLORS} className="rounded-shadow">
-      <Link href={`/recipe/${name}`}>
-        <div className="flex flex-end mar-bottom-16">
-          <div className="category flex align-center">
-            <FontAwesomeIcon
-              icon={iconsDict[category]}
-              className="light-blue icon-ssm mar-right-8"
-            />
-            <h5>{category}</h5>
-          </div>
-        </div>
-        <div className="relative image-holder">
-          <Image src={url} alt={name} fill style={{ objectFit: "cover" }} />
-        </div>
-        <div className="mar-bottom-16"></div>
-        <div className="center-inline">
-          <h4 className="mar-bottom-16 text-shadow-2">
-            <Highlight text={text}>{name}</Highlight>
-          </h4>
-        </div>
-        <div className="ingredients">
-          {/* {ingredients.map((ingredient) => {
+        <div
+            className="bg-white border-slate-300 border rounded px-6 py-4 w-80 h-fit hover:shadow-2xl transition active:underline">
+            <Link href={`/recipe/${name}`}>
+                <div className="flex flex-end mb-4">
+                    <div className="flex items-center bg-blue-950 rounded text-slate-50 px-2 py-1">
+                        <FontAwesomeIcon
+                            icon={iconsDict[category]}
+                            className="mr-2"
+                        />
+                        <p className=''>{category}</p>
+                    </div>
+                </div>
+                <img src={url} alt={name} className='rounded mb-4 max-h-40 w-full object-cover'/>
+                <div className="center-inline">
+                    <h4 className="res-heading-base font-bold mb-4">
+                        <Highlight text={text}>{name}</Highlight>
+                    </h4>
+                </div>
+                <div className="ingredients">
+                    {/* {ingredients.map((ingredient) => {
             return (
               <div className="mar-bottom-4 flex align-center justify-center">
                 <div className="blue-circle mar-right-8"></div>
@@ -132,11 +71,11 @@ const Recipe = ({
               </div>
             );
           })} */}
-          {ingredientElems}
+                    {ingredientElems}
+                </div>
+            </Link>
         </div>
-      </Link>
-    </Cont>
-  );
+    );
 };
 
 export default Recipe;

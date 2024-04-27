@@ -1,32 +1,32 @@
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
-import { useState, useCallback, useRef, useEffect, useContext } from "react";
+import {useRouter, usePathname} from "next/navigation";
+import {useState, useCallback, useRef, useEffect, useContext} from "react";
 import {
-  MenuIcon,
-  SearchIcon,
-  HomeIcon,
-  UserIcon,
-  MailIcon,
+    MenuIcon,
+    SearchIcon,
+    HomeIcon,
+    UserIcon,
+    MailIcon,
 } from "@heroicons/react/solid";
 import COLORS from "../data/colors";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-  faSearch,
-  faChevronDown,
-  faUserCircle,
-  faBook,
-  faFolderTree,
-  faSquarePollVertical,
-  faNotesMedical,
-  faHome,
-  faSort,
-  faEye,
-  faUtensils,
+    faSearch,
+    faChevronDown,
+    faUserCircle,
+    faBook,
+    faFolderTree,
+    faSquarePollVertical,
+    faNotesMedical,
+    faHome,
+    faSort,
+    faEye,
+    faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
-import { AppContext } from "../src/app/layout";
-import { getLocalStorage, checkFavorite } from "../utils/Functions";
+import {AppContext} from "../src/app/layout";
+import {getLocalStorage, checkFavorite} from "../utils/Functions";
 import supabase from "../utils/supabaseClient";
 
 const NavCont = styled.nav`
@@ -319,207 +319,210 @@ const NavDropdown = styled.div`
   }
 `;
 
-export async function getServerSideProps() {}
+export async function getServerSideProps() {
+}
+
 const Navbar = () => {
-  const [active, setActive] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const navRef = useRef();
-  const [show, setShow] = useState(false);
-  const [user, setUser] = useState(null);
-  const router = useRouter();
-  const pathname = usePathname();
-  console.log("pathname");
-  console.log(pathname);
-  // Hide and show navbar on scroll
-  let prevY = 0;
-  const controlNavbar = () => {
-    if (window.scrollY > prevY && window.scrollY > 100) {
-      prevY = window.scrollY;
-      setShow(true);
-    } else {
-      prevY = window.scrollY;
-      setShow(false);
+    const [active, setActive] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
+    const navRef = useRef();
+    const [show, setShow] = useState(false);
+    const [user, setUser] = useState(null);
+    const router = useRouter();
+    const pathname = usePathname();
+    console.log("pathname");
+    console.log(pathname);
+    // Hide and show navbar on scroll
+    let prevY = 0;
+    const controlNavbar = () => {
+        if (window.scrollY > prevY && window.scrollY > 100) {
+            prevY = window.scrollY;
+            setShow(true);
+        } else {
+            prevY = window.scrollY;
+            setShow(false);
+        }
+    };
+    useEffect(() => {
+        window.addEventListener("scroll", controlNavbar);
+        return () => {
+            window.removeEventListener("scroll", controlNavbar);
+        };
+    }, []);
+    const dropdownEl = useRef();
+
+    function ToggleDropdown() {
+        setActive(!active);
     }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", controlNavbar);
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, []);
-  const dropdownEl = useRef();
-  function ToggleDropdown() {
-    setActive(!active);
-  }
 
-  // Dropdown function
-  const handleClickOutside = useCallback(
-    (e) => {
-      if (
-        showDropdown &&
-        e.target.closest(".dropdown-holder") !== dropdownEl.current
-      ) {
-        setShowDropdown(false);
-      }
-    },
-    [showDropdown, setShowDropdown, dropdownEl]
-  );
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
+    // Dropdown function
+    const handleClickOutside = useCallback(
+        (e) => {
+            if (
+                showDropdown &&
+                e.target.closest(".dropdown-holder") !== dropdownEl.current
+            ) {
+                setShowDropdown(false);
+            }
+        },
+        [showDropdown, setShowDropdown, dropdownEl]
+    );
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [handleClickOutside]);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [handleClickOutside]);
 
-  function Focus(e) {
-    setShowDropdown(true);
-  }
+    function Focus(e) {
+        setShowDropdown(true);
+    }
 
-  useEffect(() => {
-    const updateSession = async () => {
-      const { data, error } = await supabase.auth.getSession();
-      setUser(data?.session?.user);
-    };
-    updateSession();
-  }, []);
+    useEffect(() => {
+        const updateSession = async () => {
+            const {data, error} = await supabase.auth.getSession();
+            setUser(data?.session?.user);
+        };
+        updateSession();
+    }, []);
 
-  return (
-    <NavCont
-      className={show ? "hide-nav" : ""}
-      ref={navRef}
-      id="nav"
-      colors={COLORS}
-      name="top"
-    >
-      <div className="nav-flex-header tablet">
-        <div className="desktop">
-          <Link
-            href={{
-              pathname: `/`,
-            }}
-          >
-            <Title>Primal Enjoyer</Title>
-          </Link>
-        </div>
-        <NavRight colors={COLORS} className="tablet">
-          <div ref={dropdownEl} onClick={Focus} className="dropdown-holder">
-            <div className="flex-center more">
-              <h4>More</h4>
-              <FontAwesomeIcon icon={faChevronDown} className="icon-blue" />
-            </div>
-            {showDropdown && (
-              <div className="dropdown">
-                <ul>
-                  <li>
+    return (
+        <NavCont
+            className={show ? "hide-nav" : ""}
+            ref={navRef}
+            id="nav"
+            colors={COLORS}
+            name="top"
+        >
+            <div className="nav-flex-header tablet">
+                <div className="desktop">
                     <Link
-                      href={{
-                        pathname: `/`,
-                      }}
+                        href={{
+                            pathname: `/`,
+                        }}
                     >
-                      <h5 className="light opacity-anim">Home</h5>
+                        <Title>Primal Enjoyer</Title>
                     </Link>
-                  </li>
+                </div>
+                <NavRight colors={COLORS} className="tablet">
+                    <div ref={dropdownEl} onClick={Focus} className="dropdown-holder">
+                        <div className="flex-center more">
+                            <h4>More</h4>
+                            <FontAwesomeIcon icon={faChevronDown} className="icon-blue"/>
+                        </div>
+                        {showDropdown && (
+                            <div className="dropdown">
+                                <ul>
+                                    <li>
+                                        <Link
+                                            href={{
+                                                pathname: `/`,
+                                            }}
+                                        >
+                                            <h5 className="light opacity-anim">Home</h5>
+                                        </Link>
+                                    </li>
 
-                  <li>
-                    <Link
-                      href={{
-                        pathname: `/recipes`,
-                      }}
-                    >
-                      <h5 className="light opacity-anim">Recipes</h5>
-                    </Link>
-                  </li>
+                                    <li>
+                                        <Link
+                                            href={{
+                                                pathname: `/recipes`,
+                                            }}
+                                        >
+                                            <h5 className="light opacity-anim">Recipes</h5>
+                                        </Link>
+                                    </li>
 
-                  <li>
-                    <Link
-                      href={{
-                        pathname: `/encyclopedia`,
-                      }}
-                    >
-                      <h5 className="light opacity-anim">Encyclopedia</h5>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={{
-                        pathname: `/testimonials`,
-                      }}
-                    >
-                      <h5 className="light opacity-anim">Testimonials</h5>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={{
-                        pathname: `/polls`,
-                      }}
-                    >
-                      <h5 className="light opacity-anim">Polls</h5>
-                    </Link>
-                  </li>
+                                    <li>
+                                        <Link
+                                            href={{
+                                                pathname: `/encyclopedia`,
+                                            }}
+                                        >
+                                            <h5 className="light opacity-anim">Encyclopedia</h5>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href={{
+                                                pathname: `/testimonials`,
+                                            }}
+                                        >
+                                            <h5 className="light opacity-anim">Testimonials</h5>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href={{
+                                                pathname: `/polls`,
+                                            }}
+                                        >
+                                            <h5 className="light opacity-anim">Polls</h5>
+                                        </Link>
+                                    </li>
 
-                  <li>
+                                    <li>
+                                        <Link
+                                            href={{
+                                                pathname: `/contact`,
+                                            }}
+                                        >
+                                            <h5 className="light opacity-anim">Contact</h5>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+
                     <Link
-                      href={{
-                        pathname: `/contact`,
-                      }}
+                        href={{
+                            pathname: `/search`,
+                        }}
                     >
-                      <h5 className="light opacity-anim">Contact</h5>
+                        <div
+                            style={{
+                                paddingLeft: "8px",
+
+                                cursor: "pointer",
+                            }}
+                            className="flex-center nav-white"
+                        >
+                            <FontAwesomeIcon className="icon-blue" icon={faSearch}/>
+                            <h4>Search</h4>
+                        </div>
                     </Link>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
-
-          <Link
-            href={{
-              pathname: `/search`,
-            }}
-          >
-            <div
-              style={{
-                paddingLeft: "8px",
-
-                cursor: "pointer",
-              }}
-              className="flex-center nav-white"
-            >
-              <FontAwesomeIcon className="icon-blue" icon={faSearch} />
-              <h4>Search</h4>
-            </div>
-          </Link>
-          <Link
-            href={{
-              pathname: `/categories`,
-            }}
-          >
-            <h4
-              style={{
-                borderLeft: "1px solid black",
-              }}
-              className="nav-white"
-            >
-              Categories
-            </h4>
-          </Link>
-          <Link
-            href={{
-              pathname: `/timecodes`,
-            }}
-          >
-            <h4
-              style={{
-                borderLeft: "1px solid black",
-                whiteSpace: "nowrap",
-              }}
-              className="nav-white hide-1000"
-            >
-              View All
-            </h4>
-          </Link>
-          {/*
+                    <Link
+                        href={{
+                            pathname: `/categories`,
+                        }}
+                    >
+                        <h4
+                            style={{
+                                borderLeft: "1px solid black",
+                            }}
+                            className="nav-white"
+                        >
+                            Categories
+                        </h4>
+                    </Link>
+                    <Link
+                        href={{
+                            pathname: `/timecodes`,
+                        }}
+                    >
+                        <h4
+                            style={{
+                                borderLeft: "1px solid black",
+                                whiteSpace: "nowrap",
+                            }}
+                            className="nav-white hide-1000"
+                        >
+                            View All
+                        </h4>
+                    </Link>
+                    {/*
           <div className="mobile-sm">
             <Link
               href={{
@@ -533,234 +536,234 @@ const Navbar = () => {
             </Link>
           </div>
             */}
-          <Link
-            href={{
-              pathname: `/account`,
-            }}
-          >
-            <div className="account-nav">
-              <div className="image-cont">
-                {user ? (
-                  <div className="image-cont">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_AVATAR_BASE_URL}${user?.user_metadata.avatar_url}`}
-                      style={{ objectFit: "cover" }}
-                      size="100%"
-                      fill
-                    />
-                  </div>
-                ) : (
-                  <FontAwesomeIcon
-                    icon={faUserCircle}
-                    className="icon-blue icon-lg"
-                  />
+                    <Link
+                        href={{
+                            pathname: `/account`,
+                        }}
+                    >
+                        <div className="account-nav">
+                            <div className="image-cont">
+                                {user ? (
+                                    <div className="image-cont">
+                                        <Image
+                                            src={`${process.env.NEXT_PUBLIC_AVATAR_BASE_URL}${user?.user_metadata.avatar_url}`}
+                                            style={{objectFit: "cover"}}
+                                            size="100%"
+                                            fill
+                                        />
+                                    </div>
+                                ) : (
+                                    <FontAwesomeIcon
+                                        icon={faUserCircle}
+                                        className="icon-blue icon-lg"
+                                    />
+                                )}
+                            </div>
+                        </div>
+                    </Link>
+                </NavRight>
+            </div>
+
+            <MobileNav colors={COLORS} className="mobile-2">
+                {(!active && (
+                    <>
+                        <Link
+                            href={{
+                                pathname: `/search`,
+                            }}
+                        >
+                            <div
+                                className={
+                                    router.route == "/articles" ? "nav-box  bg-green" : "nav-box "
+                                }
+                            >
+                                <FontAwesomeIcon
+                                    className="icon-blue icon-ssm"
+                                    icon={faSearch}
+                                />
+                            </div>
+                        </Link>
+                        <div className="flex">
+                            <Link
+                                href={{
+                                    pathname: `/timecodes`,
+                                }}
+                            >
+                                <div
+                                    className={
+                                        pathname == "/search"
+                                            ? "nav-box hide-360 bg-green"
+                                            : "nav-box hide-360"
+                                    }
+                                >
+                                    <FontAwesomeIcon icon={faEye} className="icon-blue icon-sm"/>
+                                </div>
+                            </Link>
+                            <Link
+                                href={{
+                                    pathname: `/recipes`,
+                                }}
+                            >
+                                <div
+                                    className={
+                                        pathname == "/recipes"
+                                            ? "nav-box hide-310 bg-green"
+                                            : "nav-box hide-310"
+                                    }
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faUtensils}
+                                        className="icon-blue icon-sm"
+                                    />
+                                </div>
+                            </Link>
+                            <Link href="/">
+                                <div
+                                    className={
+                                        pathname == "/"
+                                            ? "nav-box hide-260 bg-green"
+                                            : "nav-box hide-260"
+                                    }
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faHome}
+                                        className="icon-blue icon-sm "
+                                    />
+                                </div>
+                            </Link>
+                            <Link
+                                href={{
+                                    pathname: `/account`,
+                                }}
+                            >
+                                <div className="account-nav ">
+                                    {user ? (
+                                        <div className="image-cont">
+                                            <Image
+                                                src={`${process.env.NEXT_PUBLIC_AVATAR_BASE_URL}${user?.user_metadata.avatar_url}`}
+                                                objectFit="cover"
+                                                size="100%"
+                                                layout="fill"
+                                            />
+                                        </div>
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faUserCircle}
+                                            className="icon-blue icon-lg"
+                                        />
+                                    )}
+                                </div>
+                            </Link>
+
+                            <MenuIcon
+                                onClick={ToggleDropdown}
+                                className="lrg-icon nav-hamburger"
+                            />
+                        </div>
+                    </>
+                )) || (
+                    <>
+                        <div></div>
+                        <div onClick={ToggleDropdown} className="arrow-up"></div>
+                    </>
                 )}
-              </div>
-            </div>
-          </Link>
-        </NavRight>
-      </div>
-
-      <MobileNav colors={COLORS} className="mobile-2">
-        {(!active && (
-          <>
-            <Link
-              href={{
-                pathname: `/search`,
-              }}
+            </MobileNav>
+            <NavDropdown
+                className={active ? "active-dropdown mobile-2" : "mobile-2"}
+                colors={COLORS}
             >
-              <div
-                className={
-                  router.route == "/search" ? "nav-box  bg-green" : "nav-box "
-                }
-              >
-                <FontAwesomeIcon
-                  className="icon-blue icon-ssm"
-                  icon={faSearch}
-                />
-              </div>
-            </Link>
-            <div className="flex">
-              <Link
-                href={{
-                  pathname: `/timecodes`,
-                }}
-              >
-                <div
-                  className={
-                    pathname == "/timecodes"
-                      ? "nav-box hide-360 bg-green"
-                      : "nav-box hide-360"
-                  }
-                >
-                  <FontAwesomeIcon icon={faEye} className="icon-blue icon-sm" />
-                </div>
-              </Link>
-              <Link
-                href={{
-                  pathname: `/recipes`,
-                }}
-              >
-                <div
-                  className={
-                    pathname == "/recipes"
-                      ? "nav-box hide-310 bg-green"
-                      : "nav-box hide-310"
-                  }
-                >
-                  <FontAwesomeIcon
-                    icon={faUtensils}
-                    className="icon-blue icon-sm"
-                  />
-                </div>
-              </Link>
-              <Link href="/">
-                <div
-                  className={
-                    pathname == "/"
-                      ? "nav-box hide-260 bg-green"
-                      : "nav-box hide-260"
-                  }
-                >
-                  <FontAwesomeIcon
-                    icon={faHome}
-                    className="icon-blue icon-sm "
-                  />
-                </div>
-              </Link>
-              <Link
-                href={{
-                  pathname: `/account`,
-                }}
-              >
-                <div className="account-nav ">
-                  {user ? (
-                    <div className="image-cont">
-                      <Image
-                        src={`${process.env.NEXT_PUBLIC_AVATAR_BASE_URL}${user?.user_metadata.avatar_url}`}
-                        objectFit="cover"
-                        size="100%"
-                        layout="fill"
-                      />
+                {" "}
+                <Link href="/search">
+                    <div className="nav-line" onClick={ToggleDropdown}>
+                        <SearchIcon className="mar-right-8 nav-icon hero-icon-sm"/>
+                        <h5>Search</h5>
                     </div>
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faUserCircle}
-                      className="icon-blue icon-lg"
-                    />
-                  )}
-                </div>
-              </Link>
-
-              <MenuIcon
-                onClick={ToggleDropdown}
-                className="lrg-icon nav-hamburger"
-              />
-            </div>
-          </>
-        )) || (
-          <>
-            <div></div>
-            <div onClick={ToggleDropdown} className="arrow-up"></div>
-          </>
-        )}
-      </MobileNav>
-      <NavDropdown
-        className={active ? "active-dropdown mobile-2" : "mobile-2"}
-        colors={COLORS}
-      >
-        {" "}
-        <Link href="/search">
-          <div className="nav-line" onClick={ToggleDropdown}>
-            <SearchIcon className="mar-right-8 nav-icon hero-icon-sm" />
-            <h5>Search</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-        <Link href="/">
-          <div className="nav-line">
-            <HomeIcon className="nav-icon hero-icon-sm mar-right-8" />
-            <h5>Home</h5>
-          </div>
-        </Link>
-        <Link href="/recipes">
-          <div onClick={ToggleDropdown} className="nav-line">
-            <FontAwesomeIcon
-              icon={faUtensils}
-              className="nav-icon icon-ssm mar-right-8"
-            />
-            <h5>Recipes</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-        {/* End of nav line*/}
-        <Link href="/categories">
-          <div onClick={ToggleDropdown} className="nav-line">
-            <FontAwesomeIcon
-              icon={faFolderTree}
-              className="nav-icon icon-ssm mar-right-8"
-            />
-            <h5>Categories</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-        <Link href="/timecodes">
-          <div className="nav-line" onClick={ToggleDropdown}>
-            <FontAwesomeIcon
-              icon={faEye}
-              className="nav-icon icon-ssm mar-right-8"
-            />
-            <h5>View All</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-        <Link href="/encyclopedia">
-          <div onClick={ToggleDropdown} className="nav-line">
-            <FontAwesomeIcon
-              icon={faBook}
-              className="nav-icon icon-ssm mar-right-8"
-            />
-            <h5>Encyclopedia</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-        <Link href="/testimonials">
-          <div className="nav-line" onClick={ToggleDropdown}>
-            <FontAwesomeIcon
-              icon={faNotesMedical}
-              className="nav-icon icon-ssm mar-right-8"
-            />
-            <h5 className="">Testimonials</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-        <Link href="/polls">
-          <div className="nav-line">
-            <FontAwesomeIcon
-              icon={faSquarePollVertical}
-              className="nav-icon icon-ssm mar-right-8"
-            />
-            <h5>Polls</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-        <Link href="/account">
-          <div className="nav-line">
-            <UserIcon className="nav-icon hero-icon-sm mar-right-8" />
-            <h5>Account</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-        <Link href="/contact">
-          <div className="nav-line">
-            <MailIcon className="nav-icon hero-icon-sm mar-right-8" />
-            <h5>Contact</h5>
-          </div>
-        </Link>
-        {/* End of nav line*/}
-      </NavDropdown>
-    </NavCont>
-  );
+                </Link>
+                {/* End of nav line*/}
+                <Link href="/">
+                    <div className="nav-line">
+                        <HomeIcon className="nav-icon hero-icon-sm mar-right-8"/>
+                        <h5>Home</h5>
+                    </div>
+                </Link>
+                <Link href="/recipes">
+                    <div onClick={ToggleDropdown} className="nav-line">
+                        <FontAwesomeIcon
+                            icon={faUtensils}
+                            className="nav-icon icon-ssm mar-right-8"
+                        />
+                        <h5>Recipes</h5>
+                    </div>
+                </Link>
+                {/* End of nav line*/}
+                {/* End of nav line*/}
+                <Link href="/categories">
+                    <div onClick={ToggleDropdown} className="nav-line">
+                        <FontAwesomeIcon
+                            icon={faFolderTree}
+                            className="nav-icon icon-ssm mar-right-8"
+                        />
+                        <h5>Categories</h5>
+                    </div>
+                </Link>
+                {/* End of nav line*/}
+                <Link href="/timecodes">
+                    <div className="nav-line" onClick={ToggleDropdown}>
+                        <FontAwesomeIcon
+                            icon={faEye}
+                            className="nav-icon icon-ssm mar-right-8"
+                        />
+                        <h5>View All</h5>
+                    </div>
+                </Link>
+                {/* End of nav line*/}
+                <Link href="/encyclopedia">
+                    <div onClick={ToggleDropdown} className="nav-line">
+                        <FontAwesomeIcon
+                            icon={faBook}
+                            className="nav-icon icon-ssm mar-right-8"
+                        />
+                        <h5>Encyclopedia</h5>
+                    </div>
+                </Link>
+                {/* End of nav line*/}
+                <Link href="/testimonials">
+                    <div className="nav-line" onClick={ToggleDropdown}>
+                        <FontAwesomeIcon
+                            icon={faNotesMedical}
+                            className="nav-icon icon-ssm mar-right-8"
+                        />
+                        <h5 className="">Testimonials</h5>
+                    </div>
+                </Link>
+                {/* End of nav line*/}
+                <Link href="/polls">
+                    <div className="nav-line">
+                        <FontAwesomeIcon
+                            icon={faSquarePollVertical}
+                            className="nav-icon icon-ssm mar-right-8"
+                        />
+                        <h5>Polls</h5>
+                    </div>
+                </Link>
+                {/* End of nav line*/}
+                <Link href="/account">
+                    <div className="nav-line">
+                        <UserIcon className="nav-icon hero-icon-sm mar-right-8"/>
+                        <h5>Account</h5>
+                    </div>
+                </Link>
+                {/* End of nav line*/}
+                <Link href="/contact">
+                    <div className="nav-line">
+                        <MailIcon className="nav-icon hero-icon-sm mar-right-8"/>
+                        <h5>Contact</h5>
+                    </div>
+                </Link>
+                {/* End of nav line*/}
+            </NavDropdown>
+        </NavCont>
+    );
 };
 
 export default Navbar;
