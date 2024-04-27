@@ -30,14 +30,14 @@ const links = [
 const linkElements = links.map(((link, index) => {
     return (
         <ExploreCard
-            key = {index}
+            key={index}
             img={link.img}
             title={link.title}
             link={link.link}
             description={link.description}
         />
     )
-})
+}));
 
 const Explore = () => {
 
