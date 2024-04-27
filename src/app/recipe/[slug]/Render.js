@@ -52,6 +52,7 @@ const Render = ({recipe, recipe_joins}) => {
             return (
 
                 <img
+                    key={index}
                     src={`/icons${food_instance.food_id.icon}`}
                     width='48'
                     height='48'
