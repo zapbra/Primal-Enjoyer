@@ -15,7 +15,7 @@ const Render = ({previewData, timecodeData}) => {
     const [searchText, setSearchText] = useState("");
     const [timecodeElements, setTimecodeElements] = useState(
         previewData.map((timecode, index) => (
-            <Link href={`/timecode/${timecode.name}`}>
+            <Link href={`/timecode/${timecode.name}`} key={index}>
 
                 <div
                     className="bg-white flex justify-between items-center mb-4 py-2 px-4 rounded border border-blue-900 max-w-72 min-w-5 ">
@@ -106,9 +106,9 @@ const Render = ({previewData, timecodeData}) => {
                     </Link>
 
                 </div>
-                {resultObject.chunks.map(chunk => {
+                {resultObject.chunks.map((chunk, index) => {
                     return (
-                        <div className='mb-4 pb-4 border-b-2 border-blue-950'
+                        <div key={index} className='mb-4 pb-4 border-b-2 border-blue-950'
                              dangerouslySetInnerHTML={{__html: chunk}}></div>
                     )
                 })}

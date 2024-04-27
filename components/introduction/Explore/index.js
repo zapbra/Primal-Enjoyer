@@ -27,9 +27,10 @@ const links = [
     },
 ];
 
-const linkElements = links.map(link => {
+const linkElements = links.map(((link, index) => {
     return (
         <ExploreCard
+            key = {index}
             img={link.img}
             title={link.title}
             link={link.link}
