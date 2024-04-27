@@ -18,7 +18,7 @@ const Render = ({previewData, timecodeData}) => {
             <Link href={`/timecode/${timecode.name}`}>
 
                 <div
-                    className="bg-white flex justify-between items-center mb-4 py-2 px-4 rounded border border-blue-900 w-72">
+                    className="bg-white flex justify-between items-center mb-4 py-2 px-4 rounded border border-blue-900 max-w-72 min-w-5 ">
                     <p className='mr-4'>{timecode.name}</p>
                     <button
                         className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
@@ -124,7 +124,7 @@ const Render = ({previewData, timecodeData}) => {
             searchResultsArray.unshift(<p className='mb-4'>No results...try a different search</p>)
         } else {
             searchResultsArray.unshift(<p className='mb-4'>Matched sections: <b>{totalChunks}</b></p>)
-            searchResultsArray.unshift(<p>Matched transcriptions: <b>{searchResultsArray.length}</b></p>)
+            searchResultsArray.unshift(<p>Matched transcriptions: <b>{searchResultsArray.length - 1}</b></p>)
         }
         setSearchResults(searchResultsArray);
 
@@ -166,7 +166,7 @@ const Render = ({previewData, timecodeData}) => {
                         }}>
                             <label className="input input-bordered flex items-center gap-2 py-8 mb-8 px-4 w-full">
                                 <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)}
-                                       className="grow" placeholder="Search transcriptions"/>
+                                       className="grow min-w-5" placeholder="Search transcriptions"/>
                                 <button
                                     className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search
                                 </button>

@@ -1,18 +1,20 @@
 import Link from 'next/link';
 import {useRouter, usePathname} from 'next/navigation';
-import {useState, useCallback, useRef, useEffect} from "react";
+import React, {useState, useCallback, useRef, useEffect} from "react";
 import {GiHamburgerMenu} from "react-icons/gi";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleXmark} from "@fortawesome/free-solid-svg-icons";
 
 const NewNavbar = () => {
     const router = useRouter();
+    const [text, setText] = useState("");
     const submitForm = (e) => {
         e.preventDefault();
         // get search text
-        const searchText = document.getElementById('searchText');
-        const searchTextValue = searchText.value;
-        searchText.value = "";
+
         // redirect to search page with query
-        router.push(`/search?query=${searchTextValue}`);
+        router.push(`/search?query=${text}`);
+        setText("");
 
 
     }
@@ -72,7 +74,15 @@ const NewNavbar = () => {
                 {/** Search bar **/}
                 <form onSubmit={submitForm}>
                     <label className="input input-bordered flex items-center gap-2">
-                        <input id='searchText' type="text" className="grow" placeholder="Search"/>
+                        <input id='searchText' type="text" className="grow" placeholder="Search" value={text}
+                               onChange={(e) => setText(e.target.value)}/>
+                        {text !== "" && (
+                            <FontAwesomeIcon
+                                onClick={() => setText("")}
+                                icon={faCircleXmark}
+                                className="text-slate-500 absolute right-16 cursor-pointer hover:text-slate-950 transition res-text-base"
+                            />
+                        )}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                              className="w-4 h-4 opacity-70">
                             <path fill-rule="evenodd"
