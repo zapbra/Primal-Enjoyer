@@ -1,10 +1,7 @@
 import React, {useEffect} from "react";
-import styled from "styled-components";
 import {nanoid} from "nanoid";
-import COLORS from "../../../../data/colors";
 import SearchTag from "./SearchTag";
 import {useState, useCallback, useRef} from "react";
-import {ArrowDownIcon} from "@heroicons/react/solid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons";
 import {FaArrowDown, FaMagnifyingGlass} from "react-icons/fa6";
@@ -59,37 +56,7 @@ const SuperSearchTagBox = (props) => {
         deFocus();
         searchBar.current.blur();
     }
-    /*
-    useEffect(() => {
-        setRenderTags(props.renderTags.slice(0, renderTagCount));
-        setLines((prev) => {
-            const newLines = [];
-            for (let tag of props.renderTags.slice(0, renderTagCount)) {
-                if (tagsText.includes(tag.title)) {
-                } else {
-                    newLines.push(
-                        <div
-                            key={tag.id}
-                            onClick={() => removeTag(tag.id)}
-                            id={tag.id}
-                            className="px-2 py-1 cursor-pointer hover:bg-slate-50 transition hover:text-blue-500"
-                        >
-                            <p>{tag.title}</p>
-                        </div>
-                    );
-                }
-            }
-            renderTagCount < props.renderTags.length &&
-            newLines.push(
-                <div key={nanoid()} className="item show-more" onClick={showMore}>
-                    <h5 className="p-2 font-bold cursor-pointer hover:underline">Show More</h5>
-                </div>
-            );
 
-            return newLines;
-        });
-    }, [renderTagCount, props.renderTags]);
-     */
 
     const tags = props.selectedTags.map((tag, index) => {
         return (
@@ -187,7 +154,8 @@ const SuperSearchTagBox = (props) => {
                 {showDropdown && (
                     <div className='bg-white shadow absolute w-full'>
                         <div
-                            className='max-h-60 overflow-y-scroll'
+                            className={extendDropdown ? 'max-h-96 overflow-y-scroll transition' : 'max-h-60 overflow-y-scroll transition'}
+
                         >
                             {tagElements}
 
@@ -196,7 +164,8 @@ const SuperSearchTagBox = (props) => {
                             className='flex justify-center p-2 bg-slate-200 text-blue-500 cursor-pointer hover:bg-blue-500 hover:text-slate-200 transition'
                             onClick={toggleExtendDropdown}
                         >
-                            <FaArrowDown className=' text-2xl'/>
+                            <FaArrowDown
+                                className={extendDropdown ? 'text-2xl rotate-180 transition-all' : 'text-2xl rotate-0 transition-all'}/>
                         </div>
                     </div>
                 )}
