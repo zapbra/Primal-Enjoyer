@@ -4,6 +4,7 @@ import React, {useState, useCallback, useRef, useEffect} from "react";
 import {GiHamburgerMenu} from "react-icons/gi";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons";
+import {IoSearchOutline} from "react-icons/io5";
 
 const NewNavbar = () => {
     const router = useRouter();
@@ -73,7 +74,7 @@ const NewNavbar = () => {
 
                 {/** Search bar **/}
                 <form onSubmit={submitForm}>
-                    <label className="input input-bordered flex items-center gap-2">
+                    <label className="input input-bordered flex items-center gap-2 relative">
                         <input id='searchText' type="text" className="w-full min-w-5" placeholder="Search" value={text}
                                onChange={(e) => setText(e.target.value)}/>
 
@@ -81,15 +82,15 @@ const NewNavbar = () => {
                             <FontAwesomeIcon
                                 onClick={() => setText("")}
                                 icon={faCircleXmark}
-                                className="text-slate-500 absolute right-16 cursor-pointer hover:text-slate-950 transition res-text-base"
+                                className="text-slate-500 absolute right-20 cursor-pointer hover:text-slate-950 transition res-text-base"
                             />
                         )}
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                             className="w-4 h-4 opacity-70">
-                            <path fill-rule="evenodd"
-                                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                                  clip-rule="evenodd"/>
-                        </svg>
+                        <button type='submit'
+                                className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <IoSearchOutline
+                            />
+                        </button>
+
                     </label>
                 </form>
                 {/** End of articles bar */}

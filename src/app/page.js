@@ -11,24 +11,16 @@ export async function fetchData() {
     );
     const data = await res.json();
 
-    const {data: recipesFetch, error} = await supabase
-        .from("aaj_recipes")
-        .select(
-            "*, aaj_recipe_category(name), food_instances(quantity, food_id(name, icon))"
-        )
-        .limit(20);
 
     return {
         props: {
             data,
-            recipesFetch,
         },
     };
 }
 
 const Page = async () => {
     const data = await fetchData();
-    const recipesFetch = data.props.recipesFetch;
     let ytData = data.props.data;
 
     const meta = {
@@ -59,7 +51,7 @@ const Page = async () => {
 
                 <meta name="description" content={meta.description}/>
             </Head>
-            <Render data={ytData} recipesFetch={recipesFetch}></Render>
+            <Render data={ytData}></Render>
         </>
     );
 };
