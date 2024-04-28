@@ -92,9 +92,9 @@ const Render = ({recipe, recipe_joins}) => {
                         {/** Title */}
                         <div className="flex flex-wrap items-center justify-between mb-4">
                             <h1 className="mb-4 res-heading-base">{recipe.name}</h1>
-                            <IoBookmarkOutline
-                                className='text-3xl cursor-pointer text-slate-500 hover:text-slate-950 transition'
-                            />
+                            {/*<IoBookmarkOutline*/}
+                            {/*    className='text-3xl cursor-pointer text-slate-500 hover:text-slate-950 transition'*/}
+                            {/*/>*/}
                             {/*
                                 <Bookmark
                                     bookmarkState={bookmarked}
