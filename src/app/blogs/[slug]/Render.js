@@ -73,8 +73,6 @@ const Render = ({
         setView_data(await increment_and_return_view_data(slug));
     }, []);
 
-    console.log("slug");
-    console.log(view_data);
     const [post, setPost] = useState(postData);
     const [session, setSession] = useState(null);
     const [sidebarVisible, setSidebarVisible] = useState(false);
