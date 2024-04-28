@@ -1,6 +1,5 @@
 "use client";
 
-import styled from "styled-components";
 import {useContext, useState, useEffect, useRef, useCallback} from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -151,276 +150,6 @@ export const getServerSideProps = async (pageContext) => {
 };
 */
 
-const Cont = styled.div`
-$rhap_theme-color: red ! default;
-$rhap_background-color: red ! default;
-$rhap_bar-color: #dddddd ! default;
-$rhap_time-color: #333 ! default;
-$rhap_font-family: inherit ! default;
-
-    .rhap_container {
-        font-family: $rhap_font-family;
-
-        background-color: $rhap_background-color;
-    }
-
-    .rhap_time {
-        color: $rhap_time-color;
-    }
-
-    .rhap_progress-bar {
-        background-color: $rhap_bar-color;
-    }
-
-    .rhap_progress-filled {
-        background-color: ${(props) => props.colors.darkBlue};
-    }
-
-    .rhap_progress-bar-show-download {
-        background-color: rgba($rhap_bar-color, 0.5);
-    }
-
-    .rhap_download-progress {
-        background-color: $rhap_bar-color;
-    }
-
-    .rhap_progress-indicator {
-        background: ${(props) => props.colors.darkBlue};
-
-        box-shadow: rgba(0, 43, 103, 0.5) 0 0 5px;
-    }
-
-    .rhap_repeat-button {
-        color: ${(props) => props.colors.darkBlue};
-    }
-
-    .rhap_main-controls-button {
-        color: ${(props) => props.colors.darkBlue};
-    }
-
-    .rhap_volume-button {
-        color: ${(props) => props.colors.darkBlue};
-    }
-
-    .rhap_volume-bar {
-        background: $rhap_bar-color;
-    }
-
-    .rhap_volume-indicator {
-        box-shadow: rgba($rhap_theme-color, 0.5) 0 0 3px;
-        background-color: ${(props) => props.colors.darkBlue};
-    }
-
-    .rhap_volume-filled {
-        background-color: ${(props) => props.colors.darkBlue};
-    }
-
-    .download-audio {
-        position: absolute;
-        right: 16px;
-        top: 333px;
-    }
-
-    .download-text {
-        position: absolute;
-        right: 16px;
-        top: 386px;
-        z-index: 1;
-    }
-
-    .save-cont {
-        background: #fff;
-        position: relative;
-
-        &:hover {
-            border: 1px solid ${(props) => props.colors.darkBlue};
-        }
-
-        @media only screen and (max-width: 320px) {
-            top: 226px;
-            right: -172px;
-        }
-    }
-
-    .save-popup {
-        @media only screen and (max-width: 370px) {
-            position: absolute;
-            left: 0px;
-        }
-        @media only screen and (max-width: 320px) {
-            left: 50px;
-            top: 248px;
-
-            right: 0px !important;
-        }
-        @media only screen and (max-width: 270px) {
-            min-width: 200px;
-            left: 60px;
-        }
-    }
-`;
-const Grid = styled.div`
-    display: grid;
-    grid-template-columns: 240px minmax(200px, 480px) 240px;
-    padding: 2rem;
-    grid-gap: 2rem;
-
-    justify-content: space-between;
-    align-items: center;
-
-    @media only screen and (max-width: 800px) {
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
-`;
-
-const Header = styled.div`
-    margin-bottom: 1rem;
-    color: #ffffff;
-    background: #ffffff;
-    text-shadow: 3px 8px 7px rgba(0, 0, 0, 0.61);
-`;
-const Tags = styled.div`
-    //grid-area: tags;
-
-    border-radius: 1rem;
-    border: 1px solid ${(props) => props.colors.darkBlue};
-    background: ${(props) => props.colors.grey};
-
-    .tag-title {
-        border-radius: 1rem 1rem 0 0;
-        border-bottom: 1px solid ${(props) => props.colors.darkBlue};
-        column-gap: 4px;
-        background: #fff;
-        padding: 8px;
-        position: relative;
-        display: flex;
-        justify-content: center;
-
-        .no-shrink {
-            flex-shrink: 0;
-        }
-    }
-
-    h3 {
-        display: inline-block;
-        margin-right: 8px;
-    }
-
-    .icon-blue {
-        position: relative;
-        top: 5px;
-        width: 32px;
-        height: 32px;
-    }
-
-    .tag-list {
-        padding: 8px;
-        background: ${(props) => props.colors.grey};
-        display: flex;
-        align-items: center;
-        border-radius: 0 0 1rem 1rem;
-        flex-direction: column;
-    }
-`;
-const Tag = styled.div`
-    padding: 4px 8px;
-    display: inline-block;
-    background: ${(props) => props.color};
-    border: 1px solid ${(props) => props.colors.darkBlue};
-    border-radius: 1rem;
-    margin-bottom: 8px;
-`;
-
-const Related = styled.div`
-    //grid-area: related;
-    border-radius: 1rem;
-
-    border: 1px solid ${(props) => props.colors.darkBlue};
-
-    .related-title {
-        border-radius: 1rem 1rem 0 0;
-        padding: 8px;
-        text-align: center;
-        background-color: #fff;
-        border-bottom: 1px solid ${(props) => props.colors.darkBlue};
-    }
-
-    .related-list {
-        background: ${(props) => props.colors.grey};
-        border-radius: 0 0 1rem 1rem;
-    }
-
-    .related-article {
-    }
-
-    .related-line {
-        border-bottom: 1px solid ${(props) => props.colors.darkBlue};
-        padding: 8px;
-
-        border-radius: 0;
-
-        &:last-of-type {
-            border-bottom: none;
-            border-radius: 0 0 1rem 1rem;
-        }
-
-        p {
-            font-weight: 500;
-            flex: 1;
-            flex-basis: 90%;
-        }
-
-        .icon-blue {
-            flex: 1;
-            width: 24px;
-            height: 24px;
-            flex-basis: 10%;
-        }
-
-        transition: background-color, 0.25s ease;
-
-        &:hover {
-            cursor: pointer;
-            background-color: ${(props) => props.colors.darkBlue};
-
-            p {
-                color: white;
-            }
-
-            .icon-blue {
-                color: white;
-            }
-        }
-    }
-`;
-
-const CoverImage = styled.div`
-    margin-bottom: 3rem;
-
-    img {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-    }
-`;
-
-const TextContent = styled.div`
-    max-width: 1000px;
-    margin: auto;
-    padding: 16px;
-    border-top: 1px solid ${(props) => props.colors.darkBlue};
-
-    p {
-        line-height: 1.8;
-
-        margin-bottom: 1rem;
-    }
-
-    @media only screen and (max-width: 400px) {
-        padding: 16px 0 0 0;
-    }
-`;
 
 const Slug = ({article, articles, slug}) => {
     const [view_data, setView_data] = useState({});
@@ -501,7 +230,7 @@ const Slug = ({article, articles, slug}) => {
     const tagElems = article.tags.map((tag) => {
         return (
             <div key={nanoid()} className='px-2 py-1 rounded-full border inline-block '>
-                <p className='text-slate-500'>{tag.text}</p>
+                <p className='text-slate-500 res-text-xs'>{tag.text}</p>
             </div>
         );
     });
@@ -510,7 +239,7 @@ const Slug = ({article, articles, slug}) => {
         return (
             <div key={nanoid()} className="mb-2">
                 <Link href={`/article/${article.title}`} className='link--secondary'>
-                    <p>{article.title}</p>
+                    <p className='res-text-xs'>{article.title}</p>
                 </Link>
             </div>
         );
@@ -708,7 +437,7 @@ const Slug = ({article, articles, slug}) => {
 
                 <meta name="description" content={meta.description}/>
             </Head>
-            <div className="container bg-white p-4 pb-32">
+            <div className=" bg-white p-4 pb-32">
                 <div>
                     <Toaster/>
 
@@ -845,7 +574,7 @@ const Slug = ({article, articles, slug}) => {
                     {/*    </div>*/}
                     {/*)}*/}
 
-                    <div className="mx-auto max-w-6xl">
+                    <div className="mx-auto max-w-4xl">
                         <Link href={'/articles'} className=' res-text-base cursor-pointer'>
 
                             <div className="inline-flex items-center hover:text-blue-500 mb-4">
@@ -865,9 +594,9 @@ const Slug = ({article, articles, slug}) => {
                                 {article.title}
                             </h1>
 
-                            <FaRegBookmark
-                                className='text-3xl text-slate-500 hover:text-slate-950 cursor-pointer transition'
-                            />
+                            {/*<FaRegBookmark*/}
+                            {/*    className='text-3xl text-slate-500 hover:text-slate-950 cursor-pointer transition'*/}
+                            {/*/>*/}
 
                         </div>
                         {/** End of heading */}
@@ -900,7 +629,8 @@ const Slug = ({article, articles, slug}) => {
                             </div>
                             {/** End of article text */}
 
-                            <div className='w-40 ml-4  float-right border--secondary border-l-2'>
+                            <div
+                                className='w-full w- mb-6 sm:!w-40 ml-4  float-right border--secondary md:border-l-2 '>
                                 <div className="pl-2 border-b-2 border--secondary pb-2 mb-4">
                                     {relatedElems}
                                 </div>

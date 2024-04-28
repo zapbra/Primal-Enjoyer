@@ -62,7 +62,6 @@ export default function Home({data, recipesFetch}) {
                         and <b>age</b> your
                         best
                     </h3>
-                    i
                     <form onSubmit={submitForm}>
 
                         <label className="input input-bordered flex items-center gap-2 py-8 px-4">

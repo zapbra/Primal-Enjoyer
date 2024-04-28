@@ -20,7 +20,7 @@ const NewNavbar = () => {
     }
     return (
         <div className='bg-dark p-4'>
-            <div className="flex justify-between items-center gap-8">
+            <div className="flex justify-between items-center gap-4">
                 {/** Primal Enjoyer logo */}
                 <Link href={"/"}>
                     <div className='hidden md:flex'>
@@ -74,8 +74,9 @@ const NewNavbar = () => {
                 {/** Search bar **/}
                 <form onSubmit={submitForm}>
                     <label className="input input-bordered flex items-center gap-2">
-                        <input id='searchText' type="text" className="grow" placeholder="Search" value={text}
+                        <input id='searchText' type="text" className="w-full min-w-5" placeholder="Search" value={text}
                                onChange={(e) => setText(e.target.value)}/>
+
                         {text !== "" && (
                             <FontAwesomeIcon
                                 onClick={() => setText("")}

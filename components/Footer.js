@@ -29,9 +29,9 @@ const Footer = () => {
     return (
         <div className='bg-dark  '>
             <Toaster/>
-            <div className="flex flex-wrap justify-between max-w-7xl mx-auto px-2 py-1 md:px-8 md:py-4">
+            <div className="flex flex-wrap justify-between max-w-7xl mx-auto px-4 pt-2 pb-8 md:px-8 md:py-4">
                 {/** Left side links */}
-                <div>
+                <div className='mb-4 md:mb-0'>
                     <Link href={"/"}>
                         <p className="text--secondary link- mb-2">
                             Home
@@ -82,9 +82,9 @@ const Footer = () => {
                     <h5 className="res-heading-sm font-bold text--secondary mb-2">
                         Newsletter & Updates
                     </h5>
-                    <form onSubmit={validateAndPostEmail}>
-                        <label className="input input-bordered flex items-center gap-2 mb-4">
-                            <input id='email' type="text" className="grow min-w-5" placeholder="Email"/>
+                    <form onSubmit={validateAndPostEmail} className='flex justify-end'>
+                        <label className="input input-bordered flex items-center gap-2 mb-4 max-w-64 w-full">
+                            <input id='email' type="text" className="grow min-w-5 " placeholder="Email"/>
                             <button
                                 type='submit'
                                 className="transition bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">

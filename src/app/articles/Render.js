@@ -56,7 +56,7 @@ const Render = ({articlesFetch, superTags}) => {
         // filter all tags based on articles text
         setRenderTags(prev => {
             const filteredTags = cachedTags.filter(tag => {
-                return tag.includes(newSearchText);
+                return tag.includes(newSearchText.toLowerCase());
             });
             return filteredTags;
         });

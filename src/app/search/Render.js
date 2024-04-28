@@ -12,6 +12,7 @@ const Render = ({previewData, timecodeData}) => {
     const searchParams = useSearchParams();
     const query = searchParams.get('query');
 
+
     const [searchText, setSearchText] = useState("");
     const [timecodeElements, setTimecodeElements] = useState(
         previewData.map((timecode, index) => (
@@ -32,6 +33,7 @@ const Render = ({previewData, timecodeData}) => {
     const [searchResults, setSearchResults] = useState([]);
 
     const findTimecodeSearchMatches = (search) => {
+        search = search.toLowerCase();
         const timecodeMatchObjects = [];
         // get a list of all search that contain the articles text
         const timecodeArrayMatches = timecodeData.filter(timecode => {
@@ -133,9 +135,10 @@ const Render = ({previewData, timecodeData}) => {
     // perform search on load if query is sent
     useEffect(() => {
         if (query !== null) {
-            findTimecodeSearchMatches(query);
+            findTimecodeSearchMatches(query.toLowerCase());
         }
     }, []);
+
     return (
         <div className='bg-whit'>
             <div className="mx-auto max-w-6xl px-4 py-10">

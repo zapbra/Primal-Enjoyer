@@ -15,8 +15,13 @@ const Page = async () => {
     const data = await fetchData();
     const previewData = data.props.data;
     const timecodeFile = await fs.readFile(process.cwd() + '/src/app/data/timecodes.json', 'utf-8');
-    const timecodeData = JSON.parse(timecodeFile);
-
+    let timecodeData = JSON.parse(timecodeFile);
+    timecodeData = timecodeData.map(timecodeObj => {
+        return {
+            ...timecodeObj,
+            content: timecodeObj.content.toLowerCase()
+        }
+    });
     return (
         <div>
             <Render previewData={previewData} timecodeData={timecodeData}></Render>
