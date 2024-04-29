@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import styled from "styled-components";
-import COLORS from "../../../data/colors";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGear, faHeart} from "@fortawesome/free-solid-svg-icons";
 import {PlusIcon} from "@heroicons/react/solid";
@@ -13,7 +11,6 @@ import {
     checkLocalStorageValid,
     fetchDaysDiff,
 } from "../../../utils/Functions";
-import RedBtn from "../../../components/Buttons/RedBtn";
 import supabase from "../../../utils/supabaseClient";
 import toast, {Toaster} from "react-hot-toast";
 import insertCollection, {

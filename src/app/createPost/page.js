@@ -7,8 +7,6 @@ import ImgurUpload from "../../../components/Misc/ImgurUpload";
 import COLORS from "../../../data/colors";
 import Editor from "../../../components/Editor";
 
-import NoLinkSubmit from "../../../components/Buttons/NoLinkSubmit";
-import DefaultBtn from "../../../components/Buttons/DefaultBtn";
 import supabase from "../../../utils/supabaseClient";
 
 import {shootFireworks} from "../../../utils/Functions";
