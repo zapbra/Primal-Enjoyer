@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Notification from "./Notification";
 
 const Notifications = ({notifications, deleteNotificationFunctional}) => {

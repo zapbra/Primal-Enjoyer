@@ -1,7 +1,5 @@
 import {useState} from "react";
 import Link from "next/link";
-import DefaultBtn from "../../../../components/Buttons/DefaultBtn";
-import AntiDefaultBtn from "../../../../components/Buttons/AntiDefaultBtn";
 import SavedRecipes from "./SavedRecipes";
 import {
     faBowlRice,
