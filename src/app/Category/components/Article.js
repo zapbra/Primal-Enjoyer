@@ -10,7 +10,7 @@ const Article = ({title, content, year, index}) => {
                 pathname: `/article/${title}`,
             }}
         >
-            <div className="box-shadow" colors={COLORS}>
+            <div className="box-shadow">
                 <div className="article-title">
                     <p className="small contrast">#{index + 1}</p>
                     <h5 className="text-shadow">{title}</h5>

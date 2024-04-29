@@ -42,7 +42,7 @@ const Catagory = ({title, articles, img, index}) => {
                 <div className="title-article">
                     <h4 style={{minWidth: "0"}}>{UpperCase(title)}</h4>
                 </div>
-                <div className="icon" colors={COLORS}>
+                <div className="icon">
                     <h4>{index + 1}</h4>
                 </div>
             </Link>
