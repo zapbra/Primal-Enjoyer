@@ -4,8 +4,6 @@ import React from "react";
 import {UpperCase} from "../../../../utils/Functions";
 
 
-const ArticleCont = styled.div``;
-
 const Article = ({title}) => {
     return (
         <Link
@@ -13,9 +11,9 @@ const Article = ({title}) => {
                 pathname: `/article/${title}`,
             }}
         >
-            <ArticleCont>
+            <div>
                 <p className="small">{title}</p>
-            </ArticleCont>
+            </div>
         </Link>
     );
 };
@@ -48,7 +46,7 @@ const Catagory = ({title, articles, img, index}) => {
                     <h4>{index + 1}</h4>
                 </div>
             </Link>
-            <Articles colors={COLORS}>{articleElems}</Articles>
+            <div>{articleElems}</div>
         </div>
     );
 };
