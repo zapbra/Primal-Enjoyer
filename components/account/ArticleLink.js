@@ -1,11 +1,9 @@
-import styled from "styled-components";
-import COLORS from "../../data/colors";
 import Link from "next/link";
 
 
 const ArticleLink = ({title, id, removeFromCollectionFunctional}) => {
     return (
-        <div colors={COLORS} className="box-shadow">
+        <div className="box-shadow">
             <Link
                 href={{
                     pathname: `/article/${title}`,
