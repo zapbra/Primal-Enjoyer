@@ -1,5 +1,5 @@
-import COLORS from "../../../../data/colors";
 import {UpperCase} from "../../../../utils/Functions";
+import ArticleSection from "@/app/Category/components/ArticleSection";
 
 
 const Render = ({sortedArticles, aajonusCatagory}) => {
