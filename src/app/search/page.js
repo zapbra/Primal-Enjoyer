@@ -12,8 +12,10 @@ export async function fetchData() {
 }
 
 const Page = async () => {
+    // get timecode names
     const data = await fetchData();
     const previewData = data.props.data;
+    // get json file with all timecode data
     const timecodeFile = await fs.readFile(process.cwd() + '/src/app/data/timecodes.json', 'utf-8');
     let timecodeData = JSON.parse(timecodeFile);
     timecodeData = timecodeData.map(timecodeObj => {

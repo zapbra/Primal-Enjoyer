@@ -1,12 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import {useState} from "react";
-import styled from "styled-components";
-import COLORS from "../../../../data/colors";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowRight, faWeight} from "@fortawesome/free-solid-svg-icons";
-import {returnRandom} from "../../../../utils/Functions";
-import {lightColors} from "../../../../data/colors";
 import {iconsDict} from "../../../../data/recipes";
 import Highlight from "../../../../components/Utility/Highlight";
 
@@ -58,19 +51,6 @@ const Recipe = ({
                     </h4>
                 </div>
                 <div className="ingredients">
-                    {/* {ingredients.map((ingredient) => {
-            return (
-              <div className="mar-bottom-4 flex align-center justify-center">
-                <div className="blue-circle mar-right-8"></div>
-                <p className="dark-blue mar-right-8">
-                  {ingredient.food_id.name}({ingredient.quantity})
-                </p>
-                <p>
-                  <Highlight text={text}>{xd}</Highlight>
-                </p>
-              </div>
-            );
-          })} */}
                     {ingredientElems}
                 </div>
             </Link>

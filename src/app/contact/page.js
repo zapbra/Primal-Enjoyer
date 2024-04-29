@@ -1,11 +1,8 @@
 "use client";
 
 import React from "react";
-import LinkBtn from "../../../components/Buttons/LinkBtn";
-import COLORS from "../../../data/colors";
 import emailjs, {init} from "@emailjs/browser";
 import Head from "next/head";
-import DonationButton from "../../../components/Buttons/DonationButtonSmall";
 import bg from '../../../public/images/contact/pacific_1920_2560.jpg';
 import {FaPaperPlane} from "react-icons/fa6";
 import toast, {Toaster} from "react-hot-toast";

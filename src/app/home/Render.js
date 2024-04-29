@@ -1,12 +1,8 @@
-"use client";
-import React, {useState, useEffect} from "react";
-import {useRouter} from "next/navigation";
 import bg from '../../../public/images/homepage/homepage_hero_image_nature_1920.jpg';
 import Explore from '../../../components/introduction/Explore/index.js';
 import About from "../../../components/About";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCircleXmark} from "@fortawesome/free-solid-svg-icons";
 import Donation from "../../../components/introduction/Donation";
+import Searchbar from "@/app/home/Searchbar";
 
 
 const YOUTUBE_PLAYLIST_ITEMS_API =
@@ -14,14 +10,8 @@ const YOUTUBE_PLAYLIST_ITEMS_API =
 
 
 export default function Home({data}) {
-    const [text, setText] = useState('');
-    const router = useRouter();
 
 
-    const submitForm = (e) => {
-        e.preventDefault();
-        router.push(`/search?query=${text}`);
-    }
     return (
         <div>
 
@@ -38,23 +28,7 @@ export default function Home({data}) {
                         best
                     </h3>
                     {/** Search bar */}
-                    <form onSubmit={submitForm}>
-
-                        <label className="input input-bordered flex items-center gap-2 py-8 px-4">
-                            <input value={text} onChange={(e) => setText(e.target.value)} type="text"
-                                   className="grow min-w-5" placeholder="Search the Aajonus database..."/>
-                            {text !== "" && (
-                                <FontAwesomeIcon
-                                    onClick={() => setText("")}
-                                    icon={faCircleXmark}
-                                    className="text-slate-500 absolute right-28 cursor-pointer hover:text-slate-950 transition res-text-base"
-                                />
-                            )}
-                            <button type='submit'
-                                    className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search
-                            </button>
-                        </label>
-                    </form>
+                    <Searchbar/>
                     {/** End of search bar */}
 
                 </div>

@@ -2,9 +2,9 @@
 import React, {useEffect, useState} from "react";
 import {useSearchParams} from "next/navigation";
 import Link from 'next/link';
-import COLORS from "../../../data/colors";
-import Preview from "./components/Preview";
 
+
+// amount of textual characters to split search results into
 const CHAR_SEARCH_SIZE = 500;
 
 const Render = ({previewData, timecodeData}) => {
@@ -178,6 +178,7 @@ const Render = ({previewData, timecodeData}) => {
                         {/** End of articles bar*/}
 
                         {/** Search results */}
+
                         {searchResults}
                         {/** End of articles results */}
                     </div>

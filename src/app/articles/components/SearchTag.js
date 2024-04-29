@@ -1,7 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import {XCircleIcon} from "@heroicons/react/solid";
-import COLORS from "../../../../data/colors";
 import {TiDelete} from "react-icons/ti";
 
 const SearchTag = (props) => {

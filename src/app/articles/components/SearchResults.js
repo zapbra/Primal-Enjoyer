@@ -1,16 +1,6 @@
-import styled from "styled-components";
 import Article from "./Article";
 import {nanoid} from "nanoid";
 
-const ResultsCont = styled.div`
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    @media only screen and (max-width: 630px) {
-        justify-content: flex-start;
-    }
-    padding: 8px;
-`;
 
 const SearchResults = ({articles}) => {
     const sortedArticles = articles.sort((a, b) => {

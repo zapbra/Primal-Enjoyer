@@ -1,6 +1,5 @@
 import supabase from "../../../../utils/supabaseClient";
 import Render from "./Render";
-import Testing from "../Testing";
 
 export async function generateStaticParams() {
     const {data, error} = await supabase.from("timecodes").select("name");

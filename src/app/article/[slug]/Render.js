@@ -2,185 +2,21 @@
 
 import {useContext, useState, useEffect, useRef, useCallback} from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-import {useRouter} from "next/navigation";
 import Head from "next/head";
 import toast, {Toaster} from "react-hot-toast";
 import {RichText} from "@graphcms/rich-text-react-renderer";
-import {faBookmark} from "@fortawesome/free-regular-svg-icons";
-import Download from "../../../../components/Buttons/Download";
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
 
 import {FaRegBookmark, FaBookmark} from "react-icons/fa6";
 
-const TextDownload = dynamic(
-    () => import("../../../../components/Buttons/TextDownload"),
-    {
-        ssr: false,
-    }
-);
-import {
-    TagIcon,
-    ArrowNarrowRightIcon,
-    BookmarkIcon,
-    XIcon,
-    PlusIcon,
-} from "@heroicons/react/solid";
 import {GetRelatedArticles} from "../../../../utils/Functions";
-
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-    faTurnDown,
-    faHeart,
-    faEye,
-    faLink,
-    faCopy,
-    faDownload,
-} from "@fortawesome/free-solid-svg-icons";
 import {nanoid} from "nanoid";
-import COLORS, {tagColors} from "../../../../data/colors";
-
-/* import { AppContext } from "../../layout"; */
-import ArticleCollection from "../../../../components/Misc/ArticleCollection";
-import supabase from "../../../../utils/supabaseClient";
-import insertCollection, {
-    getLikeCount,
-    unlikePost,
-} from "../../../../utils/supabaseFunction";
-import {
-    getCollections,
-    fetchArticleLike,
-    checkArticleCreated,
-    fetchArticleId,
-    likePost,
-    fetchCommentsByTitle,
-} from "../../../../utils/supabaseFunction";
-import PageViews from "../../../../components/PageViews";
-import CommentSection from "../../../../components/comments/CommentSection";
 import {IoIosArrowBack} from "react-icons/io";
 
-/*
-export const getServerSideProps = async (pageContext) => {
-  const url = process.env.ENDPOINT;
-  const graphQLClient = new GraphQLClient(url, {
-    header: {
-      Authorization: process.env.GRAPH_CMS_TOKEN,
-    },
-  });
-
-  const pageSlug = pageContext.query.slug;
-
-  const query = gql`
-    query ($pageSlug: String!) {
-      article(where: { title: $pageSlug }) {
-        title
-        coverImage {
-          url
-        }
-        aajonusCatagory {
-          title
-        }
-        audio {
-          url
-        }
-        tags(first: 10) {
-          text
-        }
-        content {
-          raw
-        }
-      }
-      articles(first: 1000) {
-        title
-
-        tags {
-          ... on Tag {
-            text
-          }
-        }
-      }
-
-      moreArticles: articles(skip: 1000, first: 999) {
-        title
-        aajonusCatagory {
-          title
-        }
-        tags {
-          ... on Tag {
-            text
-          }
-        }
-      }
-    }
-  `;
-  const variables = {
-    pageSlug,
-  };
-  const data = await graphQLClient.request(query, variables);
-  const article = data.article;
-  const articles = [...data.articles, ...data.moreArticles];
-
-  if (checkArticleCreated(pageContext.query.slug).then((res) => res)) {
-    const { data: commentsFetch, error } = await supabase
-      .from("article")
-      .select(
-        "comments(*, comments(*, commentLikes(*), users(username, avatar_url)), commentLikes(*), users(username, avatar_url))"
-      )
-      .eq("title", pageSlug);
-    const commentsSort = commentsFetch[0]?.comments.sort((a, b) => -1) || [];
-    return {
-      props: {
-        article,
-        articles,
-        slug: pageContext.query.slug,
-        commentsFetch: commentsSort,
-      },
-    };
-  }
-
-  return {
-    props: {
-      article,
-      articles,
-      slug: pageContext.query.slug,
-      commentsFetch: [],
-    },
-  };
-};
-*/
-
-
 const Slug = ({article, articles, slug}) => {
-    const [view_data, setView_data] = useState({});
-    const router = useRouter();
-    useEffect(() => {
-        const viewFunc = async () => {
-            const {data: view_data} = await supabase
-                .from("pages")
-                .select("view_count")
-                .filter("slug", "eq", slug)
-                .maybeSingle();
-            setView_data(view_data);
-            await supabase.rpc("increment_page_view", {
-                page_slug: slug,
-            });
-        };
-
-        viewFunc();
-    }, []);
-    const [session, setSession] = useState(null);
     /* const [context, setContext] = useContext(AppContext); */
     const relatedArticles =
         article.tags.length > 0 ? GetRelatedArticles(articles, article.tags) : [];
-    const [favorited, setFavorited] = useState(false);
-    const [showCollection, setShowCollection] = useState(false);
-    const [collections, setCollections] = useState([]);
-    const [collection, setCollection] = useState("");
-    const [loading, setLoading] = useState(true);
-    const [articleId, setArticleId] = useState(0);
-    const [likes, setLikes] = useState(0);
-    const [comments, setComments] = useState([]);
+
     const [text, setText] = useState(() => {
         const textContent = article.content.raw.children.map((textNode) => {
             return textNode.children[0].text;
@@ -190,42 +26,6 @@ const Slug = ({article, articles, slug}) => {
         return text;
     });
 
-    //comments(*, commentLikes(*), users(username, avatar_url)), commentLikes(*), users(username, avatar_url)
-    useEffect(() => {
-        const fetchComments = async () => {
-            if (checkArticleCreated(slug).then((res) => res)) {
-                const {data: commentsFetch, error} = await supabase
-                    .from("article")
-                    .select(
-                        "comments(*, commentLikes(*), users(username, avatar_url), comment_id(*))"
-                    )
-                    .eq("title", slug)
-                    .maybeSingle();
-
-                const commentsSort = commentsFetch?.comments.sort((a, b) => -1) || [];
-
-                setComments(commentsSort);
-            }
-        };
-
-        fetchComments();
-    }, []);
-
-    /* useEffect(() => {
-      fetch(`/api/views/${slug}`, {
-        method: "POST",
-      });
-    }, [slug]); */
-    function generateColor() {
-        return tagColors[Math.floor(Math.random() * tagColors.length)];
-    }
-
-    const reFetchComments = async () => {
-        const commentRes = await fetchCommentsByTitle(slug);
-        console.log("comment res");
-        console.log(commentRes);
-        //.then((res) => setComments(res));
-    };
 
     const tagElems = article.tags.map((tag) => {
         return (
@@ -244,106 +44,7 @@ const Slug = ({article, articles, slug}) => {
             </div>
         );
     });
-    const returnFalse = () => {
-        return false;
-    };
 
-    // calls on page load to set user session and set article collection
-    useEffect(() => {
-        const getSession = async () => {
-            const {data, error} = await supabase.auth.getSession();
-
-            // create article if not created
-            checkArticleCreated(article.title).then((res) =>
-                fetchArticleId(article.title).then((res) => setArticleId(res.id))
-            );
-            setSession(data.session);
-            getLikeCount(article.title).then((res) => setLikes(res));
-            if (data.session !== null) {
-                fetchArticleLike(data.session.user.id, article.title).then((res) =>
-                    res[0].articleLikes.length > 0
-                        ? setFavorited(true)
-                        : setFavorited(false)
-                );
-
-                const res = getCollections(data.session.user.id);
-
-                res.then((res) => {
-                    setCollections(res);
-                });
-            }
-        };
-        getSession();
-    }, []);
-
-    /*   useEffect(() => {
-      console.log("collections");
-      console.log(collections);
-    }, [collections]); */
-
-    const createCollection = async (e) => {
-        e.preventDefault();
-        if (collection === "") {
-            toast.error("Please give your collection a name");
-            return;
-        }
-        const {error} = insertCollection(session.user.id, collection).then(
-            (res) =>
-                getCollections(session.user.id, setLoadingTrue).then((res) =>
-                    setCollections(res)
-                )
-        );
-
-        if (error) {
-            toast.error(`Error:${error}`);
-        } else {
-            toast.success(`Collection ${collection} added!`);
-            setCollection("");
-            setLoading(false);
-        }
-    };
-
-    const createAnonCollection = async (e) => {
-        e.preventDefault();
-        if (collection === "") {
-            toast.error("Please give your collection a name");
-            return;
-        }
-        const {error} = insertCollection(session.user.id, collection).then(
-            (res) =>
-                getCollections(session.user.id, setLoadingTrue).then((res) =>
-                    setCollections(res)
-                )
-        );
-
-        if (error) {
-            toast.error(`Error:${error}`);
-        } else {
-            toast.success(`Collection ${collection} added!`);
-            setCollection("");
-            setLoading(false);
-        }
-    };
-
-    const setLoadingTrue = () => {
-        setLoading(true);
-    };
-
-    const updateFavorites = () => {
-        if (favorited) {
-            unlikePost(articleId, session.user.id);
-            setFavorited(false);
-            setLikes((prev) => {
-                return prev - 1;
-            });
-        } else {
-            likePost(session.user.id, articleId, article.title);
-            setFavorited(true);
-            setLikes((prev) => {
-                return prev + 1;
-            });
-        }
-    };
 
     const dropdownEl2 = useRef();
     const [showDropdown, setShowDropdown] = useState(false);
@@ -360,7 +61,6 @@ const Slug = ({article, articles, slug}) => {
                 e.target.closest(".dropdown-holder2") !== dropdownEl2.current
             ) {
                 setShowDropdown(false);
-                setShowCollection(false);
                 deFocus();
             }
         },
@@ -378,30 +78,11 @@ const Slug = ({article, articles, slug}) => {
         setShowDropdown(true);
     }
 
-    const deFocus = () => {
-        getCollections(session.user.id).then((res) => setCollections(res));
-    };
+    function deFocus() {
+        setShowDropdown(false);
+    }
 
-    const setCollectionVisible = () => {
-        setShowCollection(true);
-    };
 
-    useEffect(() => {
-        console.log("collections");
-        console.log(collections);
-    }, [collections]);
-
-    const [copied, setCopied] = useState(false);
-    const copyLink = () => {
-        setCopied(true);
-        navigator.clipboard.writeText(window.location.href);
-        document.querySelector(".share-text").classList.add("scale-pop");
-        document.querySelector(".share-icon").classList.add("scale-pop");
-        setTimeout(() => {
-            document.querySelector(".share-text").classList.remove("scale-pop");
-            document.querySelector(".share-icon").classList.remove("scale-pop");
-        }, 500);
-    };
     const metaTags = article.tags.map((tag) => tag.text);
 
     const meta = {
@@ -416,10 +97,6 @@ const Slug = ({article, articles, slug}) => {
         }, ${metaTags.join(", ")}`,
     };
 
-    const copyToClipboard = () => {
-        navigator.clipboard.writeText(text);
-        toast.success("Copied to clipboard!");
-    };
     return (
         <>
             <Head>
@@ -440,140 +117,6 @@ const Slug = ({article, articles, slug}) => {
             <div className=" bg-white p-4 pb-32">
                 <div>
                     <Toaster/>
-
-                    {/*         <div*/}
-                    {/*  onMouseLeave={() => setCopied(false)}*/}
-                    {/*  className="share-absolute-cont"*/}
-                    {/*>*/}
-                    {/*  <div*/}
-                    {/*    onClick={copyLink}*/}
-                    {/*    className="share-absolute circle flex-center"*/}
-                    {/*  >*/}
-                    {/*    <FontAwesomeIcon*/}
-                    {/*      icon={faLink}*/}
-                    {/*      className="icon-sm white mar-right-8"*/}
-                    {/*    />*/}
-                    {/*    <p className="bold white">Share</p>*/}
-                    {/*  </div>*/}
-                    {/*  <div className="share-popup flex flex-center">*/}
-                    {/*    <FontAwesomeIcon*/}
-                    {/*      icon={faCopy}*/}
-                    {/*      className="icon-sm mar-right-8 share-icon"*/}
-                    {/*    />*/}
-                    {/*    <p className="bold black share-text">*/}
-                    {/*      {copied ? "Copied" : "Copy"}*/}
-                    {/*    </p>*/}
-                    {/*  </div>*/}
-                    {/*</div>*/}
-
-                    {/*<div className="download-audio">*/}
-                    {/*  <Download link={article?.audio?.url} type="audio" />*/}
-                    {/*</div>*/}
-
-                    {/*<div className="download-text">*/}
-                    {/*  <TextDownload text={text} title={article.title} />*/}
-                    {/*</div>*/}
-
-                    {/*<div className="views analytic-box">*/}
-                    {/*  <FontAwesomeIcon icon={faEye} className="icon-sm" />*/}
-                    {/*  <p className="small">*/}
-                    {/*    <PageViews view_data={view_data} />*/}
-                    {/*  </p>*/}
-                    {/*</div>*/}
-
-                    {/*{session !== null && (*/}
-                    {/*    <div*/}
-                    {/*        onClick={updateFavorites}*/}
-                    {/*        className={favorited ? "real-heart heart-active" : "real-heart"}*/}
-                    {/*    >*/}
-                    {/*        <FontAwesomeIcon*/}
-                    {/*            icon={faHeart}*/}
-                    {/*            className={favorited ? "icon-med red" : "light-grey icon-med"}*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
-                    {/*)}*/}
-                    {/*{session === null ? (*/}
-                    {/*    <div*/}
-                    {/*        className="flex heart flex-row sign-in-box box-shadow"*/}
-                    {/*        style={{right: "128px"}}*/}
-                    {/*    >*/}
-                    {/*        <Link passHref href="/login">*/}
-                    {/*            <p className="link-blue">Sign In </p>*/}
-                    {/*        </Link>*/}
-
-                    {/*        <p className="hide-400" style={{marginLeft: "4px"}}>*/}
-                    {/*            {" "}*/}
-                    {/*            to save for later!*/}
-                    {/*        </p>*/}
-                    {/*    </div>*/}
-                    {/*) : (*/}
-                    {/*    <div*/}
-                    {/*        ref={dropdownEl2}*/}
-                    {/*        id="dropdown"*/}
-                    {/*        onClick={Focus}*/}
-                    {/*        className="heart dropdown-holder2"*/}
-                    {/*    >*/}
-                    {/*        <div className="save-cont">*/}
-                    {/*            <FontAwesomeIcon*/}
-                    {/*                icon={faBookmark}*/}
-                    {/*                className="icon-med icon-blue"*/}
-                    {/*            />*/}
-                    {/*            <p>Save</p>*/}
-                    {/*        </div>*/}
-
-                    {/*        {showDropdown && (*/}
-                    {/*            <div className="save-popup box-shadow">*/}
-                    {/*                <div>*/}
-                    {/*                    <p>Save to...</p>*/}
-                    {/*                    <ArticleCollection*/}
-                    {/*                        articles={collections}*/}
-                    {/*                        title={article.title}*/}
-                    {/*                        link={`/article/${article.title}`}*/}
-                    {/*                        user_id={session?.user?.id}*/}
-                    {/*                    />*/}
-
-                    {/*                    <div*/}
-                    {/*                        onClick={() => setCollectionVisible(true)}*/}
-                    {/*                        className=" hover-grey"*/}
-                    {/*                        style={{*/}
-                    {/*                            display: showCollection ? "none" : "flex",*/}
-                    {/*                            width: "100%",*/}
-                    {/*                        }}*/}
-                    {/*                    >*/}
-                    {/*                        <PlusIcon className="hero-icon-sm off-black"/>*/}
-
-                    {/*                        <p*/}
-                    {/*                            style={{marginLeft: "8px"}}*/}
-                    {/*                            className=" cursor small"*/}
-                    {/*                        >*/}
-                    {/*                            Create new collection*/}
-                    {/*                        </p>*/}
-                    {/*                    </div>*/}
-                    {/*                    <form*/}
-                    {/*                        style={{display: showCollection ? "block" : "none"}}*/}
-                    {/*                        onSubmit={createCollection}*/}
-                    {/*                    >*/}
-                    {/*                        <input*/}
-                    {/*                            style={{width: "100%", height: "40px"}}*/}
-                    {/*                            type="text"*/}
-                    {/*                            name="collection"*/}
-                    {/*                            id="collection"*/}
-                    {/*                            className="mar-bottom-8"*/}
-                    {/*                            value={collection}*/}
-                    {/*                            onChange={(e) => setCollection(e.target.value)}*/}
-                    {/*                        />*/}
-                    {/*                        <div className="flex-right">*/}
-                    {/*                            <button className="small-button">*/}
-                    {/*                                <p className="small">Create</p>*/}
-                    {/*                            </button>*/}
-                    {/*                        </div>*/}
-                    {/*                    </form>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*        )}*/}
-                    {/*    </div>*/}
-                    {/*)}*/}
-
                     <div className="mx-auto max-w-4xl">
                         <Link href={'/articles'} className=' res-text-base cursor-pointer'>
 
@@ -608,20 +151,6 @@ const Slug = ({article, articles, slug}) => {
                             <div className="pr-4 inline">
 
                                 <div className=' pt-4 pr-4'>
-                                    {/*<div className="flex flex-end mar-bottom-16">*/}
-                                    {/*    <div*/}
-                                    {/*        className="download-green cursor flex align-center"*/}
-                                    {/*        onClick={copyToClipboard}*/}
-                                    {/*    >*/}
-                                    {/*        <FontAwesomeIcon*/}
-                                    {/*            icon={faCopy}*/}
-                                    {/*            className="green icon-ssm mar-right-8"*/}
-                                    {/*        />*/}
-                                    {/*        <p className="green " style={{marginBottom: "0px"}}>*/}
-                                    {/*            Copy Text*/}
-                                    {/*        </p>*/}
-                                    {/*    </div>*/}
-                                    {/*</div>*/}
                                     <div className="text-renderer">
 
                                     </div>
@@ -658,13 +187,6 @@ const Slug = ({article, articles, slug}) => {
                     </div>
                 </div>
             </div>
-
-            {/*<CommentSection*/}
-            {/*    session={session}*/}
-            {/*    article_id={articleId}*/}
-            {/*    comments={comments}*/}
-            {/*    reFetchComments={reFetchComments}*/}
-            {/*/>*/}
         </>
     );
 };

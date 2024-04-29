@@ -1,6 +1,6 @@
+"use client"
 import Link from 'next/link';
 import React from "react";
-import {Validation} from "../lib/classes/Validation";
 import toast, {Toaster} from "react-hot-toast";
 
 const Footer = () => {
@@ -56,11 +56,11 @@ const Footer = () => {
                         </p>
                     </Link>
 
-                    <Link href={"/categories"}>
-                        <p className="text--secondary link- mb-2">
-                            Categories
-                        </p>
-                    </Link>
+                    {/*<Link href={"/categories"}>*/}
+                    {/*    <p className="text--secondary link- mb-2">*/}
+                    {/*        Categories*/}
+                    {/*    </p>*/}
+                    {/*</Link>*/}
 
 
                     <Link href={"/blogs"}>

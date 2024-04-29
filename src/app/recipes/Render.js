@@ -1,11 +1,7 @@
 "use client";
 
 import React, {useState, useEffect, use} from "react";
-import COLORS from "../../../data/colors";
-import SearchBar from "./components/SearchBar";
-import Tags from "./components/Tags";
-import Categories from "./components/Categories";
-import Recipe from "./components/Recipe";
+
 import Results from "./components/Results";
 import {
     faDrumstickBite,
@@ -18,8 +14,6 @@ import {
     faPepperHot,
     faFilter,
 } from "@fortawesome/free-solid-svg-icons";
-import Disclaimer from "./Disclaimer";
-import Feedback from "../../../components/Utility/Feedback";
 import {IoIosSearch} from "react-icons/io";
 
 
@@ -247,11 +241,7 @@ const Render = ({recipesFetch, firstRecipes, recipesCache, allRecipes}) => {
                     selectCategory={selectCategory}
                     text={text}
                 />
-                {/*  <Tags
-        removeTag={removeTag}
-        selectedTags={selectedTags}
-        unselectedTags={unselectedTags}
-      /> */}
+
             </div>
 
         </div>

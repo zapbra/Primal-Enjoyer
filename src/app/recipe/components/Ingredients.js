@@ -1,6 +1,3 @@
-import COLORS from "../../../../data/colors";
-
-
 const Ingredients = ({food_instances}) => {
     return (
         <div>

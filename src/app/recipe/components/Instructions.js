@@ -1,7 +1,3 @@
-import styled from "styled-components";
-import COLORS from "../../../../data/colors";
-import {ReactMarkdown} from "react-markdown/lib/react-markdown";
-
 const Instructions = ({instructions}) => {
     return (
         <div className='mb-4'>

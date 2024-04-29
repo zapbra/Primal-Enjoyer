@@ -1,16 +1,6 @@
-import {useState} from "react";
-import styled from "styled-components";
-import COLORS from "../../../../data/colors";
 import FilterBar from "./FilterBar";
 import Recipe from "./Recipe";
 
-const Cont = styled.div`
-    .recipes-holder {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-`;
 
 const Results = ({
                      recipesRender,

@@ -1,14 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import styled from "styled-components";
-import COLORS from "../../../../../data/colors";
 import {fetchDaysDiff} from "../../../../../utils/Functions";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTurnUp, faHeart} from "@fortawesome/free-solid-svg-icons";
-
-
-//{fetchDaysDiff(created_at)}
-
 
 const Post = ({
                   title,
