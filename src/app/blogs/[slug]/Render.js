@@ -1,8 +1,10 @@
 import ContentLine from "../components/ContentLine";
 import {IoIosArrowBack} from "react-icons/io";
 
-const Render = ({post}) => {
+const Render = ({post, slug}) => {
 
+    console.log(slug);
+    console.log("slug");
     return (
         <div>
             <div

@@ -2,6 +2,7 @@ import Render from "./Render";
 import Head from "next/head";
 import supabase from "../../../../utils/supabaseClient";
 
+// fetches all posts for static generation
 export async function generateStaticParams() {
     const {data, error} = await supabase.from("post").select("title");
 
@@ -10,9 +11,13 @@ export async function generateStaticParams() {
     });
 }
 
+
 const Page = async ({params}) => {
+    // current page url
     let {slug} = params;
-    slug = slug.replaceAll("%20", " ");
+    slug = decodeURIComponent(slug);
+
+    // fetch current post
     const {data, error} = await supabase
         .from("post")
         .select(

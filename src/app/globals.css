@@ -67,6 +67,10 @@ h1, h2, h3, h4, h5 {
     @apply text--primary;
 }
 
+p {
+    @apply res-text-base;
+}
+
 @layer utilities {
     .res-text-xs {
         @apply text-xs md:text-sm;
