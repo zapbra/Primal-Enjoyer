@@ -70,7 +70,7 @@ const ImgurUpload = ({setText}) => {
     };
 
     return (
-        <div colors={COLORS} className="mar-bottom-32">
+        <div className="mar-bottom-32">
             {!loading ? (
                 <div className="circle" onClick={() => uploadRef.current.click()}>
                     <h5 className="green text-shadow mar-right-8">Upload Image</h5>
