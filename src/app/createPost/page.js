@@ -10,7 +10,6 @@ import Editor from "../../../components/Editor";
 import supabase from "../../../utils/supabaseClient";
 
 import {shootFireworks} from "../../../utils/Functions";
-import DeleteBtn from "../../../components/Buttons/DeletePopup";
 import {
     checkPostCreated,
     createPostDraft,
@@ -775,13 +774,13 @@ const CreatePost = () => {
                                 </div>
                             </div>
                             <div onClick={pushLink}>
-                                <DefaultBtn text="Add Link"/>
+                                {/*<DefaultBtn text="Add Link"/>*/}
                             </div>
                             <div className="mar-bottom-one"></div>
                             {linkElems}
                         </div>
                         <div className="flex space-between">
-                            <NoLinkSubmit text="Submit"/>
+                            {/*<NoLinkSubmit text="Submit"/>*/}
                             <div onClick={savePost} className="box-shadow save-btn">
                                 <h5>Save your work</h5>
                                 {/*<FontAwesomeIcon*/}

@@ -8,9 +8,6 @@ import {faTurnDown, faExclamation} from "@fortawesome/free-solid-svg-icons";
 import {useState, useEffect, useRef} from "react";
 import supabase from "../../../utils/supabaseClient";
 import {useForm} from "react-hook-form";
-import COLORS from "../../../data/colors";
-import DefaultBtn from "../../../components/Buttons/DefaultBtn";
-import AntiDefaultBtn from "../../../components/Buttons/AntiDefaultBtn";
 
 import {
     updateUserEmail,
@@ -21,7 +18,6 @@ import {
     checkUsernameUnique,
     checkEmailUnique,
 } from "../../../utils/supabaseFunction";
-import ReportForm from "../../../components/banners/ReportForm";
 import {nanoid} from "nanoid";
 
 const Editprofile = () => {
@@ -76,6 +72,7 @@ const Editprofile = () => {
         .eq("id", session?.user?.id);
       if (error) {
         toast.error("Unable to update avatar");
+
       }
       toast.success("Avatar updated");
     };  */
@@ -242,7 +239,7 @@ const Editprofile = () => {
     };
 
     return (
-        <Cont colors={COLORS} className="container">
+        <div className="container">
             <Toaster/>
             <Link
                 href={{
@@ -367,12 +364,12 @@ const Editprofile = () => {
                         <p className="mar-bottom-one">Login or sign up below</p>
                         <div className="mar-bottom-16 sign-up">
                             <Link href={{pathname: "/signup"}} title="Sign up">
-                                <DefaultBtn text="Sign Up"/>
+                                {/*<DefaultBtn text="Sign Up"/>*/}
                             </Link>
                         </div>
                         <div>
                             <Link href={{pathname: "/login"}}>
-                                <AntiDefaultBtn text="Sign In"/>
+                                {/*<AntiDefaultBtn text="Sign In"/>*/}
                             </Link>
                         </div>
                     </div>
@@ -381,7 +378,7 @@ const Editprofile = () => {
             {reportActive && (
                 <>
                     <div className="popup-screen"></div>
-                    <ReportForm hideReport={hideReport}/>{" "}
+                    {/*<ReportForm hideReport={hideReport}/>{" "}*/}
                 </>
             )}
             <div
@@ -394,7 +391,7 @@ const Editprofile = () => {
                 />
                 <p className="red underline-hover">report issue</p>
             </div>
-        </Cont>
+        </div>
     );
 };
 

@@ -5,13 +5,11 @@ import Head from "next/head";
 import {useForm} from "react-hook-form";
 import {useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
-import LinkBtn from "../../../components/Buttons/LinkBtn";
 import supabase from "../../../utils/supabaseClient";
 import toast, {Toaster} from "react-hot-toast";
 import {shootFireworks} from "../../../utils/Functions";
 import {EyeIcon, EyeOffIcon} from "@heroicons/react/solid";
 
-import COLORS from "../../../data/colors";
 
 const Singin = () => {
     // variables for hiding/showing password
@@ -101,7 +99,7 @@ const Singin = () => {
                 <meta name="description" content={meta.description}/>
             </Head>
 
-            <div colors={COLORS}>
+            <div>
                 <Toaster/>
                 <div className="center-inline ssm-spacer">
                     <h1 className="text-shadow mar-bottom-16">Sign in</h1>
@@ -167,7 +165,7 @@ const Singin = () => {
                             <p className="red">Invalid login credentials</p>
                         </div>
                     )}
-                    <LinkBtn/>
+                    {/*<LinkBtn/>*/}
                 </form>
 
                 <div className="sm-spacer"></div>
