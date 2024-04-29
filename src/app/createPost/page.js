@@ -657,7 +657,7 @@ const CreatePost = () => {
         setWidth(e.target.value);
     };
     return (
-        <Cont colors={COLORS} className="box-shadow">
+        <div className="box-shadow">
             <Toaster/>
             {/* Change to !submitted */}
             {!submitted ? (
@@ -804,7 +804,7 @@ const CreatePost = () => {
                                     router.push(`${window.location.origin}/encyclopedia/${title}`)
                                 }
                             >
-                                <DeleteBtn/>
+                                {/*<DeleteBtn/>*/}
                             </div>
                         </div>
                     </div>
@@ -912,7 +912,7 @@ const CreatePost = () => {
                     </div>
                 </form>
             )}
-        </Cont>
+        </div>
     );
 };
 

@@ -37,13 +37,13 @@ const Guest = () => {
                 <p className="mar-bottom-one">Login or sign up below</p>
                 <div className="mar-bottom-16 sign-up">
                     <Link href={{pathname: "/signup"}}>
-                        <DefaultBtn text="Sign Up"/>
+                        {/*<DefaultBtn text="Sign Up"/>*/}
                     </Link>
                 </div>
                 <div>
                     <Link href={{pathname: "/login"}}>
                         {" "}
-                        <AntiDefaultBtn text="Sign In"/>
+                        {/*<AntiDefaultBtn text="Sign In"/>*/}
                     </Link>
                 </div>
             </div>
