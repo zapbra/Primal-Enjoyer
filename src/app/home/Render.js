@@ -3,6 +3,7 @@ import Explore from '../../../components/introduction/Explore/index.js';
 import About from "../../../components/About";
 import Donation from "../../../components/introduction/Donation";
 import Searchbar from "@/app/home/Searchbar";
+import {ArticleDAO} from "../../../utils/classes/supabase/ArticleDAO";
 
 
 const YOUTUBE_PLAYLIST_ITEMS_API =
@@ -10,7 +11,6 @@ const YOUTUBE_PLAYLIST_ITEMS_API =
 
 
 export default function Home({data}) {
-
 
     return (
         <div>

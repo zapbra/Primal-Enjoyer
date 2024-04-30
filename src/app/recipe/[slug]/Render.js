@@ -2,20 +2,20 @@ import Link from "next/link";
 import Ingredients from "../components/Ingredients";
 import Instructions from "../components/Instructions";
 import {IoIosArrowBack} from "react-icons/io";
-import {IoBookmark, IoBookmarkOutline} from "react-icons/io5";
+// import {IoBookmark, IoBookmarkOutline} from "react-icons/io5";
 
-const Render = ({recipe, recipe_joins}) => {
+const Render = ({recipe}) => {
 
 
-    const recipeElems = recipe_joins.map((recipe, index) => {
-        return (
-            <Link key={index} href={`/recipe/${recipe.sub_recipe_id.name}`}>
-                <p className="link--secondary">
-                    {recipe.sub_recipe_id.name}
-                </p>
-            </Link>
-        );
-    });
+    // const recipeElems = recipe_joins.map((recipe, index) => {
+    //     return (
+    //         <Link key={index} href={`/recipe/${recipe.sub_recipe_id.name}`}>
+    //             <p className="link--secondary">
+    //                 {recipe.sub_recipe_id.name}
+    //             </p>
+    //         </Link>
+    //     );
+    // });
 
     const iconElems =
         recipe.food_instances.map((food_instance, index) => {
@@ -79,9 +79,9 @@ const Render = ({recipe, recipe_joins}) => {
                         />
 
                         <Instructions instructions={recipe.instructions}/>
-                        <h5 className="mb-2 font-bold">Included Recipes</h5>
-                        <div className="grey-line mar-bottom-16"></div>
-                        <div className="flex flex-wrap">{recipeElems}</div>
+                        {/*<h5 className="mb-2 font-bold">Included Recipes</h5>*/}
+                        {/*<div className="grey-line mar-bottom-16"></div>*/}
+                        {/*<div className="flex flex-wrap">{recipeElems}</div>*/}
                     </div>
                 </div>
             </div>

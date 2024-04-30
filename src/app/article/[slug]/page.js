@@ -1,5 +1,69 @@
 import {gql, GraphQLClient} from "graphql-request";
 import Render from "./Render";
+import {cache} from 'react';
+import {graphQLRequestWithDelay, throttledRequest} from "../../../../lib/Fetching";
+
+
+export async function generateMetadata({params, searchParams}, parent) {
+    // get page url
+    let {slug} = params;
+    slug = decodeURIComponent(slug);
+    const article = await getArticle(slug);
+
+    return {
+        title: slug,
+        description: "Aajonus Vonderplanitz raw primal diet blog related to " + slug,
+        openGraph: {
+            images: [
+                {
+                    url: article.coverImage.url
+                }
+            ]
+        }
+    }
+
+
+}
+
+// Used to remove duplicate calls for the same function
+// Not used right not because second function requests additional article fields
+const getArticle = cache(async (title) => {
+    // fetch data from graphql
+    const url = process.env.ENDPOINT;
+    const graphQLClient = new GraphQLClient(url, {
+        headers: {
+            Authorization: process.env.GRAPH_CMS_TOKEN,
+        },
+    });
+
+    const query = gql`
+    query ($slug: String!) {
+      article(where: { title: $slug }) {
+        coverImage {
+          url
+        }
+        aajonusCatagory {
+          title
+        }
+        
+        tags(first: 10) {
+          text
+        }
+        
+      }
+      
+      }
+  `;
+    const variables = {
+        slug: title,
+    };
+
+    const data = await graphQLClient.request(query, variables);
+    const article = data.article;
+
+    return article;
+});
+
 
 export async function generateStaticParams() {
     const url = process.env.ENDPOINT;
@@ -31,15 +95,10 @@ export async function generateStaticParams() {
 
 const Page = async ({params}) => {
     let {slug} = params;
-    let res = params;
-    slug = slug
-        .replaceAll("%20", " ")
-        .replaceAll("%3F", "?")
-        .replaceAll("%2C", ",")
-        .replaceAll("%2F", "/");
+    slug = decodeURIComponent(slug);
     const url = process.env.ENDPOINT;
     const graphQLClient = new GraphQLClient(url, {
-        header: {
+        headers: {
             Authorization: process.env.GRAPH_CMS_TOKEN,
         },
     });
@@ -64,39 +123,19 @@ const Page = async ({params}) => {
           raw
         }
       }
-      articles(first: 1000) {
-        title
-
-        tags {
-          ... on Tag {
-            text
-          }
-        }
-      }
-
-      moreArticles: articles(skip: 1000, first: 999) {
-        title
-        aajonusCatagory {
-          title
-        }
-        tags {
-          ... on Tag {
-            text
-          }
-        }
-      }
     }
   `;
     const variables = {
         slug,
     };
+
+
     const data = await graphQLClient.request(query, variables);
     const article = data.article;
-    const articles = [...data.articles, ...data.moreArticles];
 
     return (
         <div>
-            <Render article={article} articles={articles} slug={slug}/>
+            <Render article={article} slug={slug}/>
         </div>
     );
 };

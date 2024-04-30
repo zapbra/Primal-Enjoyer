@@ -1,40 +1,63 @@
 import React from "react";
 import Render from "./Render";
 import supabase from "../../../../utils/supabaseClient";
+import {cache} from "react";
+import {RecipesDAO} from "../../../../utils/classes/supabase/RecipesDAO";
 
-export async function generateStaticParams() {
-  const { data, error } = await supabase.from("aaj_recipes").select("name");
+export async function generateMetadata({params}) {
+    let {slug} = params;
+    slug = decodeURIComponent(slug);
+    const recipe = await getRecipe(slug);
 
-  return data.map((recipe) => {
-    return { slug: recipe.title };
-  });
+    return {
+        title: slug,
+        description: recipe.instructions,
+        openGraph: {
+            images: [
+                {
+                    url: recipe.url
+                }
+            ]
+        }
+    }
 }
 
-const fetchData = async (name) => {
-  const { data, error } = await supabase
-    .from("aaj_recipes")
-    .select(
-      "*, aaj_recipe_category(name), food_instances(quantity, food_id(name, description, icon) )"
-    )
-    .eq("name", name)
-    .maybeSingle();
+const getRecipe = cache(async (name) => {
+    const {data, error} = await RecipesDAO.getRecipeByName(name);
+    return data;
+});
 
-  const { data: recipe_joins, error: joins_error } = await supabase
-    .from("recipe_joins")
-    .select("sub_recipe_id(name, url)")
-    .eq("main_recipe_id", data.id);
-  return { recipe: data, recipe_joins };
-};
+export async function generateStaticParams() {
+    const {data, error} = await supabase.from("aaj_recipes").select("name");
 
-const page = async ({ params }) => {
-  const slug = decodeURI(params.slug);
-  const { recipe, recipe_joins } = await fetchData(slug);
+    return data.map((recipe) => {
+        return {slug: recipe.title};
+    });
+}
 
-  return (
-    <>
-      <Render recipe_joins={recipe_joins} recipe={recipe} params={slug} />
-    </>
-  );
+// const fetchData = async (name) => {
+//     const recipe = await getRecipe(name);
+//
+//     // const {data: recipe_joins, error: joins_error} = await supabase
+//     //     .from("recipe_joins")
+//     //     .select("sub_recipe_id(name, url)")
+//     //     .eq("main_recipe_id", recipe.id);
+//     return recipe;
+// };
+
+const page = async ({params}) => {
+    const slug = decodeURIComponent(params.slug);
+    const recipe = await getRecipe(slug);
+
+    console.log("recipe");
+    console.log(recipe);
+
+
+    return (
+        <>
+            <Render recipe={recipe} params={slug}/>
+        </>
+    );
 };
 
 export default page;

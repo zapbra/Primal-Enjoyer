@@ -1,15 +1,12 @@
-import { gql, GraphQLClient } from "graphql-request";
+import {gql, GraphQLClient} from "graphql-request";
 import supabase from "../../utils/supabaseClient";
+import {ArticleDAO} from "../../utils/classes/supabase/ArticleDAO";
 
 export default async function sitemap() {
-  const url = process.env.ENDPOINT;
-  const graphQLClient = new GraphQLClient(url, {
-    header: {
-      Authorization: process.env.GRAPH_CMS_TOKEN,
-    },
-  });
+    // data object to fetch gql article
+    const articleDAO = new ArticleDAO();
 
-  const query = gql`
+    const query = gql`
     query {
       articles(first: 1000) {
         title
@@ -23,65 +20,63 @@ export default async function sitemap() {
     }
   `;
 
-  const data = await graphQLClient.request(query);
-  const firstArticles = data.articles;
-  const secondArticles = data.moreArticles;
-  const articlesFetch = [...firstArticles, ...secondArticles];
-  const { data: postsFetch, error } = await supabase
-    .from("post")
-    .select("title");
+    const data = await articleDAO.graphQLQuery(query);
+    const firstArticles = data.articles;
+    const secondArticles = data.moreArticles;
+    const articlesFetch = [...firstArticles, ...secondArticles];
+    const {data: postsFetch, error} = await supabase
+        .from("post")
+        .select("title");
 
-  const posts = postsFetch.map((post) => {
-    return {
-      url: `https://www.primalenjoyer.com/encyclopedia/${post.title.replaceAll(
-        "&",
-        "&amp;"
-      )}`,
-    };
-  });
-  const articles = articlesFetch.map((article) => {
-    return {
-      url: `https://www.primalenjoyer.com/article/${article.title.replaceAll(
-        "&",
-        "&amp;"
-      )}`,
-    };
-  });
-  const hardCodedRoutes = [
-    {
-      url: "https://www.primalenjoyer.com",
-    },
-    {
-      url: "https://www.primalenjoyer.com/search",
-    },
-    {
-      url: "https://www.primalenjoyer.com/encyclopedia",
-    },
-    {
-      url: "https://www.primalenjoyer.com/polls",
-    },
-    {
-      url: "https://www.primalenjoyer.com/contact",
-    },
-    {
-      url: "https://www.primalenjoyer.com/createPost",
-    },
-    {
-      url: "https://www.primalenjoyer.com/categories",
-    },
-    {
-      url: "https://www.primalenjoyer.com/account",
-    },
-    {
-      url: "https://www.primalenjoyer.com/editAccount",
-    },
-    {
-      url: "https://www.primalenjoyer.com/signup",
-    },
-    {
-      url: "https://www.primalenjoyer.com/login",
-    },
-  ];
 
-  return [...posts, ...articles, ...hardCodedRoutes];
+    const posts = postsFetch.map((post) => {
+        return {
+            url: `https://www.primalenjoyer.com/blogs/${decodeURIComponent(post.title)}`,
+            priority: 0.5,
+            changeFrequency: 'never'
+        };
+    });
+    const articles = articlesFetch.map((article) => {
+        return {
+            url: `https://www.primalenjoyer.com/article/${decodeURIComponent(article.title)}`,
+            priority: 0.4,
+            changeFrequency: 'never'
+        };
+    });
+    const hardCodedRoutes = [
+        {
+            url: "https://www.primalenjoyer.com",
+            priority: 1,
+            changeFrequency: 'monthly',
+        },
+        {
+            url: "https://www.primalenjoyer.com/search",
+            priority: .8,
+            changeFrequency: 'monthly',
+        },
+        {
+            url: "https://www.primalenjoyer.com/articles",
+            priority: .8,
+            changeFrequency: 'monthly',
+        },
+        {
+            url: "https://www.primalenjoyer.com/recipes",
+            priority: .8,
+            changeFrequency: 'monthly',
+        },
+        {
+            url: "https://www.primalenjoyer.com/blogs",
+            priority: .8,
+            changeFrequency: 'monthly',
+        },
+
+        {
+            url: "https://www.primalenjoyer.com/contact",
+            priority: .8,
+            changeFrequency: 'monthly',
+        },
+
+    ];
+
+    return [...hardCodedRoutes, ...posts, ...articles];
 }

@@ -8,7 +8,7 @@ export async function POST(request) {
     const {email} = await request.json();
     const data = {
         email_address: email,
-        status: "subscribed"
+        status: "pending"
     };
     // if email is invalid
     if (!Validation.validateEmail(email)) {
@@ -30,18 +30,26 @@ export async function POST(request) {
             },
             method: 'POST'
         });
+        console.log('resposne')
+        console.log(response);
+        const message = await response.json();
+        console.log("message");
+        console.log(message);
 
         if (response.status >= 400) {
             return new Response(JSON.stringify({
                 success: false,
-                message: `Error subscribing to the newsletter. You can email primalenjoyer@hotmail.com and I will sign you up.`
+                message: "Error: " + message.title + ". Please email primalenjoyer@hotmail.com and I will manually sign you up. Thanks!"
             }), {
                 status: response.status,
                 statusText: "Invalid"
             });
         }
 
-        return new Response(JSON.stringify({success: true, message: "Successfully joined mailing list"}), {
+        return new Response(JSON.stringify({
+            success: true,
+            message: "Successfully joined. Please check your email for a confirmation email! "
+        }), {
             status: 201,
             statusText: "Success"
         })

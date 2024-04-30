@@ -8,6 +8,18 @@ import {FaPaperPlane} from "react-icons/fa6";
 import toast, {Toaster} from "react-hot-toast";
 
 
+export const metadata = {
+    title: "Contact Page",
+    description: "Send a message if you have any questions related to the primal diet or other inquiries.",
+    openGraph: {
+        images: [
+            {
+                url: "/seo/contact_opengraph.png"
+            }
+        ]
+    }
+};
+
 const Contact = () => {
     const [formData, setFormData] = React.useState({
         name: "",
@@ -61,110 +73,89 @@ const Contact = () => {
         });
     }
 
-    const meta = {
-        title: "Contact Page",
-        description:
-            "Primal Enjoyer contact page. Contact for Aajonus Vonderplanitz, health and nutrition or other related questions.",
-        link: "https://www.primalenjoyer.com/contact",
-        type: "website",
-        date: "2024-04-24 15:30:00.000",
-        image: "/seo/contact.PNG",
-    };
+
     return (
-        <>
-            <Head>
-                <title>{meta.title}</title>
-                <meta name="robots" content="follow, index"/>
-                <meta property="og:type" content={meta.type}/>
-                <meta property="og:site_name" content="Primal Enjoyer"/>
-                <meta property="og:description" content={meta.description}/>
-                <meta property="og:title" content={meta.title}/>
-                <meta property="og:image" content={meta.image}/>
-                <meta property="article:published_time" content={meta.date}/>
-                <link rel="canonical" href={meta.image}/>
-                <meta property="og:url" content={meta.link}/>
-            </Head>
-            <div style={{backgroundImage: `url(${bg.src})`, width: "100%"}}
-                 className='bg-cover bg-no-repeat py-16 bg-center min-h-screen'>
-                <Toaster/>
-                <div
-                    className=' flex flex-col justify-between mx-auto w-[95%] md:w-[80%] max-w-screen-md bg-white px-4 py-2 md:px-8 md:py-4 rounded shadow-xl md:flex-row'>
-                    {/** Form text */}
-                    <div className='mb-8 md:mb-0'>
-                        <h1 className="res-heading-base font-bold mb-4">
-                            Send me a message
-                        </h1>
 
-                        <p className='mb-2'>Feedback, business inquiries, questions & more</p>
+        <div style={{backgroundImage: `url(${bg.src})`, width: "100%"}}
+             className='bg-cover bg-no-repeat py-16 bg-center min-h-screen'>
+            <Toaster/>
+            <div
+                className=' flex flex-col justify-between mx-auto w-[95%] md:w-[80%] max-w-screen-md bg-white px-4 py-2 md:px-8 md:py-4 rounded shadow-xl md:flex-row'>
+                {/** Form text */}
+                <div className='mb-8 md:mb-0'>
+                    <h1 className="res-heading-base font-bold mb-4">
+                        Send me a message
+                    </h1>
 
-                        <p className="text-slate-500 mb-2">
-                            Email
-                        </p>
-                        <a className='link--secondary cursor-pointer break-all'
-                           href="mailto:primalenjoyer@hotmail.com">
-                            primalenjoyer@hotmail.com
-                        </a>
-                    </div>
-                    {/** End of form text */}
+                    <p className='mb-2'>Feedback, business inquiries, questions & more</p>
 
-                    {/** Input form */}
-                    <form ref={form} onSubmit={submitSuggestion}>
-                        <div className="form-line line">
+                    <p className="text-slate-500 mb-2">
+                        Email
+                    </p>
+                    <a className='link--secondary cursor-pointer break-all'
+                       href="mailto:primalenjoyer@hotmail.com">
+                        primalenjoyer@hotmail.com
+                    </a>
+                </div>
+                {/** End of form text */}
+
+                {/** Input form */}
+                <form ref={form} onSubmit={submitSuggestion}>
+                    <div className="form-line line">
+                        <h4 className='mb-2'>
+                            Name
+                        </h4>
+                        <input
+                            type="text"
+                            name="name"
+                            onChange={updateForm}
+                            value={formData.name}
+                            className='p-2 border  rounded w-full border-slate-300 focus:border-slate-900 mb-4'
+                            placeholder="Name"
+                        />
+                        <div className="field">
                             <h4 className='mb-2'>
-                                Name
+                                Email
                             </h4>
                             <input
-                                type="text"
-                                name="name"
+                                name="email"
                                 onChange={updateForm}
-                                value={formData.name}
                                 className='p-2 border  rounded w-full border-slate-300 focus:border-slate-900 mb-4'
-                                placeholder="Name"
+                                value={formData.email}
+                                placeholder="Email"
                             />
-                            <div className="field">
-                                <h4 className='mb-2'>
-                                    Email
-                                </h4>
-                                <input
-                                    name="email"
-                                    onChange={updateForm}
-                                    className='p-2 border  rounded w-full border-slate-300 focus:border-slate-900 mb-4'
-                                    value={formData.email}
-                                    placeholder="Email"
-                                />
-                            </div>
                         </div>
-                        <div className="field line">
-                            <h4 className='mb-2'>What Is Your Suggestion or Feedback? *</h4>
-                            <textarea
-                                required
-                                name="suggestion"
-                                placeholder="Message"
-                                onChange={updateForm}
-                                className='p-2 border resize-none rounded w-full border-slate-300 focus:border-slate-900 mb-4'
-                                value={formData.suggestion}
-                            ></textarea>
-                        </div>
-                        <div className="flex justify-end">
-                            <button
-                                type='submit'
-                                className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
-                                <p className='mr-2'>
-                                    Send
-                                </p>
-                                <FaPaperPlane
+                    </div>
+                    <div className="field line">
+                        <h4 className='mb-2'>What Is Your Suggestion or Feedback? *</h4>
+                        <textarea
+                            required
+                            name="suggestion"
+                            placeholder="Message"
+                            onChange={updateForm}
+                            className='p-2 border resize-none rounded w-full border-slate-300 focus:border-slate-900 mb-4'
+                            value={formData.suggestion}
+                        ></textarea>
+                    </div>
+                    <div className="flex justify-end">
+                        <button
+                            type='submit'
+                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+                            <p className='mr-2'>
+                                Send
+                            </p>
+                            <FaPaperPlane
 
-                                />
-                            </button>
-                        </div>
-                    </form>
-                    {/** End of input form */}
+                            />
+                        </button>
+                    </div>
+                </form>
+                {/** End of input form */}
 
-
-                </div>
 
             </div>
-        </>
+
+        </div>
     );
 };
 

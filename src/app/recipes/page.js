@@ -2,7 +2,19 @@
 import Render from "./Render";
 import supabase from "../../../utils/supabaseClient";
 import {recipesCache} from "../../../data/recipes";
+import {cache} from "react";
 
+export const metadata = {
+    title: "Raw Primal Recipes",
+    description: "View this list of raw primal diet recipes to give you inspiration in your raw foods journey and create healthy, tasty recipes.",
+    openGraph: {
+        images: [
+            {
+                url: "/seo/steak_tartar_opengraph.png"
+            }
+        ]
+    }
+}
 const fetchRecipes = async () => {
     try {
         const {data, error} = await supabase
@@ -34,14 +46,12 @@ const Page = async () => {
     const [recipesFetch, firstRecipes, allRecipes] = await fetchRecipes();
 
     return (
-        <>
-            <Render
-                recipesFetch={recipesFetch}
-                allRecipes={allRecipes}
-                firstRecipes={firstRecipes}
-                recipesCache={recipesCache}
-            />
-        </>
+        <Render
+            recipesFetch={recipesFetch}
+            allRecipes={allRecipes}
+            firstRecipes={firstRecipes}
+            recipesCache={recipesCache}
+        />
     );
 };
 

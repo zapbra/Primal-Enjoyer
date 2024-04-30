@@ -207,13 +207,7 @@ const Render = ({recipesFetch, firstRecipes, recipesCache, allRecipes}) => {
 
     return (
         <div className='py-16'>
-
             <div className='max-w-7xl mx-auto'>
-                {/*   <Categories
-        unselectedCategories={unselectedCategories}
-        selectedCategories={selectedCategories}
-        removeCategory={removeCategory}
-      /> */}
                 <h1 className="res-heading-xl text-center mb-2">
                     Recipes
                 </h1>

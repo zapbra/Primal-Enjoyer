@@ -1,27 +1,34 @@
 "use client"
 import Link from 'next/link';
-import React from "react";
+import {useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
 
 const Footer = () => {
-
+    const [email, setEmail] = useState("");
     const validateAndPostEmail = async (e) => {
         e.preventDefault();
-        const email = document.getElementById('email');
+        const toastId = toast.loading("Joining mailing list...");
+
         // make sure email is valid and send request to email subscriber server
         const response = await fetch(process.env.NEXT_PUBLIC_SITE_URL + "/api/email", {
             method: "POST",
-            body: JSON.stringify({email: email.value})
+            body: JSON.stringify({email: email})
         });
 
-        const message = await response.json();
-
+        const emailResponse = await response.json();
         // Successfully signed up
-        if (message.success) {
-            toast.success(message.message);
-            email.value = "";
+        if (emailResponse.success) {
+            toast.success(emailResponse.message, {
+                id: toastId,
+                onClick: () => toast.dismiss(toastId),
+                duration: 6000
+            });
+            setEmail("");
         } else {
-            toast.error(message.message);
+            toast.error(emailResponse.message, {
+                id: toastId,
+                duration: 4000
+            });
         }
 
 
@@ -84,7 +91,9 @@ const Footer = () => {
                     </h5>
                     <form onSubmit={validateAndPostEmail} className='flex justify-end'>
                         <label className="input input-bordered flex items-center gap-2 mb-4 max-w-64 w-full">
-                            <input id='email' type="text" className="grow min-w-5 " placeholder="Email"/>
+                            <input value={email} onChange={(e) => {
+                                setEmail(e.target.value)
+                            }} id='email' type="text" className="grow min-w-5 " placeholder="Email"/>
                             <button
                                 type='submit'
                                 className="transition bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">

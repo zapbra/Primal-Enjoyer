@@ -207,102 +207,74 @@ const Render = ({articlesFetch, superTags}) => {
     }
 
 
-    const meta = {
-        title: "Raw Primal Search Bar",
-        description:
-            "Search for any topic discussed by Aajonus Vonderplantiz. Raw meat articles, Aajonus Vonderplanitz questions and answers about raw food and nutrition topics.",
-        link: "https://www.primalenjoyer.com/search",
-        type: "website",
-        date: "2024-04-24 20:30:00.000",
-        image: "/seo/articles.PNG",
-        keywords:
-            "aajonus vonderplanitz, raw meat, health, information, raw primal, diet",
-    };
-
     return (
-        <>
-            <Head>
-                <title>{meta.title}</title>
-                <meta name="robots" content="follow, index"/>
-                <meta property="og:type" content={meta.type}/>
-                <meta property="og:site_name" content="Primal Enjoyer"/>
-                <meta property="og:description" content={meta.description}/>
-                <meta property="og:title" content={meta.title}/>
-                <meta property="og:image" content={meta.image}/>
-                <meta property="article:published_time" content={meta.date}/>
-                <link rel="canonical" href={meta.image}/>
-                <meta property="og:url" content={meta.link}/>
-                <meta name="keywords" content={meta.keywords}/>
 
-                <meta name="description" content={meta.description}/>
-            </Head>
-            <div className='pt-20 px-4 mb-32'>
-                {/** Title header */}
-                <div className='text-center mb-6'>
-                    <h1 className="res-heading-2xl mb-2">
-                        Browse Articles
-                    </h1>
-                    <h3 className="res-heading-base">
-                        Filter primal diet Q&A transcription articles by tag
-                    </h3>
-                </div>
-                {/** End of title header */}
-
-                {/** Search bar*/}
-                <div className='max-w-7xl mx-auto'>
-                    <div className='max-w-3xl mx-auto mb-8'>
-                        <div>
-                            <SuperSearchTagBox
-                                text={text}
-                                updateText={updateText}
-                                removeSearchTag={() => {
-                                }}
-                                pushTag={() => {
-                                }}
-                                selectTag={selectTag}
-                                removeTag={removeTag}
-                                tags={[]}
-                                submitSearch={() => {
-                                }}
-                                colors={COLORS}
-                                pushSearchTag={() => {
-                                }}
-
-                                renderTags={renderTags}
-                                selectedTags={selectedTags}
-                                clearText={() => {
-                                }}
-                                clearAllSelectedTags={clearAllSelectedTags}
-                            />
-                        </div>
-                    </div>
-                    {/** End of articles bar */}
-
-                    {/** Search results */}
-                    <div colors={COLORS}>
-                        <SearchResults
-                            allArticles={articlesFetch}
-                            articles={renderArticles}
-                        />
-                        {articlesLength >= 100 && (
-                            <div className="flex justify-center">
-                                <div className='flex flex-col items-center'>
-                                    <p className='mb-4 text-slate-500'>{filterArticles.length - renderArticles.length} more...</p>
-                                    <FaPlus
-                                        onClick={increaseRender}
-                                        className='text-4xl cursor-pointer text-slate-500 hover:text-slate-950 transition'
-                                    />
-                                </div>
-
-                            </div>
-                        )}
-                    </div>
-                    {/** End of articles results */}
-                </div>
-
-
+        <div className='pt-20 px-4 mb-32'>
+            {/** Title header */}
+            <div className='text-center mb-6'>
+                <h1 className="res-heading-2xl mb-2">
+                    Browse Articles
+                </h1>
+                <h3 className="res-heading-base">
+                    Filter primal diet Q&A transcription articles by tag
+                </h3>
             </div>
-        </>
+            {/** End of title header */}
+
+            {/** Search bar*/}
+            <div className='max-w-7xl mx-auto'>
+                <div className='max-w-3xl mx-auto mb-8'>
+                    <div>
+                        <SuperSearchTagBox
+                            text={text}
+                            updateText={updateText}
+                            removeSearchTag={() => {
+                            }}
+                            pushTag={() => {
+                            }}
+                            selectTag={selectTag}
+                            removeTag={removeTag}
+                            tags={[]}
+                            submitSearch={() => {
+                            }}
+                            colors={COLORS}
+                            pushSearchTag={() => {
+                            }}
+
+                            renderTags={renderTags}
+                            selectedTags={selectedTags}
+                            clearText={() => {
+                            }}
+                            clearAllSelectedTags={clearAllSelectedTags}
+                        />
+                    </div>
+                </div>
+                {/** End of articles bar */}
+
+                {/** Search results */}
+                <div colors={COLORS}>
+                    <SearchResults
+                        allArticles={articlesFetch}
+                        articles={renderArticles}
+                    />
+                    {articlesLength >= 100 && (
+                        <div className="flex justify-center">
+                            <div className='flex flex-col items-center'>
+                                <p className='mb-4 text-slate-500'>{filterArticles.length - renderArticles.length} more...</p>
+                                <FaPlus
+                                    onClick={increaseRender}
+                                    className='text-4xl cursor-pointer text-slate-500 hover:text-slate-950 transition'
+                                />
+                            </div>
+
+                        </div>
+                    )}
+                </div>
+                {/** End of articles results */}
+            </div>
+
+
+        </div>
     );
 };
 
