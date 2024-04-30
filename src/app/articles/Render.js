@@ -1,11 +1,8 @@
 "use client";
 
-import React, {useEffect, useContext} from "react";
+import React from "react";
 
-import {AppContext} from "../layout";
-import COLORS, {tagColors} from "../../../data/colors";
 import SearchResults from "./components/SearchResults";
-import Head from "next/head";
 import {useState} from "react";
 import {FaPlus} from "react-icons/fa6";
 import SuperSearchTagBox from "@/app/articles/components/SuperSearchTagBox";
@@ -237,7 +234,7 @@ const Render = ({articlesFetch, superTags}) => {
                             tags={[]}
                             submitSearch={() => {
                             }}
-                            colors={COLORS}
+
                             pushSearchTag={() => {
                             }}
 
@@ -252,7 +249,7 @@ const Render = ({articlesFetch, superTags}) => {
                 {/** End of articles bar */}
 
                 {/** Search results */}
-                <div colors={COLORS}>
+                <div>
                     <SearchResults
                         allArticles={articlesFetch}
                         articles={renderArticles}
