@@ -1,25 +1,30 @@
 import {useEffect, useState} from "react";
+import Link from 'next/link';
 
-
-const Featured = ({titles}) => {
-    const [titleElems, setTitleElems] = useState(
+const Featured = ({titles, query}) => {
+    const titleElems =
         titles.map((title, index) => {
             return (
-                <a key={index} href={`#(${index + 1}) ${title}`}>
+                <Link key={index} href={`#(${index + 1}) ${title.replaceAll("&", "and")}`}>
                     <p className="link--secondary">
                         <span className="text-slate-500">#{index + 1} </span>
                         {title}
                     </p>
-                </a>
+                </Link>
             );
-        })
-    );
+        });
+
     useEffect(() => {
         if (window.type !== "undefined") {
             // Get the title from the document to add links via id
             const headings = document.querySelectorAll(".text-renderer h3");
             for (let heading of headings) {
-                heading.id = heading.innerHTML;
+                heading.id = heading.innerHTML.replaceAll("&amp;", "and");
+            }
+
+            // scroll to specific part of page based on query parameter link
+            if (query !== null && query !== "") {
+                document.getElementById(decodeURIComponent(query)).scrollIntoView({behavior: 'smooth'});
             }
         }
     }, []);

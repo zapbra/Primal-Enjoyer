@@ -24,6 +24,7 @@
 
     .link--secondary {
         @apply text-blue-500;
+        @apply cursor-pointer;
 
         &:hover {
             text-decoration: underline;

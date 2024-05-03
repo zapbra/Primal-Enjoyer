@@ -1,10 +1,17 @@
 "use client";
 import Link from "next/link";
+import {useSearchParams} from "next/navigation";
 import {ReactMarkdown} from "react-markdown/lib/react-markdown";
 import Featured from "@/app/search/components/Featured";
 import {IoIosArrowBack, IoIosReturnLeft} from "react-icons/io";
 
+
 const Render = ({timecode}) => {
+    // the title of the section to scroll to. Sent from previous page /search link
+    let query = useSearchParams().get("query");
+
+    query = encodeURIComponent(query);
+
     return (
         <div className='mx-auto max-w-4xl px-4 py-8'>
             <div className="header">
@@ -28,9 +35,9 @@ const Render = ({timecode}) => {
 
             <div>
                 {/** Link Section */}
-                <Featured titles={timecode.article_titles}/>
+                <Featured titles={timecode.article_titles} query={query}/>
                 {/** End of link section */}
-                
+
                 <div className="text-holder bg-white px-4 py-2 border-slate-300 border">
                     <ReactMarkdown className="text-renderer">
                         {timecode.content}

@@ -16,16 +16,40 @@ const Render = ({previewData, timecodeData}) => {
     const [searchText, setSearchText] = useState("");
     const [timecodeElements, setTimecodeElements] = useState(
         previewData.map((timecode, index) => (
-            <Link href={`/timecode/${timecode.name}`} key={index}>
+
+            <div className="bg-white  mb-4 py-2 px-4 rounded border border-blue-900 min-w-5 ">
 
                 <div
-                    className="bg-white flex justify-between items-center mb-4 py-2 px-4 rounded border border-blue-900 max-w-72 min-w-5 ">
-                    <p className='mr-4'>{timecode.name}</p>
-                    <button
-                        className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
-                    </button>
+                    className=" flex justify-between items-center mb-4">
+                    <h5 className='mr-4 font-bold res-heading-xs'>{timecode.name}</h5>
+                    <Link href={`/timecode/${timecode.name}`} key={index}>
+                        <button
+                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
+                        </button>
+                    </Link>
                 </div>
-            </Link>
+                <div
+                    className="collapse collapse-arrow join-item text-slate-500 hover:text-slate-950 transition border bg-slate-50">
+                    <input type="radio" name="my-accordion-4" checked="checked"/>
+                    <div className="collapse-title res-text-base">
+                        Show Topics
+                    </div>
+                    <div
+                        className="collapse-content text-slate-950 gap-2 max-h-64 overflow-y-scroll grid sm:grid-cols-2 md:grid-cols-3">
+                        {timecode.article_titles.map((title, index) => {
+                            return (
+                                <Link key={index} href={`/timecode/${timecode.name}?query=(${index + 1}) ${title}`}>
+                                    <p className='link--secondary res-text-sm'><span
+                                        className='mr-2 text-slate-400'>#{index + 1}</span> <span>{title}</span>
+                                    </p>
+                                </Link>
+
+                            )
+                        })}
+                    </div>
+                </div>
+            </div>
+
 
         ))
     );
@@ -134,7 +158,8 @@ const Render = ({previewData, timecodeData}) => {
 
     // perform search on load if query is sent
     useEffect(() => {
-        if (query !== null) {
+        if (query !== "" && query !== null) {
+            console.log("nigga");
             findTimecodeSearchMatches(query.toLowerCase());
         }
     }, []);
@@ -153,7 +178,7 @@ const Render = ({previewData, timecodeData}) => {
                 </div>
                 {/** End of heading */}
 
-                <div className="flex md:flex-row flex-col-reverse gap-4">
+                <div className="flex flex-col-reverse mx-auto max-w-3xl gap-4">
                     {/** Timecode links */}
                     <div className='w-full'>
                         {timecodeElements}

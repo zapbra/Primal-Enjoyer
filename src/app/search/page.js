@@ -3,7 +3,7 @@ import supabase from "../../../utils/supabaseClient";
 import {promises as fs} from 'fs';
 
 export async function fetchData() {
-    const {data, error} = await supabase.from("timecodes").select("name");
+    const {data, error} = await supabase.from("timecodes").select("name, article_titles");
     return {
         props: {
             data,
