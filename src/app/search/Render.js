@@ -17,7 +17,7 @@ const Render = ({previewData, timecodeData}) => {
     const [timecodeElements, setTimecodeElements] = useState(
         previewData.map((timecode, index) => (
 
-            <div className="bg-white  mb-4 py-2 px-4 rounded border border-blue-900 min-w-5 ">
+            <div key={index} className="bg-white  mb-4 py-2 px-4 rounded border border-blue-900 min-w-5 ">
 
                 <div
                     className=" flex justify-between items-center mb-4">
