@@ -29,7 +29,7 @@ const Render = ({previewData, timecodeData}) => {
                     </Link>
                 </div>
                 <div
-                    className="collapse collapse-arrow join-item text-slate-500 hover:text-slate-950 transition border bg-slate-50">
+                    className="collapse collapse-arrow join-item text-slate-500 max-h-72 hover:text-slate-950 transition border bg-slate-50">
                     <input type="radio" name="my-accordion-4" checked="checked"/>
                     <div className="collapse-title res-text-base">
                         Show Topics

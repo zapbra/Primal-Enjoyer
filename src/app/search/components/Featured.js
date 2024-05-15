@@ -23,8 +23,8 @@ const Featured = ({titles, query}) => {
             }
 
             // scroll to specific part of page based on query parameter link
-            if (query !== null && query !== "") {
-                document.getElementById(decodeURIComponent(query)).scrollIntoView({behavior: 'smooth'});
+            if (query != null && query !== "") {
+                document.getElementById(decodeURIComponent(query))?.scrollIntoView({behavior: 'smooth'});
             }
         }
     }, []);
