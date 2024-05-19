@@ -18,7 +18,7 @@ const Recipe = ({
                 className="flex items-center justify-between py-2 border-b-2 border-slate-200"
                 key={index}
             >
-                <p className="res-text-sm ">
+                <p className="res-text-sm">
                     <Highlight text={text}>{ingredient.food_id.name}</Highlight>{" "}
                     <span className="text-slate-400">({ingredient.quantity})</span>
                 </p>
@@ -33,15 +33,15 @@ const Recipe = ({
 
     return (
         <div
-            className="bg-white border-slate-300 border rounded px-6 py-4 w-80 h-fit hover:shadow-2xl transition active:underline">
+            className="bg-white  rounded px-6 py-4 w-80 h-fit shadow hover:shadow-2xl transition active:underline">
             <Link href={`/recipe/${name}`}>
                 <div className="flex flex-end mb-4">
                     <div className="flex items-center bg-blue-950 rounded text-slate-50 px-2 py-1">
                         <FontAwesomeIcon
                             icon={iconsDict[category]}
-                            className="mr-2"
+                            className="mr-2 text-blue-50"
                         />
-                        <p className=''>{category}</p>
+                        <p className='text-blue-50'>{category}</p>
                     </div>
                 </div>
                 <img src={url} alt={name} className='rounded mb-4 max-h-40 w-full object-cover'/>

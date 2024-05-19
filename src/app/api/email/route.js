@@ -30,11 +30,9 @@ export async function POST(request) {
             },
             method: 'POST'
         });
-        console.log('resposne')
-        console.log(response);
+
         const message = await response.json();
-        console.log("message");
-        console.log(message);
+
 
         if (response.status >= 400) {
             return new Response(JSON.stringify({

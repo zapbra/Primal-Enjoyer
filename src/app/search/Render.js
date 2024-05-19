@@ -2,6 +2,8 @@
 import React, {useEffect, useState} from "react";
 import {useSearchParams} from "next/navigation";
 import Link from 'next/link';
+import {FaArrowRight, FaEye, FaLongArrowAltRight} from "react-icons/fa";
+import {IoIosArrowRoundForward} from "react-icons/io";
 
 
 // amount of textual characters to split search results into
@@ -13,29 +15,37 @@ const Render = ({previewData, timecodeData}) => {
     const query = searchParams.get('query');
 
 
-    const [searchText, setSearchText] = useState("");
+    const [searchText, setSearchText] = useState(query || "");
+    const [recentSearch, setRecentSearch] = useState("");
+
     const [timecodeElements, setTimecodeElements] = useState(
         previewData.map((timecode, index) => (
 
-            <div key={index} className="bg-white  mb-4 py-2 px-4 rounded border border-blue-900 min-w-5 ">
+            <div key={index} className="bg-white  mb-4 shadow rounded min-w-5 ">
 
                 <div
-                    className=" flex justify-between items-center mb-4">
+                    className=" flex justify-between items-center mb-4 px-4 py-4">
                     <h5 className='mr-4 font-bold res-heading-xs'>{timecode.name}</h5>
                     <Link href={`/timecode/${timecode.name}`} key={index}>
                         <button
-                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
+                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+
+                            <p className='text-blue-50 mr-2'>View</p>
+                            <FaEye
+                                className='text-lg'
+                            />
                         </button>
+
                     </Link>
                 </div>
                 <div
-                    className="collapse collapse-arrow join-item text-slate-500 max-h-72 hover:text-slate-950 transition border bg-slate-50">
+                    className="collapse collapse-arrow join-item text-slate-500 max-h-72 hover:text-slate-950 transition border bg-blue-500 rounded-none rounded-b">
                     <input type="radio" name="my-accordion-4" checked="checked"/>
-                    <div className="collapse-title res-text-base">
+                    <div className="collapse-title res-text-base text-blue-50">
                         Show Topics
                     </div>
                     <div
-                        className="collapse-content text-slate-950 gap-2 max-h-64 overflow-y-scroll grid sm:grid-cols-2 md:grid-cols-3">
+                        className="collapse-content text-slate-950 gap-2 max-h-64 overflow-y-scroll grid sm:grid-cols-2 md:grid-cols-3 bg-white">
                         {timecode.article_titles.map((title, index) => {
                             return (
                                 <Link key={index} href={`/timecode/${timecode.name}?query=(${index + 1}) ${title}`}>
@@ -61,7 +71,7 @@ const Render = ({previewData, timecodeData}) => {
         const timecodeMatchObjects = [];
         // get a list of all search that contain the articles text
         const timecodeArrayMatches = timecodeData.filter(timecode => {
-            return timecode.content.includes(search);
+            return timecode.content.toLowerCase().includes(search);
         });
 
 
@@ -85,7 +95,7 @@ const Render = ({previewData, timecodeData}) => {
             // filter the string chunks for matches based on user articles
 
             stringChunks = stringChunks.filter(chunk => {
-                return chunk.includes(search);
+                return chunk.toLowerCase().includes(search);
             });
 
             // push all string chunk array with the corresponding name for articles results
@@ -113,10 +123,16 @@ const Render = ({previewData, timecodeData}) => {
             // increase the total chunk count for analytical information to user
             totalChunks += timecodeMatchObject.stringChunks.length;
             for (let chunk of timecodeMatchObject.stringChunks) {
+                console.log("chunk");
+                console.log(chunk);
                 // add styling to the
-                chunk = chunk.replaceAll(search, `<span class = 'text-emerald-900 bg-emerald-300'>${search}</span>`)
+                chunk = {
+                    plainTextChunk: chunk,
+                    highlightedChunk: chunk.toLowerCase().replaceAll(search, `<span class = 'text-emerald-900 bg-emerald-300'>${search}</span>`)
+
+                }
                 // add chunk to chunk list to be rendered
-                resultObject.chunks.push(`<p> ${chunk} </p>`);
+                resultObject.chunks.push(chunk);
             }
 
             // create the result element
@@ -127,15 +143,36 @@ const Render = ({previewData, timecodeData}) => {
                     <Link href={`/timecode/${resultObject.name}`}>
 
                         <button
-                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View
+                            className="transition bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+
+
+                            <p className='text-blue-50 mr-2'>View</p>
+                            <FaEye
+                                className='text-lg'
+                            />
                         </button>
+
                     </Link>
 
                 </div>
                 {resultObject.chunks.map((chunk, index) => {
                     return (
-                        <div key={index} className='mb-4 pb-4 border-b-2 border-blue-950'
-                             dangerouslySetInnerHTML={{__html: chunk}}></div>
+                        <Link key={index}
+                              href={`/timecode/${resultObject.name}?query=${searchText}&chunk=${encodeURIComponent(chunk.plainTextChunk)}`}>
+
+                            <div
+                                className='mb-4 pb-4 bg-blue-50 cursor-pointer px-2 py-2 hover:bg-blue-100 transition'>
+
+                                <div
+                                    dangerouslySetInnerHTML={{__html: chunk.highlightedChunk}}></div>
+                                <div className="flex justify-end px-2">
+                                    <FaLongArrowAltRight
+                                        className='text-2xl text-blue-950'
+                                    />
+                                </div>
+                            </div>
+                        </Link>
+
                     )
                 })}
 
@@ -159,7 +196,6 @@ const Render = ({previewData, timecodeData}) => {
     // perform search on load if query is sent
     useEffect(() => {
         if (query !== "" && query !== null) {
-            console.log("nigga");
             findTimecodeSearchMatches(query.toLowerCase());
         }
     }, []);

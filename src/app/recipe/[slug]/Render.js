@@ -68,7 +68,8 @@ const Render = ({recipe}) => {
                         {/** End of image */}
 
                         {/** Icons */}
-                        <div className="flex flex-wrap gap-4 items-center justify-around mb-4">
+                        <div
+                            className="flex flex-wrap gap-4 items-center justify-around mb-4 bg-slate-50 rounded py-2">
                             {iconElems}
                         </div>
                         {/** End of icons */}

@@ -3,6 +3,8 @@ import Render from "./Render";
 import supabase from "../../../utils/supabaseClient";
 import {recipesCache} from "../../../data/recipes";
 import {cache} from "react";
+import {DotNetApi} from "../../../utils/classes/DotNetApi/DotNetApi";
+import {headers} from 'next/headers';
 
 export const metadata = {
     title: "Raw Primal Recipes",
@@ -15,7 +17,9 @@ export const metadata = {
         ]
     }
 }
-const fetchRecipes = async () => {
+const fetchRecipes = async (pathname) => {
+
+
     try {
         const {data, error} = await supabase
             .from("aaj_recipe_category")
@@ -38,12 +42,22 @@ const fetchRecipes = async () => {
         if (error) throw error;
         return [data, firstRecipes, allRecipes];
     } catch (error) {
-        console.log(error);
+        await DotNetApi.writeLog(pathname, "Failed to fetch data on recipes page");
     }
 };
 
 const Page = async () => {
-    const [recipesFetch, firstRecipes, allRecipes] = await fetchRecipes();
+    // get current path
+    const header = headers();
+    const pathname = header.get('next-url');
+
+    const [recipesFetch, firstRecipes, allRecipes] = await fetchRecipes(pathname);
+
+
+    // Page load success log
+    if (recipesFetch.length > 0 && firstRecipes.length > 0 && allRecipes.length > 0) {
+        await DotNetApi.writeLog(pathname, "Successfully visited recipes page");
+    }
 
     return (
         <Render

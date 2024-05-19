@@ -1,4 +1,6 @@
 import Render from './Render';
+import {headers} from 'next/headers';
+import {DotNetApi} from "../../../utils/classes/DotNetApi/DotNetApi";
 
 export const metadata = {
     title: "Contact Page",
@@ -11,8 +13,12 @@ export const metadata = {
         ]
     }
 };
-const Contact = () => {
+const Contact = async () => {
+    const header = headers();
+    const pathname = header.get('next-url');
+    await DotNetApi.writeLog(pathname, "Visited contact page");
 
+    
     return (
         <Render/>
     )

@@ -4,7 +4,7 @@ import {RichText} from "@graphcms/rich-text-react-renderer";
 import {nanoid} from "nanoid";
 import {IoIosArrowBack} from "react-icons/io";
 
-const Slug = ({article}) => {
+const Slug = ({article, dotNetResponse}) => {
 
 
     const tagElems = article.tags.map((tag) => {

@@ -3,6 +3,8 @@ import Render from "./Render";
 import supabase from "../../../../utils/supabaseClient";
 import {cache} from "react";
 import {RecipesDAO} from "../../../../utils/classes/supabase/RecipesDAO";
+import {headers} from 'next/headers';
+import {DotNetApi} from "../../../../utils/classes/DotNetApi/DotNetApi";
 
 export async function generateMetadata({params}) {
     let {slug} = params;
@@ -23,12 +25,12 @@ export async function generateMetadata({params}) {
 }
 
 const getRecipe = cache(async (name) => {
-    const {data, error} = await RecipesDAO.getRecipeByName(name);
-    return data;
+    const {data, success} = await RecipesDAO.getRecipeByName(name);
+    return {data, success};
 });
 
 export async function generateStaticParams() {
-    const {data, error} = await supabase.from("aaj_recipes").select("name");
+    const {data, success} = await RecipesDAO.getAllRecipeNames();
 
     return data.map((recipe) => {
         return {slug: recipe.title};
@@ -46,11 +48,19 @@ export async function generateStaticParams() {
 // };
 
 const page = async ({params}) => {
-    const slug = decodeURIComponent(params.slug);
-    const recipe = await getRecipe(slug);
+    // get current path
+    const header = headers();
+    const pathname = header.get('next-url');
 
-    console.log("recipe");
-    console.log(recipe);
+    const slug = decodeURIComponent(params.slug);
+    const {recipe, success} = await getRecipe(slug);
+
+    // log based on if recipe was fetched successfully
+    if (success) {
+        await DotNetApi.writeLog(pathname, `Successfully visited ${slug} recipe page`)
+    } else {
+        await DotNetApi.writeLog(pathname, `Failed to visit ${slug} recipe page`)
+    }
 
 
     return (

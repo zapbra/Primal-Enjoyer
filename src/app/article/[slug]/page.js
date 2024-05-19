@@ -2,7 +2,8 @@ import {gql, GraphQLClient} from "graphql-request";
 import Render from "./Render";
 import {cache} from 'react';
 import {graphQLRequestWithDelay, throttledRequest} from "../../../../lib/Fetching";
-
+import {DotNetApi} from "../../../../utils/classes/DotNetApi/DotNetApi";
+import {headers} from 'next/headers';
 
 export async function generateMetadata({params, searchParams}, parent) {
     // get page url
@@ -16,7 +17,7 @@ export async function generateMetadata({params, searchParams}, parent) {
         openGraph: {
             images: [
                 {
-                    url: article.coverImage.url
+                    url: article?.coverImage?.url
                 }
             ]
         }
@@ -94,6 +95,9 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({params}) => {
+    const header = headers();
+    const pathname = header.get('next-url');
+
     let {slug} = params;
     slug = decodeURIComponent(slug);
     const url = process.env.ENDPOINT;
@@ -131,7 +135,14 @@ const Page = async ({params}) => {
 
 
     const data = await graphQLClient.request(query, variables);
-    const article = data.article;
+    const article = data?.article;
+
+    // Server logs to see if article fetched properly.
+    if (article == null) {
+        await DotNetApi.writeLog(pathname, "Article is null. Failed to fetch article");
+    } else {
+        await DotNetApi.writeLog(pathname, "Successfully visited article.");
+    }
 
     return (
         <div>

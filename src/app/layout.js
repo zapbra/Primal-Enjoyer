@@ -9,6 +9,7 @@ import {GoogleAnalytics} from "nextjs-google-analytics";
 
 export default function RootLayout({children}) {
 
+
     return (
         <html lang="en" className='scroll-smooth'>
         <body>

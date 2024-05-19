@@ -1,10 +1,11 @@
 "use client";
 
-const Tester = ({ data }) => {
-  console.log("data");
-  console.log(data);
+const Tester = ({data}) => {
 
-  return <div></div>;
+
+    console.log("hello world");
+
+    return <div></div>;
 };
 
 export default Tester;
