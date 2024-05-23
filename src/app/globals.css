@@ -120,12 +120,12 @@ p {
 }
 
 .text-renderer {
-    p {
+    * {
         margin-bottom: 8px;
     }
 
     @media only screen and (max-width: 600px) {
-        p {
+        * {
             margin-bottom: 16px;
         }
     }
