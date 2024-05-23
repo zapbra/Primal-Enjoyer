@@ -28,7 +28,7 @@ const Page = async () => {
 
 
     // Send a log based on if timecode data was read from file properly
-    if (timecodeData.length <= 0) {
+    if (timecodeData.length >= 0) {
         await DotNetApi.writeLog(pathname, "Successfully visited search page");
     } else {
         await DotNetApi.writeLog(pathname, "Failed to visit search page. Didn't load timecodes properly");

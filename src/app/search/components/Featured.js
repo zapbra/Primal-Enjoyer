@@ -6,7 +6,7 @@ const Featured = ({titles, query}) => {
         titles.map((title, index) => {
             return (
                 <Link key={index} href={`#(${index + 1}) ${title.replaceAll("&", "and")}`}>
-                    <p className="link--secondary">
+                    <p className="link--secondary res-text-sm">
                         <span className="text-slate-500">#{index + 1} </span>
                         {title}
                     </p>
@@ -16,11 +16,12 @@ const Featured = ({titles, query}) => {
 
 
     return (
-        <div className="bg-white border-slate-300 border mb-12">
-            <div className="px-4 py-2 border-slate-300 border-b-2">
+        <div className="bg-white shadow mb-6">
+            <div className="px-4 py-2 ">
                 <h5 className='res-heading-sm'>Featured in this lecture</h5>
             </div>
-            <div className="px-8 py-4 grid grid-cols-3 gap-2 max-h-[600px] overflow-auto">{titleElems}</div>
+            <div
+                className="px-8 py-4 grid grid-cols-3 gap-2 max-h-[240px] md:max-h-[400px] overflow-auto">{titleElems}</div>
         </div>
     );
 };

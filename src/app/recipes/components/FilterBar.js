@@ -8,7 +8,7 @@ const FilterBar = ({categories, setCategories, selectCategory}) => {
                 key={index}
                 className={
                     category.selected
-                        ? "flex items-center border rounded-xl border-slate-500 px-4 py-2 hover:bg-white hover:text-blue-950 shadow cursor-pointer bg-blue-950 text-slate-50 transition"
+                        ? "flex items-center border rounded-xl border-slate-500 px-4 py-2 hover:bg-white shadow cursor-pointer bg-blue-950 hover:text-slate-50 transition"
                         : "flex items-center border rounded-xl border-slate-500 px-4 py-2 bg-white cursor-pointer hover:bg-blue-950 hover:text-slate-50 transition"
                 }
                 onClick={() => selectCategory(category.name)}

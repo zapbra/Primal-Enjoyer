@@ -49,7 +49,7 @@ const Render = ({recipe}) => {
                 {/** End of back to recipes link */}
 
 
-                <div className="bg-white border border-slate-300 px-4 py-2 rounded">
+                <div className="bg-white shadow px-4 py-2 rounded">
                     <div className="recipe-holder mar-bottom-64 padding-16 rounded-shadow">
                         {/** Title */}
                         <div className="flex flex-wrap items-center justify-between mb-4">

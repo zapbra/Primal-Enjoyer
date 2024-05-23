@@ -57,6 +57,8 @@ const Page = async () => {
     // Page load success log
     if (recipesFetch.length > 0 && firstRecipes.length > 0 && allRecipes.length > 0) {
         await DotNetApi.writeLog(pathname, "Successfully visited recipes page");
+    } else {
+        await DotNetApi.writeLog(pathname, "Failed to fetch recipes");
     }
 
     return (

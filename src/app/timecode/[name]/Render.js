@@ -14,22 +14,14 @@ const Render = ({timecode}) => {
     let query = searchParams.get("query");
     let chunk = searchParams.get("chunk");
     query = encodeURIComponent(query);
-    chunk = decodeURIComponent(chunk);
+    if (chunk != null) {
+        chunk = decodeURIComponent(chunk);
+    }
 
-
-    console.log("chunk");
-    console.log(chunk);
-
-    console.log("query");
-    console.log(query);
 
     if (chunk != null) {
-        console.log("chunk")
-        console.log(chunk);
         const index = timecode.content.indexOf(chunk);
 
-        console.log("index");
-        console.log(index);
         const firstString = timecode.content.substring(0, index + 1);
         let middleString = timecode.content.substring(index + 1, index + 1 + chunk.length);
         middleString = `<div id='chunk' class="bg-blue-50">${middleString.toLowerCase().replaceAll(query, `<span class="text-emerald-900 bg-emerald-300">${query} </span>`)}</div>`;
@@ -83,7 +75,7 @@ const Render = ({timecode}) => {
                 <Featured titles={timecode.article_titles} query={query}/>
                 {/** End of link section */}
 
-                <div className="text-holder bg-white px-4 py-2 border-slate-300 border">
+                <div className="text-holder bg-white px-4 py-2 shadow">
                     <ReactMarkdown className="text-renderer" rehypePlugins={[rehypeRaw]}>
                         {timecode.content}
                     </ReactMarkdown>

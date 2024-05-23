@@ -25,8 +25,7 @@ export async function generateMetadata({params}) {
 }
 
 const getRecipe = cache(async (name) => {
-    const {data, success} = await RecipesDAO.getRecipeByName(name);
-    return {data, success};
+    return await RecipesDAO.getRecipeByName(name);
 });
 
 export async function generateStaticParams() {
@@ -53,8 +52,9 @@ const page = async ({params}) => {
     const pathname = header.get('next-url');
 
     const slug = decodeURIComponent(params.slug);
-    const {recipe, success} = await getRecipe(slug);
+    const {data, success} = await getRecipe(slug);
 
+    
     // log based on if recipe was fetched successfully
     if (success) {
         await DotNetApi.writeLog(pathname, `Successfully visited ${slug} recipe page`)
@@ -65,7 +65,7 @@ const page = async ({params}) => {
 
     return (
         <>
-            <Render recipe={recipe} params={slug}/>
+            <Render recipe={data} params={slug}/>
         </>
     );
 };
