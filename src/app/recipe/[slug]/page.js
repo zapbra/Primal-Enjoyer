@@ -3,7 +3,6 @@ import Render from "./Render";
 import supabase from "../../../../utils/supabaseClient";
 import {cache} from "react";
 import {RecipesDAO} from "../../../../utils/classes/supabase/RecipesDAO";
-import {headers} from 'next/headers';
 import {DotNetApi} from "../../../../utils/classes/DotNetApi/DotNetApi";
 
 export async function generateMetadata({params}) {
@@ -47,14 +46,11 @@ export async function generateStaticParams() {
 // };
 
 const page = async ({params}) => {
-    // get current path
-    const header = headers();
-    const pathname = header.get('next-url');
 
     const slug = decodeURIComponent(params.slug);
     const {data, success} = await getRecipe(slug);
 
-    
+    /*
     // log based on if recipe was fetched successfully
     if (success) {
         await DotNetApi.writeLog(pathname, `Successfully visited ${slug} recipe page`)
@@ -62,7 +58,7 @@ const page = async ({params}) => {
         await DotNetApi.writeLog(pathname, `Failed to visit ${slug} recipe page`)
     }
 
-
+*/
     return (
         <>
             <Render recipe={data} params={slug}/>

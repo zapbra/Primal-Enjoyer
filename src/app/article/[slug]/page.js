@@ -95,11 +95,11 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({params}) => {
-    const header = headers();
-    const pathname = header.get('next-url');
 
     let {slug} = params;
     slug = decodeURIComponent(slug);
+
+    const pathname = "/articles/" + slug;
     const url = process.env.ENDPOINT;
     const graphQLClient = new GraphQLClient(url, {
         headers: {
@@ -137,13 +137,14 @@ const Page = async ({params}) => {
     const data = await graphQLClient.request(query, variables);
     const article = data?.article;
 
+    /*
     // Server logs to see if article fetched properly.
     if (article == null) {
         await DotNetApi.writeLog(pathname, "Article is null. Failed to fetch article");
     } else {
         await DotNetApi.writeLog(pathname, "Successfully visited article.");
     }
-
+ */
     return (
         <div>
             <Render article={article} slug={slug}/>

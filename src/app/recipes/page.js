@@ -4,7 +4,6 @@ import supabase from "../../../utils/supabaseClient";
 import {recipesCache} from "../../../data/recipes";
 import {cache} from "react";
 import {DotNetApi} from "../../../utils/classes/DotNetApi/DotNetApi";
-import {headers} from 'next/headers';
 
 export const metadata = {
     title: "Raw Primal Recipes",
@@ -47,20 +46,17 @@ const fetchRecipes = async (pathname) => {
 };
 
 const Page = async () => {
-    // get current path
-    const header = headers();
-    const pathname = header.get('next-url');
-
+    const pathname = "/recipes";
     const [recipesFetch, firstRecipes, allRecipes] = await fetchRecipes(pathname);
 
-
-    // Page load success log
-    if (recipesFetch.length > 0 && firstRecipes.length > 0 && allRecipes.length > 0) {
-        await DotNetApi.writeLog(pathname, "Successfully visited recipes page");
-    } else {
-        await DotNetApi.writeLog(pathname, "Failed to fetch recipes");
-    }
-
+    /*
+        // Page load success log
+        if (recipesFetch.length > 0 && firstRecipes.length > 0 && allRecipes.length > 0) {
+            await DotNetApi.writeLog(pathname, "Successfully visited recipes page");
+        } else {
+            await DotNetApi.writeLog(pathname, "Failed to fetch recipes");
+        }
+     */
     return (
         <Render
             recipesFetch={recipesFetch}
