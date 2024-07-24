@@ -27,17 +27,6 @@ const Slug = ({article, dotNetResponse}) => {
     });
 
 
-    const playlist = [
-        {
-            name: article.title,
-            writer: article.aajonusCatagory.title,
-            img: article.coverImage.url,
-            src: article.audio.url,
-            id: 1
-        }
-    ];
-
-
     return (
         <div className=" bg-white p-4 pb-32 min-h-screen">
             <div>
