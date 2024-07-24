@@ -1,12 +1,17 @@
-"use client";
+"use server";
 import Link from "next/link";
 import Head from "next/head";
 import {RichText} from "@graphcms/rich-text-react-renderer";
 import {nanoid} from "nanoid";
 import {IoIosArrowBack, IoIosDownload} from "react-icons/io";
-import ReactJkMusicPlayer from "react-jinke-music-player";
-import styles from 'react-jinke-music-player/assets/index.module.css'
+//import ReactAudioPlayer from "react-audio-player";
 import {TextParser} from '../../../../utils/classes/utility/TextParser';
+import Download from "@/app/article/Download";
+import dynamic from 'next/dynamic';
+
+
+import styles from 'react-jinke-music-player/assets/index.module.css'
+import MusicPlayer from "@/app/article/MusicPlayer";
 
 const Slug = ({article, dotNetResponse}) => {
 
@@ -31,15 +36,6 @@ const Slug = ({article, dotNetResponse}) => {
             id: 1
         }
     ];
-
-    const downloadFile = () => {
-        const downloadUrl = TextParser.getBlobUrlFromRawText(article.content.raw.children);
-        const link = document.createElement("a");
-        link.href = downloadUrl;
-        link.download = article.title;
-        link.click()
-        URL.revokeObjectURL(link.href);
-    }
 
 
     return (
@@ -71,8 +67,12 @@ const Slug = ({article, dotNetResponse}) => {
 
                     </div>
                     {/** End of heading */}
-                    <ReactJkMusicPlayer defaultPosition={{right: 32, bottom: 32}} autoPlay={false}
-                                        audioLists={[{musicSrc: article.audio.url}]} style={styles}/>
+
+                    {/*<ReactAudioPlayer*/}
+                    {/*    src={article.audio.url}*/}
+                    {/*    autoPlay*/}
+                    {/*    controls*/}
+                    {/*/>*/}
                     <div className="overflow-auto">
 
                         {/** Article text */}
@@ -85,7 +85,7 @@ const Slug = ({article, dotNetResponse}) => {
                             </div>
                         </div>
                         {/** End of article text */}
-
+                        <MusicPlayer article={article}/>
                         <div
                             className='w-full w- mb-6 sm:!w-40 ml-4  float-right border--secondary md:border-l-2 pl-2'>
                             <h5 className='res-heading-xs font-bold mb-2'>Tags</h5>
@@ -93,13 +93,7 @@ const Slug = ({article, dotNetResponse}) => {
                                 {tagElems}
                             </div>
                             <div>
-                                <button onClick={downloadFile}
-                                        className="bg-emerald-600 text-white rounded px-4 py-2 shadow hover:bg-emerald-700 transition flex items-center">
-                                    <IoIosDownload
-                                        className='text-4xl mr-2'
-                                    />
-                                    Download Text File
-                                </button>
+                                <Download article={article}/>
 
                             </div>
                         </div>

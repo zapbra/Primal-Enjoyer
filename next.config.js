@@ -31,6 +31,7 @@ module.exports = {
     experimental: {
         workerThreads: false,
         cpus: 1,
+        serverActions: true,
     },
     nextConfig,
 };
