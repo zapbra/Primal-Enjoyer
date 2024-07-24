@@ -1,7 +1,9 @@
+@import 'react-jinke-music-player/assets/index.module.css';
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
     .text--primary {
         @apply text-blue-950;
@@ -66,11 +68,14 @@ body {
 
 h1, h2, h3, h4, h5 {
     @apply text--primary;
+    font-family: 'Montserrat';
+    font-weight: bold;
 }
 
 p {
     @apply res-text-base;
     @apply text-slate-950;
+    font-family: 'Hind';
 }
 
 @layer utilities {
@@ -121,7 +126,7 @@ p {
 
 .text-renderer {
     * {
-        margin-bottom: 8px;
+        margin-bottom: 8px !important;
     }
 
     @media only screen and (max-width: 600px) {

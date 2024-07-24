@@ -14,7 +14,6 @@ const Render = ({previewData, timecodeData}) => {
     const searchParams = useSearchParams();
     const query = searchParams.get('query');
 
-
     const [searchText, setSearchText] = useState(query || "");
     const [recentSearch, setRecentSearch] = useState("");
 

@@ -7,6 +7,8 @@ import {DotNetApi} from "../../../../utils/classes/DotNetApi/DotNetApi";
 export async function generateStaticParams() {
     const {data, error} = await supabase.from("timecodes").select("name");
 
+    console.log("error")
+    console.log(error);
     return data.map((timecode) => {
         return {name: timecode.name};
     });
